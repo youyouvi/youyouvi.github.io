@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://youyouvi.github.io/"/>
-  <updated>2017-09-22T09:12:37.761Z</updated>
+  <updated>2017-09-22T14:06:56.821Z</updated>
   <id>https://youyouvi.github.io/</id>
   
   <author>
@@ -17,19 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Gitee+Hexo搭建个人博客</title>
+    <link href="https://youyouvi.github.io/2017/09/22/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/</id>
+    <published>2017-09-22T13:48:40.242Z</published>
+    <updated>2017-09-22T14:06:56.821Z</updated>
+    
+    <content type="html"><![CDATA[<p>码云(Gitee): <a href="https://gitee.com" target="_blank" rel="external">https://gitee.com</a> 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本。</p><h2 id="环境搭建"><a class="markdownIt-Anchor" href="#环境搭建"></a> 环境搭建</h2><h3 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装Node.js</h3><p>Windows用户访问Node.js(<a href="https://nodejs.org/en" target="_blank" rel="external">https://nodejs.org/en</a>) 下载Node.js安装包后，直接运行安装即可(node.js下载也很慢，最好翻墙)。安装后，更换下npm的源，否则后续的下降速度着实让人着急。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm config <span class="built_in">set</span> registry http://registry.npm.taobao.org/</div></pre></td></tr></table></figure><h3 id="hexo安装"><a class="markdownIt-Anchor" href="#hexo安装"></a> Hexo安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure><p>Hexo的基本使用请查看hello-world文中所写。</p><h3 id="本地运行hexo"><a class="markdownIt-Anchor" href="#本地运行hexo"></a> 本地运行Hexo</h3><p>在本地选中一个空文件夹（一定要是空文件夹！！），在空文件中执行如下命令，生成Hexo运行所需要的文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure><p>初始化后，文件夹的目录如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── .deploy       <span class="comment">#需要部署的文件</span></div><div class="line">├── node_modules  <span class="comment">#Hexo插件</span></div><div class="line">├── public        <span class="comment">#生成的静态网页文件</span></div><div class="line">├── scaffolds     <span class="comment">#模板</span></div><div class="line">├── <span class="built_in">source</span>        <span class="comment">#博客正文和其他源文件等都应该放在这里</span></div><div class="line">|   ├── _drafts   <span class="comment">#草稿</span></div><div class="line">|   └── _posts    <span class="comment">#文章</span></div><div class="line">├── themes        <span class="comment">#主题</span></div><div class="line">├── _config.yml   <span class="comment">#全局配置文件</span></div><div class="line">└── package.json</div></pre></td></tr></table></figure><p>之后在本地执行如下命令后，即可访问http://localhost:4000访问Hexo页面</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      基于国内的Gitee搭建Hexo博客。
+    
+    </summary>
+    
+      <category term="Hexo搭建" scheme="https://youyouvi.github.io/categories/Hexo%E6%90%AD%E5%BB%BA/"/>
+    
+    
+      <category term="Hexo" scheme="https://youyouvi.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://youyouvi.github.io/2017/09/22/hello-world/"/>
     <id>https://youyouvi.github.io/2017/09/22/hello-world/</id>
     <published>2017-09-22T08:28:42.118Z</published>
-    <updated>2017-09-22T09:12:37.761Z</updated>
+    <updated>2017-09-22T14:06:59.975Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p><a id="more"></a><h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2><h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p><h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2><h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>]]></content>
     
     <summary type="html">
     
-      Hexo搭建的步骤.
+      Hexo基本使用.
     
     </summary>
+    
+      <category term="Hexo搭建" scheme="https://youyouvi.github.io/categories/Hexo%E6%90%AD%E5%BB%BA/"/>
     
     
       <category term="Hexo" scheme="https://youyouvi.github.io/tags/Hexo/"/>
