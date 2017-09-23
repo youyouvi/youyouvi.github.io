@@ -16,7 +16,11 @@
 <meta property="og:image" content="https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/new%20project.png">
 <meta property="og:image" content="https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/new%20project2.png">
 <meta property="og:image" content="https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/get.png">
-<meta property="og:updated_time" content="2017-09-23T05:37:53.345Z">
+<meta property="og:image" content="https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/open.png">
+<meta property="og:image" content="https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/start.png">
+<meta property="og:image" content="https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/success.png">
+<meta property="og:image" content="https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/blog.png">
+<meta property="og:updated_time" content="2017-09-23T05:54:38.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gitee+Hexo搭建个人博客">
 <meta name="twitter:description" content="基于国内的Gitee搭建Hexo博客。">
@@ -268,29 +272,41 @@ Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本�
 <h2 id="环境搭建"><a class="markdownIt-Anchor" href="#环境搭建"></a> 环境搭建</h2>
 <h3 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装Node.js</h3>
 <p>Windows用户访问Node.js <a href="https://nodejs.org/en" target="_blank" rel="external">https://nodejs.org/en</a> 下载Node.js安装包后，直接运行安装即可(node.js下载也很慢，最好翻墙)。安装后，更换下npm的源，否则下载速度着实让人着急。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm config <span class="built_in">set</span> registry http://registry.npm.taobao.org/</div></pre></td></tr></table></figure>
-<br>
-### Hexo安装
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<p>Hexo的基本使用请查看hello-world文中所写。<br>
-<br></p>
+<pre><code>$ npm config set registry http://registry.npm.taobao.org/
+</code></pre>
+<h3 id="hexo安装"><a class="markdownIt-Anchor" href="#hexo安装"></a> Hexo安装</h3>
+<pre><code>$ npm install -g hexo-cli
+</code></pre>
+<p>Hexo的基本使用请查看hello-world文中所写。</p>
 <h3 id="本地运行hexo"><a class="markdownIt-Anchor" href="#本地运行hexo"></a> 本地运行Hexo</h3>
 <p>在本地选中一个空文件夹（一定要是空文件夹！！），在空文件中执行如下命令，生成Hexo运行所需要的文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
+<pre><code>$ hexo init
+</code></pre>
 <p>初始化后，文件夹的目录如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── .deploy       <span class="comment">#需要部署的文件</span></div><div class="line">├── node_modules  <span class="comment">#Hexo插件</span></div><div class="line">├── public        <span class="comment">#生成的静态网页文件</span></div><div class="line">├── scaffolds     <span class="comment">#模板</span></div><div class="line">├── <span class="built_in">source</span>        <span class="comment">#博客正文和其他源文件等都应该放在这里</span></div><div class="line">|   ├── _drafts   <span class="comment">#草稿</span></div><div class="line">|   └── _posts    <span class="comment">#文章</span></div><div class="line">├── themes        <span class="comment">#主题</span></div><div class="line">├── _config.yml   <span class="comment">#全局配置文件</span></div><div class="line">└── package.json</div></pre></td></tr></table></figure>
+<pre><code>.
+├── .deploy       #需要部署的文件
+├── node_modules  #Hexo插件
+├── public        #生成的静态网页文件
+├── scaffolds     #模板
+├── source        #博客正文和其他源文件等都应该放在这里
+|   ├── _drafts   #草稿
+|   └── _posts    #文章
+├── themes        #主题
+├── _config.yml   #全局配置文件
+└── package.json
+</code></pre>
 <p>之后在本地执行如下命令后，即可访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 访问Hexo页面</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo s</div></pre></td></tr></table></figure>
-<br>
-### Git安装
-Git安装包地址https://git-scm.com/downloads ,根据操作系统选择安装包下载后安装即可。
-### 注册码云账号，并创建一个项目
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br>
-### 获取项目地址
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/get.png" alt="获取项目地址"><br>
-<h2 id="发布博客"><a class="markdownIt-Anchor" href="#发布博客"></a> 发布博客</h2>
-<h3 id="修改hexo配置文件_configyml"><a class="markdownIt-Anchor" href="#修改hexo配置文件_configyml"></a> 修改Hexo配置文件_config.yml</h3>
+<pre><code>$ hexo s
+</code></pre>
+<h3 id="git安装"><a class="markdownIt-Anchor" href="#git安装"></a> Git安装</h3>
+<p>Git安装包地址https://git-scm.com/downloads ,根据操作系统选择安装包下载后安装即可。</p>
+<h3 id="注册码云账号并创建一个项目"><a class="markdownIt-Anchor" href="#注册码云账号并创建一个项目"></a> 注册码云账号，并创建一个项目</h3>
+<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br><br>
+<img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br></p>
+<h3 id="获取项目地址"><a class="markdownIt-Anchor" href="#获取项目地址"></a> 获取项目地址</h3>
+<img src="/2017/09/22/Gitee+Hexo搭建个人博客/get.png" alt="获取项目地址">
+## 发布博客
+### 修改Hexo配置文件_config.yml
 <pre><code>deploy:
 	type: git
 	repo: 码云的项目地址
@@ -300,7 +316,16 @@ Git安装包地址https://git-scm.com/downloads ,根据操作系统选择安装�
 <pre><code>$ npm install hexo-deployer-git --save 
 $ npm g --d  #一键部署
 </code></pre>
-<p>此时会弹出一个对话框，提示输入码云的账号密码。部署成功后，登陆码云</p>
+<p>此时会弹出一个对话框，提示输入码云的账号密码。部署成功后，登陆码云。此时本地文件夹中出现有一个public文件夹，代表部署成功。</p>
+<h3 id="开启page功能"><a class="markdownIt-Anchor" href="#开启page功能"></a> 开启Page功能</h3>
+<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/open.png" alt="开启Page功能"><br><br>
+<img src="/2017/09/22/Gitee+Hexo搭建个人博客/start.png" alt="开启Page功能"><br><br>
+<img src="/2017/09/22/Gitee+Hexo搭建个人博客/success.png" alt="博客部署成功"></p>
+<h3 id="访问博客"><a class="markdownIt-Anchor" href="#访问博客"></a> 访问博客</h3>
+<p>在浏览器地址栏输入上图中的博客地址，即可访问，效果图如下：<br>
+<img src="/2017/09/22/Gitee+Hexo搭建个人博客/blog.png" alt="我的博客"></p>
+<h2 id="结尾"><a class="markdownIt-Anchor" href="#结尾"></a> 结尾</h2>
+<p>如果搭建过程中，还有什么问题，请在下方留言。谢谢您的观赏！</p>
 
       
       
@@ -313,7 +338,7 @@ $ npm g --d  #一键部署
         <p><span>Title:</span><a href="/2017/09/22/Gitee+Hexo搭建个人博客/">Gitee+Hexo搭建个人博客</a></p>
         <p><span>Author:</span><a href="/" title="访问 子语 的个人博客">子语</a></p>
         <p><span>发布时间:</span>2017年09月22日 - 21时48分</p>
-        <p><span>最后更新:</span>2017年09月23日 - 13时37分</p>
+        <p><span>最后更新:</span>2017年09月23日 - 13时54分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/22/Gitee+Hexo搭建个人博客/" title="Gitee+Hexo搭建个人博客">https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/</a>
             <span class="copy-path" data-clipboard-text="原文: https://youyouvi.github.io/2017/09/22/Gitee+Hexo搭建个人博客/　　作者: 子语" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -342,7 +367,7 @@ $ npm g --d  #一键部署
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-number">1.</span> <span class="toc-text"> 环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装nodejs"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地运行hexo"><span class="toc-number">1.2.</span> <span class="toc-text"> 本地运行Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布博客"><span class="toc-number">2.</span> <span class="toc-text"> 发布博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改hexo配置文件_configyml"><span class="toc-number">2.1.</span> <span class="toc-text"> 修改Hexo配置文件_config.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署博客"><span class="toc-number">2.2.</span> <span class="toc-text"> 部署博客</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境搭建"><span class="toc-number">1.</span> <span class="toc-text"> 环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装nodejs"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo安装"><span class="toc-number">1.2.</span> <span class="toc-text"> Hexo安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地运行hexo"><span class="toc-number">1.3.</span> <span class="toc-text"> 本地运行Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git安装"><span class="toc-number">1.4.</span> <span class="toc-text"> Git安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册码云账号并创建一个项目"><span class="toc-number">1.5.</span> <span class="toc-text"> 注册码云账号，并创建一个项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取项目地址"><span class="toc-number">1.6.</span> <span class="toc-text"> 获取项目地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署博客"><span class="toc-number">1.7.</span> <span class="toc-text"> 部署博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启page功能"><span class="toc-number">1.8.</span> <span class="toc-text"> 开启Page功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问博客"><span class="toc-number">1.9.</span> <span class="toc-text"> 访问博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结尾"><span class="toc-number">2.</span> <span class="toc-text"> 结尾</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
