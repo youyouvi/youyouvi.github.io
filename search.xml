@@ -52,7 +52,7 @@ Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本�
 </code></pre>
 <h3 id="部署博客"><a class="markdownIt-Anchor" href="#部署博客"></a> 部署博客</h3>
 <pre><code>$ npm install hexo-deployer-git --save 
-$ npm g --d  #一键部署
+$ hexo g --d  #一键部署
 </code></pre>
 <p>此时会弹出一个对话框，提示输入码云的账号密码。部署成功后，登陆码云。此时本地文件夹中出现有一个public文件夹，代表部署成功。</p>
 <h3 id="开启page功能"><a class="markdownIt-Anchor" href="#开启page功能"></a> 开启Page功能</h3>
