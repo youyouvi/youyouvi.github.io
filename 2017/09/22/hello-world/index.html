@@ -13,12 +13,10 @@
 <meta property="og:site_name" content="M&#39;Note">
 <meta property="og:description" content="Hexo基本使用.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-22T14:06:59.975Z">
+<meta property="og:updated_time" content="2017-09-23T05:57:53.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
 <meta name="twitter:description" content="Hexo基本使用.">
-  
-    <link rel="alternative" href="/atom.xml" title="M&#39;Note" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/fa.png">
@@ -69,6 +67,10 @@
         
         <p class="header-subtitle">一切有为法,如梦幻泡影。如露亦如电,应作如是观。</p>
         
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
         
         
             <div id="switch-btn" class="switch-btn">
@@ -156,6 +158,8 @@
                     
                       <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.aliyun.com/">阿里云</a>
                     
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="/gitee.com">码云</a>
+                    
                     </div>
                 </section>
                 
@@ -164,7 +168,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">编程小菜鸟，喜欢接触新鲜事物、迎接新的挑战，沉迷于代码中。</div>
+                    <div id="js-aboutme">编程小菜鸟。</div>
                 </section>
                 
             </div>
@@ -285,7 +289,7 @@
         <p><span>Title:</span><a href="/2017/09/22/hello-world/">Hello World</a></p>
         <p><span>Author:</span><a href="/" title="访问 子语 的个人博客">子语</a></p>
         <p><span>发布时间:</span>2017年09月22日 - 16时28分</p>
-        <p><span>最后更新:</span>2017年09月22日 - 22时06分</p>
+        <p><span>最后更新:</span>2017年09月23日 - 13时57分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/22/hello-world/" title="Hello World">https://youyouvi.github.io/2017/09/22/hello-world/</a>
             <span class="copy-path" data-clipboard-text="原文: https://youyouvi.github.io/2017/09/22/hello-world/　　作者: 子语" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -352,11 +356,20 @@
 
 
     
-        <section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid="></script>
-</section>
-
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'youyouvi',
+      repo: 'http://yov.oschina.io',
+      oauth: {
+        client_id: 'c4078c63127426b6e8c2',
+        client_secret: 'ae2909279e417a30c7c419a6bc94b966a40c8f4e',
+      },
+    })
+    gitment.render('gitments')
+</script>
     
 
 
@@ -446,6 +459,27 @@
 
 
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 <div class="scroll" id="scroll">
     <a href="#"><i class="fa fa-arrow-up"></i></a>
     <a href="#comments"><i class="fa fa-comments-o"></i></a>
@@ -488,6 +522,23 @@
     });
 </script>
 
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
 
   </div>
 </body>
