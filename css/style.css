@@ -2954,6 +2954,12 @@ a.gitment-editor-footer-tip:hover {
     transform: rotate(360deg);
   }
 }
+.post-count {
+  font-family: "黑体";
+  position: relative;
+  top: 1.9%;
+  left: 58%;
+}
 .body-wrap {
   margin-bottom: 80px;
 }
@@ -4028,25 +4034,6 @@ pre .link_url {
 .footer-right {
   float: right;
 }
-.bdshare-button-style2-24 {
-  width: 330px;
-  margin: 12px auto;
-}
-.bdshare-button-style2-24 .fx {
-  color: #999;
-  padding: 0;
-  margin: 6px;
-  display: inline-block;
-  font: normal normal normal 36px/1 FontAwesome;
-  background: none;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.bdshare-button-style2-24 .fx:hover {
-  color: #fff;
-  opacity: 1;
-}
 .share {
   padding-left: 40px;
   margin-bottom: 5px;
@@ -4733,14 +4720,6 @@ pre .link_url {
   padding: 0;
   height: 100%;
   overflow: hidden;
-}
-.youyan {
-  padding: 20px 40px;
-}
-@media (max-width: 767px) {
-  .youyan {
-    padding: 20px 10px;
-  }
 }
 .inner1 {
   margin: 0 40px;
