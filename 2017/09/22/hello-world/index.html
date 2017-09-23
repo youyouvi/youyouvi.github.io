@@ -356,12 +356,20 @@
 
 
     
-        <section class="youyan" id="comments">
-  <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=2145238"></script>
-</section>
-
-    
+        <div id="gitments"></div>
+<script src="/js/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+      id: window.location.pathname,
+      owner: 'youyouvi',
+      repo: 'http://yov.oschina.io',
+      oauth: {
+        client_id: 'c4078c63127426b6e8c2',
+        client_secret: 'ae2909279e417a30c7c419a6bc94b966a40c8f4e',
+      },
+    })
+    gitment.render('gitments')
+</script>
 
 
 
