@@ -44,8 +44,75 @@ Type=notify
 $ systemctl daemon-reload  //　重新加载配置
 $ systemctl restart docker //　重启docker
 </code></pre>
+<h3 id="docker配置文件说明"><a class="markdownIt-Anchor" href="#docker配置文件说明"></a> Docker配置文件说明</h3>
+<pre><code>$ vim /etc/sysconfig/docker
+OPTIONS='
+ --selinux-enabled  //　是否开启selinux，默认开启
+ --insecure registry ip:port // 添加私人仓库地址
+ --bip=ip // 表示网桥docker0的CIDR地址
+'
+</code></pre>
 <h2 id="docker的常用命令"><a class="markdownIt-Anchor" href="#docker的常用命令"></a> Docker的常用命令</h2>
-<p>()</p>
+<h3 id="docker信息查看"><a class="markdownIt-Anchor" href="#docker信息查看"></a> Docker信息查看</h3>
+<p>(1)查看docker进程状态</p>
+<pre><code>$ systemctl status docker
+</code></pre>
+<p>(2)查看docker的具体信息</p>
+<pre><code>$ docker info
+</code></pre>
+<p>(3)查看docker的版本信息</p>
+<pre><code>$ docker version
+</code></pre>
+<h3 id="docker的镜像操作"><a class="markdownIt-Anchor" href="#docker的镜像操作"></a> Docker的镜像操作</h3>
+<p>(1)查找镜像</p>
+<pre><code>$ docker search image_name
+</code></pre>
+<p>(2)拉取镜像</p>
+<pre><code>$ docker pull image_name:tag
+</code></pre>
+<p>(3)列出本地镜像</p>
+<pre><code>$ docker images
+</code></pre>
+<p>列表参数说明</p>
+<blockquote>
+<p>Repository：镜像的仓库源<br>
+Tag：镜像的标签<br>
+Image ID： 镜像ID<br>
+Created： 镜像的创建时间<br>
+Size： 镜像大小</p>
+</blockquote>
+<p>(4)设置镜像标签</p>
+<pre><code>$ docker tag image_id tag
+</code></pre>
+<p>(5)利用镜像创建容器</p>
+<pre><code>$ docker run image_name:tag command
+</code></pre>
+<p>(6)提交镜像</p>
+<pre><code>$ docker commit -m=&quot;描述信息&quot; -a=&quot;author&quot; image_name new_image_name
+</code></pre>
+<h3 id="docker的容器操作"><a class="markdownIt-Anchor" href="#docker的容器操作"></a> Docker的容器操作</h3>
+<p>(1)启动容器</p>
+<pre><code>$ docker run option host_port:contaniner_port image_name:tag command
+</code></pre>
+<blockquote>
+<p>例如：docker run -it -d -p 5000:5000 java java -version<br>
+-d：后台运行容器<br>
+-p:将容器端口映射到宿主机端口<br>
+-it:进行交互式操作<br>
+command: 执行java -version命令</p>
+</blockquote>
+<p>(2)查看容器</p>
+<pre><code>$ docker ps // 查看正在运行的容器
+</code></pre>
+<p>(3)容器生命周期命令</p>
+<pre><code>$ docker create image:tag  // 创建容器但不启动
+$ docker start container_name   // 启动容器
+$ docker stop contaniner_name   // 停止容器
+$ docker restart container_name // 重启容器
+$ docker pause contaniner_name  // 暂停容器内所有进程
+$ docker unpause contaniner_name // 恢复容器内所有进程
+$ docker rm contaniner  // 删除容器
+$ docker rm ${docker ps -a -q} // 删除所有停止的容器</code></pre>
 ]]></content>
       
         <categories>
@@ -537,11 +604,11 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
     <entry>
       <title><![CDATA[Gitee+Hexo搭建个人博客]]></title>
       <url>/2017/09/22/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-      <content type="html"><![CDATA[<p>码云(Gitee): <a href="https://gitee.com" target="_blank" rel="external">https://gitee.com</a> 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>
+      <content type="html"><![CDATA[<p><a href="https://gitee.com" target="_blank" rel="external">Gitee</a>: 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>
 Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本。</p>
 <h2 id="环境搭建"><a class="markdownIt-Anchor" href="#环境搭建"></a> 环境搭建</h2>
 <h3 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装Node.js</h3>
-<p>Windows用户访问Node.js <a href="https://nodejs.org/en" target="_blank" rel="external">https://nodejs.org/en</a> 下载Node.js安装包后，直接运行安装即可(node.js下载也很慢，最好翻墙)。安装后，更换下npm的源，否则下载速度着实让人着急。</p>
+<p>Windows用户访问<a href="https://nodejs.org/en" target="_blank" rel="external">Node.js</a>下载Node.js安装包后，直接运行安装即可(node.js下载也很慢，最好翻墙)。安装后，更换下npm的源，否则下载速度着实让人着急。</p>
 <pre><code>$ npm config set registry http://registry.npm.taobao.org/
 </code></pre>
 <h3 id="hexo安装"><a class="markdownIt-Anchor" href="#hexo安装"></a> Hexo安装</h3>
@@ -569,7 +636,7 @@ Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本�
 <pre><code>$ hexo s
 </code></pre>
 <h3 id="git安装"><a class="markdownIt-Anchor" href="#git安装"></a> Git安装</h3>
-<p>Git安装包地址 <a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a> ,根据操作系统选择安装包下载后安装即可。</p>
+<p><a href="https://git-scm.com/downloads" target="_blank" rel="external">Git安装包地址</a>,根据操作系统选择安装包下载后安装即可。</p>
 <h3 id="注册码云账号并创建一个项目"><a class="markdownIt-Anchor" href="#注册码云账号并创建一个项目"></a> 注册码云账号，并创建一个项目</h3>
 <p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br><br>
 <img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br></p>
