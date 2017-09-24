@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://youyouvi.github.io/"/>
-  <updated>2017-09-24T10:47:48.131Z</updated>
+  <updated>2017-09-24T11:43:39.975Z</updated>
   <id>https://youyouvi.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://youyouvi.github.io/2017/09/24/Docker%E7%9A%84%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E/"/>
     <id>https://youyouvi.github.io/2017/09/24/Docker的安装说明/</id>
     <published>2017-09-24T10:43:23.794Z</published>
-    <updated>2017-09-24T10:47:48.131Z</updated>
+    <updated>2017-09-24T11:43:39.975Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="安装及部署docker"><a class="markdownIt-Anchor" href="#安装及部署docker"></a> 安装及部署Docker</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="安装及部署docker"><a class="markdownIt-Anchor" href="#安装及部署docker"></a> 安装及部署Docker</h2><h3 id="系统和资源说明"><a class="markdownIt-Anchor" href="#系统和资源说明"></a> 系统和资源说明</h3><p>Docker系统要求最低CentOS7，且系统必须为64位，且内核版本不低于3.10。<br>资源需求：Docker1.12.6</p><h3 id="安装步骤"><a class="markdownIt-Anchor" href="#安装步骤"></a> 安装步骤</h3><p>(1)安装</p><pre><code>$ yum install docker</code></pre><p>(2)设置开机启动Docker Daemon进程</p><pre><code>$ systemctl start docker.service   // 启动docker$ systemctl enable docker.service  // 设置Docker开机自启动$ systemctl disable firewalld      // 关闭防火墙$ yum -y install iptables-services // 安装iptable服务$ systemctl start iptables.service   // 启动iptable$ systemctl enable iptables.service  // 设置iptable开机自启动</code></pre><p>(3)安装成功的Docker</p><pre><code>$ docker version</code></pre><img src="/2017/09/24/Docker的安装说明/success.png" alt="Docker安装成功">  <p>(4)建立docker用户组，将使用docker的用户加入docker用户组。</p><pre><code>$ groupadd docker$ usermod -aG docker $USER</code></pre><h3 id="docker的代理配置"><a class="markdownIt-Anchor" href="#docker的代理配置"></a> Docker的代理配置</h3><pre><code>$ vim /usr/lib/systemd/system/docker.service[Service]Environment=”HTTP_PROXY=http://192.168.13.19:7777”Environment=”HTTPS_PROXY=http://192.168.13.19:7777”Type=notify</code></pre><h3 id="docker配置加速器"><a class="markdownIt-Anchor" href="#docker配置加速器"></a> Docker配置加速器</h3><p>国内访问Docker Hub可能有些慢，因此我们可以配置加速器。阿里云提供了<a href="https://cr.console.aliyun.com" target="_blank" rel="external">阿里云加速器</a> 注册用户并且申请加速器后，会获得　<a href="https://xxx.mirror.aliyuncs.com" target="_blank" rel="external">https://xxx.mirror.aliyuncs.com</a> 这样的地址。<br><img src="/2017/09/24/Docker的安装说明/dockerhub.png" alt="Docker加速器"></p><pre><code>$ vim /usr/lib/systemd/system/docker.service  ExecStart= --registry-mirror=https://xxx.mirror.aliyuncs.com$ systemctl daemon-reload  //　重新加载配置$ systemctl restart docker //　重启docker</code></pre><h2 id="docker的常用命令"><a class="markdownIt-Anchor" href="#docker的常用命令"></a> Docker的常用命令</h2><p>()</p>]]></content>
     
     <summary type="html">
     

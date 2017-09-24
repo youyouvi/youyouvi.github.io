@@ -13,10 +13,13 @@
 <meta property="og:site_name" content="M&#39;Note">
 <meta property="og:description" content="介绍Docker的安装部署及其常用的命令。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-24T10:47:48.131Z">
+<meta property="og:image" content="https://youyouvi.github.io/2017/09/24/Docker的安装说明/success.png">
+<meta property="og:image" content="https://youyouvi.github.io/2017/09/24/Docker的安装说明/dockerhub.png">
+<meta property="og:updated_time" content="2017-09-24T11:43:39.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker的安装说明">
 <meta name="twitter:description" content="介绍Docker的安装部署及其常用的命令。">
+<meta name="twitter:image" content="https://youyouvi.github.io/2017/09/24/Docker的安装说明/success.png">
   
   
     <link rel="icon" href="/img/fa.png">
@@ -61,7 +64,7 @@
         </a>
         <hgroup>
           <h3 class="header-author"><a href="/" title="Hi Mate">子语</a></h3>
-          |7.1k字|
+          |7.4k字|
         </hgroup>
 
         
@@ -247,7 +250,7 @@
     </div>
 
         <div class="clearfix">
-        <span class="post-count">字数：6</span>&nbsp;&nbsp;
+        <span class="post-count">字数：289</span>&nbsp;&nbsp;
         <span class="post-count">点击：<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span> </span></span>
         </div>
       </div>
@@ -258,6 +261,46 @@
       
           
         <h2 id="安装及部署docker"><a class="markdownIt-Anchor" href="#安装及部署docker"></a> 安装及部署Docker</h2>
+<h3 id="系统和资源说明"><a class="markdownIt-Anchor" href="#系统和资源说明"></a> 系统和资源说明</h3>
+<p>Docker系统要求最低CentOS7，且系统必须为64位，且内核版本不低于3.10。<br>
+资源需求：Docker1.12.6</p>
+<h3 id="安装步骤"><a class="markdownIt-Anchor" href="#安装步骤"></a> 安装步骤</h3>
+<p>(1)安装</p>
+<pre><code>$ yum install docker
+</code></pre>
+<p>(2)设置开机启动Docker Daemon进程</p>
+<pre><code>$ systemctl start docker.service   // 启动docker
+$ systemctl enable docker.service  // 设置Docker开机自启动
+$ systemctl disable firewalld      // 关闭防火墙
+$ yum -y install iptables-services // 安装iptable服务
+$ systemctl start iptables.service   // 启动iptable
+$ systemctl enable iptables.service  // 设置iptable开机自启动
+</code></pre>
+<p>(3)安装成功的Docker</p>
+<pre><code>$ docker version
+</code></pre>
+<img src="/2017/09/24/Docker的安装说明/success.png" alt="Docker安装成功">  
+<p>(4)建立docker用户组，将使用docker的用户加入docker用户组。</p>
+<pre><code>$ groupadd docker
+$ usermod -aG docker $USER
+</code></pre>
+<h3 id="docker的代理配置"><a class="markdownIt-Anchor" href="#docker的代理配置"></a> Docker的代理配置</h3>
+<pre><code>$ vim /usr/lib/systemd/system/docker.service
+[Service]
+Environment=”HTTP_PROXY=http://192.168.13.19:7777”
+Environment=”HTTPS_PROXY=http://192.168.13.19:7777”
+Type=notify
+</code></pre>
+<h3 id="docker配置加速器"><a class="markdownIt-Anchor" href="#docker配置加速器"></a> Docker配置加速器</h3>
+<p>国内访问Docker Hub可能有些慢，因此我们可以配置加速器。阿里云提供了<a href="https://cr.console.aliyun.com" target="_blank" rel="external">阿里云加速器</a> 注册用户并且申请加速器后，会获得　<a href="https://xxx.mirror.aliyuncs.com" target="_blank" rel="external">https://xxx.mirror.aliyuncs.com</a> 这样的地址。<br>
+<img src="/2017/09/24/Docker的安装说明/dockerhub.png" alt="Docker加速器"></p>
+<pre><code>$ vim /usr/lib/systemd/system/docker.service
+  ExecStart= --registry-mirror=https://xxx.mirror.aliyuncs.com
+$ systemctl daemon-reload  //　重新加载配置
+$ systemctl restart docker //　重启docker
+</code></pre>
+<h2 id="docker的常用命令"><a class="markdownIt-Anchor" href="#docker的常用命令"></a> Docker的常用命令</h2>
+<p>()</p>
 
       
       
@@ -270,7 +313,7 @@
         <p><span>Title:</span><a href="/2017/09/24/Docker的安装说明/">Docker的安装说明</a></p>
         <p><span>Author:</span><a href="/" title="访问 子语 的个人博客">子语</a></p>
         <p><span>发布时间:</span>2017年09月24日 - 18时43分</p>
-        <p><span>最后更新:</span>2017年09月24日 - 18时47分</p>
+        <p><span>最后更新:</span>2017年09月24日 - 19时43分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/24/Docker的安装说明/" title="Docker的安装说明">https://youyouvi.github.io/2017/09/24/Docker的安装说明/</a>
             <span class="copy-path" data-clipboard-text="原文: https://youyouvi.github.io/2017/09/24/Docker的安装说明/　　作者: 子语" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -299,7 +342,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装及部署docker"><span class="toc-number">1.</span> <span class="toc-text"> 安装及部署Docker</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装及部署docker"><span class="toc-number">1.</span> <span class="toc-text"> 安装及部署Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统和资源说明"><span class="toc-number">1.1.</span> <span class="toc-text"> 系统和资源说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装步骤"><span class="toc-number">1.2.</span> <span class="toc-text"> 安装步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker的代理配置"><span class="toc-number">1.3.</span> <span class="toc-text"> Docker的代理配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker配置加速器"><span class="toc-number">1.4.</span> <span class="toc-text"> Docker配置加速器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker的常用命令"><span class="toc-number">2.</span> <span class="toc-text"> Docker的常用命令</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
