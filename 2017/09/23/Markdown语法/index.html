@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="M&#39;Note">
 <meta property="og:description" content="介绍Markdown的基本语法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-23T14:11:03.595Z">
+<meta property="og:updated_time" content="2017-09-24T07:15:05.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown语法">
 <meta name="twitter:description" content="介绍Markdown的基本语法。">
@@ -61,7 +61,7 @@
         </a>
         <hgroup>
           <h3 class="header-author"><a href="/" title="Hi Mate">子语</a></h3>
-          |3.8k字|
+          |4.9k字|
         </hgroup>
 
         
@@ -135,7 +135,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a>
+                        <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a>
                     </div>
                 </section>
                 
@@ -237,7 +237,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/语言/">语言<span class="article-category-count">3</span></a>
+    <a class="article-category-link" href="/categories/语言/">语言<span class="article-category-count">4</span></a>
     </div>
 
 
@@ -247,7 +247,7 @@
     </div>
 
         <div class="clearfix">
-        <span class="post-count">字数：834</span>&nbsp;&nbsp;
+        <span class="post-count">字数：833</span>&nbsp;&nbsp;
         <span class="post-count">点击：<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span> </span></span>
         </div>
       </div>
@@ -263,9 +263,9 @@
 <h2 id="markdown语法"><a class="markdownIt-Anchor" href="#markdown语法"></a> Markdown语法</h2>
 <h3 id="区块元素"><a class="markdownIt-Anchor" href="#区块元素"></a> 区块元素</h3>
 <h4 id="段落与换行"><a class="markdownIt-Anchor" href="#段落与换行"></a> 段落与换行</h4>
-<p>一个Markdown段落是由一个或多个连续的问本行组成的。在Markdown中，是无法使用空格或制表符来缩进的，因为其默认一个空格就是一个空行。</p>
+<p>一个Markdown段落是由一个或多个连续的文本行组成的。在Markdown中是<strong>无法使用空格或制表符来缩进的</strong>，因为其默认一个空格就是一个空行。</p>
 <h4 id="标题"><a class="markdownIt-Anchor" href="#标题"></a> 标题</h4>
-<p>Markdown支持两种标题的语法，类Setext形式和类Atx形式，接下来介绍的类Atx形式：该形式是在行首插入1到6个#，对应1到6级标题。</p>
+<p>Markdown支持两种标题的语法，类Setext形式和类Atx形式，接下来介绍的类Atx形式：该形式是在行首插入1到6个<code>#</code>，对应1到6级标题。</p>
 <pre><code># 这是H1
 ## 这是H2
 ...
@@ -278,7 +278,7 @@
 </code></pre>
 <p>在引用的区域中，也可以使用其他的Markdown语法。</p>
 <h4 id="列表"><a class="markdownIt-Anchor" href="#列表"></a> 列表</h4>
-<p>Markdown支持有序列表和无序列表。无序列表使用星号、减号或是加号作为列表标记:</p>
+<p>Markdown支持有序列表和无序列表。无序列表使用<code>星号</code>、<code>减号</code>或<code>加号</code>作为列表标记:</p>
 <pre><code>* red
 - green
 + blue
@@ -289,7 +289,7 @@
 3. blue
 </code></pre>
 <p>如果列表项目间用空行分开，在输出HTML时Markdowm就会将内容用段落标签包起来，即：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* blue</div><div class="line"></div><div class="line">*red</div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">* blue</span></div><div class="line"></div><div class="line"><span class="comment">*red</span></div></pre></td></tr></table></figure>
 <p>会被转换为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">&lt;li&gt;&lt;p&gt;blue&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;&lt;p&gt;red&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
 <p>如果要在列表项目中放入引用，就需要缩进</p>
@@ -300,7 +300,7 @@
 <h4 id="代码区域"><a class="markdownIt-Anchor" href="#代码区域"></a> 代码区域</h4>
 <p>要在Markdown中建立代码区块很简单，只需要缩进4个空格或一个tab即可。</p>
 <h4 id="分隔线"><a class="markdownIt-Anchor" href="#分隔线"></a> 分隔线</h4>
-<p>你可以在一行使用三个以上的星号、减号、下划线来建立一个分隔线，行内不能有其他东西。你可以在星号或减号中间插入空格。</p>
+<p>你可以在一行使用三个以上的<code>星号</code>、<code>减号</code>、<code>下划线</code>来建立一个分隔线，行内不能有其他东西。你可以在星号或减号中间插入空格。</p>
 <pre><code>星号：  * * *
 减号：  - - -
 下划线：_ _ _ 
@@ -345,7 +345,7 @@ __强调__
         <p><span>Title:</span><a href="/2017/09/23/Markdown语法/">Markdown语法</a></p>
         <p><span>Author:</span><a href="/" title="访问 子语 的个人博客">子语</a></p>
         <p><span>发布时间:</span>2017年09月23日 - 17时19分</p>
-        <p><span>最后更新:</span>2017年09月23日 - 22时11分</p>
+        <p><span>最后更新:</span>2017年09月24日 - 15时15分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/23/Markdown语法/" title="Markdown语法">https://youyouvi.github.io/2017/09/23/Markdown语法/</a>
             <span class="copy-path" data-clipboard-text="原文: https://youyouvi.github.io/2017/09/23/Markdown语法/　　作者: 子语" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -360,6 +360,15 @@ __强调__
 
 
 <nav id="article-nav">
+  
+    <a href="/2017/09/24/Java基础知识(二)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Java基础知识(二)
+        
+      </div>
+    </a>
   
   
     <a href="/2017/09/23/SpringBoot使用/" id="article-nav-older" class="article-nav-link-wrap">
@@ -427,7 +436,9 @@ __强调__
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/09/24/Java基础知识(二)/" title="上一篇: Java基础知识(二)">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -436,7 +447,7 @@ __强调__
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/SpringBoot使用/">SpringBoot使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Go基础知识/">Go基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Java基础知识(一)/">Java基础知识(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/Gitee+Hexo搭建个人博客/">Gitee+Hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/24/Java基础知识(二)/">Java基础知识(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/SpringBoot使用/">SpringBoot使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Go基础知识/">Go基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Java基础知识(一)/">Java基础知识(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/Gitee+Hexo搭建个人博客/">Gitee+Hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

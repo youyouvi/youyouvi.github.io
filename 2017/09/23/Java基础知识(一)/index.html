@@ -5,18 +5,18 @@
   
   <title>Java基础知识(一) | M&#39;Note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍Java的基础知识，适合新手阅读。">
+  <meta name="description" content="介绍Java的基础知识和数据类型，适合新手阅读。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础知识(一)">
 <meta property="og:url" content="https://youyouvi.github.io/2017/09/23/Java基础知识(一)/index.html">
 <meta property="og:site_name" content="M&#39;Note">
-<meta property="og:description" content="介绍Java的基础知识，适合新手阅读。">
+<meta property="og:description" content="介绍Java的基础知识和数据类型，适合新手阅读。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-24T03:03:54.033Z">
+<meta property="og:updated_time" content="2017-09-24T07:11:43.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础知识(一)">
-<meta name="twitter:description" content="介绍Java的基础知识，适合新手阅读。">
+<meta name="twitter:description" content="介绍Java的基础知识和数据类型，适合新手阅读。">
   
   
     <link rel="icon" href="/img/fa.png">
@@ -61,7 +61,7 @@
         </a>
         <hgroup>
           <h3 class="header-author"><a href="/" title="Hi Mate">子语</a></h3>
-          |3.8k字|
+          |4.9k字|
         </hgroup>
 
         
@@ -135,7 +135,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a>
+                        <a href="/tags/Go/" style="font-size: 10px;">Go</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a>
                     </div>
                 </section>
                 
@@ -237,7 +237,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/语言/">语言<span class="article-category-count">3</span></a>
+    <a class="article-category-link" href="/categories/语言/">语言<span class="article-category-count">4</span></a>
     </div>
 
 
@@ -272,7 +272,7 @@
 <code>class class_name {}</code>：一个java文件可以多次使用该声明（不建议如此操作），但编译后会生成多个class文件。</li>
 <li>第一个Java程序：Hello World</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;    						<span class="comment">// 包名</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> &#123;						<span class="comment">// 类</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;    <span class="comment">// 主方法</span></div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"Hello World"</span>);      <span class="comment">// 方法体</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;    		<span class="comment">// 包名</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> &#123;		<span class="comment">// 类</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;    <span class="comment">// 主方法</span></div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"Hello World"</span>);    <span class="comment">// 方法体</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Java程序都是从<strong>主方法</strong>开始执行的.<code>System.out.println()</code>将内容输出后换行。</p>
 <h3 id="classpath环境属性"><a class="markdownIt-Anchor" href="#classpath环境属性"></a> CLASSPATH环境属性</h3>
 <p>PATH和CLASSPTH的<strong>区别</strong>：<code>PATH</code>是操作系统路径，定义了所有可执行程序的路径；<code>CLASSPATH</code>是Java解释类文件时的加载路径，当<code>java</code>命令运行时，JVM通过CLASSPATH属性设置的路径，加载所需要的类。<br>
@@ -296,11 +296,11 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 </ol>
 <h2 id="java数据类型"><a class="markdownIt-Anchor" href="#java数据类型"></a> Java数据类型</h2>
 <ol>
-<li>Java数据类型分为两大类：基础数据类型和引用数据类型<br>
-两者的区别在于基础数据类型不需要进行内存分配，而引用数据类型需要进行内存分配。</li>
+<li>Java数据类型分为两大类：<code>基础数据类型</code>和<code>引用数据类型</code><br>
+<strong>两者的区别在于基础数据类型不需要进行内存分配，而引用数据类型需要进行内存分配。</strong></li>
 </ol>
 <blockquote>
-<p>·基本数据类型：<br>
+<p>基本数据类型：<br>
     |-数值型：<br>
         |-整型：<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>； →默认值：<code>0</code>；<br>
         |-浮点型：<code>float</code>、<code>double</code>；        →默认值：<code>0.0</code><br>
@@ -328,7 +328,7 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 <li>每个数据类型都有其对应的存储范围</li>
 </ol>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = Integer.MAX_VALUE;  <span class="comment">// int型数据的最大值</span></div><div class="line">        <span class="built_in">int</span> <span class="built_in">min</span> = Integer.MIN_VALUE;  <span class="comment">// int型数据的最小值</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span>);      <span class="comment">// 2147483647</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span> + <span class="number">1</span>);  <span class="comment">// -2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span>);      <span class="comment">// -2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - <span class="number">1</span>);  <span class="comment">// 2147483647</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - <span class="number">2</span>);  <span class="comment">// 2147483646</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当数据超过<code>int</code>型数据的保存范围时，数值会按照循环的形式出现，即（最大值+1）变为最小值，再+1变为第二小的最小值，以此类推。这是因为数据是按照二进制进行的，第一位是符号位，而其他31位是数据位。这种现象称为数据溢出，解决方法是<strong>扩大数据范围</strong>：</p>
+<p>当数据超过<code>int</code>型数据的保存范围时，数值会按照循环的形式出现，即（最大值+1）变为最小值，再+1变为第二小的最小值，以此类推。这是因为数据是按照二进制进行的，第一位是符号位，而其他31位是数据位。这种现象称为<code>数据溢出</code>，解决方法是<strong>扩大数据范围</strong>：</p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = Integer.MAX_VALUE;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">min</span> = Integer.MIN_VALUE;</div><div class="line">        <span class="comment">// int变量 + long变量 = long变量,扩大了数据的范围</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span> + <span class="number">1</span>L); <span class="comment">// 2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - (<span class="keyword">long</span>)<span class="number">1</span>); <span class="comment">// -2147483649</span></div><div class="line">        System.out.<span class="built_in">println</span>((<span class="keyword">long</span>)<span class="built_in">min</span> - <span class="number">2</span>); <span class="comment">// -2147483650</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol start="3">
 <li>数据类型的转换规律</li>
@@ -336,7 +336,7 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 <blockquote>
 <p>范围小的数据类型与范围大的数据类型计算时，自动转换为范围大的所数据类型；<br>
 范围大的数据类型只能通过强制转换变为范围小的数据类型。<br>
-常量进行强制转换，可通过使用常量标记（如<code>L，l</code>可讲<code>int</code>型常量变为<code>long</code>型）或使用<code>(数据类型)常量</code>。范例–强制转换：</p>
+常量进行强制转换，可通过使用常量标记（如<code>L，l</code>可将<code>int</code>型常量变为<code>long</code>型）或使用<code>(数据类型)常量</code>。范例–强制转换：</p>
 </blockquote>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 1000是int型，使用long型变量接收，发生自动转换</span></div><div class="line">        <span class="keyword">long</span> num = <span class="number">1000</span>;</div><div class="line">	    <span class="comment">// long型变为int型，强制转换</span></div><div class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>) num; </div><div class="line">        System.<span class="keyword">out</span>.println(x); <span class="comment">// 1000</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当进行强制转换的数值超出范围小的数据类型的范围时，依然会发生<strong>数据溢出</strong>。</p>
@@ -406,7 +406,7 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
         <p><span>Title:</span><a href="/2017/09/23/Java基础知识(一)/">Java基础知识(一)</a></p>
         <p><span>Author:</span><a href="/" title="访问 子语 的个人博客">子语</a></p>
         <p><span>发布时间:</span>2017年09月23日 - 16时57分</p>
-        <p><span>最后更新:</span>2017年09月24日 - 11时03分</p>
+        <p><span>最后更新:</span>2017年09月24日 - 15时11分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/09/23/Java基础知识(一)/" title="Java基础知识(一)">https://youyouvi.github.io/2017/09/23/Java基础知识(一)/</a>
             <span class="copy-path" data-clipboard-text="原文: https://youyouvi.github.io/2017/09/23/Java基础知识(一)/　　作者: 子语" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -508,7 +508,7 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/SpringBoot使用/">SpringBoot使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Go基础知识/">Go基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Java基础知识(一)/">Java基础知识(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/Gitee+Hexo搭建个人博客/">Gitee+Hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/24/Java基础知识(二)/">Java基础知识(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Markdown语法/">Markdown语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/SpringBoot使用/">SpringBoot使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Go基础知识/">Go基础知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/23/Java基础知识(一)/">Java基础知识(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/Gitee+Hexo搭建个人博客/">Gitee+Hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/22/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

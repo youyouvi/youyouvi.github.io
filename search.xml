@@ -3,6 +3,115 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(二)]]></title>
+      <url>/2017/09/24/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%8C)/</url>
+      <content type="html"><![CDATA[<h2 id="运算符"><a class="markdownIt-Anchor" href="#运算符"></a> 运算符</h2>
+<blockquote>
+<p>常用运算符：四则运算符、逻辑运算符、三目运算符和位运算符。</p>
+</blockquote>
+<h3 id="基本运算符"><a class="markdownIt-Anchor" href="#基本运算符"></a> 基本运算符</h3>
+<ol>
+<li><code>=</code>为赋值运算符。</li>
+<li>四则运算符基本组成：<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、<code>%</code>。<strong>不要使用运算符编写过于复杂的计算。</strong></li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        <span class="keyword">double</span> numB = <span class="number">20</span>;</div><div class="line">        <span class="keyword">int</span> numC = <span class="number">3</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"加法计算："</span> + (numA + numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"减法计算："</span> + (numA - numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"乘法计算："</span> + (numA * numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"除法计算："</span> + (numA / numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"求模计算："</span> + (numA % numC));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="3">
+<li>简化运算符：<code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>:</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        numA += <span class="number">2</span>; <span class="comment">// 等同于 numA = numA + 2</span></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"加法计算"</span> + (numA)); <span class="comment">// 12</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="4">
+<li><code>++</code>（自增），<code>--</code>（自减）：位置不同，功能也不同：<br>
+·<code>++变量</code>，<code>--变量</code>：先对变量加/减1，再使用自增或自减后的变量进行计算;<br>
+·<code>变量++</code>，<code>变量--</code>：先使用变量进行计算，再进行变量加/减1。</li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">20</span>;</div><div class="line">        <span class="comment">// ++变量，先numA + 1</span></div><div class="line">        <span class="comment">// 然后(numA + 1) + numB内容</span></div><div class="line">        <span class="comment">// 最后对numB加1</span></div><div class="line">        <span class="keyword">int</span> result = (++numA) + (numB++);</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"numA="</span> + numA); <span class="comment">// 11</span></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"numB="</span> + numB); <span class="comment">// 21</span></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"result="</span> + result); <span class="comment">// 31</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="三目运算符"><a class="markdownIt-Anchor" href="#三目运算符"></a> 三目运算符</h3>
+<p>三目运算符根据布尔表达式的结果进行赋值：</p>
+<pre><code>value_type value_name = 布尔表达式 ? true_value : false_value;
+</code></pre>
+<p>利用三目运算符可以减少判断代码:</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">20</span>;</div><div class="line">        <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</div><div class="line">        <span class="comment">/** 使用三目运算符</span></div><div class="line"><span class="comment">         *  当numA大于numB,返回true,max = numA</span></div><div class="line"><span class="comment">         *  当numA小于numB,返回false,max = numB</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="built_in">max</span> = numA&gt;numB ? numA : numB;</div><div class="line">        <span class="comment">// 不使用三目运算符</span></div><div class="line">        <span class="comment">// if (numA &gt; numB) &#123;</span></div><div class="line">        <span class="comment">//    max = numA;</span></div><div class="line">        <span class="comment">//&#125; else &#123;</span></div><div class="line">        <span class="comment">//    max = numB;</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="逻辑运算符"><a class="markdownIt-Anchor" href="#逻辑运算符"></a> 逻辑运算符</h3>
+<ol>
+<li>逻辑运算符：与<code>&amp;，&amp;&amp;</code>、或<code>|，||</code>、非<code>!</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</div><div class="line">        System.out.println(!flag); <span class="comment">// false</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol start="2">
+<li>布尔表达式的连接，只能使用<code>与</code>和<code>或</code>操作</li>
+</ol>
+<blockquote>
+<p><code>与</code>：所有条件都为true时，结果为true;有一个为false，结果就是false.</p>
+</blockquote>
+<p><strong>范例</strong>：普通与<code>&amp;</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 除数不能为0</span></div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> == <span class="number">2</span>) &amp; (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// 报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>结果</strong>：程序报错，因为<code>&amp;</code>会对所有条件进行判断。但就与的特点而言，前一个条件为false，结果就是false，后续的判断没有意义。<br>
+<strong>范例</strong>：短路与<code>&amp;&amp;</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 除数不能为0</span></div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> == <span class="number">2</span>) &amp;&amp; (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// false,不报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>结果</strong>:程序不报错，因为<code>&amp;&amp;</code>只要有一个条件为false后，后续判断就不再进行，从而提高了效率。</p>
+<blockquote>
+<p>或操作：一个条件为true，结果为true。</p>
+</blockquote>
+<p><strong>范例</strong>：普通或<code>|</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> &lt; <span class="number">2</span> ) | (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// 报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>结果</strong>：使用<code>|</code>，会对所有条件进行判断，但是或运算的特点是：一个条件为true，结果就是true。<br>
+<strong>范例</strong>：短路或<code>||</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> &lt; <span class="number">2</span> ) || (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// true,不报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>因此使用逻辑运算时就使用<code>&amp;&amp;</code>和<code>||</code>。</p>
+</blockquote>
+<h3 id="位运算符"><a class="markdownIt-Anchor" href="#位运算符"></a> 位运算符</h3>
+<ol>
+<li>数学计算为十进制。Java支持二进制、八进制和十六进制。如果要想将十进制变为二进制，采用的方式为：除2，取余，倒序。</li>
+<li>位运算主要是进行二进制数据操作，位运算符：<code>&amp;</code>、<code>|</code>、<code>&gt;&gt;</code>(移位)、<code>&lt;&lt;</code>、<code>^</code>(反码)、<code>~</code>。<br>
+<strong>范例</strong>：位与<code>&amp;</code></li>
+</ol>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">11</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(numA &amp; numB); <span class="comment">// 9</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>运算过程</strong>：</p>
+<pre><code>  1001 → 9
+&amp; 1011 → 11
+  1001 →  9
+</code></pre>
+<p><strong>范例</strong>：位或<code>|</code></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">11</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(numA | numB); <span class="comment">// 11</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>运算过程</strong>：</p>
+<pre><code>  1001 → 9
+| 1011 → 11
+  1011 → 11
+</code></pre>
+<p><strong>范例</strong>：移位（最快方式计算2的3次方）</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">num</span> = <span class="number">2</span>;</div><div class="line">        <span class="built_in">num</span> = <span class="built_in">num</span> &lt;&lt; <span class="number">2</span>; <span class="comment">// 向左移位</span></div><div class="line">        System.out.println(<span class="built_in">num</span>); <span class="comment">// 8,相当于2的3次方</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>运算过程</strong>：</p>
+<pre><code>    0010 → 2
+2&lt;&lt; 1000 → 8
+</code></pre>
+<blockquote>
+<p><strong>章节小问题：请解释<code>&amp;</code>与<code>&amp;&amp;</code>的区别，以及<code>|</code>与<code>||</code>的区别:</strong><br>
+1. 在逻辑运算中：<br>
+  |- <code>&amp;</code>和<code>|</code>会对所有条件进行判断后，返回结果<br>
+  |- <code>&amp;&amp;</code>只要一个条件返回false，就不进行后续判断，结果为false<br>
+  |- <code>||</code>只要一个条件为true，就不进行后续判断，结果为true<br>
+2. 在位运算中：<br>
+  |- <code>&amp;</code>为位与元算，<code>|</code>为位或元算<br>
+  |- <code>&amp;&amp;</code>和<code>||</code>不能用于位运算</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Markdown语法]]></title>
       <url>/2017/09/23/Markdown%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -11,9 +120,9 @@
 <h2 id="markdown语法"><a class="markdownIt-Anchor" href="#markdown语法"></a> Markdown语法</h2>
 <h3 id="区块元素"><a class="markdownIt-Anchor" href="#区块元素"></a> 区块元素</h3>
 <h4 id="段落与换行"><a class="markdownIt-Anchor" href="#段落与换行"></a> 段落与换行</h4>
-<p>一个Markdown段落是由一个或多个连续的问本行组成的。在Markdown中，是无法使用空格或制表符来缩进的，因为其默认一个空格就是一个空行。</p>
+<p>一个Markdown段落是由一个或多个连续的文本行组成的。在Markdown中是<strong>无法使用空格或制表符来缩进的</strong>，因为其默认一个空格就是一个空行。</p>
 <h4 id="标题"><a class="markdownIt-Anchor" href="#标题"></a> 标题</h4>
-<p>Markdown支持两种标题的语法，类Setext形式和类Atx形式，接下来介绍的类Atx形式：该形式是在行首插入1到6个#，对应1到6级标题。</p>
+<p>Markdown支持两种标题的语法，类Setext形式和类Atx形式，接下来介绍的类Atx形式：该形式是在行首插入1到6个<code>#</code>，对应1到6级标题。</p>
 <pre><code># 这是H1
 ## 这是H2
 ...
@@ -26,7 +135,7 @@
 </code></pre>
 <p>在引用的区域中，也可以使用其他的Markdown语法。</p>
 <h4 id="列表"><a class="markdownIt-Anchor" href="#列表"></a> 列表</h4>
-<p>Markdown支持有序列表和无序列表。无序列表使用星号、减号或是加号作为列表标记:</p>
+<p>Markdown支持有序列表和无序列表。无序列表使用<code>星号</code>、<code>减号</code>或<code>加号</code>作为列表标记:</p>
 <pre><code>* red
 - green
 + blue
@@ -37,7 +146,7 @@
 3. blue
 </code></pre>
 <p>如果列表项目间用空行分开，在输出HTML时Markdowm就会将内容用段落标签包起来，即：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* blue</div><div class="line"></div><div class="line">*red</div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">* blue</span></div><div class="line"></div><div class="line"><span class="comment">*red</span></div></pre></td></tr></table></figure>
 <p>会被转换为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">&lt;li&gt;&lt;p&gt;blue&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;&lt;p&gt;red&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
 <p>如果要在列表项目中放入引用，就需要缩进</p>
@@ -48,7 +157,7 @@
 <h4 id="代码区域"><a class="markdownIt-Anchor" href="#代码区域"></a> 代码区域</h4>
 <p>要在Markdown中建立代码区块很简单，只需要缩进4个空格或一个tab即可。</p>
 <h4 id="分隔线"><a class="markdownIt-Anchor" href="#分隔线"></a> 分隔线</h4>
-<p>你可以在一行使用三个以上的星号、减号、下划线来建立一个分隔线，行内不能有其他东西。你可以在星号或减号中间插入空格。</p>
+<p>你可以在一行使用三个以上的<code>星号</code>、<code>减号</code>、<code>下划线</code>来建立一个分隔线，行内不能有其他东西。你可以在星号或减号中间插入空格。</p>
 <pre><code>星号：  * * *
 减号：  - - -
 下划线：_ _ _ 
@@ -156,7 +265,7 @@ __强调__
 <code>class class_name {}</code>：一个java文件可以多次使用该声明（不建议如此操作），但编译后会生成多个class文件。</li>
 <li>第一个Java程序：Hello World</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;    						<span class="comment">// 包名</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> &#123;						<span class="comment">// 类</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;    <span class="comment">// 主方法</span></div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"Hello World"</span>);      <span class="comment">// 方法体</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;    		<span class="comment">// 包名</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> &#123;		<span class="comment">// 类</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;    <span class="comment">// 主方法</span></div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"Hello World"</span>);    <span class="comment">// 方法体</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Java程序都是从<strong>主方法</strong>开始执行的.<code>System.out.println()</code>将内容输出后换行。</p>
 <h3 id="classpath环境属性"><a class="markdownIt-Anchor" href="#classpath环境属性"></a> CLASSPATH环境属性</h3>
 <p>PATH和CLASSPTH的<strong>区别</strong>：<code>PATH</code>是操作系统路径，定义了所有可执行程序的路径；<code>CLASSPATH</code>是Java解释类文件时的加载路径，当<code>java</code>命令运行时，JVM通过CLASSPATH属性设置的路径，加载所需要的类。<br>
@@ -180,11 +289,11 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 </ol>
 <h2 id="java数据类型"><a class="markdownIt-Anchor" href="#java数据类型"></a> Java数据类型</h2>
 <ol>
-<li>Java数据类型分为两大类：基础数据类型和引用数据类型<br>
-两者的区别在于基础数据类型不需要进行内存分配，而引用数据类型需要进行内存分配。</li>
+<li>Java数据类型分为两大类：<code>基础数据类型</code>和<code>引用数据类型</code><br>
+<strong>两者的区别在于基础数据类型不需要进行内存分配，而引用数据类型需要进行内存分配。</strong></li>
 </ol>
 <blockquote>
-<p>·基本数据类型：<br>
+<p>基本数据类型：<br>
     |-数值型：<br>
         |-整型：<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>； →默认值：<code>0</code>；<br>
         |-浮点型：<code>float</code>、<code>double</code>；        →默认值：<code>0.0</code><br>
@@ -212,7 +321,7 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 <li>每个数据类型都有其对应的存储范围</li>
 </ol>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = Integer.MAX_VALUE;  <span class="comment">// int型数据的最大值</span></div><div class="line">        <span class="built_in">int</span> <span class="built_in">min</span> = Integer.MIN_VALUE;  <span class="comment">// int型数据的最小值</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span>);      <span class="comment">// 2147483647</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span> + <span class="number">1</span>);  <span class="comment">// -2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span>);      <span class="comment">// -2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - <span class="number">1</span>);  <span class="comment">// 2147483647</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - <span class="number">2</span>);  <span class="comment">// 2147483646</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当数据超过<code>int</code>型数据的保存范围时，数值会按照循环的形式出现，即（最大值+1）变为最小值，再+1变为第二小的最小值，以此类推。这是因为数据是按照二进制进行的，第一位是符号位，而其他31位是数据位。这种现象称为数据溢出，解决方法是<strong>扩大数据范围</strong>：</p>
+<p>当数据超过<code>int</code>型数据的保存范围时，数值会按照循环的形式出现，即（最大值+1）变为最小值，再+1变为第二小的最小值，以此类推。这是因为数据是按照二进制进行的，第一位是符号位，而其他31位是数据位。这种现象称为<code>数据溢出</code>，解决方法是<strong>扩大数据范围</strong>：</p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = Integer.MAX_VALUE;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">min</span> = Integer.MIN_VALUE;</div><div class="line">        <span class="comment">// int变量 + long变量 = long变量,扩大了数据的范围</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span> + <span class="number">1</span>L); <span class="comment">// 2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - (<span class="keyword">long</span>)<span class="number">1</span>); <span class="comment">// -2147483649</span></div><div class="line">        System.out.<span class="built_in">println</span>((<span class="keyword">long</span>)<span class="built_in">min</span> - <span class="number">2</span>); <span class="comment">// -2147483650</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ol start="3">
 <li>数据类型的转换规律</li>
@@ -220,7 +329,7 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 <blockquote>
 <p>范围小的数据类型与范围大的数据类型计算时，自动转换为范围大的所数据类型；<br>
 范围大的数据类型只能通过强制转换变为范围小的数据类型。<br>
-常量进行强制转换，可通过使用常量标记（如<code>L，l</code>可讲<code>int</code>型常量变为<code>long</code>型）或使用<code>(数据类型)常量</code>。范例–强制转换：</p>
+常量进行强制转换，可通过使用常量标记（如<code>L，l</code>可将<code>int</code>型常量变为<code>long</code>型）或使用<code>(数据类型)常量</code>。范例–强制转换：</p>
 </blockquote>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 1000是int型，使用long型变量接收，发生自动转换</span></div><div class="line">        <span class="keyword">long</span> num = <span class="number">1000</span>;</div><div class="line">	    <span class="comment">// long型变为int型，强制转换</span></div><div class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>) num; </div><div class="line">        System.<span class="keyword">out</span>.println(x); <span class="comment">// 1000</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当进行强制转换的数值超出范围小的数据类型的范围时，依然会发生<strong>数据溢出</strong>。</p>
