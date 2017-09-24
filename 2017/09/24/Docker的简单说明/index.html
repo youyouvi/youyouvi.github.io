@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>SpringBoot使用 | M&#39;Note</title>
+  <title>Docker的简单说明 | M&#39;Note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Spring快速上手使用，适合新手阅读。">
-<meta name="keywords" content="Java">
+  <meta name="description" content="简单的介绍Docker相关的知识。">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringBoot使用">
-<meta property="og:url" content="https://youyouvi.github.io/2017/09/23/SpringBoot使用/index.html">
+<meta property="og:title" content="Docker的简单说明">
+<meta property="og:url" content="https://youyouvi.github.io/2017/09/24/Docker的简单说明/index.html">
 <meta property="og:site_name" content="M&#39;Note">
-<meta property="og:description" content="Spring快速上手使用，适合新手阅读。">
+<meta property="og:description" content="简单的介绍Docker相关的知识。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-23T13:08:37.516Z">
+<meta property="og:updated_time" content="2017-09-24T10:42:47.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringBoot使用">
-<meta name="twitter:description" content="Spring快速上手使用，适合新手阅读。">
+<meta name="twitter:title" content="Docker的简单说明">
+<meta name="twitter:description" content="简单的介绍Docker相关的知识。">
   
   
     <link rel="icon" href="/img/fa.png">
@@ -209,11 +209,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-SpringBoot使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Docker的简单说明" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/09/23/SpringBoot使用/" class="article-date">
-      <time datetime="2017-09-23T08:58:23.811Z" itemprop="datePublished">2017-09-23</time>
+      <a href="/2017/09/24/Docker的简单说明/" class="article-date">
+      <time datetime="2017-09-24T09:36:05.889Z" itemprop="datePublished">2017-09-24</time>
 </a>
     </div>
   
@@ -226,7 +226,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SpringBoot使用
+      Docker的简单说明
     </h1>
   
   <span id="busuanzi_container_page_pv">
@@ -237,17 +237,17 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/框架/">框架<span class="article-category-count">1</span></a>
+    <a class="article-category-link" href="/categories/容器/">容器<span class="article-category-count">2</span></a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
     </div>
 
         <div class="clearfix">
-        <span class="post-count">字数：0</span>&nbsp;&nbsp;
+        <span class="post-count">字数：2,201</span>&nbsp;&nbsp;
         <span class="post-count">点击：<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span> </span></span>
         </div>
       </div>
@@ -257,7 +257,56 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h2 id="docker简介"><a class="markdownIt-Anchor" href="#docker简介"></a> Docker简介</h2>
+<h3 id="docker的概念"><a class="markdownIt-Anchor" href="#docker的概念"></a> Docker的概念</h3>
+<p><code>Docker</code>最初是dotCloud公司的内部项目，是基于dotCloud公司多年云服务的一次革新，于2013年3月开源。<code>Docker</code>被称为第三代Paas平台，是一种容器（虚拟化的轻量级替代技术）技术，将<code>应用软件及其依赖软件</code>（运行时环境、系统工具、系统库）等打包在容器中，使应用具备完整性、移植性和隔离性。以容器的方式交付应用，可以让应用无差别地运行在开发、测试、生产环境，提供标准化的环境和标准化的交付、标准化的部署。</p>
+<h3 id="dcoker的技术依赖"><a class="markdownIt-Anchor" href="#dcoker的技术依赖"></a> Dcoker的技术依赖</h3>
+<p>Docker使用<code>Go</code>语言进行开发实现，基于Linux内核的<code>cgroup</code>、<code>namespace</code>以及AUFS类的<code>UnionFS</code>等技术，对进程进行封装隔离，属于操作系统层面的虚拟化技术。由于隔离的进程独立于宿主和其他的隔离的进程，因此也称其为容器。最初实现是基于<code>LXC</code>、0.7后去除LXC，使用自行开发的<code>libcontainer</code>。从1.11开始，则使用<code>runC</code>和<code>containerd</code>。</p>
+<blockquote>
+<p>（1）<code>cgroup</code>是将任意进程进行分组化管理的Linux内核功能。重要概念是<code>子系统</code>，即资源控制器。先挂载子系统，然后在子系统中创建一个control group节点，将需要控制的进程id和属性写入，从而完成内存的资源限制。<br>
+（2）<code>LXC</code>（Linux containers），一种基于容器的操作系统层级的虚拟技术，借助于<code>namespace</code>的隔离机制和<code>cgroup</code>限额功能，提供了一套统一的API和工具来建立和管理container，旨在提供一个共享kernel的OS级虚拟化方法。<br>
+（3）<code>AUFS</code>是一个能透明覆盖一或多个现有文件系统的层状文件系统，支持将不同目录挂载到同一个虚拟文件系统下，可以把不同的目录联合在一起，组成一个单一的目录。<br>
+（4）<code>App打包</code>：Docker额外提供的Feature,标准统一的打包部署运行方案。</p>
+</blockquote>
+<h3 id="docker的优势"><a class="markdownIt-Anchor" href="#docker的优势"></a> Docker的优势</h3>
+<p>Docker在容器的基础上，进行了进一步封装，从文件系统、网络互联到进程隔离等，极大地简化了容器的创建和维护，使得Docker技术比虚拟机技术更为轻便、快捷。Docker和传统虚拟化方式的不同：<code>传统虚拟机技术</code>是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上运行所需的应用进程;而<code>容器</code>内的应用进程直接运行于宿主的内核，没有自己的内核，而且也没有进行硬件虚拟，所以容器更为轻便。</p>
+<blockquote>
+<p><strong>（1）更高效的利用系统资源</strong><br>
+由于容器不需要硬件虚拟化以及运行完整的操作系统等额外开销，Docker对系统的资源利用率更高。因此一个相同配置的主机，可以运行更多应用。<br>
+<strong>（2）更快速的启动</strong><br>
+Docker容器应用由于<code>直接运行于宿主内核</code>，无需启动完整的操作系统，因此可以做到<code>秒级</code>，甚至<code>毫秒级</code>的启动，大大节约了开发、测试、部署的时间。<br>
+<strong>（3）一致的运行环境</strong><br>
+Docker镜像提供了<code>除内核外完整的运行时环境</code>，确保了应用运行环境的一致性。<br>
+<strong>（4）持续交付和部署</strong><br>
+Docker可以通过<code>定制应用镜像</code>实现持续集成、持续交付、部署。开发人员可以通过<code>Dockerfile</code>来创建镜像，并结合<code>持续集成（Continuous integration）系统</code>进行集成测试，而运维人员则可以直接在生成环境中快速部署该镜像，甚至结合<code>持续部署（Continuous Delivery/Deployment）系统</code>进行自动部署。而且使用Dockerfile使镜像构建透明化，不仅仅开发团队可以理解应用运行环境，也方便运维团队理解应用运行所需环境，帮助更好地部署该镜像。<br>
+<strong>（5）更轻松的迁移</strong><br>
+由于Docker确保了运行环境的一致性，使得应用迁移更加容易。<br>
+<strong>（6）更轻松的维护和扩展</strong><br>
+Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复部分的复用更容易，也使得维护更新更容易,扩展镜像更容易.</p>
+</blockquote>
+<h2 id="docker相关的基础概念"><a class="markdownIt-Anchor" href="#docker相关的基础概念"></a> Docker相关的基础概念</h2>
+<h3 id="docker-image"><a class="markdownIt-Anchor" href="#docker-image"></a> Docker Image</h3>
+<p>操作系统分为内核和用户空间。对于Linux而言，内核启动后，会挂载root文件系统为其提供用户空间支持。<code>Docker镜像（Image）</code>就相当于是一个root文件系统。Docker镜像是一个特殊的文件系统，除了提供容器运行时所需的<code>程序、库、资源、配置等文件</code>外，还包含一些为运行时准备的<code>配置参数</code>（如匿名卷，环境变量，用户等）。镜像不包含任何动态数据，其内容在构建后也不会被改变。</p>
+<h3 id="分层存储"><a class="markdownIt-Anchor" href="#分层存储"></a> 分层存储</h3>
+<blockquote>
+<p>因为传统镜像包含操作系统<code>完整的root文件系统</code>，其体积往往庞大。因此在Docker设计时，就充分利用<code>Union FS</code>技术，将其设计为<code>分层存储</code>的架构。所以严格来说，Docker镜像并非像ISO那样的打包文件，镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系统组成，或者说由多层文件系统联合组成。</p>
+</blockquote>
+<p>镜像构建时，会<code>一层层构建</code>，前一层是后一层的基础。每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。比如，删除某一层文件时，仅在当前层标记为该文件已经删除，但实际该文件会一直跟随镜像。因此构建镜像时，每一层尽量只包含该层需要添加东西，<code>任何额外的东西应在该层构建结束前清理结束</code>。<br>
+分层存储使得镜像的复用、定制、甚至以此为基础构建新的镜像变得更容易。</p>
+<h3 id="docker-container"><a class="markdownIt-Anchor" href="#docker-container"></a> Docker Container</h3>
+<p><code>镜像（Image）</code>是静态定义，<code>容器（Container）</code>是镜像运行时的实体。容器可以被创建、启动、停止等。<br>
+容器的实质是<code>进程</code>，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的命名空间。因此容器可以拥有自己的root文件系统、网络配置、进程空间，甚至自己的用户ID空间。容器内的进程是运行在一个隔离的环境中，使用起来，就像是在一个独立于宿主的系统下操作。这特性使得容器封装的应用比直接在宿主机运行更安全。<br>
+容器也是<code>分层存储</code>的，每个容器运行时<code>以镜像为基础层</code>，在其上创建一个当前容器的<code>存储层</code>，我们可以称这个为容器运行时读写而准备的存储层为<code>容器存储层</code>。<br>
+容器存储层的生存周期和容器周期一样，容器消亡时，容器存储层随之消失。</p>
+<blockquote>
+<p>按照Docker最佳实践的要求:容器不应该向存储层写入任何数据，容器存储层要保持无状态化。所有文件写入操作，都应该使用数据卷或者绑定宿主机目录，在这些位置的读取会跳过容器存储层，直接对宿主或网络存储发生读写，其性能和稳定性更高。数据卷的生存周期独立于容器，不随着容器消亡。</p>
+</blockquote>
+<h3 id="docker-registry"><a class="markdownIt-Anchor" href="#docker-registry"></a> Docker Registry</h3>
+<p>镜像构建完成后，可以很容易地在本地运行。但如需在其他服务器使用该镜像，就需要一个集中的存储、分发镜像的服务，即<code>Docker Registry</code>。<br>
+一个<code>Docker Registry</code>包含多个<code>仓库（Repository）</code>；每个仓库包含多个标签<code>Tag</code>；每个Tag对应一个镜像。通常一个仓库中会包含同一个软件不同版本的镜像，而标签就对应该软件的各个版本。我们可以通过<code>&lt;仓库名&gt;:&lt;标签&gt;</code>来获取指定版本的镜像，如果不给出标签，就将以<code>latest</code>为默认标签。<br>
+<code>Docker Registry公开服务</code>是开放给用户使用、允许用户管理镜像的服务，一般允许用户免费上传、下载公开的镜像。最常使用的Registry公开服务就是官方的<code>Docker Hub</code>。<br>
+除了公开服务外，用户还可以在本地搭建<code>私有的Docker Registry</code>。Docker官方提供<code>Docker Registry</code>镜像，可以直接使用作为私有Registry服务。</p>
+
       
       
     </div>
@@ -266,13 +315,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2017/09/23/SpringBoot使用/">SpringBoot使用</a></p>
+        <p><span>Title:</span><a href="/2017/09/24/Docker的简单说明/">Docker的简单说明</a></p>
         <p><span>Author:</span><a href="/" title="访问 子语 的个人博客">子语</a></p>
-        <p><span>发布时间:</span>2017年09月23日 - 16时58分</p>
-        <p><span>最后更新:</span>2017年09月23日 - 21时08分</p>
+        <p><span>发布时间:</span>2017年09月24日 - 17时36分</p>
+        <p><span>最后更新:</span>2017年09月24日 - 18时42分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/09/23/SpringBoot使用/" title="SpringBoot使用">https://youyouvi.github.io/2017/09/23/SpringBoot使用/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://youyouvi.github.io/2017/09/23/SpringBoot使用/　　作者: 子语" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/09/24/Docker的简单说明/" title="Docker的简单说明">https://youyouvi.github.io/2017/09/24/Docker的简单说明/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://youyouvi.github.io/2017/09/24/Docker的简单说明/　　作者: 子语" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -285,18 +334,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/09/23/Markdown语法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/24/Docker的安装说明/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Markdown语法
+          Docker的安装说明
         
       </div>
     </a>
   
   
-    <a href="/2017/09/23/Go基础知识/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Go基础知识</div>
+    <a href="/2017/09/24/Java基础知识(二)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java基础知识(二)</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -307,7 +356,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker简介"><span class="toc-number">1.</span> <span class="toc-text"> Docker简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker的概念"><span class="toc-number">1.1.</span> <span class="toc-text"> Docker的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dcoker的技术依赖"><span class="toc-number">1.2.</span> <span class="toc-text"> Dcoker的技术依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker的优势"><span class="toc-number">1.3.</span> <span class="toc-text"> Docker的优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker相关的基础概念"><span class="toc-number">2.</span> <span class="toc-text"> Docker相关的基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-image"><span class="toc-number">2.1.</span> <span class="toc-text"> Docker Image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分层存储"><span class="toc-number">2.2.</span> <span class="toc-text"> 分层存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-container"><span class="toc-number">2.3.</span> <span class="toc-text"> Docker Container</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-registry"><span class="toc-number">2.4.</span> <span class="toc-text"> Docker Registry</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -360,13 +409,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/09/23/Markdown语法/" title="上一篇: Markdown语法">
+            <a href="/2017/09/24/Docker的安装说明/" title="上一篇: Docker的安装说明">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/09/23/Go基础知识/" title="下一篇: Go基础知识">
+            <a href="/2017/09/24/Java基础知识(二)/" title="下一篇: Java基础知识(二)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
