@@ -211,28 +211,86 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
 <li><code>=</code>为赋值运算符。</li>
 <li>四则运算符基本组成：<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、<code>%</code>。<strong>不要使用运算符编写过于复杂的计算。</strong></li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        <span class="keyword">double</span> numB = <span class="number">20</span>;</div><div class="line">        <span class="keyword">int</span> numC = <span class="number">3</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"加法计算："</span> + (numA + numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"减法计算："</span> + (numA - numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"乘法计算："</span> + (numA * numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"除法计算："</span> + (numA / numB));</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"求模计算："</span> + (numA % numC));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        double numB = 20;
+        int numC = 3;
+        System.out.println(&quot;加法计算：&quot; + (numA + numB));
+        System.out.println(&quot;减法计算：&quot; + (numA - numB));
+        System.out.println(&quot;乘法计算：&quot; + (numA * numB));
+        System.out.println(&quot;除法计算：&quot; + (numA / numB));
+        System.out.println(&quot;求模计算：&quot; + (numA % numC));
+    }
+}
+</code></pre>
 <ol start="3">
 <li>简化运算符：<code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>:</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        numA += <span class="number">2</span>; <span class="comment">// 等同于 numA = numA + 2</span></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"加法计算"</span> + (numA)); <span class="comment">// 12</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        numA += 2; // 等同于 numA = numA + 2
+        System.out.println(&quot;加法计算&quot; + (numA)); // 12
+    }
+}
+</code></pre>
 <ol start="4">
 <li><code>++</code>（自增），<code>--</code>（自减）：位置不同，功能也不同：<br>
 ·<code>++变量</code>，<code>--变量</code>：先对变量加/减1，再使用自增或自减后的变量进行计算;<br>
 ·<code>变量++</code>，<code>变量--</code>：先使用变量进行计算，再进行变量加/减1。</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">20</span>;</div><div class="line">        <span class="comment">// ++变量，先numA + 1</span></div><div class="line">        <span class="comment">// 然后(numA + 1) + numB内容</span></div><div class="line">        <span class="comment">// 最后对numB加1</span></div><div class="line">        <span class="keyword">int</span> result = (++numA) + (numB++);</div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"numA="</span> + numA); <span class="comment">// 11</span></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"numB="</span> + numB); <span class="comment">// 21</span></div><div class="line">        System.<span class="keyword">out</span>.println(<span class="string">"result="</span> + result); <span class="comment">// 31</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        int numB = 20;
+        // ++变量，先numA + 1
+        // 然后(numA + 1) + numB内容
+        // 最后对numB加1
+        int result = (++numA) + (numB++);
+        System.out.println(&quot;numA=&quot; + numA); // 11
+        System.out.println(&quot;numB=&quot; + numB); // 21
+        System.out.println(&quot;result=&quot; + result); // 31
+    }
+}
+</code></pre>
 <h3 id="三目运算符"><a class="markdownIt-Anchor" href="#三目运算符"></a> 三目运算符</h3>
 <p>三目运算符根据布尔表达式的结果进行赋值：</p>
 <pre><code>value_type value_name = 布尔表达式 ? true_value : false_value;
 </code></pre>
 <p>利用三目运算符可以减少判断代码:</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">10</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">20</span>;</div><div class="line">        <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</div><div class="line">        <span class="comment">/** 使用三目运算符</span></div><div class="line"><span class="comment">         *  当numA大于numB,返回true,max = numA</span></div><div class="line"><span class="comment">         *  当numA小于numB,返回false,max = numB</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="built_in">max</span> = numA&gt;numB ? numA : numB;</div><div class="line">        <span class="comment">// 不使用三目运算符</span></div><div class="line">        <span class="comment">// if (numA &gt; numB) &#123;</span></div><div class="line">        <span class="comment">//    max = numA;</span></div><div class="line">        <span class="comment">//&#125; else &#123;</span></div><div class="line">        <span class="comment">//    max = numB;</span></div><div class="line">        <span class="comment">//&#125;</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        int numB = 20;
+        int max = 0;
+        /** 使用三目运算符
+         *  当numA大于numB,返回true,max = numA
+         *  当numA小于numB,返回false,max = numB
+         */
+        max = numA&gt;numB ? numA : numB;
+        // 不使用三目运算符
+        // if (numA &gt; numB) {
+        //    max = numA;
+        //} else {
+        //    max = numB;
+        //}
+        System.out.println(max);
+    }
+}
+</code></pre>
 <h3 id="逻辑运算符"><a class="markdownIt-Anchor" href="#逻辑运算符"></a> 逻辑运算符</h3>
 <ol>
 <li>逻辑运算符：与<code>&amp;，&amp;&amp;</code>、或<code>|，||</code>、非<code>!</code></li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</div><div class="line">        System.out.println(!flag); <span class="comment">// false</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        boolean flag = true;
+        System.out.println(!flag); // false
+    }
+}
+</code></pre>
 <ol start="2">
 <li>布尔表达式的连接，只能使用<code>与</code>和<code>或</code>操作</li>
 </ol>
@@ -240,19 +298,53 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
 <p><code>与</code>：所有条件都为true时，结果为true;有一个为false，结果就是false.</p>
 </blockquote>
 <p><strong>范例</strong>：普通与<code>&amp;</code></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 除数不能为0</span></div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> == <span class="number">2</span>) &amp; (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// 报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 除数不能为0
+        if ((1 == 2) &amp; (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // 报错
+        }
+    }
+}
+</code></pre>
 <p><strong>结果</strong>：程序报错，因为<code>&amp;</code>会对所有条件进行判断。但就与的特点而言，前一个条件为false，结果就是false，后续的判断没有意义。<br>
 <strong>范例</strong>：短路与<code>&amp;&amp;</code></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 除数不能为0</span></div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> == <span class="number">2</span>) &amp;&amp; (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// false,不报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 除数不能为0
+        if ((1 == 2) &amp;&amp; (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // false,不报错
+        }
+    }
+}
+</code></pre>
 <p><strong>结果</strong>:程序不报错，因为<code>&amp;&amp;</code>只要有一个条件为false后，后续判断就不再进行，从而提高了效率。</p>
 <blockquote>
 <p>或操作：一个条件为true，结果为true。</p>
 </blockquote>
 <p><strong>范例</strong>：普通或<code>|</code></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> &lt; <span class="number">2</span> ) | (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// 报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        if ((1 &lt; 2 ) | (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // 报错
+        }
+    }
+}
+</code></pre>
 <p><strong>结果</strong>：使用<code>|</code>，会对所有条件进行判断，但是或运算的特点是：一个条件为true，结果就是true。<br>
 <strong>范例</strong>：短路或<code>||</code></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> ((<span class="number">1</span> &lt; <span class="number">2</span> ) || (<span class="number">10</span> / <span class="number">0</span> == <span class="number">0</span>))&#123;</div><div class="line">            System.<span class="keyword">out</span>.println(<span class="string">"Hello"</span>); <span class="comment">// true,不报错</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        if ((1 &lt; 2 ) || (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // true,不报错
+        }
+    }
+}
+</code></pre>
 <blockquote>
 <p>因此使用逻辑运算时就使用<code>&amp;&amp;</code>和<code>||</code>。</p>
 </blockquote>
@@ -262,21 +354,45 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
 <li>位运算主要是进行二进制数据操作，位运算符：<code>&amp;</code>、<code>|</code>、<code>&gt;&gt;</code>(移位)、<code>&lt;&lt;</code>、<code>^</code>(反码)、<code>~</code>。<br>
 <strong>范例</strong>：位与<code>&amp;</code></li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">11</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(numA &amp; numB); <span class="comment">// 9</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 9;
+        int numB = 11;
+        System.out.println(numA &amp; numB); // 9
+    }
+}
+</code></pre>
 <p><strong>运算过程</strong>：</p>
 <pre><code>  1001 → 9
 &amp; 1011 → 11
   1001 →  9
 </code></pre>
 <p><strong>范例</strong>：位或<code>|</code></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> numA = <span class="number">9</span>;</div><div class="line">        <span class="keyword">int</span> numB = <span class="number">11</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(numA | numB); <span class="comment">// 11</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 9;
+        int numB = 11;
+        System.out.println(numA | numB); // 11
+    }
+}
+</code></pre>
 <p><strong>运算过程</strong>：</p>
 <pre><code>  1001 → 9
 | 1011 → 11
   1011 → 11
 </code></pre>
 <p><strong>范例</strong>：移位（最快方式计算2的3次方）</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">num</span> = <span class="number">2</span>;</div><div class="line">        <span class="built_in">num</span> = <span class="built_in">num</span> &lt;&lt; <span class="number">2</span>; <span class="comment">// 向左移位</span></div><div class="line">        System.out.println(<span class="built_in">num</span>); <span class="comment">// 8,相当于2的3次方</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int num = 2;
+        num = num &lt;&lt; 2; // 向左移位
+        System.out.println(num); // 8,相当于2的3次方
+    }
+}
+</code></pre>
 <p><strong>运算过程</strong>：</p>
 <pre><code>    0010 → 2
 2&lt;&lt; 1000 → 8
@@ -343,9 +459,16 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
 3. blue
 </code></pre>
 <p>如果列表项目间用空行分开，在输出HTML时Markdowm就会将内容用段落标签包起来，即：</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">* blue</span></div><div class="line"></div><div class="line"><span class="comment">*red</span></div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">	* blue
+
+	*red
+</code></pre>
 <p>会被转换为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">&lt;li&gt;&lt;p&gt;blue&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;li&gt;&lt;p&gt;red&lt;/p&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="bash">&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;blue&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;red&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
 <p>如果要在列表项目中放入引用，就需要缩进</p>
 <pre><code>* red
 	&gt; this is color
@@ -462,7 +585,13 @@ __强调__
 <code>class class_name {}</code>：一个java文件可以多次使用该声明（不建议如此操作），但编译后会生成多个class文件。</li>
 <li>第一个Java程序：Hello World</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;    		<span class="comment">// 包名</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> &#123;		<span class="comment">// 类</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;    <span class="comment">// 主方法</span></div><div class="line">		System.<span class="keyword">out</span>.println(<span class="string">"Hello World"</span>);    <span class="comment">// 方法体</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;    		// 包名
+public class HelloWorld {		// 类
+	public static void main(String[] args) {    // 主方法
+		System.out.println(&quot;Hello World&quot;);    // 方法体
+	}
+}
+</code></pre>
 <p>Java程序都是从<strong>主方法</strong>开始执行的.<code>System.out.println()</code>将内容输出后换行。</p>
 <h3 id="classpath环境属性"><a class="markdownIt-Anchor" href="#classpath环境属性"></a> CLASSPATH环境属性</h3>
 <p>PATH和CLASSPTH的<strong>区别</strong>：<code>PATH</code>是操作系统路径，定义了所有可执行程序的路径；<code>CLASSPATH</code>是Java解释类文件时的加载路径，当<code>java</code>命令运行时，JVM通过CLASSPATH属性设置的路径，加载所需要的类。<br>
@@ -513,13 +642,46 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 <li>数字常量属于<code>int</code>型数据，如数字30。<br>
 常量与变量的区别在于：常量的内容是固定的，变量的内容是可变的。范例–定义int型变量：</li>
 </ol>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) &#123;</div><div class="line">        <span class="comment">// 一个变量名在同一块代码中只允许声明一次</span></div><div class="line">        <span class="comment">// 变量赋值语法：value_type value_name = value ;</span></div><div class="line">        <span class="built_in">int</span> <span class="built_in">num</span> = <span class="number">10</span>; </div><div class="line">        <span class="built_in">num</span> = <span class="built_in">num</span> * <span class="number">2</span>;</div><div class="line">        System.out.println(<span class="built_in">num</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 一个变量名在同一块代码中只允许声明一次
+        // 变量赋值语法：value_type value_name = value ;
+        int num = 10; 
+        num = num * 2;
+        System.out.println(num);
+    }
+}
+</code></pre>
 <ol start="2">
 <li>每个数据类型都有其对应的存储范围</li>
 </ol>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = Integer.MAX_VALUE;  <span class="comment">// int型数据的最大值</span></div><div class="line">        <span class="built_in">int</span> <span class="built_in">min</span> = Integer.MIN_VALUE;  <span class="comment">// int型数据的最小值</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span>);      <span class="comment">// 2147483647</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span> + <span class="number">1</span>);  <span class="comment">// -2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span>);      <span class="comment">// -2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - <span class="number">1</span>);  <span class="comment">// 2147483647</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - <span class="number">2</span>);  <span class="comment">// 2147483646</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int max = Integer.MAX_VALUE;  // int型数据的最大值
+        int min = Integer.MIN_VALUE;  // int型数据的最小值
+        System.out.println(max);      // 2147483647
+        System.out.println(max + 1);  // -2147483648
+        System.out.println(min);      // -2147483648
+        System.out.println(min - 1);  // 2147483647
+        System.out.println(min - 2);  // 2147483646
+    }
+}
+</code></pre>
 <p>当数据超过<code>int</code>型数据的保存范围时，数值会按照循环的形式出现，即（最大值+1）变为最小值，再+1变为第二小的最小值，以此类推。这是因为数据是按照二进制进行的，第一位是符号位，而其他31位是数据位。这种现象称为<code>数据溢出</code>，解决方法是<strong>扩大数据范围</strong>：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">max</span> = Integer.MAX_VALUE;</div><div class="line">        <span class="built_in">int</span> <span class="built_in">min</span> = Integer.MIN_VALUE;</div><div class="line">        <span class="comment">// int变量 + long变量 = long变量,扩大了数据的范围</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">max</span> + <span class="number">1</span>L); <span class="comment">// 2147483648</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">min</span> - (<span class="keyword">long</span>)<span class="number">1</span>); <span class="comment">// -2147483649</span></div><div class="line">        System.out.<span class="built_in">println</span>((<span class="keyword">long</span>)<span class="built_in">min</span> - <span class="number">2</span>); <span class="comment">// -2147483650</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int max = Integer.MAX_VALUE;
+        int min = Integer.MIN_VALUE;
+        // int变量 + long变量 = long变量,扩大了数据的范围
+        System.out.println(max + 1L); // 2147483648
+        System.out.println(min - (long)1); // -2147483649
+        System.out.println((long)min - 2); // -2147483650
+    }
+}
+</code></pre>
 <ol start="3">
 <li>数据类型的转换规律</li>
 </ol>
@@ -528,62 +690,207 @@ Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JD
 范围大的数据类型只能通过强制转换变为范围小的数据类型。<br>
 常量进行强制转换，可通过使用常量标记（如<code>L，l</code>可将<code>int</code>型常量变为<code>long</code>型）或使用<code>(数据类型)常量</code>。范例–强制转换：</p>
 </blockquote>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 1000是int型，使用long型变量接收，发生自动转换</span></div><div class="line">        <span class="keyword">long</span> num = <span class="number">1000</span>;</div><div class="line">	    <span class="comment">// long型变为int型，强制转换</span></div><div class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>) num; </div><div class="line">        System.<span class="keyword">out</span>.println(x); <span class="comment">// 1000</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 1000是int型，使用long型变量接收，发生自动转换
+        long num = 1000;
+	    // long型变为int型，强制转换
+        int x = (int) num; 
+        System.out.println(x); // 1000
+    }
+}
+</code></pre>
 <p>当进行强制转换的数值超出范围小的数据类型的范围时，依然会发生<strong>数据溢出</strong>。</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 2147483650L是long型数据，超出int型的范围</span></div><div class="line">        <span class="keyword">long</span> num = <span class="number">2147483650</span>L ;</div><div class="line">        <span class="keyword">int</span> x = (<span class="keyword">int</span>) num; </div><div class="line">        System.<span class="keyword">out</span>.println(x); <span class="comment">// -2147483646，数据溢出</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 2147483650L是long型数据，超出int型的范围
+        long num = 2147483650L ;
+        int x = (int) num; 
+        System.out.println(x); // -2147483646，数据溢出
+    }
+}
+</code></pre>
 <p><code>byte</code>型数据的取值范围为<code>-128~127</code>，当整数数值在这个范围内时，会自动转型；超出<code>byte</code>范围时会发生数据溢出。<br>
 4. 注意点<br>
 变量声明时应设置具体数值，不使用默认值。在方法中定义的变量，其默认值是无效的。</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="comment">// 未给变量赋值</span></div><div class="line">		<span class="keyword">int</span> num;  </div><div class="line">		<span class="comment">// 报错,未初始化变量,无法使用该变量</span></div><div class="line">        System.<span class="keyword">out</span>.println(num); </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 未给变量赋值
+		int num;  
+		// 报错,未初始化变量,无法使用该变量
+        System.out.println(num); 
+    }
+}
+</code></pre>
 <h3 id="浮点型"><a class="markdownIt-Anchor" href="#浮点型"></a> 浮点型</h3>
 <ol>
 <li>Java中浮点数属于<code>double</code>型（<code>double</code>型是保存范围最广的类型）。</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">double</span> num = <span class="number">10.2</span>; <span class="comment">// 10.2是小数，属于double型</span></div><div class="line">        <span class="comment">// double型 * int型 = double型</span></div><div class="line">        System.<span class="keyword">out</span>.println(num * <span class="number">2</span>); <span class="comment">// 20.4</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        double num = 10.2; // 10.2是小数，属于double型
+        // double型 * int型 = double型
+        System.out.println(num * 2); // 20.4
+    }
+}
+</code></pre>
 <p>所以使用<code>float</code>数据须将<code>double强制转换为float型</code>：</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">float</span> fA = <span class="number">10.2</span>F;         <span class="comment">// 强制转型方式一</span></div><div class="line">        <span class="keyword">float</span> fB = (<span class="keyword">float</span>) <span class="number">10.2</span>; <span class="comment">// 强制转型方式二</span></div><div class="line">        System.<span class="keyword">out</span>.println(fA);  <span class="comment">// 10.2</span></div><div class="line">        System.<span class="keyword">out</span>.println(fB);  <span class="comment">// 10.2</span></div><div class="line">        System.<span class="keyword">out</span>.println(fA * fB); <span class="comment">// 104.03999,该bug无法解决</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        float fA = 10.2F;         // 强制转型方式一
+        float fB = (float) 10.2; // 强制转型方式二
+        System.out.println(fA);  // 10.2
+        System.out.println(fB);  // 10.2
+        System.out.println(fA * fB); // 104.03999,该bug无法解决
+    }
+}
+</code></pre>
 <p>开发过程中要考虑到<code>整型数据不保留小数位</code>：</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> x = <span class="number">5</span>;</div><div class="line">        <span class="keyword">int</span> y = <span class="number">9</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(y / x); <span class="comment">// 1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int x = 5;
+        int y = 9;
+        System.out.println(y / x); // 1
+    }
+}
+</code></pre>
 <p>因为<code>int型/int型=int型</code>，不保留小数位，所以要取得正确的计算结果，需要将其中一个整型变为浮点型：</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">int</span> x = <span class="number">5</span>;</div><div class="line">        <span class="keyword">int</span> y = <span class="number">9</span>;</div><div class="line">        System.<span class="keyword">out</span>.println(y / (<span class="keyword">double</span>) x); <span class="comment">// 1.8</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int x = 5;
+        int y = 9;
+        System.out.println(y / (double) x); // 1.8
+    }
+}
+</code></pre>
 <h3 id="字符型"><a class="markdownIt-Anchor" href="#字符型"></a> 字符型</h3>
 <ol>
 <li>byte<br>
 <code>byte</code>是字节，1字符=2字节。Java使用十六进制<code>UNICODE</code>编码，可以保存任意符号，并且考虑到与其他语言的结合，包含了ASCII码的部分编码，以实现无缝衔接。</li>
 <li>字符使用单引号<code>'</code>声明，一对单引号只能保存一位字符。</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">char</span> c = <span class="string">'A'</span>;</div><div class="line">        <span class="keyword">int</span> num = c; <span class="comment">// char型可以自动转换为int型</span></div><div class="line">        System.<span class="keyword">out</span>.println(c);</div><div class="line">        System.<span class="keyword">out</span>.println(num); <span class="comment">// 65,是A的ASCII码值</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        char c = 'A';
+        int num = c; // char型可以自动转换为int型
+        System.out.println(c);
+        System.out.println(num); // 65,是A的ASCII码值
+    }
+}
+</code></pre>
 <ol start="3">
 <li>编码：<code>'A'</code>(65)~<code>'Z'</code>(90); <code>'a'</code>（97）~<code>'z'</code>（122）; <code>'0'</code>（48）~<code>'9'</code>(57),可利用A和a的编码差为32，实现字母大小写转换：</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">char</span> c = <span class="string">'A'</span>;</div><div class="line">        <span class="keyword">int</span> num = c;     <span class="comment">// char型变为int型才能进行四则运算</span></div><div class="line">        num = num + <span class="number">32</span>;  <span class="comment">// 大写与小写编码值差为32</span></div><div class="line">        c = (<span class="keyword">char</span>) num;  <span class="comment">// int型只能强制转换为char型</span></div><div class="line">        System.<span class="keyword">out</span>.println(c); <span class="comment">// a</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        char c = 'A';
+        int num = c;     // char型变为int型才能进行四则运算
+        num = num + 32;  // 大写与小写编码值差为32
+        c = (char) num;  // int型只能强制转换为char型
+        System.out.println(c); // a
+    }
+}
+</code></pre>
 <ol start="4">
 <li>传统编程语言字符只能保存英文标记，但UNICODE可以保存任何文字包括中文。</li>
 </ol>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Demo</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>&#123;</div><div class="line">        <span class="keyword">char</span> c = <span class="string">'游'</span>;</div><div class="line">        <span class="keyword">int</span> num = c;</div><div class="line">        System.<span class="keyword">out</span>.println(num); <span class="comment">// 28216</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        char c = '游';
+        int num = c;
+        System.out.println(num); // 28216
+    }
+}
+</code></pre>
 <p>由于Java保存中文很方便,因此处理断句时，字符数据很有用，其他时候基本用不到。</p>
 <h3 id="布尔型"><a class="markdownIt-Anchor" href="#布尔型"></a> 布尔型</h3>
 <p>布尔型返回逻辑结果，只保存两种数据：<code>true</code>和<code>false</code>，主要用于逻辑控制：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</div><div class="line">        <span class="comment">//  if (布尔值)&#123;满足条件时的操作&#125;</span></div><div class="line">        <span class="keyword">if</span> (!flag) &#123;</div><div class="line">            System.out.println(<span class="string">"Hello World !"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        boolean flag = false;
+        //  if (布尔值){满足条件时的操作}
+        if (!flag) {
+            System.out.println(&quot;Hello World !&quot;);
+        }
+    }
+}
+</code></pre>
 <h3 id="string型"><a class="markdownIt-Anchor" href="#string型"></a> String型</h3>
 <ol>
 <li>String型<br>
 <code>String</code>属于引用数据类型（是类,Java中类名称首字母大写），表示字符串，即多个字符的集合，使用双引号<code>&quot;&quot;</code>声明。</li>
 </ol>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"Hello World !"</span>; <span class="comment">// str为字符串变量</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">str</span>);</div><div class="line">        <span class="comment">// "Hello World !"为字符串常量</span></div><div class="line">        System.out.<span class="built_in">println</span>(<span class="string">"Hello World !"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello World !&quot;; // str为字符串变量
+        System.out.println(str);
+        // &quot;Hello World !&quot;为字符串常量
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
 <ol start="2">
 <li><code>+</code>可实现字符串连接</li>
 </ol>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"Hello"</span>;</div><div class="line">        <span class="built_in">str</span> = <span class="built_in">str</span> + <span class="string">" World !"</span>;</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">str</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello&quot;;
+        str = str + &quot; World !&quot;;
+        System.out.println(str);
+    }
+}
+</code></pre>
 <p>当四则运算与字符串连接同时存在时：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> numA = <span class="number">100</span>;</div><div class="line">        <span class="keyword">double</span> numB = <span class="number">99.9</span>;</div><div class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"加法计算："</span> + numA + numB;</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">str</span>); <span class="comment">// 加法计算：10099.9</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 100;
+        double numB = 99.9;
+        String str = &quot;加法计算：&quot; + numA + numB;
+        System.out.println(str); // 加法计算：10099.9
+    }
+}
+</code></pre>
 <p>出现上述结果是因为小范围数据会自动转型为大范围数据，即<code>String型+任意数据类型=String型</code>，然后进行字符串连接，可使用()来实现正确的运算：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="built_in">int</span> numA = <span class="number">100</span>;</div><div class="line">        <span class="keyword">double</span> numB = <span class="number">99.9</span>;</div><div class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"加法计算："</span> + (numA + numB);</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">str</span>); <span class="comment">// 加法计算：199.9</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 100;
+        double numB = 99.9;
+        String str = &quot;加法计算：&quot; + (numA + numB);
+        System.out.println(str); // 加法计算：199.9
+    }
+}
+</code></pre>
 <ol start="3">
 <li>Java支持转义字符，<br>
 例如：换行<code>\n</code>、制表符<code>\t</code>、反斜杠<code>\\</code>、双引号<code>\&quot;</code>、单引号<code>\'</code>：</li>
 </ol>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.java.demo;</div><div class="line"><span class="keyword">public</span> class Demo &#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="keyword">String</span>[] args) &#123;</div><div class="line">        <span class="keyword">String</span> <span class="built_in">str</span> = <span class="string">"Hello \"World\" \nHello MLDN"</span>;</div><div class="line">        System.out.<span class="built_in">println</span>(<span class="built_in">str</span>);</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * Hello "World"</span></div><div class="line"><span class="comment">         * Hello MLDN</span></div><div class="line"><span class="comment">         */</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello \&quot;World\&quot; \nHello MLDN&quot;;
+        System.out.println(str);
+        /**
+         * Hello &quot;World&quot;
+         * Hello MLDN
+         */
+    }
+}
+</code></pre>
 ]]></content>
       
         <categories>
@@ -686,16 +993,20 @@ $ hexo g --d  #一键部署
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
 <h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="bash">$ hexo new <span class="string">"My New Post"</span>
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="bash">$ hexo server
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
 <h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="bash">$ hexo generate
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<pre class="highlight"><code class="bash">$ hexo deploy
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
       
@@ -718,14 +1029,14 @@ $ hexo g --d  #一键部署
   
     
     <entry>
-      <title><![CDATA[Timeline]]></title>
-      <url>/timeline/index.html</url>
+      <title><![CDATA[Tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[Timeline]]></title>
+      <url>/timeline/index.html</url>
       <content type="html"></content>
     </entry>
     
