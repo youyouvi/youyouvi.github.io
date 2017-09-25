@@ -1029,14 +1029,20 @@ $ hexo g --d  #一键部署
   
     
     <entry>
-      <title><![CDATA[Tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
       <title><![CDATA[Timeline]]></title>
       <url>/timeline/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
