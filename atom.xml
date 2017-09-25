@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yov.oschina.io/"/>
-  <updated>2017-09-25T08:47:49.213Z</updated>
+  <updated>2017-09-25T09:49:30.698Z</updated>
   <id>http://yov.oschina.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git使用(Linux)</title>
+    <link href="http://yov.oschina.io/2017/09/25/Git%E4%BD%BF%E7%94%A8(Linux)/"/>
+    <id>http://yov.oschina.io/2017/09/25/Git使用(Linux)/</id>
+    <published>2017-09-25T09:36:06.108Z</published>
+    <updated>2017-09-25T09:49:30.698Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="环境安装"><a class="markdownIt-Anchor" href="#环境安装"></a> 环境安装</h2><p>安装git</p><pre class="highlight"><code class="">sudo apt-get install git</code></pre><p>配置git用户名</p><pre class="highlight"><code class="">git config –global user.name &quot;user_name&quot;</code></pre><p>配置用户邮箱地址</p><pre class="highlight"><code class="">git config –global user.email &quot;user_mail&quot;</code></pre><h2 id="创建本地仓库"><a class="markdownIt-Anchor" href="#创建本地仓库"></a> 创建本地仓库</h2><p>创建空目录</p><pre class="highlight"><code class="">mkdir folder_name</code></pre><p>进入空目录</p><pre class="highlight"><code class="">cd folder_name</code></pre><p>显示当前目录</p><pre class="highlight"><code class="">pwd</code></pre><p>把当前目录变为Git仓库</p><pre class="highlight"><code class="">git init</code></pre><p>把文件添加到Git仓库</p><pre class="highlight"><code class="">git add file</code></pre><p>把文件提交到Git仓库</p><pre class="highlight"><code class="">git commit -m &quot;commit_message&quot;</code></pre><h2 id="版本库操作"><a class="markdownIt-Anchor" href="#版本库操作"></a> 版本库操作</h2><p>查看修改内容</p><pre class="highlight"><code class="">git diff file_name</code></pre><p>查看工作区状态</p><pre class="highlight"><code class="">git status</code></pre><p>查看历史记录</p><pre class="highlight"><code class="">git log</code></pre><p>查看精简历史记录</p><pre class="highlight"><code class="">git log --pretty=oneline</code></pre><p>回退到上一个版本</p><pre class="highlight"><code class="">git reset --hard HEAD^</code></pre><p>回到某个指定版本</p><pre class="highlight"><code class="">git reset –-hard commit-id(git log查看)</code></pre><p>查看命令记录</p><pre class="highlight"><code class="">git reflog</code></pre><p>撤销全部工作区修改</p><pre class="highlight"><code class="">git checkout --file</code></pre><p>将暂存区修改撤销放回工作区</p><pre class="highlight"><code class="">git reset HEAD 文件</code></pre><p>linux删除文件</p><pre class="highlight"><code class="">rm file</code></pre><p>git库删除文件</p><pre class="highlight"><code class="">git rm file</code></pre><p>下载他人项目</p><pre class="highlight"><code class="">git clone https://github.com/xxx/xxx.git new_git_name</code></pre><h2 id="分支管理"><a class="markdownIt-Anchor" href="#分支管理"></a> 分支管理</h2><p>创建并切换到分支</p><pre class="highlight"><code class="">git checkout -b dev_name</code></pre><p>查看当前分支</p><pre class="highlight"><code class="">git branch (*表示当前分支)</code></pre><p>切换分支</p><pre class="highlight"><code class="">git checkout dev_name</code></pre><p>合并指定分支到当前分支(fast forward 模式)</p><pre class="highlight"><code class="">git merge dev_name</code></pre><p>删除分支</p><pre class="highlight"><code class="">git branch -d dev_name</code></pre><p>合并分支时冲突,修改文件后,再提交<br>查看分支合并图</p><pre class="highlight"><code class="">git log --graph --pretty=oneline --addrev-commit</code></pre><p>合并分支（普通模式）</p><pre class="highlight"><code class="">git merge -- no-ff -m &quot;commit_message&quot; dev</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;环境安装&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#环境安装&quot;&gt;&lt;/a&gt; 环境安装&lt;/h2&gt;
+&lt;p&gt;安装git&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;&quot;&gt;sudo apt-get insta
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="http://yov.oschina.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Git" scheme="http://yov.oschina.io/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker的安装说明</title>
