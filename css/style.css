@@ -253,7 +253,7 @@ a {
     padding: 0 15px;
 }
 #post-content blockquote {
-    border-left: 4px solid #DDD;
+    border-left: 4px solid #000000;
     padding: 0 15px;
     color: #777;
     font-style: normal;
