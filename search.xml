@@ -1046,5 +1046,11 @@ $ hexo g --d  #一键部署
       <content type="html"></content>
     </entry>
     
+    <entry>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
   
 </search>
