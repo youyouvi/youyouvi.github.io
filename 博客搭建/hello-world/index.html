@@ -39,7 +39,7 @@
     
     <title>
         
-            Markdown语法 | 
+            Hello World | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Markdown">
+    <meta name="keywords" content="Blog,Hexo">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Markdown语法 | Ember">
+    <meta property="og:title" content="Hello World | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Markdown"> 
+    <meta property="og:article:tag" content="Hexo"> 
 
     
-        <meta property="article:published_time" content="Sat Sep 23 2017 17:19:24 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:54 GMT+0800" />
+        <meta property="article:published_time" content="Fri Sep 22 2017 16:28:42 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:28 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Markdown语法 | Ember">
+    <meta name="twitter:title" content="Hello World | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/2017/09/23/Markdown语法/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/博客搭建/hello-world/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/2017/09/23/Markdown语法/index.html",
-    "headline": "Markdown语法",
-    "datePublished": "Sat Sep 23 2017 17:19:24 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:54 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/博客搭建/hello-world/index.html",
+    "headline": "Hello World",
+    "datePublished": "Fri Sep 22 2017 16:28:42 GMT+0800",
+    "dateModified": "Mon Sep 25 2017 16:47:28 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",MarkdownBlog",
+    "keywords": ",HexoBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#markdown语法"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Markdown语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#区块元素"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 区块元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#段落与换行"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text"> 段落与换行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#标题"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text"> 标题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区块引用blockquotes"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text"> 区块引用Blockquotes</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#列表"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text"> 列表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码区域"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text"> 代码区域</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分隔线"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text"> 分隔线</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#区段元素"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 区段元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#链接"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text"> 链接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#强调"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text"> 强调</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text"> 代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text"> 图片</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 结束</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#quick-start"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> Deploy to remote sites</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Markdown语法
+                Hello World
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 23</span>
+        <span>2017 - 09 - 22</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZklEQVR42u3aMXLDMAwEQP//00mbIlYOAEkpnlXlydgSVwWBHPH6+ujrhYeHh4eHh4eH9zDeK75+fv/6t788Mr7bZG14eHh4J3l/bLVvSNdLf/f9BNBbGx4eHt55Xv6YpBhcLzHa4ntrw8PDw3sYb1JI8uYbDw8P75N4141yr1QkrxIPDw/vmbzqgiYteDUyPpS14OHh4cW8yQHY7s83n+/h4eHhjYeuqht37xhs2dAVHh4e3gZebyzg+lfVcPb66flq8fDw8M7wkgP+vMGtLqv6yqJXiYeHh7eZt2rLrr6sKvv673h4eHgneauGAyZFImnok7vh4eHhneH1Nus8nJ0cdy2ue3h4eHhLe87exp2315N7ll8rHh4e3mZeEjFUt/5ek51Ew9EAKx4eHt5mXnWLnx9r5QUjKTN4eHh4d/F6ocOo8S0+MR9pxcPDw9vNy8en8uVO7py31IWUGg8PD28br3d8tSqGmBQhPDw8vHt5SbObtMiTMazJwRseHh7eSV41lq02x3kJSQYR8PDw8O7l9drlfHPP71AdZYjCCDw8PLylvGo00BuHyhviBS8aDw8P7wivF7BWkTmvF1vg4eHhneH12tYqqRpJVOMMPDw8vJO86lUdn0oAvQgjinHx8PDwNvCq23F10cmz8he3YHQADw8PbxEvDwUmy9px6NX8jwEPDw9vES8ftOoFE9XxrLw44eHh4T2ZV40PqsFufoSGh4eH9x95vea7VyQKYDw8PLyDvHzzLWzTcQGojghsyVrw8PDwYt48CMhLQjWeKDfreHh4eJt5n3fh4eHh4eHh4eE94PoGOXHtOUvgZgoAAAAASUVORK5CYII=">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbklEQVR42u3aS5LCMAwFQO5/aWY7VTOBJyl2AtVZUXxsdxaRkPR4fvX1wMPDw8PDw8PDuxnvEV//LPTr/b+vj95JVpucDQ8PD28P782j9mDjI0zv6MmvopXx8PDwNvKOtkwCQO/7STjJ98LDw8O7My8JDAk4/yYeHh7ep/N6ASBfGQ8PD+9TeMkf/iQM9MoKCXh5rQUPDw8v5s0f5eteb+3v4eHh4QW88khTnAQn7bF8TKE5dIWHh4e3gJc/iF8f7nUSXL0pvfPg4eHh7eFVD1Edn5ok6/lqeHh4eDt51bS4OjhVbWglIWfUAMPDw8Mb8+ZFgbxllY9bTdJrPDw8vNW8fBS1OmZaDR7VQdVy3MPDw8M7ibeugJv/trrCm3Xw8PDwtvPypLlXZk12rJ4KDw8P7ypeL1GejAtUb1wUMPDw8PAW85ICRDVdniTZk6YaHh4e3h5etbk1P0q1GFG+9Xh4eHiLeUmqmg+YPltX0u46YaYMDw8Pbxlv8lhPigi9AFMoguDh4eEt5vWWS0YHeiXd/FM8PDy8q3jVI+bIPAzkZd/yuCoeHh7eYl7viNUgUW2JlUsneHh4eBt5vXJAHh7m4wIn1Frw8PDwlvF6h6sOSPUGFE77x4CHh4fX4s3b/HnzrFrwzffFw8PD28mrFhom6fW8KBw1zPDw8PC28ObBIN8+QeZpd7lKjYeHh3cqb1KWPSuNroaccq0FDw8P7yJeMnyQHLoKjkrMeHh4eLfknZwEt0ohh7cGDw8PbyMvb0q9fudRvCaJNR4eHt5VvBWHyAsTzaJDXsbFw8PDO5X3fRceHh4eHh4eHt4Nrh+Oxj7aamKZUQAAAABJRU5ErkJggg==">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Markdown/">Markdown</a>
+        <a class="post_tag-link" href="/tags/Hexo/">Hexo</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Markdown语法&url=http://yov.oschina.io/2017/09/23/Markdown语法/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://yov.oschina.io/博客搭建/hello-world/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/2017/09/23/Markdown语法/index.html&title=Markdown语法" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/博客搭建/hello-world/index.html&title=Hello World" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Markdown语法&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/2017/09/23/Markdown语法/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Hello World&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/博客搭建/hello-world/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,89 +510,24 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <blockquote>
-<p>Markdown是一种轻量级的标记语言，语法简单，由一些符号组成，这些符号作用一目了然，实现易读易写的目标。Markdown兼容HTML，即你可以直接在文本中添加HTML语言，但是你不能在HTML区块标签间使用Markdown语法。</p>
-</blockquote>
-<h2 id="markdown语法"><a class="markdownIt-Anchor" href="#markdown语法"></a> Markdown语法</h2>
-<h3 id="区块元素"><a class="markdownIt-Anchor" href="#区块元素"></a> 区块元素</h3>
-<h4 id="段落与换行"><a class="markdownIt-Anchor" href="#段落与换行"></a> 段落与换行</h4>
-<p>一个Markdown段落是由一个或多个连续的文本行组成的。在Markdown中是<strong>无法使用空格或制表符来缩进的</strong>，因为其默认一个空格就是一个空行。</p>
-<h4 id="标题"><a class="markdownIt-Anchor" href="#标题"></a> 标题</h4>
-<p>Markdown支持两种标题的语法，类Setext形式和类Atx形式，接下来介绍的类Atx形式：该形式是在行首插入1到6个<code>#</code>，对应1到6级标题。</p>
-<pre><code># 这是H1
-## 这是H2
-...
-###### 这是H6
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
+<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
+<pre class="highlight"><code class="bash">$ hexo new <span class="string">"My New Post"</span>
 </code></pre>
-<h4 id="区块引用blockquotes"><a class="markdownIt-Anchor" href="#区块引用blockquotes"></a> 区块引用Blockquotes</h4>
-<p>Markdown标记区块引用方式如下：</p>
-<pre><code>&gt; 文本内容。
-&gt;&gt; 文本中也可以使用嵌套引用，只要根据层次加上不同数量的&gt;
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
+<pre class="highlight"><code class="bash">$ hexo server
 </code></pre>
-<p>在引用的区域中，也可以使用其他的Markdown语法。</p>
-<h4 id="列表"><a class="markdownIt-Anchor" href="#列表"></a> 列表</h4>
-<p>Markdown支持有序列表和无序列表。无序列表使用<code>星号</code>、<code>减号</code>或<code>加号</code>作为列表标记:</p>
-<pre><code>* red
-- green
-+ blue
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
+<pre class="highlight"><code class="bash">$ hexo generate
 </code></pre>
-<p>有序列表则使用数字接着一个英文句号：</p>
-<pre><code>1. red
-2. green
-3. blue
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
+<pre class="highlight"><code class="bash">$ hexo deploy
 </code></pre>
-<p>如果列表项目间用空行分开，在输出HTML时Markdowm就会将内容用段落标签包起来，即：</p>
-<pre class="highlight"><code class="">	* blue
-
-	*red
-</code></pre>
-<p>会被转换为：</p>
-<pre class="highlight"><code class="bash">&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;blue&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;red&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-<p>如果要在列表项目中放入引用，就需要缩进</p>
-<pre><code>* red
-	&gt; this is color
-</code></pre>
-<p>如果要放入代码块，那就需要连续缩进两次。并且为避免行首出现数字-句号-空白，应在句号前加反斜杠。</p>
-<h4 id="代码区域"><a class="markdownIt-Anchor" href="#代码区域"></a> 代码区域</h4>
-<p>要在Markdown中建立代码区块很简单，只需要缩进4个空格或一个tab即可。</p>
-<h4 id="分隔线"><a class="markdownIt-Anchor" href="#分隔线"></a> 分隔线</h4>
-<p>你可以在一行使用三个以上的<code>星号</code>、<code>减号</code>、<code>下划线</code>来建立一个分隔线，行内不能有其他东西。你可以在星号或减号中间插入空格。</p>
-<pre><code>星号：  * * *
-减号：  - - -
-下划线：_ _ _ 
-</code></pre>
-<h3 id="区段元素"><a class="markdownIt-Anchor" href="#区段元素"></a> 区段元素</h3>
-<h4 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h4>
-<p>Markdown支持两种形式的链接语法：行内式和参考式。建立一个行内式的链接，只要在方块括号后面紧接着圆括号插入链接即可，如果想要加上链接的title文字，只要网址后面用双引号把title文字包起来即可。</p>
-<pre><code>[example](https://www.baidu.com &quot;Title&quot;)
-</code></pre>
-<h4 id="强调"><a class="markdownIt-Anchor" href="#强调"></a> 强调</h4>
-<p>Markdown使用星号和下划线标记强调，被<code>*</code>或<code>_</code>包围的字词会被转为用<code>&lt;em&gt;</code>标签包围，而用两个<code>*</code>或<code>_</code>包起来，则变为<code>&lt;strong&gt;</code></p>
-<pre><code>*强调*
-_强调_
-**强调**
-__强调__
-</code></pre>
-<p>如果只想在文字前后插入普通的星号或下划线，可以使用反斜杠：</p>
-<pre><code>\*文字\*
-</code></pre>
-<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h4>
-<p>如果要标记一小段行内代码，可以使用反引号把它包起来，例如：</p>
-<pre><code>`printf()`
-</code></pre>
-<p>如果要在代码中插入反引号，你可以用多个反引号开启或结束代码区段:</p>
-<pre><code>`` (`) `` 将变为  &lt;p&gt;&lt;code&gt;(`)&lt;/code&gt;&lt;/p&gt;
-</code></pre>
-<h4 id="图片"><a class="markdownIt-Anchor" href="#图片"></a> 图片</h4>
-<p>插入图片有两种方式：行内式和参考式</p>
-<pre><code>![替代图片的文字](/path/to/img.jpg &quot;文字&quot;)
-</code></pre>
-<h2 id="结束"><a class="markdownIt-Anchor" href="#结束"></a> 结束</h2>
-<p>感谢您的阅读，如果您有什么问题，请在下方留言，谢谢。</p>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -601,7 +536,7 @@ __强调__
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/2017/09/23/Markdown语法/">http://yov.oschina.io/2017/09/23/Markdown语法/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/博客搭建/hello-world/">http://yov.oschina.io/博客搭建/hello-world/</a>
                     </p>
                 </blockquote>
         
@@ -649,7 +584,7 @@ __强调__
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/09/24/Java基础知识(二)/" id="post_nav-newer" class="prev-content">
+        <a href="/博客搭建/Gitee+Hexo搭建个人博客/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -662,14 +597,6 @@ __强调__
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2017/09/23/SpringBoot使用/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
 

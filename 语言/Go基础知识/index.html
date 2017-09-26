@@ -39,7 +39,7 @@
     
     <title>
         
-            Hello World | 
+            Go基础知识 | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Hexo">
+    <meta name="keywords" content="Blog,Go">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hello World | Ember">
+    <meta property="og:title" content="Go基础知识 | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Hexo"> 
+    <meta property="og:article:tag" content="Go"> 
 
     
-        <meta property="article:published_time" content="Fri Sep 22 2017 16:28:42 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:28 GMT+0800" />
+        <meta property="article:published_time" content="Sat Sep 23 2017 16:57:17 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:05 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Hello World | Ember">
+    <meta name="twitter:title" content="Go基础知识 | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/2017/09/22/hello-world/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/语言/Go基础知识/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/2017/09/22/hello-world/index.html",
-    "headline": "Hello World",
-    "datePublished": "Fri Sep 22 2017 16:28:42 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:28 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/语言/Go基础知识/index.html",
+    "headline": "Go基础知识",
+    "datePublished": "Sat Sep 23 2017 16:57:17 GMT+0800",
+    "dateModified": "Mon Sep 25 2017 16:47:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",HexoBlog",
+    "keywords": ",GoBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -345,15 +345,6 @@
     <!-- Left aligned menu below button -->
     
     
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#quick-start"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> Deploy to remote sites</span></a></li></ol></li></ol>
-    </ul>
-    
 
 
 
@@ -383,7 +374,7 @@
         
     
             <p class="article-headline-p">
-                Hello World
+                Go基础知识
             </p>
         </div>
 
@@ -402,7 +393,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 22</span>
+        <span>2017 - 09 - 23</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +415,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACYUlEQVR42u3aQY7DMAgF0Nz/0jPbkapUH4hdT/Wyqtoo4XlhXOD6+errwsPDw8PDw8PDO4x3xdff+5svfnna66+T2PDw8PB28pKw7j7fhXUXYgLoxYaHh4e3n5e/5v2dSYjvF2UUGx4eHt5hvN4mni/B/L14eHh4p/GSVFFNANVFwcPDwzuHl//hT77Pi8LV5y+steDh4eHFvF4DbM/nj/X38PDw8G548/Z/NT1Um2TlCPHw8PAW85ICa+/F8zZY3hLDw8PD28lLNvTkgJsXc+f3FMq4eHh4eAt41QJEtQGW/Fpd1nLew8PDw3uU1wP0xlJ7S1BeaDw8PLzFvN4Bt1rCSEJcnvfw8PDwHj1zJq/JiwL55j45mt/eg4eHh7edlxQp8hGo5rF40njDw8PDW8zrbc15C22SeHpgPDw8vD28pDXVW4IecjL+hYeHh7eal7fB8mN0dTyrN87VLOPi4eHhPcSrllar4SZH8MkAAR4eHt45vMJD4/JB8px8VAsPDw/vU7xqk34yFNXb7h8YHcDDw8N7iNfb+leAqyMFt/fg4eHhLeZNksTkGD0pNzSr1Hh4eHiP8qqF1LyIkCSAURrAw8PD287rtb6qBd9JaaO63Hh4eHireZPj9aSU0BuBjRIPHh4e3mLeZGx0khgmSQgPDw/vBF6SDJJA8+UoB52z8fDw8Dbyeo2uJKwkGVSTEx4eHt5/4c1fX13KcksMDw8P72BeEnTeMJu3vvDw8PD285JiRLJlV5tbvQbbkloLHh4eXsx7rBAwKMJOSHh4eHg7ed934eHh4eHh4eHhHXD9Agffct5yWN3mAAAAAElFTkSuQmCC">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACYklEQVR42u3aQW7DMAwEwPz/0+0DgtRLUlKFYHwKgtTW+CCyK75+vvp64eHh4eHh4eHhXcZ7xdfDTd9+Wb3b+/e9teHh4eGd4SVL//RNQkpeR/LcaG14eHh4B3mflvXpc/VF5Nt9b214eHh4N/MeHjD+PR4eHt638h5CgeJfVe+Ah4eHdwMvaZSTlroXBF+RteDh4eHFvElAsPvz0fM9PDw8vIA32az/bqaTdnlePB6GrvDw8PA28CZBQzJoVW3E5w06Hh4e3hneZLvPx6d6sW/5Pnh4eHgHefkWnw9X9aLhXgiCh4eHd55XPYLKS0g+HJAXoWbdw8PDw9vG6wUTCWYSYUQlCg8PD28zrxdJVMeteq+p+Vrx8PDwjvAmjW/SmueBRSF0+PSi8fDw8I7wettxcgBWPfRKyk9h6AoPDw9vA6/XBOcteA9ZvTMeHh7e//LyxySYvJysGvPCw8PD283Lj6zypjZvhXvxcWHoCg8PD28DL9m+q0vM71wNbZt1Dw8PD28pr9q8rmqUVwUieHh4eOd5+QY9CVirB2b5sVwhxsXDw8Nbysu37Dx02I1p/seAh4eHd4S3qjBUG/HktS4oDHh4eHhjXl4ees33JIyIDtXw8PDwNvMmQwD5UvJBhF6ZwcPDwzvJm2zKeUixdpjgYW14eHh4R3i9ZfWGoqqlAg8PD+9mXnXQKsdPlp5EvXh4eHj38ybRbRJAjEJhPDw8vCt51QA3b6x7xQAPDw/vv3j5YFMeQPSa7FFYjIeHh3eEV92ay9Fqa1wgaanx8PDwzvO+78LDw8PDw8PDw7vg+gXbCki0O1YkJQAAAABJRU5ErkJggg==">
     
 </ul>
 
@@ -438,7 +429,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Hexo/">Hexo</a>
+        <a class="post_tag-link" href="/tags/Go/">Go</a>
     </ul>
     
 
@@ -465,7 +456,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://yov.oschina.io/2017/09/22/hello-world/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Go基础知识&url=http://yov.oschina.io/语言/Go基础知识/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +474,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/2017/09/22/hello-world/index.html&title=Hello World" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/语言/Go基础知识/index.html&title=Go基础知识" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +483,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Hello World&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/2017/09/22/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Go基础知识&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/语言/Go基础知识/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,25 +501,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<pre class="highlight"><code class="bash">$ hexo new <span class="string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<pre class="highlight"><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<pre class="highlight"><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<pre class="highlight"><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+        
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -536,7 +509,7 @@
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/2017/09/22/hello-world/">http://yov.oschina.io/2017/09/22/hello-world/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/语言/Go基础知识/">http://yov.oschina.io/语言/Go基础知识/</a>
                     </p>
                 </blockquote>
         
@@ -584,7 +557,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/09/22/Gitee+Hexo搭建个人博客/" id="post_nav-newer" class="prev-content">
+        <a href="/框架/SpringBoot使用/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -597,6 +570,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/语言/Java基础知识(一)/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 

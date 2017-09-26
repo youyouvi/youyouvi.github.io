@@ -39,7 +39,7 @@
     
     <title>
         
-            Docker的简单说明 | 
+            Git使用(Linux) | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Docker">
+    <meta name="keywords" content="Blog,Git">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Docker的简单说明 | Ember">
+    <meta property="og:title" content="Git使用(Linux) | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Docker"> 
+    <meta property="og:article:tag" content="Git"> 
 
     
-        <meta property="article:published_time" content="Sun Sep 24 2017 17:36:05 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:46 GMT+0800" />
+        <meta property="article:published_time" content="Mon Sep 25 2017 17:36:06 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Sep 25 2017 17:53:06 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Docker的简单说明 | Ember">
+    <meta name="twitter:title" content="Git使用(Linux) | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/2017/09/24/Docker的简单说明/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/工具/Git使用(Linux)/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/2017/09/24/Docker的简单说明/index.html",
-    "headline": "Docker的简单说明",
-    "datePublished": "Sun Sep 24 2017 17:36:05 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:46 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/工具/Git使用(Linux)/index.html",
+    "headline": "Git使用(Linux)",
+    "datePublished": "Mon Sep 25 2017 17:36:06 GMT+0800",
+    "dateModified": "Mon Sep 25 2017 17:53:06 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",DockerBlog",
+    "keywords": ",GitBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker简介"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Docker简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker的概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Docker的概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dcoker的技术依赖"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Dcoker的技术依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker的优势"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Docker的优势</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker相关的基础概念"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Docker相关的基础概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker-image"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> Docker Image</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分层存储"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 分层存储</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker-container"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> Docker Container</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker-registry"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> Docker Registry</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境安装"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 环境安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建本地仓库"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 创建本地仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#版本库操作"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 版本库操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分支管理"><span class="post-toc-number">4.</span> <span class="post-toc-text"> 分支管理</span></a></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Docker的简单说明
+                Git使用(Linux)
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 24</span>
+        <span>2017 - 09 - 25</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2UlEQVR42u3aQXIbMQwEwP3/p5OrDrE0A67jNdk8qdaSyIarDAPg9efIdWFjY2NjY2NjY2M/kn3F6/X9X71+ffKPjb94T/Kd75+/PzM2Njb2CewPf/oDTPvTWYBWzoyNjY19AjtJWnlqSZ7ku9xwZmxsbGzsUQhyxko5hI2NjY09Y79PLUmBcZULGxsbG3u9qfShBR8ct33yiF4aNjY29uPZdw16/+frB823sbGxsX+U3a5k+/dFSJ60km8uTo6NjY29KTu5FhOlh/g9yV7tSZK9sLGxsU9j58392adW9m3bSdjY2Nh7s5N//dvxbZKc8u9cuQyEjY2NfQI7P3R79GSX9tLP7MzY2NjYe7OTgiFv08/GtCvtrXycgI2Njb0ru/13v01deUMqD/0wNWJjY2NvzW6bNfcOcYelRRsgbGxs7E3Z+dA0uVLfhmPWlmqLHGxsbOwT2OsXHGeX49uE1wYFGxsb+wR23WRfGCEkobnKlQcLGxsb+wT2eupqB7frz4sLndjY2NgHsKMPl1d22iR0bzLDxsbGPoGdJKHZ4dZbSO3I4UPjCRsbG3tTdtu+z6/IrA8hVi70YGNjY5/JTkazs0IlD0obiKIRho2Njb0p+95rOncNj9shcdJawsbGxt6bnbd72tDkTaK8pBmeChsbG3tTdtvKyZtN+ZM27bVDCGxsbOy92euJIWG3xc9KgsTGxsbGzsuAlXDcG9Zo/ICNjY29KTtJFXkSStJY0q6apboPhQ02Njb2puzvSF355Zs8fEn58Y2lCDY2NvaD2W16yJPWbGDc8m7L29jY2Ni/nJ0PDPKN2/HtrPVfBA4bGxv7AHZeNuTN+lk42sFwFFBsbGxs7LgwmI1p18HDUgQbGxv7YHZy0PUBQLtvMR7AxsbG3o49ayrl1LyQaC/xRO0nbGxs7K3Z7eFmxUaSipJfQ36dCBsbG/sE9jkLGxsbGxsbGxsb+zHrL34VAZMthmptAAAAAElFTkSuQmCC">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACY0lEQVR42u3aUY7DIAwFwNz/0rsHqEqfMZAomnytqirJUAmzz77+Xn1deHh4eHh4eHh4D+Nd8fXjph/frN7t8/O5d8PDw8M7w0tePdqUh4//hu88Fw8PD+9eXvW1ktfNS0XnuXh4eHjP5yVH4fFRO9no8fDw8N7Ei0KBdmnBw8PDez6vulnnYUQ1zrgta8HDw8OLeZ2AYPffR/t7eHh4eAGvPNIUDwFUX7rabIuGrvDw8PA28DpBQ7+cJM2z6gEdDw8PbzevdaNi3FCNfXMwHh4e3kne3BYfNaKCY/f4GF0NL/Dw8PBO8qLG0tQYVr4Eq4oQHh4e3kleJyaY29bnYt8fPwweHh7eZl5SJMYvkePz5ciXqTA6gIeHh7eUN1cAkk+SYHduQQuFAQ8PD28pLx+H6kQY/WKQLxweHh7ebt6q+KCzZGNMuTjh4eHh3cTLj7z50Tz/Th5/4OHh4Z3nXcWrull3FqjaEsPDw8M7w1vV7qoeoPPgIw9w8fDw8M7w8iCgGhbkAwRHZ8rw8PDwtvGShtM4xl01iNCKcfHw8PA285KDbOfQPLcEeVsODw8P7zm86nBAdfhgLvgohxF4eHh4G3id5lM1buiXn2X/MeDh4eEVedWrGteW21eNUoSHh4d3hrcqbhgfndceyn+UCjw8PLwjvLzRVR0jqOKry4GHh4d3L68fRlTb/Mn9t09G4OHh4R3hjQtDNbZYDMbDw8N7JG8uiu2Mdt0wOoCHh4e3KIzIB6qS8alkmZJv4uHh4Z3nVbfmZHwqX8T8idEYFh4eHt5m3vsuPDw8PDw8PDy8B1z/kT2GkrAL2t4AAAAASUVORK5CYII=">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Docker/">Docker</a>
+        <a class="post_tag-link" href="/tags/Git/">Git</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Docker的简单说明&url=http://yov.oschina.io/2017/09/24/Docker的简单说明/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Git使用(Linux)&url=http://yov.oschina.io/工具/Git使用(Linux)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/2017/09/24/Docker的简单说明/index.html&title=Docker的简单说明" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/工具/Git使用(Linux)/index.html&title=Git使用(Linux)" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Docker的简单说明&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/2017/09/24/Docker的简单说明/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Git使用(Linux)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/工具/Git使用(Linux)/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,55 +510,95 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="docker简介"><a class="markdownIt-Anchor" href="#docker简介"></a> Docker简介</h2>
-<h3 id="docker的概念"><a class="markdownIt-Anchor" href="#docker的概念"></a> Docker的概念</h3>
-<p><code>Docker</code>最初是dotCloud公司的内部项目，是基于dotCloud公司多年云服务的一次革新，于2013年3月开源。<code>Docker</code>被称为第三代Paas平台，是一种容器（虚拟化的轻量级替代技术）技术，将<code>应用软件及其依赖软件</code>（运行时环境、系统工具、系统库）等打包在容器中，使应用具备完整性、移植性和隔离性。以容器的方式交付应用，可以让应用无差别地运行在开发、测试、生产环境，提供标准化的环境和标准化的交付、标准化的部署。</p>
-<h3 id="dcoker的技术依赖"><a class="markdownIt-Anchor" href="#dcoker的技术依赖"></a> Dcoker的技术依赖</h3>
-<p>Docker使用<code>Go</code>语言进行开发实现，基于Linux内核的<code>cgroup</code>、<code>namespace</code>以及AUFS类的<code>UnionFS</code>等技术，对进程进行封装隔离，属于操作系统层面的虚拟化技术。由于隔离的进程独立于宿主和其他的隔离的进程，因此也称其为容器。最初实现是基于<code>LXC</code>、0.7后去除LXC，使用自行开发的<code>libcontainer</code>。从1.11开始，则使用<code>runC</code>和<code>containerd</code>。</p>
-<blockquote>
-<p>（1）<code>cgroup</code>是将任意进程进行分组化管理的Linux内核功能。重要概念是<code>子系统</code>，即资源控制器。先挂载子系统，然后在子系统中创建一个control group节点，将需要控制的进程id和属性写入，从而完成内存的资源限制。<br>
-（2）<code>LXC</code>（Linux containers），一种基于容器的操作系统层级的虚拟技术，借助于<code>namespace</code>的隔离机制和<code>cgroup</code>限额功能，提供了一套统一的API和工具来建立和管理container，旨在提供一个共享kernel的OS级虚拟化方法。<br>
-（3）<code>AUFS</code>是一个能透明覆盖一或多个现有文件系统的层状文件系统，支持将不同目录挂载到同一个虚拟文件系统下，可以把不同的目录联合在一起，组成一个单一的目录。<br>
-（4）<code>App打包</code>：Docker额外提供的Feature,标准统一的打包部署运行方案。</p>
-</blockquote>
-<h3 id="docker的优势"><a class="markdownIt-Anchor" href="#docker的优势"></a> Docker的优势</h3>
-<p>Docker在容器的基础上，进行了进一步封装，从文件系统、网络互联到进程隔离等，极大地简化了容器的创建和维护，使得Docker技术比虚拟机技术更为轻便、快捷。Docker和传统虚拟化方式的不同：<code>传统虚拟机技术</code>是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上运行所需的应用进程;而<code>容器</code>内的应用进程直接运行于宿主的内核，没有自己的内核，而且也没有进行硬件虚拟，所以容器更为轻便。</p>
-<blockquote>
-<p><strong>（1）更高效的利用系统资源</strong><br>
-由于容器不需要硬件虚拟化以及运行完整的操作系统等额外开销，Docker对系统的资源利用率更高。因此一个相同配置的主机，可以运行更多应用。<br>
-<strong>（2）更快速的启动</strong><br>
-Docker容器应用由于<code>直接运行于宿主内核</code>，无需启动完整的操作系统，因此可以做到<code>秒级</code>，甚至<code>毫秒级</code>的启动，大大节约了开发、测试、部署的时间。<br>
-<strong>（3）一致的运行环境</strong><br>
-Docker镜像提供了<code>除内核外完整的运行时环境</code>，确保了应用运行环境的一致性。<br>
-<strong>（4）持续交付和部署</strong><br>
-Docker可以通过<code>定制应用镜像</code>实现持续集成、持续交付、部署。开发人员可以通过<code>Dockerfile</code>来创建镜像，并结合<code>持续集成（Continuous integration）系统</code>进行集成测试，而运维人员则可以直接在生成环境中快速部署该镜像，甚至结合<code>持续部署（Continuous Delivery/Deployment）系统</code>进行自动部署。而且使用Dockerfile使镜像构建透明化，不仅仅开发团队可以理解应用运行环境，也方便运维团队理解应用运行所需环境，帮助更好地部署该镜像。<br>
-<strong>（5）更轻松的迁移</strong><br>
-由于Docker确保了运行环境的一致性，使得应用迁移更加容易。<br>
-<strong>（6）更轻松的维护和扩展</strong><br>
-Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复部分的复用更容易，也使得维护更新更容易,扩展镜像更容易.</p>
-</blockquote>
-<h2 id="docker相关的基础概念"><a class="markdownIt-Anchor" href="#docker相关的基础概念"></a> Docker相关的基础概念</h2>
-<h3 id="docker-image"><a class="markdownIt-Anchor" href="#docker-image"></a> Docker Image</h3>
-<p>操作系统分为内核和用户空间。对于Linux而言，内核启动后，会挂载root文件系统为其提供用户空间支持。<code>Docker镜像（Image）</code>就相当于是一个root文件系统。Docker镜像是一个特殊的文件系统，除了提供容器运行时所需的<code>程序、库、资源、配置等文件</code>外，还包含一些为运行时准备的<code>配置参数</code>（如匿名卷，环境变量，用户等）。镜像不包含任何动态数据，其内容在构建后也不会被改变。</p>
-<h3 id="分层存储"><a class="markdownIt-Anchor" href="#分层存储"></a> 分层存储</h3>
-<blockquote>
-<p>因为传统镜像包含操作系统<code>完整的root文件系统</code>，其体积往往庞大。因此在Docker设计时，就充分利用<code>Union FS</code>技术，将其设计为<code>分层存储</code>的架构。所以严格来说，Docker镜像并非像ISO那样的打包文件，镜像只是一个虚拟的概念，其实际体现并非由一个文件组成，而是由一组文件系统组成，或者说由多层文件系统联合组成。</p>
-</blockquote>
-<p>镜像构建时，会<code>一层层构建</code>，前一层是后一层的基础。每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。比如，删除某一层文件时，仅在当前层标记为该文件已经删除，但实际该文件会一直跟随镜像。因此构建镜像时，每一层尽量只包含该层需要添加东西，<code>任何额外的东西应在该层构建结束前清理结束</code>。<br>
-分层存储使得镜像的复用、定制、甚至以此为基础构建新的镜像变得更容易。</p>
-<h3 id="docker-container"><a class="markdownIt-Anchor" href="#docker-container"></a> Docker Container</h3>
-<p><code>镜像（Image）</code>是静态定义，<code>容器（Container）</code>是镜像运行时的实体。容器可以被创建、启动、停止等。<br>
-容器的实质是<code>进程</code>，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的命名空间。因此容器可以拥有自己的root文件系统、网络配置、进程空间，甚至自己的用户ID空间。容器内的进程是运行在一个隔离的环境中，使用起来，就像是在一个独立于宿主的系统下操作。这特性使得容器封装的应用比直接在宿主机运行更安全。<br>
-容器也是<code>分层存储</code>的，每个容器运行时<code>以镜像为基础层</code>，在其上创建一个当前容器的<code>存储层</code>，我们可以称这个为容器运行时读写而准备的存储层为<code>容器存储层</code>。<br>
-容器存储层的生存周期和容器周期一样，容器消亡时，容器存储层随之消失。</p>
-<blockquote>
-<p>按照Docker最佳实践的要求:容器不应该向存储层写入任何数据，容器存储层要保持无状态化。所有文件写入操作，都应该使用数据卷或者绑定宿主机目录，在这些位置的读取会跳过容器存储层，直接对宿主或网络存储发生读写，其性能和稳定性更高。数据卷的生存周期独立于容器，不随着容器消亡。</p>
-</blockquote>
-<h3 id="docker-registry"><a class="markdownIt-Anchor" href="#docker-registry"></a> Docker Registry</h3>
-<p>镜像构建完成后，可以很容易地在本地运行。但如需在其他服务器使用该镜像，就需要一个集中的存储、分发镜像的服务，即<code>Docker Registry</code>。<br>
-一个<code>Docker Registry</code>包含多个<code>仓库（Repository）</code>；每个仓库包含多个标签<code>Tag</code>；每个Tag对应一个镜像。通常一个仓库中会包含同一个软件不同版本的镜像，而标签就对应该软件的各个版本。我们可以通过<code>&lt;仓库名&gt;:&lt;标签&gt;</code>来获取指定版本的镜像，如果不给出标签，就将以<code>latest</code>为默认标签。<br>
-<code>Docker Registry公开服务</code>是开放给用户使用、允许用户管理镜像的服务，一般允许用户免费上传、下载公开的镜像。最常使用的Registry公开服务就是官方的<code>Docker Hub</code>。<br>
-除了公开服务外，用户还可以在本地搭建<code>私有的Docker Registry</code>。Docker官方提供<code>Docker Registry</code>镜像，可以直接使用作为私有Registry服务。</p>
+        <h2 id="环境安装"><a class="markdownIt-Anchor" href="#环境安装"></a> 环境安装</h2>
+<p>安装git</p>
+<pre class="highlight"><code class="">sudo apt-get install git
+</code></pre>
+<p>配置git用户名</p>
+<pre class="highlight"><code class="">git config –global user.name &quot;user_name&quot;
+</code></pre>
+<p>配置用户邮箱地址</p>
+<pre class="highlight"><code class="">git config –global user.email &quot;user_mail&quot;
+</code></pre>
+<h2 id="创建本地仓库"><a class="markdownIt-Anchor" href="#创建本地仓库"></a> 创建本地仓库</h2>
+<p>创建空目录</p>
+<pre class="highlight"><code class="">mkdir folder_name
+</code></pre>
+<p>进入空目录</p>
+<pre class="highlight"><code class="">cd folder_name
+</code></pre>
+<p>显示当前目录</p>
+<pre class="highlight"><code class="">pwd
+</code></pre>
+<p>把当前目录变为Git仓库</p>
+<pre class="highlight"><code class="">git init
+</code></pre>
+<p>把文件添加到Git仓库</p>
+<pre class="highlight"><code class="">git add file
+</code></pre>
+<p>把文件提交到Git仓库</p>
+<pre class="highlight"><code class="">git commit -m &quot;commit_message&quot;
+</code></pre>
+<h2 id="版本库操作"><a class="markdownIt-Anchor" href="#版本库操作"></a> 版本库操作</h2>
+<p>查看修改内容</p>
+<pre class="highlight"><code class="">git diff file_name
+</code></pre>
+<p>查看工作区状态</p>
+<pre class="highlight"><code class="">git status
+</code></pre>
+<p>查看历史记录</p>
+<pre class="highlight"><code class="">git log
+</code></pre>
+<p>查看精简历史记录</p>
+<pre class="highlight"><code class="">git log --pretty=oneline
+</code></pre>
+<p>回退到上一个版本</p>
+<pre class="highlight"><code class="">git reset --hard HEAD^
+</code></pre>
+<p>回到某个指定版本</p>
+<pre class="highlight"><code class="">git reset –-hard commit-id(git log查看)
+</code></pre>
+<p>查看命令记录</p>
+<pre class="highlight"><code class="">git reflog
+</code></pre>
+<p>撤销全部工作区修改</p>
+<pre class="highlight"><code class="">git checkout --file
+</code></pre>
+<p>将暂存区修改撤销放回工作区</p>
+<pre class="highlight"><code class="">git reset HEAD 文件
+</code></pre>
+<p>linux删除文件</p>
+<pre class="highlight"><code class="">rm file
+</code></pre>
+<p>git库删除文件</p>
+<pre class="highlight"><code class="">git rm file
+</code></pre>
+<p>下载他人项目</p>
+<pre class="highlight"><code class="">git clone https://github.com/xxx/xxx.git new_git_name
+</code></pre>
+<h2 id="分支管理"><a class="markdownIt-Anchor" href="#分支管理"></a> 分支管理</h2>
+<p>创建并切换到分支</p>
+<pre class="highlight"><code class="">git checkout -b dev_name
+</code></pre>
+<p>查看当前分支</p>
+<pre class="highlight"><code class="">git branch (*表示当前分支)
+</code></pre>
+<p>切换分支</p>
+<pre class="highlight"><code class="">git checkout dev_name
+</code></pre>
+<p>合并指定分支到当前分支(fast forward 模式)</p>
+<pre class="highlight"><code class="">git merge dev_name
+</code></pre>
+<p>删除分支</p>
+<pre class="highlight"><code class="">git branch -d dev_name
+</code></pre>
+<p>合并分支时冲突,修改文件后,再提交<br>
+查看分支合并图</p>
+<pre class="highlight"><code class="">git log --graph --pretty=oneline --addrev-commit
+</code></pre>
+<p>合并分支（普通模式）</p>
+<pre class="highlight"><code class="">git merge -- no-ff -m &quot;commit_message&quot; dev
+</code></pre>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -567,7 +607,7 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/2017/09/24/Docker的简单说明/">http://yov.oschina.io/2017/09/24/Docker的简单说明/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/工具/Git使用(Linux)/">http://yov.oschina.io/工具/Git使用(Linux)/</a>
                     </p>
                 </blockquote>
         
@@ -615,21 +655,13 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/09/24/Docker的安装说明/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/09/24/Java基础知识(二)/" id="post_nav-older" class="next-content">
+        <a href="/容器/Docker的安装说明/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

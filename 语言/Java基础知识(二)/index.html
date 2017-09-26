@@ -39,7 +39,7 @@
     
     <title>
         
-            Git使用(Linux) | 
+            Java基础知识(二) | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Git">
+    <meta name="keywords" content="Blog,Java">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Git使用(Linux) | Ember">
+    <meta property="og:title" content="Java基础知识(二) | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Git"> 
+    <meta property="og:article:tag" content="Java"> 
 
     
-        <meta property="article:published_time" content="Mon Sep 25 2017 17:36:06 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 17:53:06 GMT+0800" />
+        <meta property="article:published_time" content="Sun Sep 24 2017 11:29:54 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:52 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Git使用(Linux) | Ember">
+    <meta name="twitter:title" content="Java基础知识(二) | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/2017/09/25/Git使用(Linux)/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/语言/Java基础知识(二)/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/2017/09/25/Git使用(Linux)/index.html",
-    "headline": "Git使用(Linux)",
-    "datePublished": "Mon Sep 25 2017 17:36:06 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 17:53:06 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/语言/Java基础知识(二)/index.html",
+    "headline": "Java基础知识(二)",
+    "datePublished": "Sun Sep 24 2017 11:29:54 GMT+0800",
+    "dateModified": "Mon Sep 25 2017 16:47:52 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",GitBlog",
+    "keywords": ",JavaBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境安装"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 环境安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建本地仓库"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 创建本地仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#版本库操作"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 版本库操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分支管理"><span class="post-toc-number">4.</span> <span class="post-toc-text"> 分支管理</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运算符"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本运算符"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 基本运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三目运算符"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 三目运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逻辑运算符"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 逻辑运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#位运算符"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 位运算符</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Git使用(Linux)
+                Java基础知识(二)
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 25</span>
+        <span>2017 - 09 - 24</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACXUlEQVR42u3aQXLCQAwEQP7/6eQBlJ0Zrb0xVPtEUQ5sc7CUkV4/X3298PDw8PDw8PDwHsZ7xdfR/e/vH37x6T3v77dnw8PDw9vJ++NRGzCS91t8ezY8PDy8/bzzh/7KofMycMHZ8PDw8B7Gm5GSHyt5jYeHh/eJvDwmaEsFHh4e3ifyZgfKw4s2/P2HrAUPDw8v5rUDsJ2v/2G+h4eHh3fKa6+8tU0KQxsKRyfEw8PDu5l33uAmx2pjhfbb6yUGPDw8vI28o4d1u0AwW1pdWe3Cw8PD289LSsLKiCtvpvPiNMxa8PDw8C7iXTvUbxe2ckC05IqHh4d3M699TK8EB3lrnlPx8PDw9vPaf/jbxrptl/MFrMM78fDw8Dby1oOJWUTblophSo2Hh4d3ES9fBZgtV9VRwvJiFh4eHt5+3jACKFe1ZmEHHh4e3nN4bbiQD8nawdgtKTUeHh7ebbz8WG1gkTfQeeGpCwMeHh7eDby22W2j2HzJIAfXdQ8PDw9vmXfV2H4WH+RNdtHW4+Hh4T2AN6OurybkS2B4eHh4O3nrA7BZacmLRBsr4+Hh4e3htctPK0OyGSAJNfDw8PD28PKY4KrBf76GNWu18fDw8O7mtdfSaGo5dBjWPTw8PLxLebPHcRsfrCxy5fExHh4e3k7eLGDNFwhmw7PhGfDw8PA28trAtG1820HasGDg4eHhPYyXtM4r4//88/Hw8PA+i9cOwPIi0X5OEUbg4eHh3cBbeRyvF4Cr4mM8PDy8PbxZELAS4OZBcPJXeHh4eDt533fh4eHh4eHh4eE94PoFvE+lgVFKIB4AAAAASUVORK5CYII=">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACY0lEQVR42u3aQW7DMAwEwPz/0+0DCru7oq04wfgUBKqsUQGRofj6+ernhYeHh4eHh4eH9zDeK36O/urv98nMR+MvWBseHh7eFt4/R+3BmPNFJxuUzN+uDQ8PD28nrz2+2yUmQeJ8/vMxeHh4eE/mJbA2DCTbh4eHh/e5vDZ1bssceHh4eJ/Cu+NYTxj5N7fXWvDw8PBiXn587/+89X4PDw8PL+DVLU0Hk+bXY+2YUdMVHh4e3g28tk1qUpI4T53bQgYeHh7eu3jJz/uoBJC8eGnLzt9Sp9R4eHh4Y16e8rZHfE7NU/lom/Dw8PA28qJjt7zsz0NOG1QO/yV4eHh4G3lXLXoeTvLtxsPDw3sCb1JQyA/0fFMu64zAw8PDu4F3/oI5Ppl5XuzAw8PD28nLC7tXHehrV1wXpNR4eHh4A15bFMiLBcWVVRycRp0ReHh4eBfx8qaBq1Lq9rKtTrvx8PDwbua1yzofX6e/cUJfJP14eHh4N/PWFpQsZRJyJhuKh4eHt4c3uYiaNGCtlYP/mQcPDw9vIy8PEmvNBGtbkLcj4OHh4e3k5Uf2WpCYkOoAg4eHh7edt3aJlbcR5FuThBw8PDy8J/DyidqltAXcvBkLDw8PbyevfZKCRRJO6uM+L0/g4eHh3cx7xU9+3OdLbMsTUWsCHh4e3hZee921lmSvBRU8PDy8J/Pygmx9nb80Mg9ReHh4eJ/Cy9PreonlG/Hw8PCez8tJeWl4Egzw8PDw3sWbX2gVF/xlgfiClBoPDw/vUt5aE2qb/iYzTEoeeHh4eHt43/fg4eHh4eHh4eE94PkFfm81AOUxE1MAAAAASUVORK5CYII=">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Git/">Git</a>
+        <a class="post_tag-link" href="/tags/Java/">Java</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Git使用(Linux)&url=http://yov.oschina.io/2017/09/25/Git使用(Linux)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(二)&url=http://yov.oschina.io/语言/Java基础知识(二)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/2017/09/25/Git使用(Linux)/index.html&title=Git使用(Linux)" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/语言/Java基础知识(二)/index.html&title=Java基础知识(二)" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Git使用(Linux)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/2017/09/25/Git使用(Linux)/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(二)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/语言/Java基础知识(二)/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,95 +510,211 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="环境安装"><a class="markdownIt-Anchor" href="#环境安装"></a> 环境安装</h2>
-<p>安装git</p>
-<pre class="highlight"><code class="">sudo apt-get install git
+        <h2 id="运算符"><a class="markdownIt-Anchor" href="#运算符"></a> 运算符</h2>
+<blockquote>
+<p>常用运算符：四则运算符、逻辑运算符、三目运算符和位运算符。</p>
+</blockquote>
+<h3 id="基本运算符"><a class="markdownIt-Anchor" href="#基本运算符"></a> 基本运算符</h3>
+<ol>
+<li><code>=</code>为赋值运算符。</li>
+<li>四则运算符基本组成：<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、<code>%</code>。<strong>不要使用运算符编写过于复杂的计算。</strong></li>
+</ol>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        double numB = 20;
+        int numC = 3;
+        System.out.println(&quot;加法计算：&quot; + (numA + numB));
+        System.out.println(&quot;减法计算：&quot; + (numA - numB));
+        System.out.println(&quot;乘法计算：&quot; + (numA * numB));
+        System.out.println(&quot;除法计算：&quot; + (numA / numB));
+        System.out.println(&quot;求模计算：&quot; + (numA % numC));
+    }
+}
 </code></pre>
-<p>配置git用户名</p>
-<pre class="highlight"><code class="">git config –global user.name &quot;user_name&quot;
+<ol start="3">
+<li>简化运算符：<code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>:</li>
+</ol>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        numA += 2; // 等同于 numA = numA + 2
+        System.out.println(&quot;加法计算&quot; + (numA)); // 12
+    }
+}
 </code></pre>
-<p>配置用户邮箱地址</p>
-<pre class="highlight"><code class="">git config –global user.email &quot;user_mail&quot;
+<ol start="4">
+<li><code>++</code>（自增），<code>--</code>（自减）：位置不同，功能也不同：<br>
+·<code>++变量</code>，<code>--变量</code>：先对变量加/减1，再使用自增或自减后的变量进行计算;<br>
+·<code>变量++</code>，<code>变量--</code>：先使用变量进行计算，再进行变量加/减1。</li>
+</ol>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        int numB = 20;
+        // ++变量，先numA + 1
+        // 然后(numA + 1) + numB内容
+        // 最后对numB加1
+        int result = (++numA) + (numB++);
+        System.out.println(&quot;numA=&quot; + numA); // 11
+        System.out.println(&quot;numB=&quot; + numB); // 21
+        System.out.println(&quot;result=&quot; + result); // 31
+    }
+}
 </code></pre>
-<h2 id="创建本地仓库"><a class="markdownIt-Anchor" href="#创建本地仓库"></a> 创建本地仓库</h2>
-<p>创建空目录</p>
-<pre class="highlight"><code class="">mkdir folder_name
+<h3 id="三目运算符"><a class="markdownIt-Anchor" href="#三目运算符"></a> 三目运算符</h3>
+<p>三目运算符根据布尔表达式的结果进行赋值：</p>
+<pre><code>value_type value_name = 布尔表达式 ? true_value : false_value;
 </code></pre>
-<p>进入空目录</p>
-<pre class="highlight"><code class="">cd folder_name
+<p>利用三目运算符可以减少判断代码:</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        int numB = 20;
+        int max = 0;
+        /** 使用三目运算符
+         *  当numA大于numB,返回true,max = numA
+         *  当numA小于numB,返回false,max = numB
+         */
+        max = numA&gt;numB ? numA : numB;
+        // 不使用三目运算符
+        // if (numA &gt; numB) {
+        //    max = numA;
+        //} else {
+        //    max = numB;
+        //}
+        System.out.println(max);
+    }
+}
 </code></pre>
-<p>显示当前目录</p>
-<pre class="highlight"><code class="">pwd
+<h3 id="逻辑运算符"><a class="markdownIt-Anchor" href="#逻辑运算符"></a> 逻辑运算符</h3>
+<ol>
+<li>逻辑运算符：与<code>&amp;，&amp;&amp;</code>、或<code>|，||</code>、非<code>!</code></li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        boolean flag = true;
+        System.out.println(!flag); // false
+    }
+}
 </code></pre>
-<p>把当前目录变为Git仓库</p>
-<pre class="highlight"><code class="">git init
+<ol start="2">
+<li>布尔表达式的连接，只能使用<code>与</code>和<code>或</code>操作</li>
+</ol>
+<blockquote>
+<p><code>与</code>：所有条件都为true时，结果为true;有一个为false，结果就是false.</p>
+</blockquote>
+<p><strong>范例</strong>：普通与<code>&amp;</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 除数不能为0
+        if ((1 == 2) &amp; (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // 报错
+        }
+    }
+}
 </code></pre>
-<p>把文件添加到Git仓库</p>
-<pre class="highlight"><code class="">git add file
+<p><strong>结果</strong>：程序报错，因为<code>&amp;</code>会对所有条件进行判断。但就与的特点而言，前一个条件为false，结果就是false，后续的判断没有意义。<br>
+<strong>范例</strong>：短路与<code>&amp;&amp;</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 除数不能为0
+        if ((1 == 2) &amp;&amp; (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // false,不报错
+        }
+    }
+}
 </code></pre>
-<p>把文件提交到Git仓库</p>
-<pre class="highlight"><code class="">git commit -m &quot;commit_message&quot;
+<p><strong>结果</strong>:程序不报错，因为<code>&amp;&amp;</code>只要有一个条件为false后，后续判断就不再进行，从而提高了效率。</p>
+<blockquote>
+<p>或操作：一个条件为true，结果为true。</p>
+</blockquote>
+<p><strong>范例</strong>：普通或<code>|</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        if ((1 &lt; 2 ) | (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // 报错
+        }
+    }
+}
 </code></pre>
-<h2 id="版本库操作"><a class="markdownIt-Anchor" href="#版本库操作"></a> 版本库操作</h2>
-<p>查看修改内容</p>
-<pre class="highlight"><code class="">git diff file_name
+<p><strong>结果</strong>：使用<code>|</code>，会对所有条件进行判断，但是或运算的特点是：一个条件为true，结果就是true。<br>
+<strong>范例</strong>：短路或<code>||</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        if ((1 &lt; 2 ) || (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // true,不报错
+        }
+    }
+}
 </code></pre>
-<p>查看工作区状态</p>
-<pre class="highlight"><code class="">git status
+<blockquote>
+<p>因此使用逻辑运算时就使用<code>&amp;&amp;</code>和<code>||</code>。</p>
+</blockquote>
+<h3 id="位运算符"><a class="markdownIt-Anchor" href="#位运算符"></a> 位运算符</h3>
+<ol>
+<li>数学计算为十进制。Java支持二进制、八进制和十六进制。如果要想将十进制变为二进制，采用的方式为：除2，取余，倒序。</li>
+<li>位运算主要是进行二进制数据操作，位运算符：<code>&amp;</code>、<code>|</code>、<code>&gt;&gt;</code>(移位)、<code>&lt;&lt;</code>、<code>^</code>(反码)、<code>~</code>。<br>
+<strong>范例</strong>：位与<code>&amp;</code></li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 9;
+        int numB = 11;
+        System.out.println(numA &amp; numB); // 9
+    }
+}
 </code></pre>
-<p>查看历史记录</p>
-<pre class="highlight"><code class="">git log
+<p><strong>运算过程</strong>：</p>
+<pre><code>  1001 → 9
+&amp; 1011 → 11
+  1001 →  9
 </code></pre>
-<p>查看精简历史记录</p>
-<pre class="highlight"><code class="">git log --pretty=oneline
+<p><strong>范例</strong>：位或<code>|</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 9;
+        int numB = 11;
+        System.out.println(numA | numB); // 11
+    }
+}
 </code></pre>
-<p>回退到上一个版本</p>
-<pre class="highlight"><code class="">git reset --hard HEAD^
+<p><strong>运算过程</strong>：</p>
+<pre><code>  1001 → 9
+| 1011 → 11
+  1011 → 11
 </code></pre>
-<p>回到某个指定版本</p>
-<pre class="highlight"><code class="">git reset –-hard commit-id(git log查看)
+<p><strong>范例</strong>：移位（最快方式计算2的3次方）</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int num = 2;
+        num = num &lt;&lt; 2; // 向左移位
+        System.out.println(num); // 8,相当于2的3次方
+    }
+}
 </code></pre>
-<p>查看命令记录</p>
-<pre class="highlight"><code class="">git reflog
+<p><strong>运算过程</strong>：</p>
+<pre><code>    0010 → 2
+2&lt;&lt; 1000 → 8
 </code></pre>
-<p>撤销全部工作区修改</p>
-<pre class="highlight"><code class="">git checkout --file
-</code></pre>
-<p>将暂存区修改撤销放回工作区</p>
-<pre class="highlight"><code class="">git reset HEAD 文件
-</code></pre>
-<p>linux删除文件</p>
-<pre class="highlight"><code class="">rm file
-</code></pre>
-<p>git库删除文件</p>
-<pre class="highlight"><code class="">git rm file
-</code></pre>
-<p>下载他人项目</p>
-<pre class="highlight"><code class="">git clone https://github.com/xxx/xxx.git new_git_name
-</code></pre>
-<h2 id="分支管理"><a class="markdownIt-Anchor" href="#分支管理"></a> 分支管理</h2>
-<p>创建并切换到分支</p>
-<pre class="highlight"><code class="">git checkout -b dev_name
-</code></pre>
-<p>查看当前分支</p>
-<pre class="highlight"><code class="">git branch (*表示当前分支)
-</code></pre>
-<p>切换分支</p>
-<pre class="highlight"><code class="">git checkout dev_name
-</code></pre>
-<p>合并指定分支到当前分支(fast forward 模式)</p>
-<pre class="highlight"><code class="">git merge dev_name
-</code></pre>
-<p>删除分支</p>
-<pre class="highlight"><code class="">git branch -d dev_name
-</code></pre>
-<p>合并分支时冲突,修改文件后,再提交<br>
-查看分支合并图</p>
-<pre class="highlight"><code class="">git log --graph --pretty=oneline --addrev-commit
-</code></pre>
-<p>合并分支（普通模式）</p>
-<pre class="highlight"><code class="">git merge -- no-ff -m &quot;commit_message&quot; dev
-</code></pre>
+<blockquote>
+<p><strong>章节小问题：请解释<code>&amp;</code>与<code>&amp;&amp;</code>的区别，以及<code>|</code>与<code>||</code>的区别:</strong><br>
+1. 在逻辑运算中：<br>
+  |- <code>&amp;</code>和<code>|</code>会对所有条件进行判断后，返回结果<br>
+  |- <code>&amp;&amp;</code>只要一个条件返回false，就不进行后续判断，结果为false<br>
+  |- <code>||</code>只要一个条件为true，就不进行后续判断，结果为true<br>
+2. 在位运算中：<br>
+  |- <code>&amp;</code>为位与元算，<code>|</code>为位或元算<br>
+  |- <code>&amp;&amp;</code>和<code>||</code>不能用于位运算</p>
+</blockquote>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -607,7 +723,7 @@
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/2017/09/25/Git使用(Linux)/">http://yov.oschina.io/2017/09/25/Git使用(Linux)/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/语言/Java基础知识(二)/">http://yov.oschina.io/语言/Java基础知识(二)/</a>
                     </p>
                 </blockquote>
         
@@ -655,13 +771,21 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/容器/Docker的简单说明/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/09/24/Docker的安装说明/" id="post_nav-older" class="next-content">
+        <a href="/语言/Markdown语法/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
