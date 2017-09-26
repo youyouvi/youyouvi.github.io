@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yov.oschina.io/"/>
-  <updated>2017-09-25T09:53:06.113Z</updated>
+  <updated>2017-09-26T12:43:40.141Z</updated>
   <id>http://yov.oschina.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TestNG</title>
+    <link href="http://yov.oschina.io/%E6%B5%8B%E8%AF%95/TestNG/"/>
+    <id>http://yov.oschina.io/测试/TestNG/</id>
+    <published>2017-09-26T12:41:55.450Z</published>
+    <updated>2017-09-26T12:43:40.141Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="测试" scheme="http://yov.oschina.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="TestNG" scheme="http://yov.oschina.io/tags/TestNG/"/>
+    
+  </entry>
   
   <entry>
     <title>Git使用(Linux)</title>

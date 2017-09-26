@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title><![CDATA[TestNG]]></title>
+      <url>/%E6%B5%8B%E8%AF%95/TestNG/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> 测试 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> TestNG </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Git使用(Linux)]]></title>
       <url>/%E5%B7%A5%E5%85%B7/Git%E4%BD%BF%E7%94%A8(Linux)/</url>
       <content type="html"><![CDATA[<h2 id="环境安装"><a class="markdownIt-Anchor" href="#环境安装"></a> 环境安装</h2>
