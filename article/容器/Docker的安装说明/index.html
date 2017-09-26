@@ -39,7 +39,7 @@
     
     <title>
         
-            Hello World | 
+            Docker的安装说明 | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Hexo">
+    <meta name="keywords" content="Blog,Docker">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Hello World | Ember">
+    <meta property="og:title" content="Docker的安装说明 | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Hexo"> 
+    <meta property="og:article:tag" content="Docker"> 
 
     
-        <meta property="article:published_time" content="Fri Sep 22 2017 16:28:42 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:28 GMT+0800" />
+        <meta property="article:published_time" content="Sun Sep 24 2017 18:43:23 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:49 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Hello World | Ember">
+    <meta name="twitter:title" content="Docker的安装说明 | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/博客搭建/hello-world/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/容器/Docker的安装说明/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/博客搭建/hello-world/index.html",
-    "headline": "Hello World",
-    "datePublished": "Fri Sep 22 2017 16:28:42 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:28 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/容器/Docker的安装说明/index.html",
+    "headline": "Docker的安装说明",
+    "datePublished": "Sun Sep 24 2017 18:43:23 GMT+0800",
+    "dateModified": "Mon Sep 25 2017 16:47:49 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",HexoBlog",
+    "keywords": ",DockerBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#quick-start"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装及部署docker"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 安装及部署Docker</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#系统和资源说明"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 系统和资源说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装步骤"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 安装步骤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker的代理配置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Docker的代理配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker配置加速器"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> Docker配置加速器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker配置文件说明"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> Docker配置文件说明</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker的常用命令"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Docker的常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker信息查看"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> Docker信息查看</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker的镜像操作"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> Docker的镜像操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docker的容器操作"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> Docker的容器操作</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Hello World
+                Docker的安装说明
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 22</span>
+        <span>2017 - 09 - 24</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACbklEQVR42u3aS5LCMAwFQO5/aWY7VTOBJyl2AtVZUXxsdxaRkPR4fvX1wMPDw8PDw8PDuxnvEV//LPTr/b+vj95JVpucDQ8PD28P782j9mDjI0zv6MmvopXx8PDwNvKOtkwCQO/7STjJ98LDw8O7My8JDAk4/yYeHh7ep/N6ASBfGQ8PD+9TeMkf/iQM9MoKCXh5rQUPDw8v5s0f5eteb+3v4eHh4QW88khTnAQn7bF8TKE5dIWHh4e3gJc/iF8f7nUSXL0pvfPg4eHh7eFVD1Edn5ok6/lqeHh4eDt51bS4OjhVbWglIWfUAMPDw8Mb8+ZFgbxllY9bTdJrPDw8vNW8fBS1OmZaDR7VQdVy3MPDw8M7ibeugJv/trrCm3Xw8PDwtvPypLlXZk12rJ4KDw8P7ypeL1GejAtUb1wUMPDw8PAW85ICRDVdniTZk6YaHh4e3h5etbk1P0q1GFG+9Xh4eHiLeUmqmg+YPltX0u46YaYMDw8Pbxlv8lhPigi9AFMoguDh4eEt5vWWS0YHeiXd/FM8PDy8q3jVI+bIPAzkZd/yuCoeHh7eYl7viNUgUW2JlUsneHh4eBt5vXJAHh7m4wIn1Frw8PDwlvF6h6sOSPUGFE77x4CHh4fX4s3b/HnzrFrwzffFw8PD28mrFhom6fW8KBw1zPDw8PC28ObBIN8+QeZpd7lKjYeHh3cqb1KWPSuNroaccq0FDw8P7yJeMnyQHLoKjkrMeHh4eLfknZwEt0ohh7cGDw8PbyMvb0q9fudRvCaJNR4eHt5VvBWHyAsTzaJDXsbFw8PDO5X3fRceHh4eHh4eHt4Nrh+Oxj7aamKZUQAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC20lEQVR42u3awU7kMBAE0Pn/n969rsQmVLUDDPbLCcHE9jMSjbv8+nPk88LGxsbGxsbGxsZ+S/Yrfv79/Md3P475n4kvPn/11v34+ZqxsbGxT2B/8qc/Ztxv09WYVyPkGxRtIjY2NvYB7KRoJSXkfimzYvnAmrGxsbGx4wKTFLl8U2YFDxsbGxs7n3LWYLofbf3XgI2NjX0mu11c0k5aaTC1Ta4v7KVhY2Njvz17Jej9qa9/ON/GxsbGfht2+7QFbP2gkjewPlk5NjY29qbs9TA1J+XXK/OVFLNjY2Njb8pumzV1KyferLy83VMv38LGxsY+hr3eZsoPIUlpzMvY8ASGjY2N/cvZbdGaIZMSlZer4TjY2NjYm7LbYjZr9MzaUnl7KzqoYGNjY2/NXmnx582j9mpmHgNEhx9sbGzsTdmzOLZFtq2i9SgaGxsb+xz2ejmZNZLaazc5vriyg42Njb0de/1QsRIVrIQESwUMGxsbe1N22zZqw4Z261dKFzY2NvYJ7LZUtEFsfshJkHm8gY2NjY2dFKGk4OXXbtoNKuIEbGxs7E3ZDxSG0YXI/MrmekMKGxsbe29222DKl9he0MnnyqnY2NjYJ7Nnl3LyptLsKk9+bSgKerGxsbG3YLdXcNoIoQ0MnjrMYGNjY5/DXgkA8kPFLHhoj0zDuo2NjY39y9mzJlEe0LYFMo+E29YSNjY29q7srygVK9sx++kDQS82Njb2FuxZkZiFvrMoNyl72NjY2Kex23h1FgbkM87eig5L2NjY2JuyZ8eSlWdl5La8YWNjY5/AbpdbFIzg4NHO1VKxsbGxz2Hn8UCCbwtV3rpqR8PGxsY+jd0WkjY2yLfym3pp2NjY2Eeyc1j++TwGngUY2NjY2NjtZZ32+/kmtgcYbGxs7NPYeVMpD1xnW9M2kqK3sLGxsbdmP/VP/yz0XW9RRSNjY2Njb8o+58HGxsbGxsbGxsZ+m+cvIxJyFEQkC3UAAAAASUVORK5CYII=">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Hexo/">Hexo</a>
+        <a class="post_tag-link" href="/tags/Docker/">Docker</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hello World&url=http://yov.oschina.io/博客搭建/hello-world/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Docker的安装说明&url=http://yov.oschina.io/article/容器/Docker的安装说明/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/博客搭建/hello-world/index.html&title=Hello World" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/容器/Docker的安装说明/index.html&title=Docker的安装说明" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Hello World&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/博客搭建/hello-world/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Docker的安装说明&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/容器/Docker的安装说明/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,24 +510,114 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<pre class="highlight"><code class="bash">$ hexo new <span class="string">"My New Post"</span>
+        <h2 id="安装及部署docker"><a class="markdownIt-Anchor" href="#安装及部署docker"></a> 安装及部署Docker</h2>
+<h3 id="系统和资源说明"><a class="markdownIt-Anchor" href="#系统和资源说明"></a> 系统和资源说明</h3>
+<p>Docker系统要求最低CentOS7，且系统必须为64位，且内核版本不低于3.10。<br>
+资源需求：Docker1.12.6</p>
+<h3 id="安装步骤"><a class="markdownIt-Anchor" href="#安装步骤"></a> 安装步骤</h3>
+<p>(1)安装</p>
+<pre><code>$ yum install docker
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<pre class="highlight"><code class="bash">$ hexo server
+<p>(2)设置开机启动Docker Daemon进程</p>
+<pre><code>$ systemctl start docker.service   // 启动docker
+$ systemctl enable docker.service  // 设置Docker开机自启动
+$ systemctl disable firewalld      // 关闭防火墙
+$ yum -y install iptables-services // 安装iptable服务
+$ systemctl start iptables.service   // 启动iptable
+$ systemctl enable iptables.service  // 设置iptable开机自启动
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<pre class="highlight"><code class="bash">$ hexo generate
+<p>(3)安装成功的Docker</p>
+<pre><code>$ docker version
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<pre class="highlight"><code class="bash">$ hexo deploy
+<img src="/2017/09/24/Docker的安装说明/success.png" alt="Docker安装成功">  
+<p>(4)建立docker用户组，将使用docker的用户加入docker用户组。</p>
+<pre><code>$ groupadd docker
+$ usermod -aG docker $USER
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h3 id="docker的代理配置"><a class="markdownIt-Anchor" href="#docker的代理配置"></a> Docker的代理配置</h3>
+<pre><code>$ vim /usr/lib/systemd/system/docker.service
+[Service]
+Environment=”HTTP_PROXY=http://192.168.13.19:7777”
+Environment=”HTTPS_PROXY=http://192.168.13.19:7777”
+Type=notify
+</code></pre>
+<h3 id="docker配置加速器"><a class="markdownIt-Anchor" href="#docker配置加速器"></a> Docker配置加速器</h3>
+<p>国内访问Docker Hub可能有些慢，因此我们可以配置加速器。阿里云提供了<a href="https://cr.console.aliyun.com" target="_blank" rel="external">阿里云加速器</a> 注册用户并且申请加速器后，会获得　<a href="https://xxx.mirror.aliyuncs.com" target="_blank" rel="external">https://xxx.mirror.aliyuncs.com</a> 这样的地址。<br>
+<img src="/2017/09/24/Docker的安装说明/dockerhub.png" alt="Docker加速器"></p>
+<pre><code>$ vim /usr/lib/systemd/system/docker.service
+  ExecStart= --registry-mirror=https://xxx.mirror.aliyuncs.com
+$ systemctl daemon-reload  //　重新加载配置
+$ systemctl restart docker //　重启docker
+</code></pre>
+<h3 id="docker配置文件说明"><a class="markdownIt-Anchor" href="#docker配置文件说明"></a> Docker配置文件说明</h3>
+<pre><code>$ vim /etc/sysconfig/docker
+OPTIONS='
+ --selinux-enabled  //　是否开启selinux，默认开启
+ --insecure registry ip:port // 添加私人仓库地址
+ --bip=ip // 表示网桥docker0的CIDR地址
+'
+</code></pre>
+<h2 id="docker的常用命令"><a class="markdownIt-Anchor" href="#docker的常用命令"></a> Docker的常用命令</h2>
+<h3 id="docker信息查看"><a class="markdownIt-Anchor" href="#docker信息查看"></a> Docker信息查看</h3>
+<p>(1)查看docker进程状态</p>
+<pre><code>$ systemctl status docker
+</code></pre>
+<p>(2)查看docker的具体信息</p>
+<pre><code>$ docker info
+</code></pre>
+<p>(3)查看docker的版本信息</p>
+<pre><code>$ docker version
+</code></pre>
+<h3 id="docker的镜像操作"><a class="markdownIt-Anchor" href="#docker的镜像操作"></a> Docker的镜像操作</h3>
+<p>(1)查找镜像</p>
+<pre><code>$ docker search image_name
+</code></pre>
+<p>(2)拉取镜像</p>
+<pre><code>$ docker pull image_name:tag
+</code></pre>
+<p>(3)列出本地镜像</p>
+<pre><code>$ docker images
+</code></pre>
+<p>列表参数说明</p>
+<blockquote>
+<p>Repository：镜像的仓库源<br>
+Tag：镜像的标签<br>
+Image ID： 镜像ID<br>
+Created： 镜像的创建时间<br>
+Size： 镜像大小</p>
+</blockquote>
+<p>(4)设置镜像标签</p>
+<pre><code>$ docker tag image_id tag
+</code></pre>
+<p>(5)利用镜像创建容器</p>
+<pre><code>$ docker run image_name:tag command
+</code></pre>
+<p>(6)提交镜像</p>
+<pre><code>$ docker commit -m=&quot;描述信息&quot; -a=&quot;author&quot; image_name new_image_name
+</code></pre>
+<h3 id="docker的容器操作"><a class="markdownIt-Anchor" href="#docker的容器操作"></a> Docker的容器操作</h3>
+<p>(1)启动容器</p>
+<pre><code>$ docker run option host_port:contaniner_port image_name:tag command
+</code></pre>
+<blockquote>
+<p>例如：docker run -it -d -p 5000:5000 java java -version<br>
+-d：后台运行容器<br>
+-p:将容器端口映射到宿主机端口<br>
+-it:进行交互式操作<br>
+command: 执行java -version命令</p>
+</blockquote>
+<p>(2)查看容器</p>
+<pre><code>$ docker ps // 查看正在运行的容器
+</code></pre>
+<p>(3)容器生命周期命令</p>
+<pre><code>$ docker create image:tag  // 创建容器但不启动
+$ docker start container_name   // 启动容器
+$ docker stop contaniner_name   // 停止容器
+$ docker restart container_name // 重启容器
+$ docker pause contaniner_name  // 暂停容器内所有进程
+$ docker unpause contaniner_name // 恢复容器内所有进程
+$ docker rm contaniner  // 删除容器
+$ docker rm ${docker ps -a -q} // 删除所有停止的容器</code></pre>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -536,7 +626,7 @@
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/博客搭建/hello-world/">http://yov.oschina.io/博客搭建/hello-world/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/容器/Docker的安装说明/">http://yov.oschina.io/article/容器/Docker的安装说明/</a>
                     </p>
                 </blockquote>
         
@@ -584,7 +674,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/博客搭建/Gitee+Hexo搭建个人博客/" id="post_nav-newer" class="prev-content">
+        <a href="/article/工具/Git使用(Linux)/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -597,6 +687,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/article/容器/Docker的简单说明/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 

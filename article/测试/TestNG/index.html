@@ -39,7 +39,7 @@
     
     <title>
         
-            Gitee+Hexo搭建个人博客 | 
+            TestNG | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Hexo">
+    <meta name="keywords" content="Blog,TestNG">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Gitee+Hexo搭建个人博客 | Ember">
+    <meta property="og:title" content="TestNG | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Hexo"> 
+    <meta property="og:article:tag" content="TestNG"> 
 
     
-        <meta property="article:published_time" content="Fri Sep 22 2017 21:48:40 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:42 GMT+0800" />
+        <meta property="article:published_time" content="Tue Sep 26 2017 20:41:55 GMT+0800" />
+        <meta property="article:modified_time" content="Tue Sep 26 2017 20:43:40 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Gitee+Hexo搭建个人博客 | Ember">
+    <meta name="twitter:title" content="TestNG | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/博客搭建/Gitee+Hexo搭建个人博客/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/测试/TestNG/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/博客搭建/Gitee+Hexo搭建个人博客/index.html",
-    "headline": "Gitee+Hexo搭建个人博客",
-    "datePublished": "Fri Sep 22 2017 21:48:40 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:42 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/测试/TestNG/index.html",
+    "headline": "TestNG",
+    "datePublished": "Tue Sep 26 2017 20:41:55 GMT+0800",
+    "dateModified": "Tue Sep 26 2017 20:43:40 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",HexoBlog",
+    "keywords": ",TestNGBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -345,15 +345,6 @@
     <!-- Left aligned menu below button -->
     
     
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境搭建"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 环境搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装nodejs"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 安装Node.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#hexo安装"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Hexo安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本地运行hexo"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 本地运行Hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git安装"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> Git安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注册码云账号并创建一个项目"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> 注册码云账号，并创建一个项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取项目地址"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"> 获取项目地址</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#发布博客"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 发布博客</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改hexo配置文件_configyml"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 修改Hexo配置文件_config.yml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部署博客"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 部署博客</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开启page功能"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 开启Page功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#访问博客"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 访问博客</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结尾"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 结尾</span></a></li></ol>
-    </ul>
-    
 
 
 
@@ -383,7 +374,7 @@
         
     
             <p class="article-headline-p">
-                Gitee+Hexo搭建个人博客
+                TestNG
             </p>
         </div>
 
@@ -402,7 +393,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 22</span>
+        <span>2017 - 09 - 26</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +415,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC3UlEQVR42u3a0W7CMAwFUP7/p7fXSYxybUeoJKdPaLA2J0jz7JvHz5HXAxsbGxsbGxsbG/uW7Ed8/f388+t/HvP0u69+/uo+12vI14yNjY19AvvNn/4Xj0zuk29iQuqtGRsbG/scdl60krI02bI3pai4ZmxsbGzsapm5bh7ysne9TmxsbGzseQGrDpXyrcmHWdjY2NjYzQHNYPSTbFlC/egsDRsbG/v27HnQ+/nXt8i3sbGxsW/Anlx5hDA5+rNstdjY2Nibsiej/7WYJNzthb7Y2NjYJ7CTf+Vz2CROmDzlzeexsbGxt2YnxawX4s6P+8xbI2xsbOwT2PkhmGSbevdPWpTk3XIrgo2Njf3l7Cp11YhnVXtT+AKwsbGxN2X3mo3egiZ3q34BhVkaNjY29pez85A1bwySojIJJPJBFTY2NvYJ7PwIzqp44BrWW1X0GWxsbOxN2ZOQYDLiT6jJzwtBAjY2NvbW7OpCkyJ3XaLykVAe9L65DzY2Nvam7Px2eVibtxnzmGEU9GJjY2Nvwa6OhHrD+mqEUD3EE90ZGxsbe2t2zuhFv3mzUY2Q86YIGxsbe2/2fDDUK4qTg5X58VBsbGzsvdm9AX21IakOgPIAeDRLw8bGxt6Cfc3Il7iqnUiKX3MjsLGxsbdmV8tGUsyqBaYa91YbJ2xsbOxd2dWId/5uYaFxOYw2AhsbG/sY9vV2TGKDvLxN4uSXW4+NjY29NTsZyqyNgScDrLwoYmNjY5/Jnozgq8UmHyT1AgNsbGzsE9jVKz+Ck2xWHj9UGx5sbGzsc9i9YzGTALg6tKpu3IKgFxsbG/sL2XnRSh6TH6zsxQnNcAIbGxv7APaqQVJe5PLt6A2SsLGxsbHzglQNaNdu3KgVwcbGxj6MnS83X1a+3YUwABsbG/tIdrXkTEZR82JZLnLY2NjYW7MnQe/a0jVpYz6ab2NjY2Pfhn3OhY2NjY2NjY2NjX2b6xf+MNi7xsP/KAAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZUlEQVR42u3aQXLDIAwF0Nz/0u0BOo6/JCBO57HydOKExwLRj14//3q88PDw8PDw8PDwHsZ7xSP66otPJt/29++9ueHh4eGd4VUn/SqO9+DqYt3MDQ8PD+8g72paV8/vf+xy446Xozo3PDw8vG/hXX2+MKHgt/Dw8PC+nZcjk2KQs/Hw8PCexqselHNAHgR/OGvBw8PDi3mTgGD389H7PTw8PLyAt2qzrhaDVcXjpukKDw8PbwOvGhmsim6TNoLeAR0PDw9vNy8/4K4tAHlom4fFeHh4eGd41VAgeTcvBvm7SZSMh4eHd4aXHJGrG/3adqtygcHDw8P7EC8/yObxa7XtICoDeHh4eMd5vSi2WjbyifZiDjw8PLyTvOo//NXnPGLoXYwVOiPw8PDwFvF6F1STeLcXRoyarvDw8PCW8qoxQXVRqtddeaDczFrw8PDwxrwEUL68j6ebX3olVDw8PLwzvKRI9A7ZecGoBhk3i4KHh4e3mZcfVSdv5a1aeTkpxLh4eHh4G3jzw/SoTWpRqIGHh4d3kpdPa+2Bu9c0UI5x8fDw8Lbxkm26N8X5EhRiCzw8PLwH8Hrx7qS09OJdPDw8vPO8SVvV6MpqMMphBB4eHt6YVx3VJUhasqpXazdlCQ8PD28zr7cF97bvydKMmq7w8PDwNvB6xaD6w8lFV7VpAA8PD++zvPkGnVyJTY7pW5qu8PDw8I7w3k+01y4wB+Ph4eE9mVfd+vODdbWlYGPdw8PDw1sURuQhRe+6a9KAhYeHh3eSt+oSa9IukFy2RYuOh4eHt5n3/wYeHh4eHh4eHt4Dxi9D19gkSdAKbgAAAABJRU5ErkJggg==">
     
 </ul>
 
@@ -438,7 +429,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Hexo/">Hexo</a>
+        <a class="post_tag-link" href="/tags/TestNG/">TestNG</a>
     </ul>
     
 
@@ -465,7 +456,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Gitee+Hexo搭建个人博客&url=http://yov.oschina.io/博客搭建/Gitee+Hexo搭建个人博客/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TestNG&url=http://yov.oschina.io/article/测试/TestNG/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +474,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/博客搭建/Gitee+Hexo搭建个人博客/index.html&title=Gitee+Hexo搭建个人博客" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/测试/TestNG/index.html&title=TestNG" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +483,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Gitee+Hexo搭建个人博客&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/博客搭建/Gitee+Hexo搭建个人博客/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=TestNG&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/测试/TestNG/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,66 +501,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p><a href="https://gitee.com" target="_blank" rel="external">Gitee</a>: 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>
-Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本。</p>
-<h2 id="环境搭建"><a class="markdownIt-Anchor" href="#环境搭建"></a> 环境搭建</h2>
-<h3 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装Node.js</h3>
-<p>Windows用户访问<a href="https://nodejs.org/en" target="_blank" rel="external">Node.js</a>下载Node.js安装包后，直接运行安装即可(node.js下载也很慢，最好翻墙)。安装后，更换下npm的源，否则下载速度着实让人着急。</p>
-<pre><code>$ npm config set registry http://registry.npm.taobao.org/
-</code></pre>
-<h3 id="hexo安装"><a class="markdownIt-Anchor" href="#hexo安装"></a> Hexo安装</h3>
-<pre><code>$ npm install -g hexo-cli
-</code></pre>
-<p>Hexo的基本使用请查看hello-world文中所写。</p>
-<h3 id="本地运行hexo"><a class="markdownIt-Anchor" href="#本地运行hexo"></a> 本地运行Hexo</h3>
-<p>在本地选中一个空文件夹（一定要是空文件夹！！），在空文件中执行如下命令，生成Hexo运行所需要的文件：</p>
-<pre><code>$ hexo init
-</code></pre>
-<p>初始化后，文件夹的目录如下：</p>
-<pre><code>.
-├── .deploy       #需要部署的文件
-├── node_modules  #Hexo插件
-├── public        #生成的静态网页文件
-├── scaffolds     #模板
-├── source        #博客正文和其他源文件等都应该放在这里
-|   ├── _drafts   #草稿
-|   └── _posts    #文章
-├── themes        #主题
-├── _config.yml   #全局配置文件
-└── package.json
-</code></pre>
-<p>之后在本地执行如下命令后，即可访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 访问Hexo页面</p>
-<pre><code>$ hexo s
-</code></pre>
-<h3 id="git安装"><a class="markdownIt-Anchor" href="#git安装"></a> Git安装</h3>
-<p><a href="https://git-scm.com/downloads" target="_blank" rel="external">Git安装包地址</a>,根据操作系统选择安装包下载后安装即可。</p>
-<h3 id="注册码云账号并创建一个项目"><a class="markdownIt-Anchor" href="#注册码云账号并创建一个项目"></a> 注册码云账号，并创建一个项目</h3>
-<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br><br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br></p>
-<h3 id="获取项目地址"><a class="markdownIt-Anchor" href="#获取项目地址"></a> 获取项目地址</h3>
-<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/get.png" alt="获取项目地址"><br></p>
-<h2 id="发布博客"><a class="markdownIt-Anchor" href="#发布博客"></a> 发布博客</h2>
-<h3 id="修改hexo配置文件_configyml"><a class="markdownIt-Anchor" href="#修改hexo配置文件_configyml"></a> 修改Hexo配置文件_config.yml</h3>
-<pre><code>deploy:
-	type: git
-	repo: 码云的项目地址
-	branch: master
-</code></pre>
-<h3 id="部署博客"><a class="markdownIt-Anchor" href="#部署博客"></a> 部署博客</h3>
-<pre><code>$ npm install hexo-deployer-git --save 
-$ hexo g --d  #一键部署
-</code></pre>
-<p>此时会弹出一个对话框，提示输入码云的账号密码。部署成功后，登陆码云。此时本地文件夹中出现有一个public文件夹，代表部署成功。</p>
-<h3 id="开启page功能"><a class="markdownIt-Anchor" href="#开启page功能"></a> 开启Page功能</h3>
-<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/open.png" alt="开启Page功能"><br><br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/start.png" alt="开启Page功能"><br><br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/success.png" alt="博客部署成功"></p>
-<h3 id="访问博客"><a class="markdownIt-Anchor" href="#访问博客"></a> 访问博客</h3>
-<p>在浏览器地址栏输入上图中的博客地址，即可访问，效果图如下：<br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/blog.png" alt="我的博客"></p>
-<h2 id="结尾"><a class="markdownIt-Anchor" href="#结尾"></a> 结尾</h2>
-<p>如果搭建过程中，还有什么问题，请在下方留言。谢谢您的观赏！</p>
-
+        
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -577,7 +509,7 @@ $ hexo g --d  #一键部署
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/博客搭建/Gitee+Hexo搭建个人博客/">http://yov.oschina.io/博客搭建/Gitee+Hexo搭建个人博客/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/测试/TestNG/">http://yov.oschina.io/article/测试/TestNG/</a>
                     </p>
                 </blockquote>
         
@@ -625,21 +557,13 @@ $ hexo g --d  #一键部署
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/语言/Java基础知识(一)/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/博客搭建/hello-world/" id="post_nav-older" class="next-content">
+        <a href="/article/工具/Git使用(Linux)/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

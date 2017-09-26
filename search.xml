@@ -4,7 +4,7 @@
     
     <entry>
       <title><![CDATA[TestNG]]></title>
-      <url>/%E6%B5%8B%E8%AF%95/TestNG/</url>
+      <url>/article/%E6%B5%8B%E8%AF%95/TestNG/</url>
       <content type="html"></content>
       
         <categories>
@@ -24,7 +24,7 @@
     
     <entry>
       <title><![CDATA[Git使用(Linux)]]></title>
-      <url>/%E5%B7%A5%E5%85%B7/Git%E4%BD%BF%E7%94%A8(Linux)/</url>
+      <url>/article/%E5%B7%A5%E5%85%B7/Git%E4%BD%BF%E7%94%A8(Linux)/</url>
       <content type="html"><![CDATA[<h2 id="环境安装"><a class="markdownIt-Anchor" href="#环境安装"></a> 环境安装</h2>
 <p>安装git</p>
 <pre class="highlight"><code class="">sudo apt-get install git
@@ -197,7 +197,7 @@
     
     <entry>
       <title><![CDATA[Docker的安装说明]]></title>
-      <url>/%E5%AE%B9%E5%99%A8/Docker%E7%9A%84%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E/</url>
+      <url>/article/%E5%AE%B9%E5%99%A8/Docker%E7%9A%84%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E/</url>
       <content type="html"><![CDATA[<h2 id="安装及部署docker"><a class="markdownIt-Anchor" href="#安装及部署docker"></a> 安装及部署Docker</h2>
 <h3 id="系统和资源说明"><a class="markdownIt-Anchor" href="#系统和资源说明"></a> 系统和资源说明</h3>
 <p>Docker系统要求最低CentOS7，且系统必须为64位，且内核版本不低于3.10。<br>
@@ -325,7 +325,7 @@ $ docker rm ${docker ps -a -q} // 删除所有停止的容器</code></pre>
     
     <entry>
       <title><![CDATA[Docker的简单说明]]></title>
-      <url>/%E5%AE%B9%E5%99%A8/Docker%E7%9A%84%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/</url>
+      <url>/article/%E5%AE%B9%E5%99%A8/Docker%E7%9A%84%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/</url>
       <content type="html"><![CDATA[<h2 id="docker简介"><a class="markdownIt-Anchor" href="#docker简介"></a> Docker简介</h2>
 <h3 id="docker的概念"><a class="markdownIt-Anchor" href="#docker的概念"></a> Docker的概念</h3>
 <p><code>Docker</code>最初是dotCloud公司的内部项目，是基于dotCloud公司多年云服务的一次革新，于2013年3月开源。<code>Docker</code>被称为第三代Paas平台，是一种容器（虚拟化的轻量级替代技术）技术，将<code>应用软件及其依赖软件</code>（运行时环境、系统工具、系统库）等打包在容器中，使应用具备完整性、移植性和隔离性。以容器的方式交付应用，可以让应用无差别地运行在开发、测试、生产环境，提供标准化的环境和标准化的交付、标准化的部署。</p>
@@ -394,7 +394,7 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
     
     <entry>
       <title><![CDATA[Java基础知识(二)]]></title>
-      <url>/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%8C)/</url>
+      <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%8C)/</url>
       <content type="html"><![CDATA[<h2 id="运算符"><a class="markdownIt-Anchor" href="#运算符"></a> 运算符</h2>
 <blockquote>
 <p>常用运算符：四则运算符、逻辑运算符、三目运算符和位运算符。</p>
@@ -619,7 +619,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Markdown语法]]></title>
-      <url>/%E8%AF%AD%E8%A8%80/Markdown%E8%AF%AD%E6%B3%95/</url>
+      <url>/article/%E8%AF%AD%E8%A8%80/Markdown%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>Markdown是一种轻量级的标记语言，语法简单，由一些符号组成，这些符号作用一目了然，实现易读易写的目标。Markdown兼容HTML，即你可以直接在文本中添加HTML语言，但是你不能在HTML区块标签间使用Markdown语法。</p>
 </blockquote>
@@ -722,7 +722,7 @@ __强调__
     
     <entry>
       <title><![CDATA[SpringBoot使用]]></title>
-      <url>/%E6%A1%86%E6%9E%B6/SpringBoot%E4%BD%BF%E7%94%A8/</url>
+      <url>/article/%E6%A1%86%E6%9E%B6/SpringBoot%E4%BD%BF%E7%94%A8/</url>
       <content type="html"></content>
       
         <categories>
@@ -742,7 +742,7 @@ __强调__
     
     <entry>
       <title><![CDATA[Go基础知识]]></title>
-      <url>/%E8%AF%AD%E8%A8%80/Go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      <url>/article/%E8%AF%AD%E8%A8%80/Go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
       <content type="html"></content>
       
         <categories>
@@ -762,7 +762,7 @@ __强调__
     
     <entry>
       <title><![CDATA[Java基础知识(一)]]></title>
-      <url>/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%80)/</url>
+      <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%80)/</url>
       <content type="html"><![CDATA[<h2 id="java基础知识"><a class="markdownIt-Anchor" href="#java基础知识"></a> Java基础知识</h2>
 <blockquote>
 <p>Java是一门<strong>面向对象</strong>语言，支持多线程编程;通过使用更为简单的<strong>引用</strong>来进行内存关系的匹配，而不是复杂的指针;Java提供<strong>垃圾自动回收机制</strong>，能更好地处理垃圾空间;可以实现多平台的移植。</p>
@@ -1103,7 +1103,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Gitee+Hexo搭建个人博客]]></title>
-      <url>/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+      <url>/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<p><a href="https://gitee.com" target="_blank" rel="external">Gitee</a>: 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>
 Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本。</p>
 <h2 id="环境搭建"><a class="markdownIt-Anchor" href="#环境搭建"></a> 环境搭建</h2>
@@ -1182,7 +1182,7 @@ $ hexo g --d  #一键部署
     
     <entry>
       <title><![CDATA[Hello World]]></title>
-      <url>/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hello-world/</url>
+      <url>/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
 <h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>

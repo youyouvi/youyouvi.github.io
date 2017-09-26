@@ -39,7 +39,7 @@
     
     <title>
         
-            Java基础知识(一) | 
+            Markdown语法 | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Java">
+    <meta name="keywords" content="Blog,Markdown">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Java基础知识(一) | Ember">
+    <meta property="og:title" content="Markdown语法 | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Java"> 
+    <meta property="og:article:tag" content="Markdown"> 
 
     
-        <meta property="article:published_time" content="Sat Sep 23 2017 16:57:00 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:50 GMT+0800" />
+        <meta property="article:published_time" content="Sat Sep 23 2017 17:19:24 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:54 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Java基础知识(一) | Ember">
+    <meta name="twitter:title" content="Markdown语法 | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/语言/Java基础知识(一)/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/语言/Markdown语法/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/语言/Java基础知识(一)/index.html",
-    "headline": "Java基础知识(一)",
-    "datePublished": "Sat Sep 23 2017 16:57:00 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:50 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/语言/Markdown语法/index.html",
+    "headline": "Markdown语法",
+    "datePublished": "Sat Sep 23 2017 17:19:24 GMT+0800",
+    "dateModified": "Mon Sep 25 2017 16:47:54 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",JavaBlog",
+    "keywords": ",MarkdownBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java基础知识"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Java基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一个java程序"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 第一个Java程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#classpath环境属性"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> CLASSPATH环境属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 注释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标识符与关键字"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 标识符与关键字</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Java数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整型"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 整型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浮点型"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 浮点型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符型"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 字符型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布尔型"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 布尔型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string型"><span class="post-toc-number">2.5.</span> <span class="post-toc-text"> String型</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#markdown语法"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Markdown语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#区块元素"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 区块元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#段落与换行"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text"> 段落与换行</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#标题"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text"> 标题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#区块引用blockquotes"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text"> 区块引用Blockquotes</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#列表"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text"> 列表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码区域"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text"> 代码区域</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分隔线"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text"> 分隔线</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#区段元素"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 区段元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#链接"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text"> 链接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#强调"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text"> 强调</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text"> 代码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text"> 图片</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 结束</span></a></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Java基础知识(一)
+                Markdown语法
             </p>
         </div>
 
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACXElEQVR42u3aUXKjMBAEUN//0skBUna6NUjYrsfXFsHA04eG7ZnHz1cfDzw8PDw8PDw8vDfjPeLj2a/+nk/u/Oz6C94NDw8P7wjvn602fnDy1wQ2ejc8PDy8g7y17Ts/ny/K2rvh4eHhfQrv2dbfloHXV+Lh4eF9K28tUMDDw8P7XN6ObT1h5Ge2Zy14eHh4MS/fvs//+2h/Dw8PDy/g1SNNQfSQFIb8mtHQFR4eHt4GXjsm1ba1JkFw/j54eHh4J3n5EEASHCRRRbtkr59Sf1Lj4eHhjXlXNaLaT+T2M7p4Bzw8PLyDvGjbXQp52+ZZUlSeBhx4eHh4m3ntjfIm2WRsK19uPDw8vPO8dqPPh6jWouFDkxF4eHh4F/HyOHUCSDB5CSkKAx4eHt4G3trW344grJWH0dAVHh4e3qW8NhRYi3Hbtlk+1FVMRuDh4eFdxEtChLzlP2fk8QQeHh7eXbw2SG0HtvJmWzsEVo8O4OHh4V3Ke73RXzV0NQGM/seAh4eHd5w3KRV5LDuPIfDw8PDO8OZtrfxXbeiwNuyFh4eHdy+v/VDOf9UOe20pDHh4eHhj3loLf18wkRctPDw8vHt5+Y3aV2kD3Hy58fDw8E7y2iMfusp5bSvun8XCw8PD28xrP5Tbh60NB7wuWsXQFR4eHt42Xhvj5uzJs/KlwcPDw7uLlwey8+GA5Mp8WAEPDw/vU3hr5yelKFoyPDw8vLfkzRv/1xYDPDw8vLt4eUCQt/OThlkLxsPDw3sH3toQalsqJsuX3xMPDw9vN+/7Djw8PDw8PDw8vDc4fgFLJYaSb/EiVwAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACaElEQVR42u3aUXKDMAwE0Nz/0u0B2pBd2xi38/hikgB+fFiKpNfXvz5eeHh4eHh4eHh4h/Fe8fHzql9uffn5u7u9u3ZwbXh4eHhbeB+22ph3jUnOF6wNDw8PbyNv7bKug0ryebs2PDw8vPN5SeKb3yE5x8PDw/u7vOJhcSkhYePh4eGdxkv+8OdpdL70vNBwe60FDw8PL+aNbd97zrf29/Dw8PACXj3SVAaGseLFsqErPDw8vBt4+UbcksbKuPMvAg8PD28Pb2xZUWmgDBgz4wV4eHh4O3kzZdl33+aNsTaVr2steHh4eDfw8iZ9u6A8tIyNIBQpNR4eHt5SXpLIto9pkXkb7MNq8fDw8G7m5S2uPBFvX1/7Szw8PLxnecm2myfTeaMrB+QwPDw8vD28vBQ7VrwYS7Xz8QI8PDy8p3h5m2rswTm1LR8X/xjw8PDwFvHyy66X0pYnktc0OJSAh4eHt5GXt6DaNv9MCSNfJx4eHt4JvHxTzoNEW/hoAxIeHh7eHt6HC+Im2diLy8vBgzNleHh4eLfx8kWvTZfXFojx8PDw9vCStHUsYNQJcRweipkyPDw8vI28tgHWLqsd7VocGPDw8PAW8a5JebLbDl3lIWRBlRoPDw9vgtce+YPHSgyLRwfw8PDwbptKassQ7StoU/OchIeHh/cUb6aJ1ZYzxppkRSMNDw8PbyNvvhSbDGAlG33bMMPDw8M7n9du1vOhaFmVGg8PD+9RXlKMiJr908EADw8P7ylevpXnJYm8eZaXg/Hw8PBO4LXjp22rrGXMhAc8PDy8u3n/78DDw8PDw8PDwzvg+AYsGgw3ISqPGQAAAABJRU5ErkJggg==">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Java/">Java</a>
+        <a class="post_tag-link" href="/tags/Markdown/">Markdown</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(一)&url=http://yov.oschina.io/语言/Java基础知识(一)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Markdown语法&url=http://yov.oschina.io/article/语言/Markdown语法/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/语言/Java基础知识(一)/index.html&title=Java基础知识(一)" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/语言/Markdown语法/index.html&title=Markdown语法" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(一)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/语言/Java基础知识(一)/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Markdown语法&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/语言/Markdown语法/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,327 +510,89 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="java基础知识"><a class="markdownIt-Anchor" href="#java基础知识"></a> Java基础知识</h2>
-<blockquote>
-<p>Java是一门<strong>面向对象</strong>语言，支持多线程编程;通过使用更为简单的<strong>引用</strong>来进行内存关系的匹配，而不是复杂的指针;Java提供<strong>垃圾自动回收机制</strong>，能更好地处理垃圾空间;可以实现多平台的移植。</p>
+        <blockquote>
+<p>Markdown是一种轻量级的标记语言，语法简单，由一些符号组成，这些符号作用一目了然，实现易读易写的目标。Markdown兼容HTML，即你可以直接在文本中添加HTML语言，但是你不能在HTML区块标签间使用Markdown语法。</p>
 </blockquote>
-<h3 id="第一个java程序"><a class="markdownIt-Anchor" href="#第一个java程序"></a> 第一个Java程序</h3>
-<ol>
-<li>运行Java程序的步骤<br>
-<code>javac xx.java</code>:对Java程序进行编译，生成字节码文件<code>xx.class</code>。<br>
-<code>java xx</code>：对Java程序进行解释。</li>
-<li>Java程序的核心单元—<strong>类</strong><br>
-类的声明方式有两种:<br>
-<code>public class class_name {}</code>：该声明方式声明的java文件，文件名必须与类名一致，一个类文件中只允许使用一次该声明。<br>
-<code>class class_name {}</code>：一个java文件可以多次使用该声明（不建议如此操作），但编译后会生成多个class文件。</li>
-<li>第一个Java程序：Hello World</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;    		// 包名
-public class HelloWorld {		// 类
-	public static void main(String[] args) {    // 主方法
-		System.out.println(&quot;Hello World&quot;);    // 方法体
-	}
-}
+<h2 id="markdown语法"><a class="markdownIt-Anchor" href="#markdown语法"></a> Markdown语法</h2>
+<h3 id="区块元素"><a class="markdownIt-Anchor" href="#区块元素"></a> 区块元素</h3>
+<h4 id="段落与换行"><a class="markdownIt-Anchor" href="#段落与换行"></a> 段落与换行</h4>
+<p>一个Markdown段落是由一个或多个连续的文本行组成的。在Markdown中是<strong>无法使用空格或制表符来缩进的</strong>，因为其默认一个空格就是一个空行。</p>
+<h4 id="标题"><a class="markdownIt-Anchor" href="#标题"></a> 标题</h4>
+<p>Markdown支持两种标题的语法，类Setext形式和类Atx形式，接下来介绍的类Atx形式：该形式是在行首插入1到6个<code>#</code>，对应1到6级标题。</p>
+<pre><code># 这是H1
+## 这是H2
+...
+###### 这是H6
 </code></pre>
-<p>Java程序都是从<strong>主方法</strong>开始执行的.<code>System.out.println()</code>将内容输出后换行。</p>
-<h3 id="classpath环境属性"><a class="markdownIt-Anchor" href="#classpath环境属性"></a> CLASSPATH环境属性</h3>
-<p>PATH和CLASSPTH的<strong>区别</strong>：<code>PATH</code>是操作系统路径，定义了所有可执行程序的路径；<code>CLASSPATH</code>是Java解释类文件时的加载路径，当<code>java</code>命令运行时，JVM通过CLASSPATH属性设置的路径，加载所需要的类。<br>
-配置CLASSPATH时，一定要定义一个“.”，表示在当前所在目录进行类的加载。</p>
-<h3 id="注释"><a class="markdownIt-Anchor" href="#注释"></a> 注释</h3>
-<p><code>// 注释内容</code>：    单行注释<br>
-<code>/* 注释内容 */</code>： 多行注释<br>
-<code>/** 注释内容 */</code>：文档注释</p>
-<h3 id="标识符与关键字"><a class="markdownIt-Anchor" href="#标识符与关键字"></a> 标识符与关键字</h3>
-<ol>
-<li>标识符<br>
-标识符是指Java程序中的类名、属性名、方法名等，其定义要求如下：
-<blockquote>
-<p>（1）标识符由字母，数字，_，$组成，不能以数字开头，不能是Java中的关键字或保留字；<br>
-（2）标识符应尽量有意义，可见名知意。<br>
-（3）Java标识符可以是中文，但不建议使用中文命名标识符。</p>
-</blockquote>
-</li>
-<li>关键字<br>
-Java中有两个未使用的关键字<code>goto</code>和<code>const</code>；JDK1.4之后增加了<code>assert</code>关键字；JDK1.5之后增加了<code>enum</code>关键字。</li>
-</ol>
-<h2 id="java数据类型"><a class="markdownIt-Anchor" href="#java数据类型"></a> Java数据类型</h2>
-<ol>
-<li>Java数据类型分为两大类：<code>基础数据类型</code>和<code>引用数据类型</code><br>
-<strong>两者的区别在于基础数据类型不需要进行内存分配，而引用数据类型需要进行内存分配。</strong></li>
-</ol>
-<blockquote>
-<p>基本数据类型：<br>
-    |-数值型：<br>
-        |-整型：<code>byte</code>、<code>short</code>、<code>int</code>、<code>long</code>； →默认值：<code>0</code>；<br>
-        |-浮点型：<code>float</code>、<code>double</code>；        →默认值：<code>0.0</code><br>
-        |-字符型：<code>char</code>；                      →默认值：<code>‘\u0000’</code><br>
-        |-布尔型：<code>boolean</code>；       			 →默认值：<code>false</code><br>
-    |-引用数据类型：数组、类、接口等。 		 →默认值：<code>null</code></p>
-</blockquote>
-<ol start="2">
-<li>数据类型的选择原则</li>
-</ol>
-<blockquote>
-<p>（1）整数用<code>int</code>，小数用<code>double</code>；<br>
-（2）描述日期时间或内存大小，用<code>long</code>；<br>
-（3）实现内容传递或编码转换用<code>byte</code>；<br>
-（4）逻辑控制用<code>boolean</code>；<br>
-（5）避免中文乱码用<code>char</code>。</p>
-</blockquote>
-<h3 id="整型"><a class="markdownIt-Anchor" href="#整型"></a> 整型</h3>
-<ol>
-<li>数字常量属于<code>int</code>型数据，如数字30。<br>
-常量与变量的区别在于：常量的内容是固定的，变量的内容是可变的。范例–定义int型变量：</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        // 一个变量名在同一块代码中只允许声明一次
-        // 变量赋值语法：value_type value_name = value ;
-        int num = 10; 
-        num = num * 2;
-        System.out.println(num);
-    }
-}
+<h4 id="区块引用blockquotes"><a class="markdownIt-Anchor" href="#区块引用blockquotes"></a> 区块引用Blockquotes</h4>
+<p>Markdown标记区块引用方式如下：</p>
+<pre><code>&gt; 文本内容。
+&gt;&gt; 文本中也可以使用嵌套引用，只要根据层次加上不同数量的&gt;
 </code></pre>
-<ol start="2">
-<li>每个数据类型都有其对应的存储范围</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int max = Integer.MAX_VALUE;  // int型数据的最大值
-        int min = Integer.MIN_VALUE;  // int型数据的最小值
-        System.out.println(max);      // 2147483647
-        System.out.println(max + 1);  // -2147483648
-        System.out.println(min);      // -2147483648
-        System.out.println(min - 1);  // 2147483647
-        System.out.println(min - 2);  // 2147483646
-    }
-}
+<p>在引用的区域中，也可以使用其他的Markdown语法。</p>
+<h4 id="列表"><a class="markdownIt-Anchor" href="#列表"></a> 列表</h4>
+<p>Markdown支持有序列表和无序列表。无序列表使用<code>星号</code>、<code>减号</code>或<code>加号</code>作为列表标记:</p>
+<pre><code>* red
+- green
++ blue
 </code></pre>
-<p>当数据超过<code>int</code>型数据的保存范围时，数值会按照循环的形式出现，即（最大值+1）变为最小值，再+1变为第二小的最小值，以此类推。这是因为数据是按照二进制进行的，第一位是符号位，而其他31位是数据位。这种现象称为<code>数据溢出</code>，解决方法是<strong>扩大数据范围</strong>：</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int max = Integer.MAX_VALUE;
-        int min = Integer.MIN_VALUE;
-        // int变量 + long变量 = long变量,扩大了数据的范围
-        System.out.println(max + 1L); // 2147483648
-        System.out.println(min - (long)1); // -2147483649
-        System.out.println((long)min - 2); // -2147483650
-    }
-}
+<p>有序列表则使用数字接着一个英文句号：</p>
+<pre><code>1. red
+2. green
+3. blue
 </code></pre>
-<ol start="3">
-<li>数据类型的转换规律</li>
-</ol>
-<blockquote>
-<p>范围小的数据类型与范围大的数据类型计算时，自动转换为范围大的所数据类型；<br>
-范围大的数据类型只能通过强制转换变为范围小的数据类型。<br>
-常量进行强制转换，可通过使用常量标记（如<code>L，l</code>可将<code>int</code>型常量变为<code>long</code>型）或使用<code>(数据类型)常量</code>。范例–强制转换：</p>
-</blockquote>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        // 1000是int型，使用long型变量接收，发生自动转换
-        long num = 1000;
-	    // long型变为int型，强制转换
-        int x = (int) num; 
-        System.out.println(x); // 1000
-    }
-}
+<p>如果列表项目间用空行分开，在输出HTML时Markdowm就会将内容用段落标签包起来，即：</p>
+<pre class="highlight"><code class="">	* blue
+
+	*red
 </code></pre>
-<p>当进行强制转换的数值超出范围小的数据类型的范围时，依然会发生<strong>数据溢出</strong>。</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        // 2147483650L是long型数据，超出int型的范围
-        long num = 2147483650L ;
-        int x = (int) num; 
-        System.out.println(x); // -2147483646，数据溢出
-    }
-}
+<p>会被转换为：</p>
+<pre class="highlight"><code class="bash">&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;blue&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;red&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </code></pre>
-<p><code>byte</code>型数据的取值范围为<code>-128~127</code>，当整数数值在这个范围内时，会自动转型；超出<code>byte</code>范围时会发生数据溢出。<br>
-4. 注意点<br>
-变量声明时应设置具体数值，不使用默认值。在方法中定义的变量，其默认值是无效的。</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        // 未给变量赋值
-		int num;  
-		// 报错,未初始化变量,无法使用该变量
-        System.out.println(num); 
-    }
-}
+<p>如果要在列表项目中放入引用，就需要缩进</p>
+<pre><code>* red
+	&gt; this is color
 </code></pre>
-<h3 id="浮点型"><a class="markdownIt-Anchor" href="#浮点型"></a> 浮点型</h3>
-<ol>
-<li>Java中浮点数属于<code>double</code>型（<code>double</code>型是保存范围最广的类型）。</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        double num = 10.2; // 10.2是小数，属于double型
-        // double型 * int型 = double型
-        System.out.println(num * 2); // 20.4
-    }
-}
+<p>如果要放入代码块，那就需要连续缩进两次。并且为避免行首出现数字-句号-空白，应在句号前加反斜杠。</p>
+<h4 id="代码区域"><a class="markdownIt-Anchor" href="#代码区域"></a> 代码区域</h4>
+<p>要在Markdown中建立代码区块很简单，只需要缩进4个空格或一个tab即可。</p>
+<h4 id="分隔线"><a class="markdownIt-Anchor" href="#分隔线"></a> 分隔线</h4>
+<p>你可以在一行使用三个以上的<code>星号</code>、<code>减号</code>、<code>下划线</code>来建立一个分隔线，行内不能有其他东西。你可以在星号或减号中间插入空格。</p>
+<pre><code>星号：  * * *
+减号：  - - -
+下划线：_ _ _ 
 </code></pre>
-<p>所以使用<code>float</code>数据须将<code>double强制转换为float型</code>：</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        float fA = 10.2F;         // 强制转型方式一
-        float fB = (float) 10.2; // 强制转型方式二
-        System.out.println(fA);  // 10.2
-        System.out.println(fB);  // 10.2
-        System.out.println(fA * fB); // 104.03999,该bug无法解决
-    }
-}
+<h3 id="区段元素"><a class="markdownIt-Anchor" href="#区段元素"></a> 区段元素</h3>
+<h4 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h4>
+<p>Markdown支持两种形式的链接语法：行内式和参考式。建立一个行内式的链接，只要在方块括号后面紧接着圆括号插入链接即可，如果想要加上链接的title文字，只要网址后面用双引号把title文字包起来即可。</p>
+<pre><code>[example](https://www.baidu.com &quot;Title&quot;)
 </code></pre>
-<p>开发过程中要考虑到<code>整型数据不保留小数位</code>：</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int x = 5;
-        int y = 9;
-        System.out.println(y / x); // 1
-    }
-}
+<h4 id="强调"><a class="markdownIt-Anchor" href="#强调"></a> 强调</h4>
+<p>Markdown使用星号和下划线标记强调，被<code>*</code>或<code>_</code>包围的字词会被转为用<code>&lt;em&gt;</code>标签包围，而用两个<code>*</code>或<code>_</code>包起来，则变为<code>&lt;strong&gt;</code></p>
+<pre><code>*强调*
+_强调_
+**强调**
+__强调__
 </code></pre>
-<p>因为<code>int型/int型=int型</code>，不保留小数位，所以要取得正确的计算结果，需要将其中一个整型变为浮点型：</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int x = 5;
-        int y = 9;
-        System.out.println(y / (double) x); // 1.8
-    }
-}
+<p>如果只想在文字前后插入普通的星号或下划线，可以使用反斜杠：</p>
+<pre><code>\*文字\*
 </code></pre>
-<h3 id="字符型"><a class="markdownIt-Anchor" href="#字符型"></a> 字符型</h3>
-<ol>
-<li>byte<br>
-<code>byte</code>是字节，1字符=2字节。Java使用十六进制<code>UNICODE</code>编码，可以保存任意符号，并且考虑到与其他语言的结合，包含了ASCII码的部分编码，以实现无缝衔接。</li>
-<li>字符使用单引号<code>'</code>声明，一对单引号只能保存一位字符。</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        char c = 'A';
-        int num = c; // char型可以自动转换为int型
-        System.out.println(c);
-        System.out.println(num); // 65,是A的ASCII码值
-    }
-}
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h4>
+<p>如果要标记一小段行内代码，可以使用反引号把它包起来，例如：</p>
+<pre><code>`printf()`
 </code></pre>
-<ol start="3">
-<li>编码：<code>'A'</code>(65)~<code>'Z'</code>(90); <code>'a'</code>（97）~<code>'z'</code>（122）; <code>'0'</code>（48）~<code>'9'</code>(57),可利用A和a的编码差为32，实现字母大小写转换：</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        char c = 'A';
-        int num = c;     // char型变为int型才能进行四则运算
-        num = num + 32;  // 大写与小写编码值差为32
-        c = (char) num;  // int型只能强制转换为char型
-        System.out.println(c); // a
-    }
-}
+<p>如果要在代码中插入反引号，你可以用多个反引号开启或结束代码区段:</p>
+<pre><code>`` (`) `` 将变为  &lt;p&gt;&lt;code&gt;(`)&lt;/code&gt;&lt;/p&gt;
 </code></pre>
-<ol start="4">
-<li>传统编程语言字符只能保存英文标记，但UNICODE可以保存任何文字包括中文。</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        char c = '游';
-        int num = c;
-        System.out.println(num); // 28216
-    }
-}
+<h4 id="图片"><a class="markdownIt-Anchor" href="#图片"></a> 图片</h4>
+<p>插入图片有两种方式：行内式和参考式</p>
+<pre><code>![替代图片的文字](/path/to/img.jpg &quot;文字&quot;)
 </code></pre>
-<p>由于Java保存中文很方便,因此处理断句时，字符数据很有用，其他时候基本用不到。</p>
-<h3 id="布尔型"><a class="markdownIt-Anchor" href="#布尔型"></a> 布尔型</h3>
-<p>布尔型返回逻辑结果，只保存两种数据：<code>true</code>和<code>false</code>，主要用于逻辑控制：</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        boolean flag = false;
-        //  if (布尔值){满足条件时的操作}
-        if (!flag) {
-            System.out.println(&quot;Hello World !&quot;);
-        }
-    }
-}
-</code></pre>
-<h3 id="string型"><a class="markdownIt-Anchor" href="#string型"></a> String型</h3>
-<ol>
-<li>String型<br>
-<code>String</code>属于引用数据类型（是类,Java中类名称首字母大写），表示字符串，即多个字符的集合，使用双引号<code>&quot;&quot;</code>声明。</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        String str = &quot;Hello World !&quot;; // str为字符串变量
-        System.out.println(str);
-        // &quot;Hello World !&quot;为字符串常量
-        System.out.println(&quot;Hello World !&quot;);
-    }
-}
-</code></pre>
-<ol start="2">
-<li><code>+</code>可实现字符串连接</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        String str = &quot;Hello&quot;;
-        str = str + &quot; World !&quot;;
-        System.out.println(str);
-    }
-}
-</code></pre>
-<p>当四则运算与字符串连接同时存在时：</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int numA = 100;
-        double numB = 99.9;
-        String str = &quot;加法计算：&quot; + numA + numB;
-        System.out.println(str); // 加法计算：10099.9
-    }
-}
-</code></pre>
-<p>出现上述结果是因为小范围数据会自动转型为大范围数据，即<code>String型+任意数据类型=String型</code>，然后进行字符串连接，可使用()来实现正确的运算：</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int numA = 100;
-        double numB = 99.9;
-        String str = &quot;加法计算：&quot; + (numA + numB);
-        System.out.println(str); // 加法计算：199.9
-    }
-}
-</code></pre>
-<ol start="3">
-<li>Java支持转义字符，<br>
-例如：换行<code>\n</code>、制表符<code>\t</code>、反斜杠<code>\\</code>、双引号<code>\&quot;</code>、单引号<code>\'</code>：</li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        String str = &quot;Hello \&quot;World\&quot; \nHello MLDN&quot;;
-        System.out.println(str);
-        /**
-         * Hello &quot;World&quot;
-         * Hello MLDN
-         */
-    }
-}
-</code></pre>
+<h2 id="结束"><a class="markdownIt-Anchor" href="#结束"></a> 结束</h2>
+<p>感谢您的阅读，如果您有什么问题，请在下方留言，谢谢。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -839,7 +601,7 @@ public class Demo {
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/语言/Java基础知识(一)/">http://yov.oschina.io/语言/Java基础知识(一)/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/语言/Markdown语法/">http://yov.oschina.io/article/语言/Markdown语法/</a>
                     </p>
                 </blockquote>
         
@@ -887,7 +649,7 @@ public class Demo {
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/语言/Go基础知识/" id="post_nav-newer" class="prev-content">
+        <a href="/article/语言/Java基础知识(二)/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -901,7 +663,7 @@ public class Demo {
 
     <!-- Next Nav -->
     
-        <a href="/博客搭建/Gitee+Hexo搭建个人博客/" id="post_nav-older" class="next-content">
+        <a href="/article/框架/SpringBoot使用/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
