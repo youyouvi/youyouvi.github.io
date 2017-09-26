@@ -5,7 +5,73 @@
     <entry>
       <title><![CDATA[TestNG]]></title>
       <url>/article/%E6%B5%8B%E8%AF%95/TestNG/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<h2 id="testng简介"><a class="markdownIt-Anchor" href="#testng简介"></a> TestNG简介</h2>
+<p>TestNG是一个用来简化广泛的测试需求的测试框架，从单元测试到集成测试。</p>
+<h2 id="annotation"><a class="markdownIt-Anchor" href="#annotation"></a> Annotation</h2>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@BeforeSuite</code></td>
+<td style="text-align:right">被注释的方法将在所有测试运行前运行</td>
+</tr>
+<tr>
+<td><code>@AfterSuite</code></td>
+<td style="text-align:right">被注释的方法将在所有测试运行后运行</td>
+</tr>
+<tr>
+<td><code>@BeforeTest</code></td>
+<td style="text-align:right">被注释的方法将在测试运行前运行</td>
+</tr>
+<tr>
+<td><code>@AfterTest</code></td>
+<td style="text-align:right">被注释的方法将在测试运行后运行</td>
+</tr>
+<tr>
+<td><code>@BeforeGroups</code></td>
+<td style="text-align:right">被注释的方法将在gourp中方法运行前运行</td>
+</tr>
+<tr>
+<td><code>@AfterGroups</code></td>
+<td style="text-align:right">被注释的方法将在gourp中方法运行后运行</td>
+</tr>
+<tr>
+<td><code>@BeforeClass</code></td>
+<td style="text-align:right">被注释的方法将在当前类的第一个方法运行前运行</td>
+</tr>
+<tr>
+<td><code>@AfterClass</code></td>
+<td style="text-align:right">被注释的方法将在当前类的所有方法运行后运行</td>
+</tr>
+<tr>
+<td><code>@BeforeMethod</code></td>
+<td style="text-align:right">被注释的方法将在每一个方法运行前运行</td>
+</tr>
+<tr>
+<td><code>@AfterMethod</code></td>
+<td style="text-align:right">被注释的方法将在每一个方法运行后运行</td>
+</tr>
+<tr>
+<td><code>@DataProvider</code></td>
+<td style="text-align:right">被注释的方法用于为其他方法提供数据</td>
+</tr>
+<tr>
+<td><code>@Factory</code></td>
+<td style="text-align:right">被标记的方法作为一个返回对象的工厂，这些对象将被TestNG作为测试类，该返回必须返回Object[]</td>
+</tr>
+<tr>
+<td><code>@Parameters</code></td>
+<td style="text-align:right">传递参数给测试方法</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-gourps"><a class="markdownIt-Anchor" href="#test-gourps"></a> Test gourps</h3>
+]]></content>
       
         <categories>
             
