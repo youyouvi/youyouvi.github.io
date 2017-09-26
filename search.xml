@@ -114,6 +114,70 @@
 <p>合并分支（普通模式）</p>
 <pre class="highlight"><code class="">git merge -- no-ff -m &quot;commit_message&quot; dev
 </code></pre>
+<h2 id="多人合作"><a class="markdownIt-Anchor" href="#多人合作"></a> 多人合作</h2>
+<p>查看远程库信息</p>
+<pre class="highlight"><code class="">git remote -v
+</code></pre>
+<p>推送主分支</p>
+<pre class="highlight"><code class="">git push origin master
+</code></pre>
+<p>推送其他分支</p>
+<pre class="highlight"><code class="">git push origin dev_name
+</code></pre>
+<p>创建本地分支</p>
+<pre class="highlight"><code class="">git checkout -b dev_name origin/dev_name
+</code></pre>
+<p>指定本地分支与远程分支的链接</p>
+<pre class="highlight"><code class="">git branch --set-upstream-to=origin/dev_name
+</code></pre>
+<p>获取远程库内容</p>
+<pre class="highlight"><code class="">git pull  
+</code></pre>
+<p>解决冲突后commit，再上传</p>
+<pre class="highlight"><code class="">git push origin dev_name
+</code></pre>
+<h2 id="标签管理"><a class="markdownIt-Anchor" href="#标签管理"></a> 标签管理</h2>
+<p>创建标签</p>
+<pre class="highlight"><code class="">git tag tag_name
+</code></pre>
+<p>给指定提交打标签</p>
+<pre class="highlight"><code class="">git tag tag_name commit-id
+</code></pre>
+<p>创建带说明的标签</p>
+<pre class="highlight"><code class="">git tag -a tag_name -m &quot;message&quot; commit-id
+</code></pre>
+<p>查看标签说明</p>
+<pre class="highlight"><code class="">git show tag_name
+</code></pre>
+<p>删除标签</p>
+<pre class="highlight"><code class="">git tag -d tag_name
+</code></pre>
+<p>推送标签</p>
+<pre class="highlight"><code class="">git push origin tag_name
+</code></pre>
+<p>一次性推送所有标签</p>
+<pre class="highlight"><code class="">git push origin --tags
+</code></pre>
+<p>删除标签（本地）</p>
+<pre class="highlight"><code class="">git tag -d tag_name
+</code></pre>
+<p>删除远程标签</p>
+<pre class="highlight"><code class="">git push origin :refs/tags/tag_name
+</code></pre>
+<h2 id="自定义git"><a class="markdownIt-Anchor" href="#自定义git"></a> 自定义Git</h2>
+<p>使git显示不同颜色</p>
+<pre class="highlight"><code class="">git config --global color.ui true
+</code></pre>
+<p>忽略某些文件时，需要编写.gitignore	<br>
+强制添加被忽略文件</p>
+<pre class="highlight"><code class="">git add -f file
+</code></pre>
+<p>检查某个文件符合被忽略要求</p>
+<pre class="highlight"><code class="">git check-ignore -v file
+</code></pre>
+<p>配置命令别名</p>
+<pre class="highlight"><code class="">git config --global alias.别名 命令
+</code></pre>
 ]]></content>
       
         <categories>
