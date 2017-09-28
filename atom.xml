@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yov.oschina.io/"/>
-  <updated>2017-09-26T13:16:02.921Z</updated>
+  <updated>2017-09-28T09:52:04.315Z</updated>
   <id>http://yov.oschina.io/</id>
   
   <author>
@@ -17,13 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>TestNG</title>
-    <link href="http://yov.oschina.io/article/%E6%B5%8B%E8%AF%95/TestNG/"/>
-    <id>http://yov.oschina.io/article/测试/TestNG/</id>
-    <published>2017-09-26T12:41:55.450Z</published>
-    <updated>2017-09-26T13:16:02.921Z</updated>
+    <title>Docker实现mysql容器启动后自动建库</title>
+    <link href="http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%E5%AE%9E%E7%8E%B0mysql%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E8%87%AA%E5%8A%A8%E5%BB%BA%E5%BA%93/"/>
+    <id>http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/</id>
+    <published>2017-09-28T09:22:57.955Z</published>
+    <updated>2017-09-28T09:52:04.315Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="testng简介"><a class="markdownIt-Anchor" href="#testng简介"></a> TestNG简介</h2><p>TestNG是一个用来简化广泛的测试需求的测试框架，从单元测试到集成测试。</p><h2 id="annotation"><a class="markdownIt-Anchor" href="#annotation"></a> Annotation</h2><table><thead><tr><th>Annotation</th><th style="text-align:right">作用</th></tr></thead><tbody><tr><td><code>@BeforeSuite</code></td><td style="text-align:right">被注释的方法将在所有测试运行前运行</td></tr><tr><td><code>@AfterSuite</code></td><td style="text-align:right">被注释的方法将在所有测试运行后运行</td></tr><tr><td><code>@BeforeTest</code></td><td style="text-align:right">被注释的方法将在测试运行前运行</td></tr><tr><td><code>@AfterTest</code></td><td style="text-align:right">被注释的方法将在测试运行后运行</td></tr><tr><td><code>@BeforeGroups</code></td><td style="text-align:right">被注释的方法将在gourp中方法运行前运行</td></tr><tr><td><code>@AfterGroups</code></td><td style="text-align:right">被注释的方法将在gourp中方法运行后运行</td></tr><tr><td><code>@BeforeClass</code></td><td style="text-align:right">被注释的方法将在当前类的第一个方法运行前运行</td></tr><tr><td><code>@AfterClass</code></td><td style="text-align:right">被注释的方法将在当前类的所有方法运行后运行</td></tr><tr><td><code>@BeforeMethod</code></td><td style="text-align:right">被注释的方法将在每一个方法运行前运行</td></tr><tr><td><code>@AfterMethod</code></td><td style="text-align:right">被注释的方法将在每一个方法运行后运行</td></tr><tr><td><code>@DataProvider</code></td><td style="text-align:right">被注释的方法用于为其他方法提供数据</td></tr><tr><td><code>@Factory</code></td><td style="text-align:right">被标记的方法作为一个返回对象的工厂，这些对象将被TestNG作为测试类，该返回必须返回Object[]</td></tr><tr><td><code>@Parameters</code></td><td style="text-align:right">传递参数给测试方法</td></tr></tbody></table><h3 id="test-gourps"><a class="markdownIt-Anchor" href="#test-gourps"></a> Test gourps</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2><p>通过Dockerfile创建一个mysql镜像，该镜像生成的容器在启动过程会导入sql文件并执行。</p><h2 id="执行步骤"><a class="markdownIt-Anchor" href="#执行步骤"></a> 执行步骤</h2><h3 id="创建dockerfile"><a class="markdownIt-Anchor" href="#创建dockerfile"></a> 创建Dockerfile</h3><pre><code>$ vim Dockerfile</code></pre><pre class="highlight"><code class=""># 指定基础镜像，选用docker官方最新mysql镜像FROM docker.io/mysql:latest# 环境变量设置，设置mysql登陆时不需密码ENV MYSQL_ALLOW_EMPTY_PASSWORD yes# 复制文件到容器中，要复制的文件有：执行脚本和sql文件COPY setup.sh /mysql/setup.shCOPY schema.sql /mysql/schema.sqlCOPY privileges.sql /mysql/privileges.sql# 容器启动命令启动脚本CMD [&quot;sh&quot;, &quot;/mysql/setup.sh&quot;]</code></pre><h3 id="创建privilegessql用于修改mysql权限"><a class="markdownIt-Anchor" href="#创建privilegessql用于修改mysql权限"></a> 创建privileges.sql用于修改mysql权限</h3><pre><code>$vim privileges.sql</code></pre><pre class="highlight"><code class="">use mysql; select host, user from user; -- 新建用户,用户名为docker，密码为123456： create user docker identified by '123456'; -- 将数据库docker_mysql的权限授权用户docker，密码为123456： grant all on docker_mysql.* to docker@'%' identified by '123456' with grant option; -- mysql新设置用户或权限后需要刷新系统权限否则可能会出现拒绝访问： flush privileges;</code></pre><h3 id="创建shcemasql导入数据"><a class="markdownIt-Anchor" href="#创建shcemasql导入数据"></a> 创建shcema.sql导入数据</h3><pre><code>$ vim shcema.sql</code></pre><pre class="highlight"><code class="">-- 创建数据库 create database `docker_mysql` default character set utf8 collate utf8_general_ci; -- 切换到docker_mysql数据库use docker_mysql; -- 建表 DROP TABLE IF EXISTS `user`; CREATE TABLE `user` ( `id` bigint(20) NOT NULL, `created_at` bigint(40) DEFAULT NULL, `last_modified` bigint(40) DEFAULT NULL, `email` varchar(255) DEFAULT NULL, `first_name` varchar(255) DEFAULT NULL, `last_name` varchar(255) DEFAULT NULL, `username` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1; -- 插入数据 INSERT INTO `user` (`id`, `created_at`, `last_modified`, `email`, `first_name`, `last_name`, `username`) VALUES    (0,1490257904,1490257904,'john.doe@example.com','John','Doe','user');</code></pre><h3 id="创建容器启动脚本setupsh"><a class="markdownIt-Anchor" href="#创建容器启动脚本setupsh"></a> <a href="http://xn--setup-ll6h16am3gk0g32p1viptzs70f.sh">创建容器启动脚本setup.sh</a></h3><pre><code>$ vim setup.sh</code></pre><pre class="highlight"><code class=""># !/bin/bash set -e # 查看mysql服务的状态，方便调试echo `service mysql status` echo '1.启动mysql' # 启动mysql service mysql start # 使进程休眠sleep 3 echo `service mysql status` echo '2.开始导入数据' #导入sql文件mysql &lt; /mysql/schema.sql echo '3.导入数据完毕....' sleep 3 echo `service mysql status` # 由于最开始设置mysql为免密登陆，为了安全，在此设置mysql密码 echo '4.开始修改密码....' # 导入修改mysql权限设置的文件mysql &lt; /mysql/privileges.sql echo '5.修改密码完毕....' #sleep 3 echo `service mysql status` echo 'mysql容器启动完毕,且数据导入成功' </code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#概述&quot;&gt;&lt;/a&gt; 概述&lt;/h2&gt;
+&lt;p&gt;通过Dockerfile创建一个mysql镜像，该镜像生成的容器在启动过程会导入sql文件并执行。&lt;/p&gt;
+&lt;h2 id=&quot;执行步骤&quot;&gt;&lt;a c
+      
+    
+    </summary>
+    
+      <category term="容器" scheme="http://yov.oschina.io/categories/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="Docker" scheme="http://yov.oschina.io/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用TestNG进行单元测试</title>
+    <link href="http://yov.oschina.io/article/%E6%B5%8B%E8%AF%95/%E5%88%A9%E7%94%A8TestNG%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yov.oschina.io/article/测试/利用TestNG进行单元测试/</id>
+    <published>2017-09-26T12:41:55.450Z</published>
+    <updated>2017-09-28T09:23:17.463Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="testng简介"><a class="markdownIt-Anchor" href="#testng简介"></a> TestNG简介</h2><p>TestNG是一个用来简化广泛的测试需求的测试框架，从单元测试到集成测试。</p><h2 id="annotation"><a class="markdownIt-Anchor" href="#annotation"></a> Annotation</h2><table><thead><tr><th>Annotation</th><th style="text-align:right">作用</th></tr></thead><tbody><tr><td><code>@BeforeSuite</code></td><td style="text-align:right">被注释的方法将在所有测试运行前运行</td></tr><tr><td><code>@AfterSuite</code></td><td style="text-align:right">被注释的方法将在所有测试运行后运行</td></tr><tr><td><code>@BeforeTest</code></td><td style="text-align:right">被注释的方法将在测试运行前运行</td></tr><tr><td><code>@AfterTest</code></td><td style="text-align:right">被注释的方法将在测试运行后运行</td></tr><tr><td><code>@BeforeGroups</code></td><td style="text-align:right">被注释的方法将在gourp中方法运行前运行</td></tr><tr><td><code>@AfterGroups</code></td><td style="text-align:right">被注释的方法将在gourp中方法运行后运行</td></tr><tr><td><code>@BeforeClass</code></td><td style="text-align:right">被注释的方法将在当前类的第一个方法运行前运行</td></tr><tr><td><code>@AfterClass</code></td><td style="text-align:right">被注释的方法将在当前类的所有方法运行后运行</td></tr><tr><td><code>@BeforeMethod</code></td><td style="text-align:right">被注释的方法将在每一个方法运行前运行</td></tr><tr><td><code>@AfterMethod</code></td><td style="text-align:right">被注释的方法将在每一个方法运行后运行</td></tr><tr><td><code>@DataProvider</code></td><td style="text-align:right">被注释的方法用于为其他方法提供数据</td></tr><tr><td><code>@Factory</code></td><td style="text-align:right">被标记的方法作为一个返回对象的工厂，这些对象将被TestNG作为测试类，该返回必须返回Object[]</td></tr><tr><td><code>@Parameters</code></td><td style="text-align:right">传递参数给测试方法</td></tr></tbody></table><h3 id="使用testng进行单元测试"><a class="markdownIt-Anchor" href="#使用testng进行单元测试"></a> 使用TestNG进行单元测试</h3>]]></content>
     
     <summary type="html">
     

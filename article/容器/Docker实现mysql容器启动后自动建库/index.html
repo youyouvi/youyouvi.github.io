@@ -39,7 +39,7 @@
     
     <title>
         
-            TestNG | 
+            Docker实现mysql容器启动后自动建库 | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,TestNG">
+    <meta name="keywords" content="Blog,Docker">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="TestNG | Ember">
+    <meta property="og:title" content="Docker实现mysql容器启动后自动建库 | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="TestNG"> 
+    <meta property="og:article:tag" content="Docker"> 
 
     
-        <meta property="article:published_time" content="Tue Sep 26 2017 20:41:55 GMT+0800" />
-        <meta property="article:modified_time" content="Tue Sep 26 2017 21:16:02 GMT+0800" />
+        <meta property="article:published_time" content="Thu Sep 28 2017 17:22:57 GMT+0800" />
+        <meta property="article:modified_time" content="Thu Sep 28 2017 17:52:04 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="TestNG | Ember">
+    <meta name="twitter:title" content="Docker实现mysql容器启动后自动建库 | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/article/测试/TestNG/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/article/测试/TestNG/index.html",
-    "headline": "TestNG",
-    "datePublished": "Tue Sep 26 2017 20:41:55 GMT+0800",
-    "dateModified": "Tue Sep 26 2017 21:16:02 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/index.html",
+    "headline": "Docker实现mysql容器启动后自动建库",
+    "datePublished": "Thu Sep 28 2017 17:22:57 GMT+0800",
+    "dateModified": "Thu Sep 28 2017 17:52:04 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",TestNGBlog",
+    "keywords": ",DockerBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#testng简介"><span class="post-toc-number">1.</span> <span class="post-toc-text"> TestNG简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#annotation"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Annotation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#test-gourps"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> Test gourps</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 执行步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建dockerfile"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 创建Dockerfile</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建privilegessql用于修改mysql权限"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 创建privileges.sql用于修改mysql权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建shcemasql导入数据"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 创建shcema.sql导入数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建容器启动脚本setupsh"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 创建容器启动脚本setup.sh</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                TestNG
+                Docker实现mysql容器启动后自动建库
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 26</span>
+        <span>2017 - 09 - 28</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACZUlEQVR42u3aQXLDIAwF0Nz/0u0BOo6/JCBO57HydOKExwLRj14//3q88PDw8PDw8PDwHsZ7xSP66otPJt/29++9ueHh4eGd4VUn/SqO9+DqYt3MDQ8PD+8g72paV8/vf+xy446Xozo3PDw8vG/hXX2+MKHgt/Dw8PC+nZcjk2KQs/Hw8PCexqselHNAHgR/OGvBw8PDi3mTgGD389H7PTw8PLyAt2qzrhaDVcXjpukKDw8PbwOvGhmsim6TNoLeAR0PDw9vNy8/4K4tAHlom4fFeHh4eGd41VAgeTcvBvm7SZSMh4eHd4aXHJGrG/3adqtygcHDw8P7EC8/yObxa7XtICoDeHh4eMd5vSi2WjbyifZiDjw8PLyTvOo//NXnPGLoXYwVOiPw8PDwFvF6F1STeLcXRoyarvDw8PCW8qoxQXVRqtddeaDczFrw8PDwxrwEUL68j6ebX3olVDw8PLwzvKRI9A7ZecGoBhk3i4KHh4e3mZcfVSdv5a1aeTkpxLh4eHh4G3jzw/SoTWpRqIGHh4d3kpdPa+2Bu9c0UI5x8fDw8Lbxkm26N8X5EhRiCzw8PLwH8Hrx7qS09OJdPDw8vPO8SVvV6MpqMMphBB4eHt6YVx3VJUhasqpXazdlCQ8PD28zr7cF97bvydKMmq7w8PDwNvB6xaD6w8lFV7VpAA8PD++zvPkGnVyJTY7pW5qu8PDw8I7w3k+01y4wB+Ph4eE9mVfd+vODdbWlYGPdw8PDw1sURuQhRe+6a9KAhYeHh3eSt+oSa9IukFy2RYuOh4eHt5n3/wYeHh4eHh4eHt4Dxi9D19gkSdAKbgAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADgElEQVR42u3aMXIbQQwEQP7/03aqKpvSDBZ7YtAXqagTj9sMoAHw+uP6cr0Q4MCBAwcOHDhw4MDxwRyv+Pr3/q+v/Ocxb97h379Kfvvu/nd3JmfBgQMHDhz3OH4oRaOPnsC9yivhyM+CAwcOHDhuc+SPn5W07z9iURrj4h19JThw4MCB41c5ZuX2+2PMglwb53DgwIEDx2dytMEsD1ozLBw4cODA8ckcRUMtfiVnTVDy93+oV4oDBw4cOJYWGj7551/Y78CBAwcOHEvXrP2XhLTzyFecAgcOHDhwrHLM1tdmCwqzyJc8fTYGw4EDBw4cNzjatloS8PIx1W6AnBVdHDhw4MDxDEdb5JIxUh7Gtop9FB1x4MCBA8cjHLMBz6whmJTtNsjl6w44cODAgeMGx0nRaoNT3i7MQ+DJ0AsHDhw4cOxyFAXpwrJCHghnw6corOLAgQMHjlWO2WBpRtAW1/NyGwHhwIEDB47LHLNo146RZuOu9h+C6Ik4cODAgWOVIxnqJAtwsxB10nacNShx4MCBA8eTHMljZhEuRzwJjQsRDgcOHDhwXOZoX9labti9cxjhcODAgQPHEkf+ev7bNiK2zce8YOPAgQMHjmc4Tlp+dWSKP/Tszrr1iQMHDhw4LnDkR0rWBdojff+3JwX1qDmIAwcOHDhGHPniQgs3i4htXEzKMw4cOHDgeJ7jfFy0tYiwFfmKgRkOHDhw4FjlaI/Rtg53S2+7snBlcxAHDhw4cJSZpS14+ePz386i4wwaBw4cOHDc5jhvz+XHm4212lbmD2fEgQMHDhyrHOfDpDbgtXFr1jQsmpI4cODAgWOVIw9UCUQ7XqrjVkxQ3I8DBw4cOFY58uI6Gzu1gW05np1P4XDgwIEDx+WFhvzDzWJe8qzZAsTb98eBAwcOHNc42g99fozzJ7ZfTN0rxYEDBw4cqxyzIteuMuTrC/n752t2OHDgwIFjl6O92iW2k4Kdl9K2KYkDBw4cOO5xtMWpXSNo24VbMbIYpOHAgQMHjgsc7dhmFtKSsv1MjMSBAwcOHM9wtPGsXadLmE6i2vArwYEDBw4cH8CxO2o6OXAeJnHgwIEDx2dybJW3dqA1ez36JwAHDhw4cFzjyCPZSVRbWEGI74m+Whw4cODAcYHjfKEhWUFIyNpod0KGAwcOHDhucLhw4MCBAwcOHDhw4MDxYddfG00v4Mbm3MkAAAAASUVORK5CYII=">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/TestNG/">TestNG</a>
+        <a class="post_tag-link" href="/tags/Docker/">Docker</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TestNG&url=http://yov.oschina.io/article/测试/TestNG/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Docker实现mysql容器启动后自动建库&url=http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/测试/TestNG/index.html&title=TestNG" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/index.html&title=Docker实现mysql容器启动后自动建库" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=TestNG&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/测试/TestNG/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Docker实现mysql容器启动后自动建库&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,72 +510,100 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="testng简介"><a class="markdownIt-Anchor" href="#testng简介"></a> TestNG简介</h2>
-<p>TestNG是一个用来简化广泛的测试需求的测试框架，从单元测试到集成测试。</p>
-<h2 id="annotation"><a class="markdownIt-Anchor" href="#annotation"></a> Annotation</h2>
-<table>
-<thead>
-<tr>
-<th>Annotation</th>
-<th style="text-align:right">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>@BeforeSuite</code></td>
-<td style="text-align:right">被注释的方法将在所有测试运行前运行</td>
-</tr>
-<tr>
-<td><code>@AfterSuite</code></td>
-<td style="text-align:right">被注释的方法将在所有测试运行后运行</td>
-</tr>
-<tr>
-<td><code>@BeforeTest</code></td>
-<td style="text-align:right">被注释的方法将在测试运行前运行</td>
-</tr>
-<tr>
-<td><code>@AfterTest</code></td>
-<td style="text-align:right">被注释的方法将在测试运行后运行</td>
-</tr>
-<tr>
-<td><code>@BeforeGroups</code></td>
-<td style="text-align:right">被注释的方法将在gourp中方法运行前运行</td>
-</tr>
-<tr>
-<td><code>@AfterGroups</code></td>
-<td style="text-align:right">被注释的方法将在gourp中方法运行后运行</td>
-</tr>
-<tr>
-<td><code>@BeforeClass</code></td>
-<td style="text-align:right">被注释的方法将在当前类的第一个方法运行前运行</td>
-</tr>
-<tr>
-<td><code>@AfterClass</code></td>
-<td style="text-align:right">被注释的方法将在当前类的所有方法运行后运行</td>
-</tr>
-<tr>
-<td><code>@BeforeMethod</code></td>
-<td style="text-align:right">被注释的方法将在每一个方法运行前运行</td>
-</tr>
-<tr>
-<td><code>@AfterMethod</code></td>
-<td style="text-align:right">被注释的方法将在每一个方法运行后运行</td>
-</tr>
-<tr>
-<td><code>@DataProvider</code></td>
-<td style="text-align:right">被注释的方法用于为其他方法提供数据</td>
-</tr>
-<tr>
-<td><code>@Factory</code></td>
-<td style="text-align:right">被标记的方法作为一个返回对象的工厂，这些对象将被TestNG作为测试类，该返回必须返回Object[]</td>
-</tr>
-<tr>
-<td><code>@Parameters</code></td>
-<td style="text-align:right">传递参数给测试方法</td>
-</tr>
-</tbody>
-</table>
-<h3 id="test-gourps"><a class="markdownIt-Anchor" href="#test-gourps"></a> Test gourps</h3>
+        <h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
+<p>通过Dockerfile创建一个mysql镜像，该镜像生成的容器在启动过程会导入sql文件并执行。</p>
+<h2 id="执行步骤"><a class="markdownIt-Anchor" href="#执行步骤"></a> 执行步骤</h2>
+<h3 id="创建dockerfile"><a class="markdownIt-Anchor" href="#创建dockerfile"></a> 创建Dockerfile</h3>
+<pre><code>$ vim Dockerfile
+</code></pre>
+<pre class="highlight"><code class=""># 指定基础镜像，选用docker官方最新mysql镜像
+FROM docker.io/mysql:latest
+
+# 环境变量设置，设置mysql登陆时不需密码
+ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
+
+# 复制文件到容器中，要复制的文件有：执行脚本和sql文件
+COPY setup.sh /mysql/setup.sh
+COPY schema.sql /mysql/schema.sql
+COPY privileges.sql /mysql/privileges.sql
+
+# 容器启动命令启动脚本
+CMD [&quot;sh&quot;, &quot;/mysql/setup.sh&quot;]
+</code></pre>
+<h3 id="创建privilegessql用于修改mysql权限"><a class="markdownIt-Anchor" href="#创建privilegessql用于修改mysql权限"></a> 创建privileges.sql用于修改mysql权限</h3>
+<pre><code>$vim privileges.sql
+</code></pre>
+<pre class="highlight"><code class="">use mysql; 
+select host, user from user; 
+-- 新建用户,用户名为docker，密码为123456： 
+create user docker identified by '123456'; 
+-- 将数据库docker_mysql的权限授权用户docker，密码为123456： grant all on docker_mysql.* to docker@'%' identified by '123456' with grant option; 
+-- mysql新设置用户或权限后需要刷新系统权限否则可能会出现拒绝访问： 
+flush privileges;
+</code></pre>
+<h3 id="创建shcemasql导入数据"><a class="markdownIt-Anchor" href="#创建shcemasql导入数据"></a> 创建shcema.sql导入数据</h3>
+<pre><code>$ vim shcema.sql
+</code></pre>
+<pre class="highlight"><code class="">-- 创建数据库 
+create database `docker_mysql` default character set utf8 collate utf8_general_ci; 
+-- 切换到docker_mysql数据库
+use docker_mysql; 
+-- 建表 
+DROP TABLE IF EXISTS `user`; 
+
+CREATE TABLE `user` ( 
+	`id` bigint(20) NOT NULL, 
+	`created_at` bigint(40) DEFAULT NULL, 
+	`last_modified` bigint(40) DEFAULT NULL, 
+	`email` varchar(255) DEFAULT NULL, 
+	`first_name` varchar(255) DEFAULT NULL, 
+	`last_name` varchar(255) DEFAULT NULL, 
+	`username` varchar(255) DEFAULT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+-- 插入数据 
+INSERT INTO `user` (
+	`id`, `created_at`, 
+	`last_modified`, 
+	`email`, 
+	`first_name`, 
+	`last_name`, 
+	`username`) 
+VALUES 
+   (0,1490257904,1490257904,'john.doe@example.com','John','Doe','user');
+</code></pre>
+<h3 id="创建容器启动脚本setupsh"><a class="markdownIt-Anchor" href="#创建容器启动脚本setupsh"></a> <a href="http://xn--setup-ll6h16am3gk0g32p1viptzs70f.sh">创建容器启动脚本setup.sh</a></h3>
+<pre><code>$ vim setup.sh
+</code></pre>
+<pre class="highlight"><code class=""># !/bin/bash 
+set -e 
+
+# 查看mysql服务的状态，方便调试
+echo `service mysql status` 
+
+echo '1.启动mysql' 
+# 启动mysql 
+service mysql start 
+# 使进程休眠
+sleep 3 
+echo `service mysql status` 
+
+echo '2.开始导入数据' 
+#导入sql文件
+mysql &lt; /mysql/schema.sql 
+echo '3.导入数据完毕....' 
+
+sleep 3 
+echo `service mysql status` 
+
+# 由于最开始设置mysql为免密登陆，为了安全，在此设置mysql密码 
+echo '4.开始修改密码....' 
+# 导入修改mysql权限设置的文件
+mysql &lt; /mysql/privileges.sql 
+echo '5.修改密码完毕....' 
+
+#sleep 3 
+echo `service mysql status` 
+echo 'mysql容器启动完毕,且数据导入成功' 
+</code></pre>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -584,7 +612,7 @@
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/测试/TestNG/">http://yov.oschina.io/article/测试/TestNG/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/">http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/</a>
                     </p>
                 </blockquote>
         
@@ -638,7 +666,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/article/工具/Git使用(Linux)/" id="post_nav-older" class="next-content">
+        <a href="/article/测试/利用TestNG进行单元测试/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -730,7 +758,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">11</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">12</span></a>
             </ul>
         </li>
         
@@ -748,7 +776,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">4</span></a>
             </ul>
         </li>
         
@@ -814,7 +842,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">11</span>
+                <span class="sidebar-badge">12</span>
             </a>
         </li>
         
