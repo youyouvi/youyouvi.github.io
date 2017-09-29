@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Thu Sep 28 2017 17:22:57 GMT+0800" />
-        <meta property="article:modified_time" content="Fri Sep 29 2017 09:18:04 GMT+0800" />
+        <meta property="article:modified_time" content="Fri Sep 29 2017 10:25:44 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/index.html",
     "headline": "Docker实现mysql容器启动后自动建库",
     "datePublished": "Thu Sep 28 2017 17:22:57 GMT+0800",
-    "dateModified": "Fri Sep 29 2017 09:18:04 GMT+0800",
+    "dateModified": "Fri Sep 29 2017 10:25:44 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 执行步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建dockerfile"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 创建Dockerfile</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建privilegessql用于修改mysql权限"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 创建privileges.sql用于修改mysql权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建datasql导入数据"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 创建data.sql导入数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建容器启动脚本setupsh"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 创建容器启动脚本setup.sh</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建镜像"><span class="post-toc-number">2.5.</span> <span class="post-toc-text"> 创建镜像</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 验证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动test_mysql镜像生成容器"><span class="post-toc-number">3.1.</span> <span class="post-toc-text"> 启动test_mysql镜像，生成容器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看容器日志"><span class="post-toc-number">3.2.</span> <span class="post-toc-text"> 查看容器日志</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 执行步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建dockerfile"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 创建Dockerfile</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建privilegessql用于修改mysql权限"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 创建privileges.sql用于修改mysql权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建datasql导入数据"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 创建data.sql导入数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建容器启动脚本setupsh"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 创建容器启动脚本setup.sh</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建镜像"><span class="post-toc-number">2.5.</span> <span class="post-toc-text"> 创建镜像</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 验证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动mysql929镜像生成容器"><span class="post-toc-number">3.1.</span> <span class="post-toc-text"> 启动mysql:9.29镜像，生成容器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看容器日志"><span class="post-toc-number">3.2.</span> <span class="post-toc-text"> 查看容器日志</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入容器进行验证"><span class="post-toc-number">3.3.</span> <span class="post-toc-text"> 进入容器进行验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#验证重启mysql容器数据库初始化"><span class="post-toc-number">3.4.</span> <span class="post-toc-text"> 验证重启mysql容器，数据库初始化</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -511,7 +511,11 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
-<p>通过Dockerfile创建一个mysql镜像，该镜像生成的容器在启动过程会导入sql文件并执行。</p>
+<p>通过Dockerfile创建一个mysql镜像,该镜像具有如下功能：</p>
+<blockquote>
+<p>mysql容器启动时，会自动执行指定的sql文件;<br>
+每次启动该容器，数据都进行初始化，删除所有的修改。</p>
+</blockquote>
 <h2 id="执行步骤"><a class="markdownIt-Anchor" href="#执行步骤"></a> 执行步骤</h2>
 <h3 id="创建dockerfile"><a class="markdownIt-Anchor" href="#创建dockerfile"></a> 创建Dockerfile</h3>
 <pre><code>$ vim Dockerfile
@@ -522,7 +526,7 @@ FROM docker.io/mysql:latest
 # 环境变量设置，设置mysql登陆时不需密码
 ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
 
-# 复制文件到容器中，要复制的文件有：执行脚本和sql文件
+# 复制文件到容器中，要复制的文件有：启动脚本和sql文件
 COPY setup.sh /mysql/setup.sh
 COPY data.sql /mysql/data.sql
 COPY privileges.sql /mysql/privileges.sql
@@ -536,10 +540,11 @@ CMD [&quot;sh&quot;, &quot;/mysql/setup.sh&quot;]
 <pre class="highlight"><code class="">use mysql; 
 
 select host, user from user; 
--- 新建用户,用户名为docker，密码为123456： 
-create user docker identified by '123456'; 
--- 将数据库docker_database的权限授权用户docker，密码为123456： 
+
+-- 将docker_mysql数据库的权限授权给创建的docker用户，密码为123456：
+-- 如果用户docker不存在，则创建用户docker
 grant all on docker_database.* to docker@'%' identified by '123456' with grant option; 
+
 -- mysql新设置用户或权限后需要刷新系统权限否则可能会出现拒绝访问： 
 flush privileges;
 </code></pre>
@@ -547,6 +552,7 @@ flush privileges;
 <pre><code>$ vim data.sql
 </code></pre>
 <pre class="highlight"><code class="">-- 创建数据库 
+DROP database IF EXISTS `docker_database`;
 create database `docker_database` default character set utf8 collate utf8_general_ci; 
 -- 切换到test_data数据库
 use docker_database; 
@@ -564,7 +570,7 @@ INSERT INTO `user` (`id`,`name`,`age` )
 VALUES 
    (0,'Tom',18);
 </code></pre>
-<h3 id="创建容器启动脚本setupsh"><a class="markdownIt-Anchor" href="#创建容器启动脚本setupsh"></a> <a href="http://xn--setup-ll6h16am3gk0g32p1viptzs70f.sh">创建容器启动脚本setup.sh</a></h3>
+<h3 id="创建容器启动脚本setupsh"><a class="markdownIt-Anchor" href="#创建容器启动脚本setupsh"></a> 创建容器启动脚本<code>setup.sh</code></h3>
 <pre><code>$ vim setup.sh
 </code></pre>
 <pre class="highlight"><code class=""># !/bin/bash 
@@ -599,11 +605,11 @@ echo `service mysql status`
 echo 'mysql容器启动完毕,且数据导入成功' 
 </code></pre>
 <h3 id="创建镜像"><a class="markdownIt-Anchor" href="#创建镜像"></a> 创建镜像</h3>
-<p>创建镜像并命名为test_mysql</p>
+<p>创建镜像并命名为mysql:9.29</p>
 <pre><code>$ docker build -t mysql:9.29 .
 </code></pre>
 <h2 id="验证"><a class="markdownIt-Anchor" href="#验证"></a> 验证</h2>
-<h3 id="启动test_mysql镜像生成容器"><a class="markdownIt-Anchor" href="#启动test_mysql镜像生成容器"></a> 启动test_mysql镜像，生成容器</h3>
+<h3 id="启动mysql929镜像生成容器"><a class="markdownIt-Anchor" href="#启动mysql929镜像生成容器"></a> 启动mysql:9.29镜像，生成容器</h3>
 <pre><code>$ docker run --name sql -d -p 23306:3306 mysql:9.29
 6da21b87a0a53b247f0d249366433d04a632ede5521bd36650164180448a5e41
 </code></pre>
@@ -640,6 +646,66 @@ localhost	root
 MySQL Community Server 5.7.19 is running.
 mysql容器启动完毕,且数据导入成功
 </code></pre>
+<p>容器启动过程与setup.sh中编写的步骤完全一致。</p>
+<h3 id="进入容器进行验证"><a class="markdownIt-Anchor" href="#进入容器进行验证"></a> 进入容器进行验证</h3>
+<pre><code>$ docker exec -it sql /bin/bash 
+</code></pre>
+<pre class="highlight"><code class="">	root@6da21b87a0a5:/# mysql -u docker -p 
+	Enter password:
+	mysql&gt; use docker_database;
+	mysql&gt; show tables;
+	+---------------------------+
+	| Tables_in_docker_database |
+	+---------------------------+
+	| person                    |
+	+---------------------------+
+	1 row in set (0.00 sec)
+	mysql&gt; select * from person;
+	+----+------+------+
+	| id | name | age  |
+	+----+------+------+
+	|  0 | Tom  |   18 |
+	+----+------+------+
+	1 row in set (0.00 sec)
+</code></pre>
+<h3 id="验证重启mysql容器数据库初始化"><a class="markdownIt-Anchor" href="#验证重启mysql容器数据库初始化"></a> 验证重启mysql容器，数据库初始化</h3>
+<p>插入数据</p>
+<pre><code>mysql&gt; insert into person(id ,name ,age)values(1,'Jane',17);
+Query OK, 1 row affected (0.06 sec)
+</code></pre>
+<pre class="highlight"><code class="">	mysql&gt; select * from person;                                
+	+----+------+------+
+	| id | name | age  |
+	+----+------+------+
+	|  0 | Tom  |   18 |
+	|  1 | Jane |   17 |
+	+----+------+------+
+	2 rows in set (0.00 sec)
+</code></pre>
+<p>重新启动容器</p>
+<pre><code>$ docker stop sql
+$ docker start sql
+$ docker exec -it sql /bin/bash 
+</code></pre>
+<pre class="highlight"><code class="">	root@6da21b87a0a5:/# mysql -u docker -p 
+	Enter password:
+	mysql&gt; use docker_database;
+	mysql&gt; show tables;
+	+---------------------------+
+	| Tables_in_docker_database |
+	+---------------------------+
+	| person                    |
+	+---------------------------+
+	1 row in set (0.00 sec)
+	mysql&gt; select * from person;
+	+----+------+------+
+	| id | name | age  |
+	+----+------+------+
+	|  0 | Tom  |   18 |
+	+----+------+------+
+	1 row in set (0.00 sec)
+</code></pre>
+<p>重启容器后，数据初始化。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">

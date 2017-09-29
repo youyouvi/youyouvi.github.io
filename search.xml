@@ -6,7 +6,11 @@
       <title><![CDATA[Docker实现mysql容器启动后自动建库]]></title>
       <url>/article/%E5%AE%B9%E5%99%A8/Docker%E5%AE%9E%E7%8E%B0mysql%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E8%87%AA%E5%8A%A8%E5%BB%BA%E5%BA%93/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
-<p>通过Dockerfile创建一个mysql镜像，该镜像生成的容器在启动过程会导入sql文件并执行。</p>
+<p>通过Dockerfile创建一个mysql镜像,该镜像具有如下功能：</p>
+<blockquote>
+<p>mysql容器启动时，会自动执行指定的sql文件;<br>
+每次启动该容器，数据都进行初始化，删除所有的修改。</p>
+</blockquote>
 <h2 id="执行步骤"><a class="markdownIt-Anchor" href="#执行步骤"></a> 执行步骤</h2>
 <h3 id="创建dockerfile"><a class="markdownIt-Anchor" href="#创建dockerfile"></a> 创建Dockerfile</h3>
 <pre><code>$ vim Dockerfile
@@ -17,7 +21,7 @@ FROM docker.io/mysql:latest
 # 环境变量设置，设置mysql登陆时不需密码
 ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
 
-# 复制文件到容器中，要复制的文件有：执行脚本和sql文件
+# 复制文件到容器中，要复制的文件有：启动脚本和sql文件
 COPY setup.sh /mysql/setup.sh
 COPY data.sql /mysql/data.sql
 COPY privileges.sql /mysql/privileges.sql
@@ -31,10 +35,11 @@ CMD [&quot;sh&quot;, &quot;/mysql/setup.sh&quot;]
 <pre class="highlight"><code class="">use mysql; 
 
 select host, user from user; 
--- 新建用户,用户名为docker，密码为123456： 
-create user docker identified by '123456'; 
--- 将数据库docker_database的权限授权用户docker，密码为123456： 
+
+-- 将docker_mysql数据库的权限授权给创建的docker用户，密码为123456：
+-- 如果用户docker不存在，则创建用户docker
 grant all on docker_database.* to docker@'%' identified by '123456' with grant option; 
+
 -- mysql新设置用户或权限后需要刷新系统权限否则可能会出现拒绝访问： 
 flush privileges;
 </code></pre>
@@ -42,6 +47,7 @@ flush privileges;
 <pre><code>$ vim data.sql
 </code></pre>
 <pre class="highlight"><code class="">-- 创建数据库 
+DROP database IF EXISTS `docker_database`;
 create database `docker_database` default character set utf8 collate utf8_general_ci; 
 -- 切换到test_data数据库
 use docker_database; 
@@ -59,7 +65,7 @@ INSERT INTO `user` (`id`,`name`,`age` )
 VALUES 
    (0,'Tom',18);
 </code></pre>
-<h3 id="创建容器启动脚本setupsh"><a class="markdownIt-Anchor" href="#创建容器启动脚本setupsh"></a> <a href="http://xn--setup-ll6h16am3gk0g32p1viptzs70f.sh">创建容器启动脚本setup.sh</a></h3>
+<h3 id="创建容器启动脚本setupsh"><a class="markdownIt-Anchor" href="#创建容器启动脚本setupsh"></a> 创建容器启动脚本<code>setup.sh</code></h3>
 <pre><code>$ vim setup.sh
 </code></pre>
 <pre class="highlight"><code class=""># !/bin/bash 
@@ -94,11 +100,11 @@ echo `service mysql status`
 echo 'mysql容器启动完毕,且数据导入成功' 
 </code></pre>
 <h3 id="创建镜像"><a class="markdownIt-Anchor" href="#创建镜像"></a> 创建镜像</h3>
-<p>创建镜像并命名为test_mysql</p>
+<p>创建镜像并命名为mysql:9.29</p>
 <pre><code>$ docker build -t mysql:9.29 .
 </code></pre>
 <h2 id="验证"><a class="markdownIt-Anchor" href="#验证"></a> 验证</h2>
-<h3 id="启动test_mysql镜像生成容器"><a class="markdownIt-Anchor" href="#启动test_mysql镜像生成容器"></a> 启动test_mysql镜像，生成容器</h3>
+<h3 id="启动mysql929镜像生成容器"><a class="markdownIt-Anchor" href="#启动mysql929镜像生成容器"></a> 启动mysql:9.29镜像，生成容器</h3>
 <pre><code>$ docker run --name sql -d -p 23306:3306 mysql:9.29
 6da21b87a0a53b247f0d249366433d04a632ede5521bd36650164180448a5e41
 </code></pre>
@@ -135,6 +141,66 @@ localhost	root
 MySQL Community Server 5.7.19 is running.
 mysql容器启动完毕,且数据导入成功
 </code></pre>
+<p>容器启动过程与setup.sh中编写的步骤完全一致。</p>
+<h3 id="进入容器进行验证"><a class="markdownIt-Anchor" href="#进入容器进行验证"></a> 进入容器进行验证</h3>
+<pre><code>$ docker exec -it sql /bin/bash 
+</code></pre>
+<pre class="highlight"><code class="">	root@6da21b87a0a5:/# mysql -u docker -p 
+	Enter password:
+	mysql&gt; use docker_database;
+	mysql&gt; show tables;
+	+---------------------------+
+	| Tables_in_docker_database |
+	+---------------------------+
+	| person                    |
+	+---------------------------+
+	1 row in set (0.00 sec)
+	mysql&gt; select * from person;
+	+----+------+------+
+	| id | name | age  |
+	+----+------+------+
+	|  0 | Tom  |   18 |
+	+----+------+------+
+	1 row in set (0.00 sec)
+</code></pre>
+<h3 id="验证重启mysql容器数据库初始化"><a class="markdownIt-Anchor" href="#验证重启mysql容器数据库初始化"></a> 验证重启mysql容器，数据库初始化</h3>
+<p>插入数据</p>
+<pre><code>mysql&gt; insert into person(id ,name ,age)values(1,'Jane',17);
+Query OK, 1 row affected (0.06 sec)
+</code></pre>
+<pre class="highlight"><code class="">	mysql&gt; select * from person;                                
+	+----+------+------+
+	| id | name | age  |
+	+----+------+------+
+	|  0 | Tom  |   18 |
+	|  1 | Jane |   17 |
+	+----+------+------+
+	2 rows in set (0.00 sec)
+</code></pre>
+<p>重新启动容器</p>
+<pre><code>$ docker stop sql
+$ docker start sql
+$ docker exec -it sql /bin/bash 
+</code></pre>
+<pre class="highlight"><code class="">	root@6da21b87a0a5:/# mysql -u docker -p 
+	Enter password:
+	mysql&gt; use docker_database;
+	mysql&gt; show tables;
+	+---------------------------+
+	| Tables_in_docker_database |
+	+---------------------------+
+	| person                    |
+	+---------------------------+
+	1 row in set (0.00 sec)
+	mysql&gt; select * from person;
+	+----+------+------+
+	| id | name | age  |
+	+----+------+------+
+	|  0 | Tom  |   18 |
+	+----+------+------+
+	1 row in set (0.00 sec)
+</code></pre>
+<p>重启容器后，数据初始化。</p>
 ]]></content>
       
         <categories>
@@ -433,7 +499,7 @@ $ systemctl enable iptables.service  // 设置iptable开机自启动
 <p>(3)安装成功的Docker</p>
 <pre><code>$ docker version
 </code></pre>
-<img src="/2017/09/24/Docker的安装说明/success.png" alt="Docker安装成功">  
+<img src="/article/容器/Docker的安装说明/success.png" alt="Docker安装成功">  
 <p>(4)建立docker用户组，将使用docker的用户加入docker用户组。</p>
 <pre><code>$ groupadd docker
 $ usermod -aG docker $USER
@@ -446,8 +512,8 @@ Environment=”HTTPS_PROXY=http://192.168.13.19:7777”
 Type=notify
 </code></pre>
 <h3 id="docker配置加速器"><a class="markdownIt-Anchor" href="#docker配置加速器"></a> Docker配置加速器</h3>
-<p>国内访问Docker Hub可能有些慢，因此我们可以配置加速器。阿里云提供了<a href="https://cr.console.aliyun.com" target="_blank" rel="external">阿里云加速器</a> 注册用户并且申请加速器后，会获得　<a href="https://xxx.mirror.aliyuncs.com" target="_blank" rel="external">https://xxx.mirror.aliyuncs.com</a> 这样的地址。<br>
-<img src="/2017/09/24/Docker的安装说明/dockerhub.png" alt="Docker加速器"></p>
+<p>国内访问Docker Hub可能有些慢，因此我们可以配置加速器。阿里云提供了<a href="https://cr.console.aliyun.com">阿里云加速器</a> 注册用户并且申请加速器后，会获得　<a href="https://xxx.mirror.aliyuncs.com">https://xxx.mirror.aliyuncs.com</a> 这样的地址。<br>
+<img src="/article/容器/Docker的安装说明/dockerhub.png" alt="Docker加速器"></p>
 <pre><code>$ vim /usr/lib/systemd/system/docker.service
   ExecStart= --registry-mirror=https://xxx.mirror.aliyuncs.com
 $ systemctl daemon-reload  //　重新加载配置
@@ -1320,11 +1386,11 @@ public class Demo {
     <entry>
       <title><![CDATA[Gitee+Hexo搭建个人博客]]></title>
       <url>/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-      <content type="html"><![CDATA[<p><a href="https://gitee.com" target="_blank" rel="external">Gitee</a>: 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>
+      <content type="html"><![CDATA[<p><a href="https://gitee.com">Gitee</a>: 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>
 Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本。</p>
 <h2 id="环境搭建"><a class="markdownIt-Anchor" href="#环境搭建"></a> 环境搭建</h2>
 <h3 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装Node.js</h3>
-<p>Windows用户访问<a href="https://nodejs.org/en" target="_blank" rel="external">Node.js</a>下载Node.js安装包后，直接运行安装即可(node.js下载也很慢，最好翻墙)。安装后，更换下npm的源，否则下载速度着实让人着急。</p>
+<p>Windows用户访问<a href="https://nodejs.org/en">Node.js</a>下载Node.js安装包后，直接运行安装即可(node.js下载也很慢，最好翻墙)。安装后，更换下npm的源，否则下载速度着实让人着急。</p>
 <pre><code>$ npm config set registry http://registry.npm.taobao.org/
 </code></pre>
 <h3 id="hexo安装"><a class="markdownIt-Anchor" href="#hexo安装"></a> Hexo安装</h3>
@@ -1348,16 +1414,16 @@ Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本�
 ├── _config.yml   #全局配置文件
 └── package.json
 </code></pre>
-<p>之后在本地执行如下命令后，即可访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 访问Hexo页面</p>
+<p>之后在本地执行如下命令后，即可访问 <a href="http://localhost:4000">http://localhost:4000</a> 访问Hexo页面</p>
 <pre><code>$ hexo s
 </code></pre>
 <h3 id="git安装"><a class="markdownIt-Anchor" href="#git安装"></a> Git安装</h3>
-<p><a href="https://git-scm.com/downloads" target="_blank" rel="external">Git安装包地址</a>,根据操作系统选择安装包下载后安装即可。</p>
+<p><a href="https://git-scm.com/downloads">Git安装包地址</a>,根据操作系统选择安装包下载后安装即可。</p>
 <h3 id="注册码云账号并创建一个项目"><a class="markdownIt-Anchor" href="#注册码云账号并创建一个项目"></a> 注册码云账号，并创建一个项目</h3>
-<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br><br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br></p>
+<p><img src="/article/博客搭建/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br><br>
+<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br></p>
 <h3 id="获取项目地址"><a class="markdownIt-Anchor" href="#获取项目地址"></a> 获取项目地址</h3>
-<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/get.png" alt="获取项目地址"><br></p>
+<p><img src="/article/博客搭建/Gitee+Hexo搭建个人博客/get.png" alt="获取项目地址"><br></p>
 <h2 id="发布博客"><a class="markdownIt-Anchor" href="#发布博客"></a> 发布博客</h2>
 <h3 id="修改hexo配置文件_configyml"><a class="markdownIt-Anchor" href="#修改hexo配置文件_configyml"></a> 修改Hexo配置文件_config.yml</h3>
 <pre><code>deploy:
@@ -1371,12 +1437,12 @@ $ hexo g --d  #一键部署
 </code></pre>
 <p>此时会弹出一个对话框，提示输入码云的账号密码。部署成功后，登陆码云。此时本地文件夹中出现有一个public文件夹，代表部署成功。</p>
 <h3 id="开启page功能"><a class="markdownIt-Anchor" href="#开启page功能"></a> 开启Page功能</h3>
-<p><img src="/2017/09/22/Gitee+Hexo搭建个人博客/open.png" alt="开启Page功能"><br><br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/start.png" alt="开启Page功能"><br><br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/success.png" alt="博客部署成功"></p>
+<p><img src="/article/博客搭建/Gitee+Hexo搭建个人博客/open.png" alt="开启Page功能"><br><br>
+<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/start.png" alt="开启Page功能"><br><br>
+<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/success.png" alt="博客部署成功"></p>
 <h3 id="访问博客"><a class="markdownIt-Anchor" href="#访问博客"></a> 访问博客</h3>
 <p>在浏览器地址栏输入上图中的博客地址，即可访问，效果图如下：<br>
-<img src="/2017/09/22/Gitee+Hexo搭建个人博客/blog.png" alt="我的博客"></p>
+<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/blog.png" alt="我的博客"></p>
 <h2 id="结尾"><a class="markdownIt-Anchor" href="#结尾"></a> 结尾</h2>
 <p>如果搭建过程中，还有什么问题，请在下方留言。谢谢您的观赏！</p>
 ]]></content>
@@ -1399,24 +1465,24 @@ $ hexo g --d  #一键部署
     <entry>
       <title><![CDATA[Hello World]]></title>
       <url>/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
 <h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
 <pre class="highlight"><code class="bash">$ hexo new <span class="string">"My New Post"</span>
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
 <pre class="highlight"><code class="bash">$ hexo server
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
 <pre class="highlight"><code class="bash">$ hexo generate
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
 <pre class="highlight"><code class="bash">$ hexo deploy
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
 ]]></content>
       
         <categories>
@@ -1444,6 +1510,13 @@ $ hexo g --d  #一键部署
     </entry>
     
     <entry>
+      <title><![CDATA[About]]></title>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Links]]></title>
       <url>/links/index.html</url>
       <content type="html"></content>
@@ -1459,13 +1532,6 @@ $ hexo g --d  #一键部署
       <title><![CDATA[Timeline]]></title>
       <url>/timeline/index.html</url>
       <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[About]]></title>
-      <url>/about/index.html</url>
-      <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
-]]></content>
     </entry>
     
   
