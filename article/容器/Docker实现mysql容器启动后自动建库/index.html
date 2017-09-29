@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Thu Sep 28 2017 17:22:57 GMT+0800" />
-        <meta property="article:modified_time" content="Fri Sep 29 2017 10:27:57 GMT+0800" />
+        <meta property="article:modified_time" content="Fri Sep 29 2017 10:31:15 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/容器/Docker实现mysql容器启动后自动建库/index.html",
     "headline": "Docker实现mysql容器启动后自动建库",
     "datePublished": "Thu Sep 28 2017 17:22:57 GMT+0800",
-    "dateModified": "Fri Sep 29 2017 10:27:57 GMT+0800",
+    "dateModified": "Fri Sep 29 2017 10:31:15 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -650,60 +650,60 @@ mysql容器启动完毕,且数据导入成功
 <h3 id="进入容器进行验证"><a class="markdownIt-Anchor" href="#进入容器进行验证"></a> 进入容器进行验证</h3>
 <pre><code>$ docker exec -it sql /bin/bash 
 </code></pre>
-<pre class="highlight"><code class="">	root@6da21b87a0a5:/# mysql -u docker -p 
-	Enter password:
-	mysql&gt; use docker_database;
-	mysql&gt; show tables;
-	+---------------------------+
-	| Tables_in_docker_database |
-	+---------------------------+
-	| person                    |
-	+---------------------------+
-	1 row in set (0.00 sec)
-	mysql&gt; select * from person;
-	+----+------+------+
-	| id | name | age  |
-	+----+------+------+
-	|  0 | Tom  |   18 |
-	+----+------+------+
-	1 row in set (0.00 sec)
+<pre class="highlight"><code class="">root@6da21b87a0a5:/# mysql -u docker -p 
+Enter password:
+mysql&gt; use docker_database;
+mysql&gt; show tables;
++---------------------------+
+| Tables_in_docker_database |
++---------------------------+
+| person                    |
++---------------------------+
+1 row in set (0.00 sec)
+mysql&gt; select * from person;
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  0 | Tom  |   18 |
++----+------+------+
+1 row in set (0.00 sec)
 </code></pre>
 <h3 id="验证重启mysql容器数据库初始化"><a class="markdownIt-Anchor" href="#验证重启mysql容器数据库初始化"></a> 验证重启mysql容器，数据库初始化</h3>
 <p>插入数据</p>
 <pre><code>mysql&gt; insert into person(id ,name ,age)values(1,'Jane',17);
 Query OK, 1 row affected (0.06 sec)
 </code></pre>
-<pre class="highlight"><code class="">	mysql&gt; select * from person;                                
-	+----+------+------+
-	| id | name | age  |
-	+----+------+------+
-	|  0 | Tom  |   18 |
-	|  1 | Jane |   17 |
-	+----+------+------+
-	2 rows in set (0.00 sec)
+<pre class="highlight"><code class="">mysql&gt; select * from person;                                
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  0 | Tom  |   18 |
+|  1 | Jane |   17 |
++----+------+------+
+2 rows in set (0.00 sec)
 </code></pre>
 <p>重新启动容器</p>
 <pre><code>$ docker stop sql
 $ docker start sql
 $ docker exec -it sql /bin/bash 
 </code></pre>
-<pre class="highlight"><code class="">	root@6da21b87a0a5:/# mysql -u docker -p 
-	Enter password:
-	mysql&gt; use docker_database;
-	mysql&gt; show tables;
-	+---------------------------+
-	| Tables_in_docker_database |
-	+---------------------------+
-	| person                    |
-	+---------------------------+
-	1 row in set (0.00 sec)
-	mysql&gt; select * from person;
-	+----+------+------+
-	| id | name | age  |
-	+----+------+------+
-	|  0 | Tom  |   18 |
-	+----+------+------+
-	1 row in set (0.00 sec)
+<pre class="highlight"><code class="">root@6da21b87a0a5:/# mysql -u docker -p 
+Enter password:
+mysql&gt; use docker_database;
+mysql&gt; show tables;
++---------------------------+
+| Tables_in_docker_database |
++---------------------------+
+| person                    |
++---------------------------+
+1 row in set (0.00 sec)
+mysql&gt; select * from person;
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  0 | Tom  |   18 |
++----+------+------+
+1 row in set (0.00 sec)
 </code></pre>
 <p>重启容器后，数据初始化。</p>
 
