@@ -105,37 +105,36 @@ echo 'mysql容器启动完毕,且数据导入成功'
 <h3 id="查看容器日志"><a class="markdownIt-Anchor" href="#查看容器日志"></a> 查看容器日志</h3>
 <pre><code>$ docker log sql
 </code></pre>
-<blockquote>
-<p>1.启动mysql…<br>
-2017-09-29T01:04:33.521418Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).<br>
-2017-09-29T01:04:36.647637Z 0 [Warning] InnoDB: New log files created, LSN=45790<br>
-2017-09-29T01:04:37.431760Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.<br>
-2017-09-29T01:04:37.818755Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 2a41ede9-a4b2-11e7-a72e-0242ac115903.<br>
-2017-09-29T01:04:37.823362Z 0 [Warning] Gtid table is not ready to be used. Table ‘mysql.gtid_executed’ cannot be opened.<br>
-2017-09-29T01:04:37.824245Z 1 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.<br>
-2017-09-29T01:04:40.977642Z 1 [Warning] ‘user’ entry ‘root@localhost’ ignored in --skip-name-resolve mode.<br>
-2017-09-29T01:04:40.977679Z 1 [Warning] ‘user’ entry ‘mysql.session@localhost’ ignored in --skip-name-resolve mode.<br>
-2017-09-29T01:04:40.977689Z 1 [Warning] ‘user’ entry ‘mysql.sys@localhost’ ignored in --skip-name-resolve mode.<br>
-2017-09-29T01:04:40.977710Z 1 [Warning] ‘db’ entry ‘performance_schema mysql.session@localhost’ ignored in --skip-name-resolve mode.<br>
-2017-09-29T01:04:40.977715Z 1 [Warning] ‘db’ entry ‘sys mysql.sys@localhost’ ignored in --skip-name-resolve mode.<br>
-2017-09-29T01:04:40.977726Z 1 [Warning] ‘proxies_priv’ entry ‘@ root@localhost’ ignored in --skip-name-resolve mode.<br>
-2017-09-29T01:04:40.977764Z 1 [Warning] ‘tables_priv’ entry ‘user mysql.session@localhost’ ignored in --skip-name-resolve mode.<br>
-2017-09-29T01:04:40.977774Z 1 [Warning] ‘tables_priv’ entry ‘sys_config mysql.sys@localhost’ ignored in --skip-name-resolve mode.<br>
-…<br>
-MySQL Community Server 5.7.19 is started.<br>
-MySQL Community Server 5.7.19 is running.<br>
-2.开始导入数据…<br>
-3.导入数据完毕…<br>
-MySQL Community Server 5.7.19 is running.<br>
-4.开始修改密码…<br>
-host	user<br>
-localhost	mysql.session<br>
-localhost	mysql.sys<br>
-localhost	root<br>
-5.修改密码完毕…<br>
-MySQL Community Server 5.7.19 is running.<br>
-mysql容器启动完毕,且数据导入成功</p>
-</blockquote>
+<pre class="highlight"><code class="">1.启动mysql....
+2017-09-29T01:04:33.521418Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2017-09-29T01:04:36.647637Z 0 [Warning] InnoDB: New log files created, LSN=45790
+2017-09-29T01:04:37.431760Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
+2017-09-29T01:04:37.818755Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 2a41ede9-a4b2-11e7-a72e-0242ac115903.
+2017-09-29T01:04:37.823362Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2017-09-29T01:04:37.824245Z 1 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2017-09-29T01:04:40.977642Z 1 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+2017-09-29T01:04:40.977679Z 1 [Warning] 'user' entry 'mysql.session@localhost' ignored in --skip-name-resolve mode.
+2017-09-29T01:04:40.977689Z 1 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2017-09-29T01:04:40.977710Z 1 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+2017-09-29T01:04:40.977715Z 1 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+2017-09-29T01:04:40.977726Z 1 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+2017-09-29T01:04:40.977764Z 1 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+2017-09-29T01:04:40.977774Z 1 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+..
+MySQL Community Server 5.7.19 is started.
+MySQL Community Server 5.7.19 is running.
+2.开始导入数据....
+3.导入数据完毕....
+MySQL Community Server 5.7.19 is running.
+4.开始修改密码....
+host	user
+localhost	mysql.session
+localhost	mysql.sys
+localhost	root
+5.修改密码完毕....
+MySQL Community Server 5.7.19 is running.
+mysql容器启动完毕,且数据导入成功
+</code></pre>
 ]]></content>
       
         <categories>
