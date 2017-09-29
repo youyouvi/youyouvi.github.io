@@ -1504,12 +1504,6 @@ $ hexo g --d  #一键部署
   
     
     <entry>
-      <title><![CDATA[Gallery]]></title>
-      <url>/gallery/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[About]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
@@ -1519,6 +1513,12 @@ $ hexo g --d  #一键部署
     <entry>
       <title><![CDATA[Links]]></title>
       <url>/links/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
       <content type="html"></content>
     </entry>
     
