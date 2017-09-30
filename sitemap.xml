@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Kubernetes%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2017-09-30T08:44:08.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yov.oschina.io/article/%E6%B5%8B%E8%AF%95/%E5%88%A9%E7%94%A8TestNG%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
+    
+    <lastmod>2017-09-30T08:11:39.372Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%20Hub%20mysql%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E5%AE%9E%E7%8E%B0%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8%E5%90%8E%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BA%93%E8%A1%A8/</loc>
     
     <lastmod>2017-09-30T04:25:40.869Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%E5%AE%9E%E7%8E%B0mysql%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E8%87%AA%E5%8A%A8%E5%BB%BA%E5%BA%93/</loc>
     
     <lastmod>2017-09-29T02:31:15.457Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yov.oschina.io/article/%E6%B5%8B%E8%AF%95/%E5%88%A9%E7%94%A8TestNG%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
-    
-    <lastmod>2017-09-28T09:23:17.463Z</lastmod>
     
   </url>
   
