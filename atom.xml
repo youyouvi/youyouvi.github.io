@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yov.oschina.io/"/>
-  <updated>2017-09-29T02:31:15.457Z</updated>
+  <updated>2017-09-30T04:25:40.869Z</updated>
   <id>http://yov.oschina.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker Hub Mysql官方镜像实现首次启动后初始化库表</title>
+    <link href="http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%20Hub%20mysql%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E5%AE%9E%E7%8E%B0%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8%E5%90%8E%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BA%93%E8%A1%A8/"/>
+    <id>http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/</id>
+    <published>2017-09-29T11:59:23.363Z</published>
+    <updated>2017-09-30T04:25:40.869Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2><p>在Docker Hub中查看MySQL官方镜像的Dockerfile:</p><pre class="highlight"><code class="">COPY docker-entrypoint.sh /usr/local/bin/RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compatENTRYPOINT [&quot;docker-entrypoint.sh&quot;]</code></pre><p>镜像启动时，会运行<code>entrypoint.sh</code>脚本，该脚本的shell命令中:</p><pre class="highlight"><code class="">echo    for f in /docker-entrypoint-initdb.d/*; docase &quot;$f&quot; in*.sh)     echo &quot;$0: running $f&quot;; . &quot;$f&quot; ;;*.sql)    echo &quot;$0: running $f&quot;; &quot;${mysql[@]}&quot; &lt; &quot;$f&quot;; echo ;;*.sql.gz) echo &quot;$0: running $f&quot;; gunzip -c &quot;$f&quot; | &quot;${mysql[@]}&quot;; echo ;;*)        echo &quot;$0: ignoring $f&quot; ;;esacechodone</code></pre><p>上述shell命令会遍历<code>/docker-entrypoint-initdb.d/</code>文件中的sh文件，sql文件，sql.gz压缩包，随后按照sh&gt;sql&gt;sql.gz的顺序依次执行。当该文件夹只存在一种文件时，便会按照文件名排序后执行。</p><h2 id="实现首次启动后初始化库表"><a class="markdownIt-Anchor" href="#实现首次启动后初始化库表"></a> 实现首次启动后初始化库表</h2><h3 id="创建mysql_data文件夹将datasql放入"><a class="markdownIt-Anchor" href="#创建mysql_data文件夹将datasql放入"></a> 创建mysql_data文件夹，将data.sql放入：</h3><pre class="highlight"><code class="data.sql">-- 创建数据库 DROP database IF EXISTS `docker_database`;create database `docker_database` default character set utf8 collate utf8_general_ci; -- 切换到test_data数据库use docker_database; -- 建表 DROP TABLE IF EXISTS `person`; CREATE TABLE `person` ( `id` bigint(20) NOT NULL, `name` varchar(255) DEFAULT NULL, `age` bigint(20) NOT NULL,PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1; -- 插入数据 INSERT INTO `user` (`id`,`name`,`age` ) VALUES    (0,'Tom',18);</code></pre><h3 id="启动容器"><a class="markdownIt-Anchor" href="#启动容器"></a> 启动容器</h3><pre><code>$ docker run --name test -v /home/master/mysql_data:/docker-entrypoint-initdb.d -d -e MYSQL_ROOT_PASSWORD=123456  mysql </code></pre><h3 id="进入容器进行验证"><a class="markdownIt-Anchor" href="#进入容器进行验证"></a> 进入容器进行验证</h3><pre><code>$ docker exec -it sql /bin/bash</code></pre><pre class="highlight"><code class="">root@6da21b87a0a5:/# mysql -u root -p Enter password:mysql&gt; use docker_database;mysql&gt; show tables;+---------------------------+| Tables_in_docker_database |+---------------------------+| person                    |+---------------------------+1 row in set (0.00 sec)mysql&gt; select * from person;+----+------+------+| id | name | age  |+----+------+------+|  0 | Tom  |   18 |+----+------+------+1 row in set (0.00 sec)mysql&gt; insert into person(id ,name ,age)values(1,'Jane',17);Query OK, 1 row affected (0.06 sec)mysql&gt; select * from person;                                +----+------+------+| id | name | age  |+----+------+------+|  0 | Tom  |   18 ||  1 | Jane |   17 |+----+------+------+2 rows in set (0.00 sec)</code></pre><p>重启该容器后，数据依然存在。但启动一个新容器后，该容器数据依然为初始状态。</p><h2 id="指定sql文件运行顺序"><a class="markdownIt-Anchor" href="#指定sql文件运行顺序"></a> 指定sql文件运行顺序</h2><p><code>entrypoint.sh</code>脚本执行sql文件的顺序是按照文件名排序的，这可能导致一些文件执行顺序不符合预期，从而出现错误。例如预期是数据库创建后，再执行表格创建，最后插入数据，而因为文件名，可能数据库先创建后，插入数据，最后创建表格，从而使得数据插入失败。要解决该问题有如下几种方法：</p><ol><li>将文件按照预期顺序，进行命名，比如1_xx,2_xx;</li><li>将必须有前后顺序的sql文件合并在一个sql文件中;</li><li>将sql文件单独放在一个文件夹如data_mysql,将指定sql文件执行顺序的shell脚本放在shell_mysql文件中。容器启动时，将shell_mysql映射到docker-entrypoint-initdb.d文件夹，data_mysql映射到容器内其他文件夹。<br>假设：data_mysql文件夹存放三个sql文件: database.sql,table.sql,data.sql,shell_mysql存放data.sh</li></ol><pre class="highlight"><code class="data.sh">#!/bin/bashmysql -uroot -p$MYSQL_ROOT_PASSWORD &lt;&lt;EOFsource /usr/local/work/database.sql;source /usr/local/work/table.sql;source /usr/local/work/data.sql; </code></pre><p>启动容器：</p><pre><code>$ docker run --name test -e WORK_PATH=/usr/local/work -e MYSQL_ROOT_PASSWORD=123456 -v /home/master/shell_mysql:/docker-entrypoint-initdb.d -v /home/master/data_mysql:/usr/local/work mysql</code></pre><p>数据结果应与上述一致。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;概述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#概述&quot;&gt;&lt;/a&gt; 概述&lt;/h2&gt;
+&lt;p&gt;在Docker Hub中查看MySQL官方镜像的Dockerfile:&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code cla
+      
+    
+    </summary>
+    
+      <category term="容器" scheme="http://yov.oschina.io/categories/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="Docker" scheme="http://yov.oschina.io/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker实现mysql容器启动后自动建库</title>

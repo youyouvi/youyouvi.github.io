@@ -39,7 +39,7 @@
     
     <title>
         
-            Java基础知识(二) | 
+            Docker Hub Mysql官方镜像实现首次启动后初始化库表 | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Java">
+    <meta name="keywords" content="Blog,Docker">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Java基础知识(二) | Ember">
+    <meta property="og:title" content="Docker Hub Mysql官方镜像实现首次启动后初始化库表 | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Java"> 
+    <meta property="og:article:tag" content="Docker"> 
 
     
-        <meta property="article:published_time" content="Sun Sep 24 2017 11:29:54 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:52 GMT+0800" />
+        <meta property="article:published_time" content="Fri Sep 29 2017 19:59:23 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Sep 30 2017 12:25:40 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Java基础知识(二) | Ember">
+    <meta name="twitter:title" content="Docker Hub Mysql官方镜像实现首次启动后初始化库表 | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/article/语言/Java基础知识(二)/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/article/语言/Java基础知识(二)/index.html",
-    "headline": "Java基础知识(二)",
-    "datePublished": "Sun Sep 24 2017 11:29:54 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:52 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html",
+    "headline": "Docker Hub Mysql官方镜像实现首次启动后初始化库表",
+    "datePublished": "Fri Sep 29 2017 19:59:23 GMT+0800",
+    "dateModified": "Sat Sep 30 2017 12:25:40 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",JavaBlog",
+    "keywords": ",DockerBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运算符"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本运算符"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 基本运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三目运算符"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 三目运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逻辑运算符"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 逻辑运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#位运算符"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 位运算符</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现首次启动后初始化库表"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 实现首次启动后初始化库表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建mysql_data文件夹将datasql放入"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 创建mysql_data文件夹，将data.sql放入：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动容器"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 启动容器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入容器进行验证"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 进入容器进行验证</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定sql文件运行顺序"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 指定sql文件运行顺序</span></a></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Java基础知识(二)
+                Docker Hub Mysql官方镜像实现首次启动后初始化库表
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 24</span>
+        <span>2017 - 09 - 29</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC5klEQVR42u3a0Y4aMQwFUP7/p9vXStUM1/ZsC86ZJ8SGkBOkvYqd168jnxc2NjY2NjY2Njb2R7Jf8fPn+KvXV3+9H/P3yPy7kjVjY2Njn8B+86//ApDMcP/Z3hqaa8bGxsY+gN0LrXxx95HWi8ZkBmxsbGzsJDCqx4/kcHJ5qMDGxsbGnk9xOzKZMzmK5MUmbGxsbOxqQWcSdb1GwgOFMGxsbOzV7Kcavf/y9Qf1t7GxsbH/K3v+3MdM77pPtZgVrRMbGxt7KTs5SPSWlYRKdbb8nXItDRsbG3sRO1/ifOSkOZE0JLCxsbFPYOfNgGqLN28nJFszbyFgY2Njb2XnUZRvSi/k8vZwUqiKikrY2NjYK9g9QF64zxuxT213IbexsbGxV7B7gZQ3biefyjcOGxsb+2R21CIdHBWqsfSDjQpsbGzsY9hJUT7HJEGYkMpt3WqAYWNjY38tu3pISLZpMj4Zef8DXL6PjY2NfRg7b6PmC+pFZh5vb97HxsbGPoCdL7EXeNV2Qh6u0U+IjY2NvZRdDaHepfa8VJQXjKoFL2xsbOyt7GSKvNzTC6F56zdp92JjY2NvZU9CqHog6cHyYCsUlbCxsbEXsSct2N48SSsimfmB3MbGxsZewa7GWLXdW20kz5Hl3MbGxsZewU6OAfn7SYBVwykPqmZXBBsbG3spOz9aVJu41eJU8qk324eNjY29lF0tGD0bUdWif358wsbGxj6HXT0YJF+TtwQKB4lgu0dXdrCxsbG/lp0cHqqXafJFTxrG5eDExsbGXsruBcmk/JQvtLpNoys72NjY2F/LrsZDL7SqmzgpRWFjY2Ofyc4LOslmVWOmd5myXAjDxsbGPoDdi5NeqOTXKH+wloaNjY19MHt+LMmv/kziDRsbGxv7vqAzLwxVL2KOGsbY2NjYB7DzotJkfL6tyaYk8YmNjY19ArvX6O2FUM5ItixpBmNjY2PvZp/zYGNjY2NjY2NjY3/M8xtHrV5gPmMc/wAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAELElEQVR42u3aW27jMBAEwNz/0tkDZO10D2XEGpe+FotEFIsBOK+vb0/wfCHAhAkTJkyYPJgwYcL09kxf8fPz53++5z+LPfj/R6v//K1k9efrtnvEhAkTJkz7mPIlH31ui9tu4zlx8rX1HjFhwoQJ0zqm5HpOrvPk8m6hE9CEqfgtTJgwYcL0kUzJ5TpLbvMkuU2PMWHChAkTptmW8pJrwjcrMbchAiZMmDBh+mSmvDV4FXQbQFxVwH15LRwTJkyYML0ZU3sl3/HffzDfhAkTJkyY3oDpFSlrW3hNwos2QJkl5JgwYcKEaR9T+7l5a/Pkek6Y8i/MR4IwYcKECdM+prYwmiyW0CfN0ba4nI/7RGVfTJgwYcK0iClHmV2ueaDQss5oovdgwoQJE6bVTHnCmV/wJ2XlWTKcp/GYMGHChGk3U35xzsq1eSiQH9gsFS8aq5gwYcKEaQVTnqYmrO1vteM+J4dXNzgxYcKECdMKpnbb7aDPSeE1b5fmQUP+B4EJEyZMmDYx5eOeswGdk63OGpNtWFDXwjFhwoQJ0w2ZZkXbWfPyfOxmlroXxWVMmDBhwrSI6dptJ1udJdLtgc0aqJgwYcKEaRNTXthN0sj8ze3GzrnrI8SECRMmTCuY2nGWPI08uZLzcGRGGe0OEyZMmDAtZXpdMjkrKF/bziz+CDBhwoQJ0yKmtt3YhghFaXWUhLdDRcPBHUyYMGHCdEOmqwZlkmLuVYM4s6ChLRNjwoQJE6YdTPU1WQ7otIHFrMF5VcCBCRMmTJj2MZ0P1iQl18sKr6O0NlklipswYcKECdNtmZLxl5Oxm/PtzZLkiwMCTJgwYcJ0W6Y8RHhF6DBrXuZHmCfPmDBhwoRpH9PJ64olR0M27SjP7JgfrosJEyZMmJYytWlwsr2Ta36WMOcF4of/jwkTJkyYVjC1ozb5QE97DCfvaY8w2hEmTJgwYVrBlCeTs1GbWfszCSPy9+f7woQJEyZMu5nacmqe1s6u8/bATtqimDBhwoRpK9Mr2pbf5ZOXlWcDQO3wECZMmDBh2so0K+PmaXB+hQ/LsuUbfknIMWHChAnTCqa8LDtrE75uNKdNsDFhwoQJ0ycznZdNT678k1blbK2jwR1MmDBhwnQrplmBtb1u2xZjHojkX9KmzZgwYcKEaQfTrPVYJJCXBgfPD/IknY7iJkyYMGHCdEOmq0qoeaCQN0dnX3jyfkyYMGHCtJUpb22eJMnPQ4f6wg5S4ijFxYQJEyZMH8OUbKkt8l71k+erJ/SYMGHChAnTbAMn4cXzizwPa+rvxIQJEyZMmOLBnXzDs+Q2KePWx4YJEyZMmNYx5S9qi7B5g3OW3NatypOAABMmTJgw3ZBpNriTfEoSfMyKucmG82N44XwTJkyYMGH6UyZPFBB4MGHChAkTJkweTJgwvcvzD6RLUvJL0edjAAAAAElFTkSuQmCC">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Java/">Java</a>
+        <a class="post_tag-link" href="/tags/Docker/">Docker</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(二)&url=http://yov.oschina.io/article/语言/Java基础知识(二)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表&url=http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/语言/Java基础知识(二)/index.html&title=Java基础知识(二)" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(二)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/语言/Java基础知识(二)/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,211 +510,102 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="运算符"><a class="markdownIt-Anchor" href="#运算符"></a> 运算符</h2>
-<blockquote>
-<p>常用运算符：四则运算符、逻辑运算符、三目运算符和位运算符。</p>
-</blockquote>
-<h3 id="基本运算符"><a class="markdownIt-Anchor" href="#基本运算符"></a> 基本运算符</h3>
+        <h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
+<p>在Docker Hub中查看MySQL官方镜像的Dockerfile:</p>
+<pre class="highlight"><code class="">
+COPY docker-entrypoint.sh /usr/local/bin/
+
+RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+
+ENTRYPOINT [&quot;docker-entrypoint.sh&quot;]
+</code></pre>
+<p>镜像启动时，会运行<code>entrypoint.sh</code>脚本，该脚本的shell命令中:</p>
+<pre class="highlight"><code class="">echo
+    for f in /docker-entrypoint-initdb.d/*; do
+		case &quot;$f&quot; in
+			*.sh)     echo &quot;$0: running $f&quot;; . &quot;$f&quot; ;;
+			*.sql)    echo &quot;$0: running $f&quot;; &quot;${mysql[@]}&quot; &lt; &quot;$f&quot;; echo ;;
+			*.sql.gz) echo &quot;$0: running $f&quot;; gunzip -c &quot;$f&quot; | &quot;${mysql[@]}&quot;; echo ;;
+			*)        echo &quot;$0: ignoring $f&quot; ;;
+		esac
+		echo
+done
+</code></pre>
+<p>上述shell命令会遍历<code>/docker-entrypoint-initdb.d/</code>文件中的sh文件，sql文件，sql.gz压缩包，随后按照sh&gt;sql&gt;sql.gz的顺序依次执行。当该文件夹只存在一种文件时，便会按照文件名排序后执行。</p>
+<h2 id="实现首次启动后初始化库表"><a class="markdownIt-Anchor" href="#实现首次启动后初始化库表"></a> 实现首次启动后初始化库表</h2>
+<h3 id="创建mysql_data文件夹将datasql放入"><a class="markdownIt-Anchor" href="#创建mysql_data文件夹将datasql放入"></a> 创建mysql_data文件夹，将data.sql放入：</h3>
+<pre class="highlight"><code class="data.sql">-- 创建数据库 
+DROP database IF EXISTS `docker_database`;
+create database `docker_database` default character set utf8 collate utf8_general_ci; 
+-- 切换到test_data数据库
+use docker_database; 
+-- 建表 
+DROP TABLE IF EXISTS `person`; 
+
+CREATE TABLE `person` ( 
+	`id` bigint(20) NOT NULL, 
+	`name` varchar(255) DEFAULT NULL, 
+	`age` bigint(20) NOT NULL,
+	PRIMARY KEY (`id`) 
+) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
+-- 插入数据 
+INSERT INTO `user` (`id`,`name`,`age` ) 
+VALUES 
+   (0,'Tom',18);
+</code></pre>
+<h3 id="启动容器"><a class="markdownIt-Anchor" href="#启动容器"></a> 启动容器</h3>
+<pre><code>$ docker run --name test -v /home/master/mysql_data:/docker-entrypoint-initdb.d -d -e MYSQL_ROOT_PASSWORD=123456  mysql 
+</code></pre>
+<h3 id="进入容器进行验证"><a class="markdownIt-Anchor" href="#进入容器进行验证"></a> 进入容器进行验证</h3>
+<pre><code>$ docker exec -it sql /bin/bash
+</code></pre>
+<pre class="highlight"><code class="">root@6da21b87a0a5:/# mysql -u root -p 
+Enter password:
+mysql&gt; use docker_database;
+mysql&gt; show tables;
++---------------------------+
+| Tables_in_docker_database |
++---------------------------+
+| person                    |
++---------------------------+
+1 row in set (0.00 sec)
+mysql&gt; select * from person;
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  0 | Tom  |   18 |
++----+------+------+
+1 row in set (0.00 sec)
+mysql&gt; insert into person(id ,name ,age)values(1,'Jane',17);
+Query OK, 1 row affected (0.06 sec)
+mysql&gt; select * from person;                                
++----+------+------+
+| id | name | age  |
++----+------+------+
+|  0 | Tom  |   18 |
+|  1 | Jane |   17 |
++----+------+------+
+2 rows in set (0.00 sec)
+</code></pre>
+<p>重启该容器后，数据依然存在。但启动一个新容器后，该容器数据依然为初始状态。</p>
+<h2 id="指定sql文件运行顺序"><a class="markdownIt-Anchor" href="#指定sql文件运行顺序"></a> 指定sql文件运行顺序</h2>
+<p><code>entrypoint.sh</code>脚本执行sql文件的顺序是按照文件名排序的，这可能导致一些文件执行顺序不符合预期，从而出现错误。例如预期是数据库创建后，再执行表格创建，最后插入数据，而因为文件名，可能数据库先创建后，插入数据，最后创建表格，从而使得数据插入失败。要解决该问题有如下几种方法：</p>
 <ol>
-<li><code>=</code>为赋值运算符。</li>
-<li>四则运算符基本组成：<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、<code>%</code>。<strong>不要使用运算符编写过于复杂的计算。</strong></li>
+<li>将文件按照预期顺序，进行命名，比如1_xx,2_xx;</li>
+<li>将必须有前后顺序的sql文件合并在一个sql文件中;</li>
+<li>将sql文件单独放在一个文件夹如data_mysql,将指定sql文件执行顺序的shell脚本放在shell_mysql文件中。容器启动时，将shell_mysql映射到docker-entrypoint-initdb.d文件夹，data_mysql映射到容器内其他文件夹。<br>
+假设：data_mysql文件夹存放三个sql文件: database.sql,table.sql,data.sql,shell_mysql存放data.sh</li>
 </ol>
-<pre class="highlight"><code class="">public class Demo {
-    public static void main(String[] args) {
-        int numA = 10;
-        double numB = 20;
-        int numC = 3;
-        System.out.println(&quot;加法计算：&quot; + (numA + numB));
-        System.out.println(&quot;减法计算：&quot; + (numA - numB));
-        System.out.println(&quot;乘法计算：&quot; + (numA * numB));
-        System.out.println(&quot;除法计算：&quot; + (numA / numB));
-        System.out.println(&quot;求模计算：&quot; + (numA % numC));
-    }
-}
+<pre class="highlight"><code class="data.sh">#!/bin/bash
+mysql -uroot -p$MYSQL_ROOT_PASSWORD &lt;&lt;EOF
+source /usr/local/work/database.sql;
+source /usr/local/work/table.sql;
+source /usr/local/work/data.sql; 
 </code></pre>
-<ol start="3">
-<li>简化运算符：<code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>:</li>
-</ol>
-<pre class="highlight"><code class="">public class Demo {
-    public static void main(String[] args) {
-        int numA = 10;
-        numA += 2; // 等同于 numA = numA + 2
-        System.out.println(&quot;加法计算&quot; + (numA)); // 12
-    }
-}
+<p>启动容器：</p>
+<pre><code>$ docker run --name test -e WORK_PATH=/usr/local/work -e MYSQL_ROOT_PASSWORD=123456 -v /home/master/shell_mysql:/docker-entrypoint-initdb.d -v /home/master/data_mysql:/usr/local/work mysql
 </code></pre>
-<ol start="4">
-<li><code>++</code>（自增），<code>--</code>（自减）：位置不同，功能也不同：<br>
-·<code>++变量</code>，<code>--变量</code>：先对变量加/减1，再使用自增或自减后的变量进行计算;<br>
-·<code>变量++</code>，<code>变量--</code>：先使用变量进行计算，再进行变量加/减1。</li>
-</ol>
-<pre class="highlight"><code class="">public class Demo {
-    public static void main(String[] args) {
-        int numA = 10;
-        int numB = 20;
-        // ++变量，先numA + 1
-        // 然后(numA + 1) + numB内容
-        // 最后对numB加1
-        int result = (++numA) + (numB++);
-        System.out.println(&quot;numA=&quot; + numA); // 11
-        System.out.println(&quot;numB=&quot; + numB); // 21
-        System.out.println(&quot;result=&quot; + result); // 31
-    }
-}
-</code></pre>
-<h3 id="三目运算符"><a class="markdownIt-Anchor" href="#三目运算符"></a> 三目运算符</h3>
-<p>三目运算符根据布尔表达式的结果进行赋值：</p>
-<pre><code>value_type value_name = 布尔表达式 ? true_value : false_value;
-</code></pre>
-<p>利用三目运算符可以减少判断代码:</p>
-<pre class="highlight"><code class="">public class Demo {
-    public static void main(String[] args) {
-        int numA = 10;
-        int numB = 20;
-        int max = 0;
-        /** 使用三目运算符
-         *  当numA大于numB,返回true,max = numA
-         *  当numA小于numB,返回false,max = numB
-         */
-        max = numA&gt;numB ? numA : numB;
-        // 不使用三目运算符
-        // if (numA &gt; numB) {
-        //    max = numA;
-        //} else {
-        //    max = numB;
-        //}
-        System.out.println(max);
-    }
-}
-</code></pre>
-<h3 id="逻辑运算符"><a class="markdownIt-Anchor" href="#逻辑运算符"></a> 逻辑运算符</h3>
-<ol>
-<li>逻辑运算符：与<code>&amp;，&amp;&amp;</code>、或<code>|，||</code>、非<code>!</code></li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        boolean flag = true;
-        System.out.println(!flag); // false
-    }
-}
-</code></pre>
-<ol start="2">
-<li>布尔表达式的连接，只能使用<code>与</code>和<code>或</code>操作</li>
-</ol>
-<blockquote>
-<p><code>与</code>：所有条件都为true时，结果为true;有一个为false，结果就是false.</p>
-</blockquote>
-<p><strong>范例</strong>：普通与<code>&amp;</code></p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        // 除数不能为0
-        if ((1 == 2) &amp; (10 / 0 == 0)){
-            System.out.println(&quot;Hello&quot;); // 报错
-        }
-    }
-}
-</code></pre>
-<p><strong>结果</strong>：程序报错，因为<code>&amp;</code>会对所有条件进行判断。但就与的特点而言，前一个条件为false，结果就是false，后续的判断没有意义。<br>
-<strong>范例</strong>：短路与<code>&amp;&amp;</code></p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        // 除数不能为0
-        if ((1 == 2) &amp;&amp; (10 / 0 == 0)){
-            System.out.println(&quot;Hello&quot;); // false,不报错
-        }
-    }
-}
-</code></pre>
-<p><strong>结果</strong>:程序不报错，因为<code>&amp;&amp;</code>只要有一个条件为false后，后续判断就不再进行，从而提高了效率。</p>
-<blockquote>
-<p>或操作：一个条件为true，结果为true。</p>
-</blockquote>
-<p><strong>范例</strong>：普通或<code>|</code></p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        if ((1 &lt; 2 ) | (10 / 0 == 0)){
-            System.out.println(&quot;Hello&quot;); // 报错
-        }
-    }
-}
-</code></pre>
-<p><strong>结果</strong>：使用<code>|</code>，会对所有条件进行判断，但是或运算的特点是：一个条件为true，结果就是true。<br>
-<strong>范例</strong>：短路或<code>||</code></p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        if ((1 &lt; 2 ) || (10 / 0 == 0)){
-            System.out.println(&quot;Hello&quot;); // true,不报错
-        }
-    }
-}
-</code></pre>
-<blockquote>
-<p>因此使用逻辑运算时就使用<code>&amp;&amp;</code>和<code>||</code>。</p>
-</blockquote>
-<h3 id="位运算符"><a class="markdownIt-Anchor" href="#位运算符"></a> 位运算符</h3>
-<ol>
-<li>数学计算为十进制。Java支持二进制、八进制和十六进制。如果要想将十进制变为二进制，采用的方式为：除2，取余，倒序。</li>
-<li>位运算主要是进行二进制数据操作，位运算符：<code>&amp;</code>、<code>|</code>、<code>&gt;&gt;</code>(移位)、<code>&lt;&lt;</code>、<code>^</code>(反码)、<code>~</code>。<br>
-<strong>范例</strong>：位与<code>&amp;</code></li>
-</ol>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int numA = 9;
-        int numB = 11;
-        System.out.println(numA &amp; numB); // 9
-    }
-}
-</code></pre>
-<p><strong>运算过程</strong>：</p>
-<pre><code>  1001 → 9
-&amp; 1011 → 11
-  1001 →  9
-</code></pre>
-<p><strong>范例</strong>：位或<code>|</code></p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int numA = 9;
-        int numB = 11;
-        System.out.println(numA | numB); // 11
-    }
-}
-</code></pre>
-<p><strong>运算过程</strong>：</p>
-<pre><code>  1001 → 9
-| 1011 → 11
-  1011 → 11
-</code></pre>
-<p><strong>范例</strong>：移位（最快方式计算2的3次方）</p>
-<pre class="highlight"><code class="">package com.java.demo;
-public class Demo {
-    public static void main(String[] args) {
-        int num = 2;
-        num = num &lt;&lt; 2; // 向左移位
-        System.out.println(num); // 8,相当于2的3次方
-    }
-}
-</code></pre>
-<p><strong>运算过程</strong>：</p>
-<pre><code>    0010 → 2
-2&lt;&lt; 1000 → 8
-</code></pre>
-<blockquote>
-<p><strong>章节小问题：请解释<code>&amp;</code>与<code>&amp;&amp;</code>的区别，以及<code>|</code>与<code>||</code>的区别:</strong><br>
-1. 在逻辑运算中：<br>
-  |- <code>&amp;</code>和<code>|</code>会对所有条件进行判断后，返回结果<br>
-  |- <code>&amp;&amp;</code>只要一个条件返回false，就不进行后续判断，结果为false<br>
-  |- <code>||</code>只要一个条件为true，就不进行后续判断，结果为true<br>
-2. 在位运算中：<br>
-  |- <code>&amp;</code>为位与元算，<code>|</code>为位或元算<br>
-  |- <code>&amp;&amp;</code>和<code>||</code>不能用于位运算</p>
-</blockquote>
+<p>数据结果应与上述一致。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -723,7 +614,7 @@ public class Demo {
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/语言/Java基础知识(二)/">http://yov.oschina.io/article/语言/Java基础知识(二)/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/">http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/</a>
                     </p>
                 </blockquote>
         
@@ -771,21 +662,13 @@ public class Demo {
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/article/容器/Docker的简单说明/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/article/语言/Markdown语法/" id="post_nav-older" class="next-content">
+        <a href="/article/容器/Docker实现mysql容器启动后自动建库/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%20Hub%20mysql%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E5%AE%9E%E7%8E%B0%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8%E5%90%8E%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BA%93%E8%A1%A8/</loc>
+    <lastmod>2017-09-30T04:25:40.869Z</lastmod>
+    <data>
+        <display>
+        <title>Docker Hub Mysql官方镜像实现首次启动后初始化库表</title>
+        <pubTime>2017-09-29T11:59:23.363Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="容器" url="http://yov.oschina.io/categories/%E5%AE%B9%E5%99%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%E5%AE%9E%E7%8E%B0mysql%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E8%87%AA%E5%8A%A8%E5%BB%BA%E5%BA%93/</loc>
     <lastmod>2017-09-29T02:31:15.457Z</lastmod>
     <data>
