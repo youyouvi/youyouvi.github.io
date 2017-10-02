@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yov.oschina.io/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2017-10-02T06:45:19.113Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Kubernetes%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2017-09-30T08:44:08.688Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%E7%9A%84%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E/</loc>
     
     <lastmod>2017-09-25T08:47:46.483Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yov.oschina.io/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2017-09-25T08:47:42.555Z</lastmod>
     
   </url>
   

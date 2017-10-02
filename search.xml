@@ -1686,6 +1686,18 @@ $ hexo g --d  #一键部署
 <h3 id="访问博客"><a class="markdownIt-Anchor" href="#访问博客"></a> 访问博客</h3>
 <p>在浏览器地址栏输入上图中的博客地址，即可访问，效果图如下：<br>
 <img src="/article/博客搭建/Gitee+Hexo搭建个人博客/blog.png" alt="我的博客"></p>
+<h2 id="博客使用"><a class="markdownIt-Anchor" href="#博客使用"></a> 博客使用</h2>
+<p>在博客目录的source文件中的_post文件夹中添加你要写的博客文件，文件命名为<code>file_name.md</code><br>
+<code>file_name.md</code>的文件开头如下:</p>
+<pre class="highlight"><code class="">---
+title: file_name
+tag: 标签名
+categories: 分类
+comment: 是否允许评论(true or false)
+description: 描述
+---
+文档正文编写，请参照markdown语法。
+</code></pre>
 <h2 id="结尾"><a class="markdownIt-Anchor" href="#结尾"></a> 结尾</h2>
 <p>如果搭建过程中，还有什么问题，请在下方留言。谢谢您的观赏！</p>
 ]]></content>
