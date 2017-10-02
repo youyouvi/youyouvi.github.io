@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yov.oschina.io/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%89)/</loc>
+    <lastmod>2017-10-02T12:14:20.037Z</lastmod>
+    <data>
+        <display>
+        <title>Java基础知识(三)</title>
+        <pubTime>2017-10-02T07:31:57.908Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+             
+              <breadCrumb title="语言" url="http://yov.oschina.io/categories/%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yov.oschina.io/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%8C)/</loc>
     <lastmod>2017-10-02T07:29:57.343Z</lastmod>
     <data>
@@ -45,7 +65,7 @@
     
   <url>
     <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Kubernetes%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2017-09-30T08:44:08.688Z</lastmod>
+    <lastmod>2017-09-30T08:44:56.611Z</lastmod>
     <data>
         <display>
         <title>Kubernetes安装及使用</title>
@@ -65,7 +85,7 @@
     
   <url>
     <loc>http://yov.oschina.io/article/%E6%B5%8B%E8%AF%95/%E5%88%A9%E7%94%A8TestNG%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2017-09-30T08:11:39.372Z</lastmod>
+    <lastmod>2017-09-30T08:44:05.126Z</lastmod>
     <data>
         <display>
         <title>利用TestNG进行单元测试</title>
@@ -105,7 +125,7 @@
     
   <url>
     <loc>http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker%E5%AE%9E%E7%8E%B0mysql%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E5%90%8E%E8%87%AA%E5%8A%A8%E5%BB%BA%E5%BA%93/</loc>
-    <lastmod>2017-09-29T02:31:15.457Z</lastmod>
+    <lastmod>2017-09-30T01:47:23.779Z</lastmod>
     <data>
         <display>
         <title>Docker实现mysql容器启动后自动建库</title>

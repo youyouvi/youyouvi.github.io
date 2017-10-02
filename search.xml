@@ -3,6 +3,654 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(三)]]></title>
+      <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%89)/</url>
+      <content type="html"><![CDATA[<h2 id="方法的定义与使用"><a class="markdownIt-Anchor" href="#方法的定义与使用"></a> 方法的定义与使用</h2>
+<h3 id="方法的基本概念"><a class="markdownIt-Anchor" href="#方法的基本概念"></a> 方法的基本概念</h3>
+<ol>
+<li><strong>方法</strong>就是<code>将一段可重复使用的代码封装</code>。因此如要反复执行一段代码时，可考虑将这段代码定义为方法。本章中的方法指的是<code>定义在主类中，由主方法直接调用</code>的方法。此类方法的语法：</li>
+</ol>
+<pre class="highlight"><code class="">public static 返回值类型 method_name(v_type v1, v_type v2,...) {
+    方法体; // 方法要进行的若干操作
+    [return [返回值] ;] // []中内容可写可不写
+}
+</code></pre>
+<p><strong>返回值类型:</strong></p>
+<table>
+<thead>
+<tr>
+<th>数据类型(基本数据类型、引用数据类型)</th>
+<th style="text-align:right">无返回值(void)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>如果方法设置了返回值类型，那么必须使用return返回与之类型对应的内容</td>
+<td style="text-align:right">不需要return语句，但可用return结束方法调用</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>方法名的命名规则：<code>第一个单词小写，随后每个单词首字母大写</code>。<br>
+<strong>范例</strong>：定义无参无返回值方法</li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        print(); // 直接调用
+    }
+    public static void print(){
+        System.out.println(&quot;无参无返回值方法&quot;);
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：定义含参无返回值方法</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        compare(10.2); // 调用时必须写入参数
+        compare(-10.2);
+    }
+
+    public static void compare(double x){
+        String str = x &gt; 0.0 ? &quot;这是正数&quot;:&quot;这是负数&quot;;
+        System.out.println(str);
+    }
+}
+</code></pre>
+<p>有了参数后，方法就可以根据不同的参数内容进行数据的处理。<br>
+<strong>范例</strong>：定义含参数有返回值方法</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        //定义变量接收返回值，而后输出
+        int result = add(10, 20);
+        System.out.println(result);
+        // 直接输出返回值
+        System.out.println(add(10, 20));
+    }
+
+    public static int add(int x, int y) {
+        return x + y;
+    }
+}
+</code></pre>
+<ol start="3">
+<li>一个方法使用<code>void</code>定义，该方法无法使用return返回值，但可以使用return结束调用。</li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        print(1100); // x = 1100
+        print(3); // 结束调用,不输出x
+    }
+
+    public static void print(int x) {
+        if (x == 3) {
+            System.out.println(&quot;结束调用,不输出x&quot;);
+            return;
+        }
+        System.out.println(&quot;x = &quot; + x);
+    }
+}
+</code></pre>
+<p><strong>只有返回值类型为void时，才可使用return结束方法的调用。</strong></p>
+<h3 id="方法重载"><a class="markdownIt-Anchor" href="#方法重载"></a> 方法重载</h3>
+<ol>
+<li>假设add()要执行两个整数相加，也要执行三个整数相加和两个小数相加，此时一个方法体无法实现所有功能，但又不能定义其他方法，就需要为add()定义不同的功能实现，该操作就称为<code>方法重载（overloading）</code>。</li>
+<li>方法重载要求<code>方法名一致，参数类型或个数不同</code>。</li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 根据参数的个数或类型，调用不同方法
+        add(10,20);
+        add(10.2,20.2);
+        add(10,20,30);
+    }
+    // 方法名相同，参数的类型或个数不同
+    public static void add(int x, int y) {
+        System.out.println(&quot;两个整数相加：&quot; + (x + y));
+    }
+
+    public static void add(double x, double y) {
+        System.out.println(&quot;两个小数相加：&quot; + (x + y));
+    }
+
+    public static void add(int x, int y, int z) {
+        System.out.println(&quot;三个整数相加：&quot; + (x + y + z));
+    }
+}
+</code></pre>
+<p><code>System.out.println()</code>可以输出不同类型数据，可知此方法是一个被重载后的方法。</p>
+<ol start="3">
+<li>方法重载的说明：<br>
+（1）虽然重载后的方法的返回值类型可以不同，但建议方法重载时返回值类型应一致；<br>
+（2）方法重载是根据参数类型或个数的不同来区分调用，而不是根据返回值类型。</li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+    }
+    // 报错,已在类中定义了方法 add(int,int)
+    // 说明方法重载的依据是参数的个数或类型不同，而不是返回值类型不同
+    public static int add(int x, int y) {
+        return x + y;
+    }
+
+    public static double add(int x, int y) {
+        return x + y;
+    }
+}
+</code></pre>
+<h3 id="递归调用"><a class="markdownIt-Anchor" href="#递归调用"></a> 递归调用</h3>
+<ol>
+<li>递归调用是指<code>方法调用自身</code>。要实现递归调用，要有结束条件。递归调用应尽量少使用，因为处理不当会出现内存溢出。<br>
+<strong>范例</strong>：递归实现1~100的累加操作</li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println(sum(100));
+    }
+    public static int sum(int num){
+        if (num == 1) { // 结束递归调用
+            return 1;
+        }
+        // 递归调用
+        return num + sum(num - 1); 
+    }
+}
+</code></pre>
+<p><strong>代码的执行步骤：</strong></p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">内容</th>
+<th style="text-align:right">返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">主方法调用sum(100)</td>
+<td style="text-align:right">100+sum(99)</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">递归调用sum(99)</td>
+<td style="text-align:right">100 + 99 + sum（98)</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">递归调用sum(98)</td>
+<td style="text-align:right">100 + 99 + 98+ sum(97)</td>
+</tr>
+<tr>
+<td>…</td>
+<td style="text-align:center">依此类推</td>
+<td style="text-align:right">…</td>
+</tr>
+<tr>
+<td>最后一次</td>
+<td style="text-align:center">递归调用sum(1)</td>
+<td style="text-align:right">sum=100+99+98+…+2+1,结束递归</td>
+</tr>
+</tbody>
+</table>
+<h2 id="类与对象"><a class="markdownIt-Anchor" href="#类与对象"></a> 类与对象</h2>
+<h3 id="面向对象简介"><a class="markdownIt-Anchor" href="#面向对象简介"></a> 面向对象简介</h3>
+<blockquote>
+<p>面向过程：指的是针对某一个问题单独提出解决方案和代码开发。<br>
+面向对象：以组件化的形式进行代码设计，优点是代码可重用。<br>
+面向对象语言的特征：<br>
+（1）<code>封装性</code>：保护内部结构安全性。<br>
+（2）<code>继承性</code>：在已有的程序结构上扩充新的功能。<br>
+（3）<code>多态性</code>：相同的操作或函数、过程可作用于多种类型的对象上并获得不同的结果<br>
+面向对象开发步骤：OOA（面向对象分析）,OOD（面向对象设计）,OOP（面向对象编程）。</p>
+</blockquote>
+<h3 id="类与对象-2"><a class="markdownIt-Anchor" href="#类与对象-2"></a> 类与对象</h3>
+<p>1 类与对象是面向对象中的最基础的组成单元。类是共性的集合，对象是某一个性的产物。<br>
+2 类用于描述对象的结构， 例如每个人的名字、年龄等一系列特征。类除了包含<code>特征(属性)</code>外，还包括许多<code>行为(方法)</code>。根据这个类产生的对象都具有相同的行为。<br>
+3 对象所拥有的行为由类决定，无法执行超出类定义范畴的操作。<br>
+4 综上所述，类是对象的模版，但类无法直接使用，必须通过实例对象来使用。对象是由类产生的。</p>
+<h3 id="类与对象的定义及使用"><a class="markdownIt-Anchor" href="#类与对象的定义及使用"></a> 类与对象的定义及使用</h3>
+<p>1.定义类使用<code>class class_name {}</code>语句完成。类的组成：<br>
+(1)<code>field</code>（属性，成员，变量）：一堆变量的集合；<br>
+(2)<code>method</code>（方法，行为）：由对象调用。<br>
+<strong>范例</strong>：定义类</p>
+<pre class="highlight"><code class="">package com.java.entity;
+public class Book {
+   // 定义属性
+   public String title;
+   public double price;
+   // 定义方法
+   public void getInfo(){
+       System.out.println(&quot;书名：&quot; + title + &quot;,价格：&quot; + price);
+   }
+}
+</code></pre>
+<p>2.要使用类，必须要有对象，对象定义的语法有如下两种：<br>
+(1)声明并实例化对象：<code>class_name object_name = new class_name()</code>；<br>
+(2)分步完成： 第一步-声明对象：<code>class_name object_name = null</code>;<br>
+第二部-实例化对象：<code>object_name =new class_name()</code>;<br>
+引用数据类型与基本数据类型最大区别是<strong>需要内存的开辟及使用</strong>，所以关键字<code>new</code>的主要功能就是开辟内存空间。<br>
+3.当一个对象实例化后，利用如下方式操作类：<br>
+(1)<code>object_name.field</code>：操作类中的属性；<br>
+(2)<code>object_name.method()</code>：调用类中的方法。<br>
+<strong>范例</strong>：使用类</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Book book = new Book(); // 声明并实例化对象
+        book.title = &quot;Java开发&quot;; // 定义属性
+        book.price = 66.6;
+        book.getInfo(); // 调用方法
+    }
+}
+</code></pre>
+<p>4.堆内存和栈内存的概念：</p>
+<table>
+<thead>
+<tr>
+<th>堆内存</th>
+<th style="text-align:right">栈内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保存对象的属性内容，使用关键字new开辟</td>
+<td style="text-align:right">栈内存：保存堆内存的地址。可以理解为栈内存保存对象的名字</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/article/语言/Java基础知识(三)/6-1.png" alt="无法加载" title="内存分析"><br>
+<strong>范例</strong>：分步使用实例化对象</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Book book = null; // 声明对象
+        book = new Book(); // 实例化对象
+        book.title = &quot;Java开发&quot;;
+        book.price = 66.6;
+        book.getInfo();
+    }
+}
+</code></pre>
+<p><strong>内存分析</strong>：使用关键字<strong>new</strong>开辟了新的的堆内存，堆内存中保存类定义的属性，此时所有的属性值都为<strong>默认值</strong>。<br>
+<img src="/article/语言/Java基础知识(三)/6-2.png" alt="无法加载" title="内存分析"><br>
+使用未实例化的对象，程序运行时会出现“NullPointerException（空指向异常）”</p>
+<h3 id="对象引用分析"><a class="markdownIt-Anchor" href="#对象引用分析"></a> 对象引用分析</h3>
+<p>1.在引用分析中，每次使用<code>new</code>关键字便会开辟新的堆内存。假设声明了两个对象，且都用new分别进行了实例化，那么<strong>两个对象占据的是不同的堆内存，因此不会互相影响。</strong><br>
+<strong>范例</strong>：声明两个对象</p>
+<pre class="highlight"><code class="">public class Demo {
+   public static void main(String[] args) {
+       Book bkA = new Book();
+       Book bkB = new Book();
+       bkA.title = &quot;Java开发&quot;;
+       bkA.price = 66.6;
+       bkA.getInfo();
+       bkB.title = &quot;C++开发&quot;;
+       bkB.price = 22.6;
+       bkB.getInfo();
+   }
+}
+</code></pre>
+<p><img src="/article/语言/Java基础知识(三)/6-3.png" alt="无法加载" title="内存分析"><br>
+2. <strong>范例</strong>：对象引用传递</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book();
+        Book bkB = null;
+        bkA.title = &quot;Java开发&quot;;
+        bkA.price = 66.6;
+        bkA.getInfo(); // 66.6
+        bkB = bkA; // 引用传递
+        bkB.price = 90.5;
+        bkA.getInfo(); // 90.5
+        bkB.getInfo(); // 90.5
+    }
+}
+</code></pre>
+<p><img src="/article/语言/Java基础知识(三)/6-4.png" alt="无法加载" title="内存分析"><br>
+由于两个对象指向同一块堆内存，所以任意一个对象修改了堆内存的属性值后，都会影响到其他对象的值。<strong>在引用中，一块堆内存可以被多个栈内存指向，但一个栈内存只能保存一个堆内存的地址。</strong><br>
+3. <strong>范例</strong>：引用传递</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book();
+        Book bkB = new Book();
+        bkA.title = &quot;Java开发&quot;;
+        bkA.price = 66.6;
+        bkB.title = &quot;C++开发&quot;;
+        bkB.price = 90.5;
+        bkB = bkA; // 引用传递
+        bkB.price = 100;
+        bkA.getInfo(); // 100
+        bkB.getInfo(); // 100
+    }
+}
+</code></pre>
+<p><img src="/article/语言/Java基础知识(三)/6-5.png" alt="无法加载" title="内存分析"><br>
+通过内存分析可知，<strong>在引用时，一块没有栈内存指向的堆内存将成为垃圾，最后被垃圾收集器(GC)回收，回收后，释放其所占空间。</strong></p>
+<h3 id="封装性"><a class="markdownIt-Anchor" href="#封装性"></a> 封装性</h3>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book();
+        bkA.title = &quot;Java开发&quot;;
+        bkA.price = -66.6;
+        bkA.getInfo();
+    }
+}
+
+</code></pre>
+<p>上述代码没有语法错误，但存在业务逻辑错误，因为书的价格不能为负数。造成该问题是因为<strong>对象可以在类的外部直接访问属性。</strong><br>
+1.因此应将Book类的属性设为对外不可见（只允许本类访问），可以使用private关键字定义属性。</p>
+<pre class="highlight"><code class="">public class Book {
+    private String title;
+    private double price;
+    public void getInfo(){
+        System.out.println(&quot;书名：&quot; + title + &quot;,价格：&quot; + price);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book();
+        bkA.title = &quot;Java开发&quot;; // 报错，无法访问私有属性
+    }
+}
+</code></pre>
+<p>此时外部对象无法直接调用类中的属性，但程序要正常执行，必须让对象可以操作类中的属性。因此在开发中，对于属性有该要求：<strong>类中的属性要使用private声明，如果属性需被外部使用，按照要求定义对应的setter()/getter()</strong>.<br>
+2. 以Book类中的title属性为例，定义setter()/getter()：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">setter()</th>
+<th style="text-align:center">getter()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作用</td>
+<td style="text-align:center">设置属性值</td>
+<td style="text-align:center">取得属性值</td>
+</tr>
+<tr>
+<td>语法</td>
+<td style="text-align:center">public void setTitle(String t)</td>
+<td style="text-align:center">public void getTitle()</td>
+</tr>
+<tr>
+<td>是否含参</td>
+<td style="text-align:center">有参</td>
+<td style="text-align:center">无参</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="">package com.java.entity;
+public class Book {
+    private String title;
+    private double price;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void getInfo(){
+        System.out.println(&quot;书名：&quot; + title + &quot;,价格：&quot; + price);
+    }
+}
+</code></pre>
+<p>如果要添加如价格不能为负数的功能，应在setter()中添加：</p>
+<pre class="highlight"><code class="">public void setPrice(double price) {
+    if (price &gt; 0.0){
+        this.price = price; 
+    }
+}
+</code></pre>
+<p>对于数据的验证，开发中应有其他辅助代码完成，<strong>setter()只是简单地设置数据，getter()只用于返回数据。</strong></p>
+<h3 id="构造方法与匿名对象"><a class="markdownIt-Anchor" href="#构造方法与匿名对象"></a> 构造方法与匿名对象</h3>
+<blockquote>
+<p>定义对象的语法：类名称 对象名称 = new 类名称();<br>
+①类名称：定义对象的类型；<br>
+②对象名称：标识符，要使用对象，需要有一个对象名；<br>
+③new：用于开辟堆内存空间，实例化对象；<br>
+④类名称()：一个方法名和类名称一样的方法，这就是构造方法。<br>
+通过上述分析，我们发现了构造方法的存在，但我们并没有定义构造方法。之所以能使用这个构造方法，是因为<strong>Java默认在没有自定义构造方法的情况下，程序编译时自动在类中添加一个无参无返回值的构造方法。</strong><br>
+1.构造方法的定义原则：<strong>方法名称与类名称相同，没有返回值。</strong></p>
+</blockquote>
+<pre class="highlight"><code class="">class Book {
+    public Book() { // 系统自动生成的构造方法
+    }
+}
+</code></pre>
+<p>2.构造方法在对象使用new实例化时调用。<br>
+<strong>范例</strong>：证明构造方法被调用</p>
+<pre class="highlight"><code class="">public class Book {
+   public Book() {
+       System.out.println(&quot;构造方法被调用&quot;);
+   }
+}
+
+public class Demo {
+   public static void main(String[] args) {
+       Book book = null ; // 声明对象
+       book = new Book(); // 实例化对象时调用构造方法
+       //结果：构造方法被调用
+   }
+}
+</code></pre>
+<p>构造方法与普通方法的最大区别：<strong>构造方法只在实例化对象时调用一次。普通方法在对象实例化后可以多次调用。</strong><br>
+3.<strong>范例</strong>：自定义构造方法</p>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+    // 自定义构造方法后，系统不再自动生成无参无返回值的构造方法
+    public Book(String t, double p) {
+        title = t;
+        price = p;
+    }
+
+    public void getInfo() {
+        System.out.println(&quot;书名：&quot; + title + &quot;,价格：&quot; + price);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book book = new Book(&quot;Java开发&quot;, 66.6);
+        book.getInfo();
+    }
+}
+</code></pre>
+<p>由上述代码可知构造方法的作用：<code>在类对象实例化时设置属性的初始值，即构造方法用于属性初始化</code>。<br>
+4.构造方法也属于方法，因此可以进行重载。<br>
+<strong>范例</strong>：构造方法重载</p>
+<pre class="highlight"><code class="">class Book {
+    public Book() {
+        System.out.println(&quot;系统自动生成的构造方法&quot;);
+    }
+    // 进行方法重载的构造方法
+    public Book(String t, double p) {
+        System.out.println(&quot;方法重载后的构造方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bookA = new Book(); // 系统自动生成的构造方法
+        Book bookB = new Book(&quot;Java开发&quot;, 66.6); // 方法重载后的构造方法
+    }
+}
+</code></pre>
+<p>重载方法时要求：<strong>按照参数个数，对方法进行升序或者降序排列。</strong><br>
+5.在定义类时可为属性设置默认值。但该默认值只有在对象实例化后才进行设置。而对象实例化是对象构造的最后一步。对象实例化过程的步骤：<code>类的加载，内存的分配，默认值的设置，构造方法</code>。</p>
+<pre class="highlight"><code class="">class Book {
+    private String title = &quot;Java开发&quot;; // 设置默认值
+    private double price;
+
+    public Book() {
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        if (price &gt; 0.0){
+            this.price = price;
+        }
+    }
+
+    public void getInfo() {
+        System.out.println(&quot;书名：&quot; + title + &quot;,价格：&quot; + price);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book();
+        bkA.getInfo(); // 书名：Java开发,价格：0.0
+    }
+}
+</code></pre>
+<p>本程序中，只有在对象实例化后，才会将”Java开发”设置给title属性。在没有实例化前，title的值仍为其数据类型的默认值，即null。<strong>真实的对象信息都保存在堆内存中。</strong><br>
+6.匿名对象：<code>没有栈内存指向的对象，即没有标识符的对象</code>。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        new Book(&quot;Java开发&quot;,6.6).getInfo();
+    }
+}
+</code></pre>
+<p>由于匿名对象没有标识符，也没有其他对象对其引用，因此只能使用一次，之后该对象空间变为垃圾，等待回收。<br>
+<strong>何时使用匿名对象</strong>：但一个对象仅需要被使用一次时就使用匿名对象。当一个对象要被反复调用时，就使用非匿名对象。</p>
+<h3 id="简单java类实践"><a class="markdownIt-Anchor" href="#简单java类实践"></a> 简单Java类实践</h3>
+<p><strong>题目要求</strong>：定义一个雇员类，类中有雇员编号、姓名、职位、基本工资、佣金等属性。<br>
+<strong>提示</strong>：这种类被称为<code>简单java类</code>，因为这种类不包含过于复杂的程序逻辑。</p>
+<blockquote>
+<p>对于简单Java类而言，它的要求如下：<br>
+·类名必须有意义；<br>
+·类中所有属性必须private封装，封装后的属性必须提供setter和getter方法；<br>
+·类中可以有多个构造方法，但必须保留无参构造方法；<br>
+·类中不允许出现输出语句，信息输出必须交给调用处。<br>
+·类中需要提供有一个取得对象完整信息的方法，暂定为getInfo(),返回值类型为String型。</p>
+</blockquote>
+<p><strong>第一步：定义类</strong></p>
+<pre class="highlight"><code class="">public class Emp {
+    private int eId; // 编号
+    private String eName; // 姓名
+    private String job; // 职位
+    private double sal; // 工资
+    private double comm; // 佣金
+    // 定义构造方法
+    public Emp() {
+    }
+    
+    public Emp(int eId, String eName, String job, double sal, double comm) {
+        this.eId = eId;
+        this.eName = eName;
+        this.job = job;
+        this.sal = sal;
+        this.comm = comm;
+    }
+    // 定义setter和getter方法
+    public int geteId() {
+        return eId;
+    }
+
+    public void seteId(int eId) {
+        this.eId = eId;
+    }
+
+    public String geteName() {
+        return eName;
+    }
+
+    public void seteName(String eName) {
+        this.eName = eName;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public double getSal() {
+        return sal;
+    }
+
+    public void setSal(double sal) {
+        this.sal = sal;
+    }
+
+    public double getComm() {
+        return comm;
+    }
+
+    public void setComm(double comm) {
+        this.comm = comm;
+    }
+    // 定义普通方法
+    public String getInfo() {
+        return &quot;编  号&quot; + this.eId + &quot;\n&quot; +
+                &quot;姓 名&quot; + this.eName + &quot;\n&quot; +
+                &quot;职 位&quot; + this.job + &quot;\n&quot; +
+                &quot;工 资&quot; + this.sal + &quot;\n&quot; +
+                &quot;佣 金&quot; + this.comm;
+    }
+}
+</code></pre>
+<p><strong>第二步：测试</strong></p>
+<pre class="highlight"><code class="">public class TEmp {
+    public static void main(String[] args) {
+        Emp e = new Emp(1, &quot;Tom&quot;, &quot;保安&quot;, 800.0, 10.0);
+        System.out.println(e.getInfo()); // 获取全部信息
+        System.out.println(e.geteId()); // 通过getter()获取单一信息
+    }
+}
+</code></pre>
+<p>类中的setter()/getter()必须写。setter()除了有设置属性内容功能外，还有修改属性值的功能。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Kubernetes安装及使用]]></title>
       <url>/article/%E5%AE%B9%E5%99%A8/Kubernetes%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<h2 id="环境配置"><a class="markdownIt-Anchor" href="#环境配置"></a> 环境配置</h2>
@@ -1946,14 +2594,14 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Gallery]]></title>
-      <url>/gallery/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
