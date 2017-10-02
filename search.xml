@@ -1125,6 +1125,186 @@ public class Demo {
   |- <code>&amp;</code>为位与元算，<code>|</code>为位或元算<br>
   |- <code>&amp;&amp;</code>和<code>||</code>不能用于位运算</p>
 </blockquote>
+<h2 id="java程序逻辑控制"><a class="markdownIt-Anchor" href="#java程序逻辑控制"></a> Java程序逻辑控制</h2>
+<p>程序逻辑结构主要分为三种：顺序结构、分支结构、循环结构。顺序结构执行顺序是从前到后，但有时是以代码所在的{}为界限。</p>
+<h3 id="分支结构"><a class="markdownIt-Anchor" href="#分支结构"></a> 分支结构</h3>
+<ol>
+<li>分支结构即判断结构，有两种语法：if和switch.</li>
+<li>if语句:<br>
+if语句的格式:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>if</th>
+<th style="text-align:center">if…else</th>
+<th style="text-align:right">if…else if…else</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p><strong>范例</strong>：if判断</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        double score = 90.0;
+        if (score &lt; 60.0) {
+            System.out.println(&quot;不及格&quot;);
+        } else if (score &lt; 90) {
+            System.out.println(&quot;良&quot;);
+        } else {
+            System.out.println(&quot;优秀&quot;);
+        }
+    }
+}
+</code></pre>
+<ol start="3">
+<li>switch语句:<br>
+switch判断<strong>不能使用布尔表达式</strong>，JDK1.5之前只能进行<code>整数或字符</code>判断，JDK1.5增加了<code>枚举</code>判断，JDK1.7增加了<code>String</code>判断，语法：</li>
+</ol>
+<pre class="highlight"><code class="">switch (数字/字符/枚举/字符串){
+    case 内容 : 内容满足时执行的代码 ; break;
+    case 内容 : 内容满足时执行的代码 ; break;
+    ...
+    default {
+        内容都不满足case时执行;
+        break;
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：使用switch</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int num = 2;
+        switch (num) {
+            case 1:
+                System.out.println(&quot;数字1&quot;);
+                break;
+            case 2:
+                System.out.println(&quot;数字2&quot;);
+                break;
+            default:
+                System.out.println(&quot;大于2的数字&quot;);
+                break;
+        }
+    }
+}
+</code></pre>
+<p>switch默认从第一个符合条件的case语句开始执行，直到整个switch执行完毕或遇到break关键字，才停止执行。<strong>程序区分大小写</strong>。</p>
+<h3 id="循环结构"><a class="markdownIt-Anchor" href="#循环结构"></a> 循环结构</h3>
+<ol>
+<li>当某段代码需要重复执行时，可使用循环语句实现，循环有两种：for循环和while循环。</li>
+<li>while循环：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>while循环</th>
+<th style="text-align:right">do…while循环</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>while（布尔语句）｛｝</td>
+<td style="text-align:right">do｛｝while（布尔语句);</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：实现1到100的累加（<strong>while循环先判断再执行</strong>）：</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+   public static void main(String[] args) {
+       int sum = 0;
+       int current = 1; // 循环的初始化条件
+       while (current &lt;= 100) { // 循环结束条件
+           sum += current; // 累加
+           current++; // 修改循环的初始化条件
+       }
+       System.out.println(sum); // 5050
+   }
+}
+</code></pre>
+<p><strong>范例</strong>：实现1到100的累加（<strong>do…while循环是先执行再判断）</strong></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int sum = 0;
+        int current = 1;
+        do {
+            sum += current;
+            current++;
+        } while (current &lt;= 100);
+        System.out.println(sum);
+    }
+}
+</code></pre>
+<p>do…while循环先执行再判断，即不论循环条件是否满足，都至少执行一次，<strong>因此开发中不建议使用do…while。</strong></p>
+<ol start="3">
+<li>for循环：</li>
+</ol>
+<pre class="highlight"><code class="">for (循环初始化条件; 循环结束条件; 循环条件变更) {
+    循环语句;
+}
+</code></pre>
+<p>即使三个条件都不写，但是<strong>两个&quot;;&quot;必须保留。</strong><br>
+<strong>范例</strong>：实现1~100的累加</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 0; i &lt;= 100; i++) {
+            sum += i;
+        }
+        System.out.println(sum);
+    }
+}
+</code></pre>
+<ol start="4">
+<li>开发原则:<br>
+（1）循环次数未知，循环结束条件已知时使用<code>while</code>循环；<br>
+（2）循环次数已知，使用<code>for</code>循环。</li>
+<li>循环嵌套</li>
+</ol>
+<pre class="highlight"><code class="">public class 九九乘法表 {
+    public static void main(String[] args) {
+        for (int x = 1; x &lt;= 9; x++) {
+            for (int y = 1; y &lt;= x; y++) {
+                System.out.print(x + &quot;*&quot; + y + &quot;=&quot; + (x * y) + &quot;\t&quot;);
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
+<h3 id="循环控制"><a class="markdownIt-Anchor" href="#循环控制"></a> 循环控制</h3>
+<p>循环控制有两个语句：<code>continue</code>（退出本次循环）和<code>break</code>（结束整个循环）。该语句要和判断语句一起使用。<br>
+<strong>范例</strong>：continue使用</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+   public static void main(String[] args) {
+       for (int x = 0; x &lt; 5; x++) {
+           if (x == 3) {
+               continue; // 跳出本次循环，不进行后续的输出操作
+           }
+           System.out.print(x + &quot;,&quot;); // 0,1,2,4,
+       }
+   }
+}
+</code></pre>
+<p><strong>范例</strong>：break</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        for (int x = 0; x &lt; 5; x++) {
+            if (x == 3) {
+                break; // 结束整体循环
+            }
+            System.out.print(x + &quot;,&quot;); // 0,1,2,
+        }
+    }
+}
+</code></pre>
 ]]></content>
       
         <categories>
@@ -1699,7 +1879,7 @@ description: 描述
 文档正文编写，请参照markdown语法。
 </code></pre>
 <h2 id="结尾"><a class="markdownIt-Anchor" href="#结尾"></a> 结尾</h2>
-<p>如果搭建过程中，还有什么问题，请在下方留言。谢谢您的观赏！</p>
+<p>如果搭建过程中，还有什么问题，请在下方留言。谢谢您的阅读！</p>
 ]]></content>
       
         <categories>
