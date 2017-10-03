@@ -3,6 +3,516 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(五)]]></title>
+      <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%94)/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> 语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java基础知识(四)]]></title>
+      <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%9B%9B)/</url>
+      <content type="html"><![CDATA[<h2 id="数组的定义及使用"><a class="markdownIt-Anchor" href="#数组的定义及使用"></a> 数组的定义及使用</h2>
+<h3 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h3>
+<p>1.<strong>数组</strong>是一组变量的集合。数组属于引用数据类型。<br>
+2.数组的定义语法<br>
+（1）声明并开辟数组： <code>数组类型 数组名[] = new 数据类型[数组长度]</code><br>
+（2）分步完成：</p>
+<pre class="highlight"><code class="">// 声明数组
+数组类型 数组名[] = null;
+// 开辟数组
+数组名 = new 数据类型 [数组长度]
+</code></pre>
+<p>3.数组开辟空间用，可利用<code>数组名[下标|索引]</code>访问，<strong>下标从0开始</strong>。即长度为3的数组，下标值为0，1，2。下标超出范围，会出现<strong>数组越界异常（ArrayIndexOutOfBoundsException）。</strong><br>
+4.数组是顺序结构且长度固定，可使用循环语句输出，可用<code>数组名.length</code>获取数组长度。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int datas[] = new int[3]; // 声明并开辟一个长度为3的数组
+        datas[0] = 1; // 为数组赋值，如不赋值，默认值为0
+        datas[1] = 2;
+        datas[2] = 3;
+        // for循环输出数组内容，datas.length获取数组长度
+        for (int x = 0; x &lt; datas.length; x++) {
+            System.out.println(datas[x]);
+        }
+    }
+}
+</code></pre>
+<p>5.数组属于**引用数据类型，**因此要进行内存分配。与保存对象的区别是对象的堆内存保存的是属性，数组的堆内存保存的是数据。<br>
+<img src="/article/语言/Java基础知识(四)/7-1.png" alt="无法加载" title="数组内存分析"><br>
+<strong>范例</strong>：分步完成</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int datas[] = null; // 声明数组
+        datas = new int[3]; // 开辟一个长度为3的数组
+        datas[0] = 1;
+        datas[1] = 2;
+        datas[2] = 3;
+        for (int x = 0; x &lt; datas.length; x++) {
+            System.out.println(datas[x]);
+        }
+    }
+}
+</code></pre>
+<p><img src="/article/语言/Java基础知识(四)/7-2.png" alt="无法加载" title="数组内存分析"><br>
+6.数组可以进行引用传递。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int datas[] = new int[3];
+        datas[0] = 1;
+        datas[1] = 2;
+        datas[2] = 3;
+        int temp[] = datas; // 引用传递
+        temp[0] = 99;
+        for (int x = 0; x &lt; datas.length; x++) {
+            System.out.println(datas[x]); // 99 2 3
+        }
+    }
+}
+</code></pre>
+<p><img src="/article/语言/Java基础知识(四)/7-3.png" alt="无法加载" title="数组内存分析"><br>
+以上都是<code>动态初始化数组</code>，即先开辟数组，再为数组赋值。<br>
+7.静态初始化数组：<br>
+在定义数组的同时为其赋值，语法：<br>
+（1）<code>数组类型 数组名[] = {v1, v2 ,…,vn};</code><br>
+（2）<code>数组类型 数组名[] = new 数据类型[] {v1, v2 ,…,vn};</code><br>
+<strong>范例</strong>：静态初始化数组</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int datas[] = new int[]{1, 2, 3}; // 静态初始化数组
+        for (int x = 0; x &lt; datas.length; x++) {
+            System.out.println(datas[x]);
+        }
+    }
+}
+</code></pre>
+<p>数组支持顺序数据访问，最大缺点是<strong>长度不能改变</strong>，因此在开发中不直接使用数组，但会使用数组的概念。</p>
+<h3 id="二维数组"><a class="markdownIt-Anchor" href="#二维数组"></a> 二维数组</h3>
+<p>1.<strong>一维数组就是一行数据：</strong></p>
+<table>
+<thead>
+<tr>
+<th>索引</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">30</td>
+</tr>
+</tbody>
+</table>
+<p>在一维数组中要查询一个数据，只要确定其索引即可。<br>
+<strong>二维数组，是一个数据表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>索引</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">30</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">123</td>
+<td style="text-align:center">231</td>
+<td style="text-align:center">233</td>
+</tr>
+</tbody>
+</table>
+<p>二维数组中要查询一个数据，需要定位列和行。二维数组中第一个<code>[]</code>确定行，第二个<code>[]</code>确定列。<br>
+2. 二维数组定义语法：</p>
+<pre class="highlight"><code class="">// 动态初始化：
+数据类型 数组名称[][]=new 数据类型[行数][列数];
+// 静态初始化：
+数据类型 数组名称[][]=new 数据类型[][]{数组元素} ;
+</code></pre>
+<p>由此可以发现，二维数组就是将多个一维数组变为一个数组。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int datas[][] = new int[][]{
+        	{1, 2, 3}, 
+        	{4, 5, 6}, 
+        	{7, 8, 9}
+        }; 
+        // 外层循环控制数组的行
+        for (int x = 0; x &lt; datas.length; x++) {
+            // 内层循环控制数组的列
+            for (int y = 0; y &lt; datas[x].length ; y++) {
+                System.out.print(datas[x][y] + &quot;\t&quot;);
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
+<h3 id="数组与方法的引用"><a class="markdownIt-Anchor" href="#数组与方法的引用"></a> 数组与方法的引用</h3>
+<p>1.方法的参数可以是数组：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int datas[] = new int[]{1, 2, 3};
+        change(datas);
+        for (int x = 0; x &lt; datas.length; x++) {
+            System.out.println(datas[x]);
+        }
+    }
+
+    public static void change(int temp[]) {
+        for (int x = 0; x &lt; temp.length; x++) {
+            temp[x] *= 2; // 数组元素乘2保存
+        }
+    }
+}
+</code></pre>
+<p><strong>内存分析：</strong><br>
+<img src="/article/语言/Java基础知识(四)/7-4.png" alt="无法加载" title="数组内存分析"><br>
+<code>change()</code>执行完毕后，<code>temp</code>不再指向<code>datas</code>的堆内存，但<code>change()</code>对<code>datas</code>数据的修改被保存下来。<br>
+2.<strong>数组排序（冒泡排序）</strong>：<br>
+数据的不同会造成排序次数的不同，但不论有多少数据，**总的排序次数不会超过数组长度。**只要排序次数达到数组长度的平方，就能排序成功。</p>
+<pre class="highlight"><code class="">public class ArrayDemo {
+    public static void main(String[] args) {
+        int datas[] = new int[]{2, 1, 9, 0, 5, 7, 6, 8};
+        for (int x = 0; x &lt; datas.length; x++) {
+            for (int y = 0; y &lt; datas.length - 1; y++) {
+                if (datas[y] &gt; datas[x]) {
+                    int t = datas[y];
+                    datas[y] = datas[x];
+                    datas[x] = t;
+                }
+            }
+            // 为更好地理解冒泡排序，输出每轮排序的结果
+            System.out.print(&quot;第&quot; + (x + 1) + &quot;次排序结果:&quot;);
+            print(datas);
+            System.out.println();
+        }
+        print(datas);
+    }
+    // 数组输出的方法
+    public static void print(int temp[]) {
+        for (int x = 0; x &lt; temp.length; x++) {
+            System.out.print(temp[x] + &quot; &quot;);
+        }
+    }
+}
+</code></pre>
+<p><strong>建议</strong>：<code>main()</code>是程序的起点，可以称为客户端。客户端的代码逻辑应简单，因此可将排序封装为方法。</p>
+<pre class="highlight"><code class="">public class ArrayDemo {
+    public static void main(String[] args) {
+        int datas[] = new int[]{2, 1, 9, 0, 5, 7, 6, 8};
+        sort(datas);
+        print(datas);
+    }
+
+    // 数组冒泡排序方法
+    public static void sort(int temp[]) {
+        for (int x = 0; x &lt; temp.length; x++) {
+            for (int y = 0; y &lt; temp.length - 1; y++) {
+                if (temp[y] &gt; temp[x]) {
+                    int t = temp[y];
+                    temp[y] = temp[x];
+                    temp[x] = t;
+                }
+            }
+        }
+    }
+
+    // 数组输出的方法
+    public static void print(int temp[]) {
+        for (int x = 0; x &lt; temp.length; x++) {
+            System.out.print(temp[x] + &quot; &quot;);
+        }
+    }
+}
+</code></pre>
+<p>3.<strong>数组转置</strong><br>
+转置的概念（一维数组）：·</p>
+<table>
+<thead>
+<tr>
+<th>原始数组</th>
+<th style="text-align:right">1，2，3，4，5，6，7，8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>转置后</td>
+<td style="text-align:right">8，7，6，5，4，3，2，1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>转置操作的两个思路：</strong><br>
+（1）定义一个新的数组，而后将原始数组按照倒序的方式插入到新的数组之中，随后改变原始数组的引用：</p>
+<pre class="highlight"><code class=""> public class ArrayDemo {
+    public static void main(String[] args) {
+        int datas[] = new int[]{1,2,3,4,5,6,7,8};
+        datas = reverseOne(datas); // 让datas指向新数组，原始数据成为垃圾
+    }
+    // 数组逆序输出方法一
+    public static int [] reverseOne(int temp[]) {
+        // 定义新数组，长度与原始数组一致
+        int temps[] = new int[temp.length];
+        int foot = temp.length - 1; // 控制原始数组的索引
+        for (int x = 0; x &lt; temps.length ; x++) {
+            temps[x] = temp[foot]; // 新数组按照原始数组倒序排列
+            foot --;
+        }
+        return temps;
+    }
+}
+</code></pre>
+<p>上述代码实现转置，但产生了垃圾，不合理。<br>
+（2）利用算法，直接在数组上完成转置：<br>
+不论数组个数是奇数还是偶数,<code>转换次数 = 数组长度 / 2</code>;</p>
+<pre class="highlight"><code class="">// 数组逆序输出方法
+public static void reverse(int temp[]) {
+    int len = temp.length / 2;
+    int head = 0;
+    int tail = temp.length - 1;
+    for (int x = 0; x &lt; len; x++) {
+        int t = temp[head];
+        temp[head] = temp[tail];
+        temp[tail] = t;
+        head++;
+        tail--;
+    }
+}
+</code></pre>
+<p>4.<strong>行列数相等的二维数组转置：</strong></p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int data[][] = new int[][]{
+        	{1, 2, 3}, 
+        	{4, 5, 6}, 
+        	{7, 8, 9}
+        };
+        reverse(data);
+        print(data);
+    }
+
+    // 专门实现数组的倒置操作
+    public static void reverse(int arr[][]) {
+        for (int x = 0; x &lt; arr.length; x++) {
+            for (int y = x; y &lt; arr.length; y++) {
+                if (x != y) { //行和列相同，进行交换
+                    int temp = arr[x][y];
+                    arr[x][y] = arr[y][x];
+                    arr[y][x] = temp;
+                }
+            }
+        }
+    }
+
+    // 专门输出的方法
+    public static void print(int temp[][]) {
+        for (int x = 0; x &lt; temp.length; x++) {
+            for (int y = 0; y &lt; temp[x].length; y++) {
+                System.out.print(temp[x][y] + &quot;、&quot;);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+}
+</code></pre>
+<p><strong>转置过程</strong>：</p>
+<pre class="highlight"><code class="">1[0][0]  2[0][1]  3[0][2]
+4[1][0]  5[1][1]  6[1][2]
+7[2][0]  8[2][1]  9[2][2]
+第一次转换（x=0，y=x=0，循环3次）
+ ·y的第一次循环（x==y）
+  1[0][0]  2[0][1]  3[0][2]
+  4[1][0]  5[1][1]  6[1][2]
+  7[2][0]  8[2][1]  9[2][2]
+ ·y的第二次循环（x=0，y=1，进行交换）
+  1[0][0]  4[1][0]  3[0][2]
+  2[0][1]  5[1][1]  6[1][2]
+  7[2][0]  8[2][1]  9[2][2]
+ ·y的第三次循环（x=0，y=2，进行交换）
+  1[0][0]  4[1][0]  7[2][0]
+  2[0][1]  5[1][1]  6[1][2]
+  3[0][2]  8[2][1]  9[2][2]
+第二次转换（x=1，y=x=1，循环2次）
+ ·y的第一次循环（x=1，y=1，不交换）
+  1[0][0]  4[1][0]  7[2][0]
+  2[0][1]  5[1][1]  6[1][2]
+  3[0][2]  8[2][1]  9[2][2]
+ ·y的第二次循环（x=1，y=2，进行交换）
+  1[0][0]  4[1][0]  7[2][0]
+  2[0][1]  5[1][1]  8[2][1]
+  3[0][2]  6[1][2]  9[2][2]
+第三次转换（x=2，y=x=2，循环11次）
+ ·y的第二次循环（x=2，y=2，不交换）
+  1[0][0]  4[1][0]  7[2][0]
+  2[0][1]  5[1][1]  8[2][1]
+  3[0][2]  6[1][2]  9[2][2]
+</code></pre>
+<p>行列数不同的数组进行倒置，其思路是：数组的行数是原数组的列数，数组的列数是源数组的行数。需要改变原始数组的引用，会产生垃圾。<br>
+5.方法返回数组：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int data[] = init(); // 接收数组
+        print(data);
+        System.out.println(init().length);
+    }
+
+    public static int[] init() {
+        return new int[]{1, 2, 3}; // 方法返回数组
+    }
+
+    public static void print(int temp[]) {
+        for (int x = 0; x &lt; temp.length; x++) {
+            System.out.print(temp[x] + &quot;、&quot;);
+        }
+        System.out.println();
+    }
+}
+</code></pre>
+<h3 id="操作数组的方法"><a class="markdownIt-Anchor" href="#操作数组的方法"></a> 操作数组的方法</h3>
+<p>1.Java对数组提供类库支持，下面介绍两个类库中的方法：<br>
+（1）数组拷贝：用一个数组的指定内容覆盖另一个数组指定内容。<br>
+语法：<code>System.arraycopy(源数组名，源数组拷贝开始索引，目标数组名，目标数组开始拷贝索引，拷贝长度)</code>。<br>
+范例：数组拷贝<br>
+·数组A：1，2，3，4，5，6，7，8；<br>
+·数组B：11，22，33，44，55，66，77，88；<br>
+·拷贝后的数组B:11，22，5，6，7，66，77，88</p>
+<pre class="highlight"><code class=""> public class Demo {
+    public static void main(String[] args) {
+        int dataA[] = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+        int dataB[] = new int[]{11, 22, 33, 44, 55, 66, 77, 88};
+        System.arraycopy(dataA, 4, dataB, 2, 3);
+        ArrayDemo.print(dataB); // 调用之前代码中的数组输出方法
+    }
+}
+</code></pre>
+<p>（2）数组排序：<br>
+语法：<code>java.util.Arrays.sort(数组名)</code></p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int dataA[] = new int[]{3, 2, 1, 4, 7, 0, 6, 5};
+        java.util.Arrays.sort(dataA);
+        ArrayDemo.print(dataA); // 调用之前代码中的数组输出方法
+    }
+}
+</code></pre>
+<h3 id="对象数组"><a class="markdownIt-Anchor" href="#对象数组"></a> 对象数组</h3>
+<p>1.<strong>对象数组</strong>是将多个对象交由数组处理。<br>
+2.对象数组的定义与一般数组一致：<br>
+<strong>范例</strong>： 动态初始化对象数组</p>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    // setter和getter方法略
+    public String getInfo() {
+        return &quot;书名：&quot; + title + &quot;，价格：&quot; + price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book books[] = new Book[3];
+        books[0] = new Book(&quot;Java开发&quot;, 66.6);
+        books[1] = new Book(&quot;JSP&quot;, 6.6);
+        books[2] = new Book(&quot;C++&quot;, 16.6);
+        for (int x = 0; x &lt; books.length; x++) {
+            System.out.println(books[x].getInfo()); 
+//未实例化对象时，输出值全为null
+        }
+    }  
+}
+</code></pre>
+<p><strong>范例</strong>：静态初始化对象数组：</p>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    // setter和getter方法略
+    public String getInfo() {
+        return &quot;书名：&quot; + title + &quot;，价格：&quot; + price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book books[] = new Book[]{
+                new Book(&quot;Java开发&quot;, 66.6),
+                new Book(&quot;JSP&quot;, 6.6),
+                new Book(&quot;C++&quot;, 16.6)
+        };
+        for (int x = 0; x &lt; books.length; x++) {
+            //未实例化对象时，输出值全为null
+            System.out.println(books[x].getInfo()); 
+        }
+    }
+}
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> 语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础知识(三)]]></title>
       <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%89)/</url>
       <content type="html"><![CDATA[<h2 id="方法的定义与使用"><a class="markdownIt-Anchor" href="#方法的定义与使用"></a> 方法的定义与使用</h2>
