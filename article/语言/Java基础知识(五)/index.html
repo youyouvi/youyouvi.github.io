@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 03 2017 21:33:39 GMT+0800" />
-        <meta property="article:modified_time" content="Tue Oct 03 2017 21:33:39 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Oct 08 2017 20:59:45 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/语言/Java基础知识(五)/index.html",
     "headline": "Java基础知识(五)",
     "datePublished": "Tue Oct 03 2017 21:33:39 GMT+0800",
-    "dateModified": "Tue Oct 03 2017 21:33:39 GMT+0800",
+    "dateModified": "Sun Oct 08 2017 20:59:45 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -344,6 +344,15 @@
 
     <!-- Left aligned menu below button -->
     
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#string类的特点及使用"><span class="post-toc-number">1.</span> <span class="post-toc-text"> String类的特点及使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string对象的两种实例化方式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> String对象的两种实例化方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串比较"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 字符串比较</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string常量是匿名对象"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> String常量是匿名对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两种实例化方式的区别"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 两种实例化方式的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字符串内容不可改变"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> 字符串内容不可改变</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类常用方法字符与字符串"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"> String类常用方法(字符与字符串)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类常用方法字节与字符串"><span class="post-toc-number">1.7.</span> <span class="post-toc-text"> String类常用方法(字节与字符串)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类常用方法字符串比较"><span class="post-toc-number">1.8.</span> <span class="post-toc-text"> String类常用方法(字符串比较)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类常用方法字符串查找"><span class="post-toc-number">1.9.</span> <span class="post-toc-text"> String类常用方法(字符串查找)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类常用方法字符串替换"><span class="post-toc-number">1.10.</span> <span class="post-toc-text"> String类常用方法(字符串替换)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类常用方法字符串截取"><span class="post-toc-number">1.11.</span> <span class="post-toc-text"> String类常用方法(字符串截取)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类常用方法字符串拆分"><span class="post-toc-number">1.12.</span> <span class="post-toc-text"> String类常用方法(字符串拆分)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string类其他方法"><span class="post-toc-number">1.13.</span> <span class="post-toc-text"> String类其他方法</span></a></li></ol></li></ol>
+    </ul>
     
 
 
@@ -501,7 +510,767 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <h2 id="string类的特点及使用"><a class="markdownIt-Anchor" href="#string类的特点及使用"></a> String类的特点及使用</h2>
+<blockquote>
+<p>JDK_API文档由下面几部分组成：<br>
+（1）类的定义以及相关的继承结构<br>
+（2）类的简短说明<br>
+（3）类的成员组成<br>
+（4）类所提供的构造方法<br>
+（5）类所提供的普通方法<br>
+（6）类的成员，构造方法，普通方法的详细说明<br>
+<code>deprecated</code>标记表示不再建议使用。</p>
+</blockquote>
+<h3 id="string对象的两种实例化方式"><a class="markdownIt-Anchor" href="#string对象的两种实例化方式"></a> String对象的两种实例化方式</h3>
+<p>1.<code>String</code>是字符串类,下面将类的角度与内存关系分析其作用：<br>
+（1）直接赋值<code>String value_name = &quot;字符串&quot;</code></p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello World !&quot;; // 直接赋值
+        System.out.println(str);
+    }
+}
+</code></pre>
+<p>（2）构造方法<code>public String (String str);</code></p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = new String(&quot;Hello World !&quot;);
+        System.out.println(str);
+    }
+}
+</code></pre>
+<h3 id="字符串比较"><a class="markdownIt-Anchor" href="#字符串比较"></a> 字符串比较</h3>
+<p>1.判断两个int数据是否相等：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = 10;
+        System.out.println(x == y); // true
+    }
+}
+</code></pre>
+<p>使用<code>==</code>判断String对象是否相等：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = &quot;Hello&quot;;
+        String strB = new String(&quot;Hello&quot;);
+        String strC = strB;
+        System.out.println(strA == strB); // false
+        System.out.println(strA == strC); // false
+        System.out.println(strB == strC); // true
+    }
+}
+</code></pre>
+<p>对上述代码进行内存分析：<br>
+<img src="/article/语言/Java基础知识(五)/8-1.png" alt="无法加载" title="内存分析"><br>
+由内存分析可知，String对象使用<code>==</code>比较时，比较的是对象的<strong>栈内存地址的值</strong>。<br>
+2.要比较字符串的内容，应使用String类中的方法<code>public boolean equals（String str）</code></p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = &quot;Hello&quot;;
+        String strB = new String(&quot;Hello&quot;);
+        String strC = strB;
+        System.out.println(strA.equals(strB)); // true
+        System.out.println(strA.equals(strC)); // true
+    }
+}
+</code></pre>
+<p>开发中，字符串比较应用<code>equals(String str)</code>.<br>
+3.<strong>章节例题：<code>==</code>与<code>equals(String str)</code>的区别</strong><br>
+<code>==</code>是关系运算符，用于判断数值相等，当用于String对象时对比的是两个对象的栈内存地址的值;<br>
+<code>equals(String str)</code>是String类的方法，用于比较字符串内容。</p>
+<h3 id="string常量是匿名对象"><a class="markdownIt-Anchor" href="#string常量是匿名对象"></a> String常量是匿名对象</h3>
+<p>1.编程语言中没有字符串概念，很多语言使用字符数组描述字符串。Java开发由于离不开字符串的使用，便创造了字符串，但<strong>不属于基本数据类型，而是将字符串作为String类的匿名对象。</strong><br>
+<strong>范例</strong>：验证字符串是匿名对象</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello&quot;;
+        System.out.println(&quot;Hello&quot;.equals(str));
+    }
+}
+</code></pre>
+<p>2.直接赋值的方式相当于给匿名对象设置了对象名，区别是String匿名对象是系统自动生成，不需要由用户实例化.</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String input = null; // 假设该内容是用户输入的
+        if (input.equals(&quot;hello&quot;)){
+            System.out.println(&quot;Hello World !&quot;);
+            // 报错，NullPointerException
+        }
+    }
+}
+</code></pre>
+<p>为预防用户输入错误导致input为null，而后调用<code>equals()</code>，出现空指针异常，应使用如下代码：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String input = null; // 假设该内容是用户输入的
+        if (&quot;hello&quot;.equals(input)){
+            System.out.println(&quot;Hello World !&quot;);
+        }
+    }
+}
+</code></pre>
+<p>使用上述代码将不会出现空指针异常，因此在判断用户输入的内容是否符合预期时，应将<strong>指定字符串放在equals()前</strong>。</p>
+<h3 id="两种实例化方式的区别"><a class="markdownIt-Anchor" href="#两种实例化方式的区别"></a> 两种实例化方式的区别</h3>
+<p>1.<strong>直接赋值</strong><br>
+直接赋值就是给字符串匿名对象设置对象名。<br>
+此时内存中会开辟堆内存，并且有一块栈内存指向堆内存：<br>
+<img src="/article/语言/Java基础知识(五)/8-2.png" alt="无法加载" title="内存分析"><br>
+观察下列代码：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = &quot;hello&quot;;
+        String strB = &quot;hello&quot;;
+        String strC = &quot;hello&quot;;
+        String strD = &quot;world&quot;;
+        System.out.println(strA == strB); // true
+        System.out.println(strA == strC); // true
+        System.out.println(strB == strC); // true
+        System.out.println(strA == strD); // false
+    }
+}
+</code></pre>
+<p>由上述结果可知，strA，strB，strC都指向同一块堆内存：<br>
+<img src="/article/语言/Java基础知识(五)/8-3.png" alt="无法加载" title="内存分析"><br>
+<strong>共享设计模式</strong>：JVM底层存在一个对象池，保存有对象。当使用直接赋值定义String对象时，会将该对象使用的匿名对象入池保存。而后如果有其他String对象也采用直接赋值方式且内容相同时，便不再开辟新的堆内存，而是引用对象池中已有的匿名对象。<br>
+2.<strong>构造方法实例化</strong><br>
+使用构造方法定义String对象，就需要每次开辟新的堆内存。<br>
+<img src="/article/语言/Java基础知识(五)/8-4.png" alt="无法加载" title="内存分析"><br>
+由内存分析可知，使用构造方法实例化时开辟了两块堆内存，并且其中一块会成为垃圾。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = new String(&quot;hello&quot;);
+        String strB = &quot;hello&quot;;
+        System.out.println(strA == strB); // false
+    }
+}
+</code></pre>
+<p>除了内存的浪费外，使用构造方法定义的String对象，其内容不会保存在对象池中，因为每次开辟的都是新的堆内存。如果希望开辟的新的的堆内存也进入对象池保存，可以使用<code>public String intern()</code>手工入池。</p>
+<p>3.<strong>章节小题：String对象两种定义方式的区别</strong><br>
+· 直接赋值只开辟一块堆内存，且会自动保存在对象池中，以便下次使用；<br>
+· 构造方法赋值会开辟两块堆内存，其中一块会成为垃圾，不会自动入池，但可以使用”intern()”手工入池。</p>
+<h3 id="字符串内容不可改变"><a class="markdownIt-Anchor" href="#字符串内容不可改变"></a> 字符串内容不可改变</h3>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello&quot;;
+        str += &quot; World&quot;;
+        str += &quot; !!!&quot;;
+        System.out.println(str);
+    }
+}
+</code></pre>
+<p>对上述代码进行内存分析：<br>
+<img src="/article/语言/Java基础知识(五)/8-5.png" alt="无法加载" title="内存分析"><br>
+分析后可知，字符串内容并未改变（Java规定String对象内容不可变）,字符串内容的变动实际是引用关系的变化,每次都会出现垃圾。因此字符串内容不要频繁改动。</p>
+<h3 id="string类常用方法字符与字符串"><a class="markdownIt-Anchor" href="#string类常用方法字符与字符串"></a> String类常用方法(字符与字符串)</h3>
+<p>很多语言利用字符数组描述字符串，Java中String类的方法也有相似方法：</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public String (char[] value)</td>
+<td style="text-align:center">构造</td>
+<td style="text-align:center">将字符数组变为String类对象</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public String (char[] value ,int offset,int count)</td>
+<td style="text-align:center">构造</td>
+<td style="text-align:center">将部分字符数组变为String对象</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">public char charAt (int index)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">返回指定索引对应的字符信息</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">public char[] toCharArray()</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">将字符串以字符数组的形式返回</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：取出指定索引的字符</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello&quot;;
+        char c = str.charAt(0);
+        System.out.println(c); // H
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：将字符串转大写</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;hello&quot;;
+        char [] data = str.toCharArray(); // 字符串转为字符数组
+        for (int x = 0; x &lt; data.length ; x++) {
+            data[x] -= 32; // 小写编码 - 32 = 大写编码
+        }
+        // 将字符数组变为字符串
+        System.out.println(new String(data)); // HELLO
+        // 将部分字符数组变为String对象
+        System.out.println(new String(data, 1, 2)); // EL
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：判断一个字符换是否为纯数字<br>
+<em>思路</em>：对字符串整体进行判断是无法实现的，但是可以将字符串转为字符数组，判断每一个字符是否为数字。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;3146017052&quot;;
+        if (isNumber(str)) {
+            System.out.println(&quot;字符串全部由数字组成&quot;);
+        } else {
+            System.out.println(&quot;字符串不是全部由数字组成&quot;);
+        }
+    }
+
+    // 定义判断字符串是否由数字组成的方法
+    public static boolean isNumber(String temp) {
+        // 首先将字符串变为字符数组
+        char[] data = temp.toCharArray();
+        // 一一比较字符
+        for (int x = 0; x &lt; data.length; x++) {
+            if (data[x] &gt; '9' || data[x] &lt; '0') {
+                return false;
+            }
+        }
+        // 全部为数字则返回true
+        return true;
+    }
+}
+</code></pre>
+<p><strong>建议</strong>：返回值为<code>boolean</code>的方法命名为<code>isXxx</code>。</p>
+<h3 id="string类常用方法字节与字符串"><a class="markdownIt-Anchor" href="#string类常用方法字节与字符串"></a> String类常用方法(字节与字符串)</h3>
+<p>字节使用byte描述，一般用于数据传输或编码转换。String提供了将字符数组变为字节数组的方法。</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public String (byte[] bytes)</td>
+<td style="text-align:center">构造</td>
+<td style="text-align:center">将字节数组变为字符串</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public String (byte[] bytes ,int offset,int length)</td>
+<td style="text-align:center">构造</td>
+<td style="text-align:center">将部分字节数组变为字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">public byte[] getBytes (String charsetName) throws UnsupportedEncodingException</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">进行编码转换</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">public byte[] getBytes()</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">将字符串变为字节数组</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：字符串与字节数组的转换</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;helloworld&quot;;
+        byte [] data = str.getBytes(); // 将字符串转为字节数组
+        for (int x = 0; x &lt; data.length ; x++) {
+            data[x] -= 32; // 将小写字母转为大写字母
+        }
+        System.out.println(new String(data)); // HELLOWORLD
+        System.out.println(new String(data,5,5)); // WORLD
+    }
+}
+</code></pre>
+<h3 id="string类常用方法字符串比较"><a class="markdownIt-Anchor" href="#string类常用方法字符串比较"></a> String类常用方法(字符串比较)</h3>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public boolean equals(String anotherString)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">进行内容判断，区分大小写</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public boolean equalsIgnoreCase(String anotherString)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">进行内容判断，不区分大小写</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">public int compareTo (String anotherString)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">判断两个字符串的大小（按照字符编码）,返回值为0,1,-1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：equals()判断</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = &quot;Hello&quot;;
+        String strB = &quot;hello&quot;;
+        System.out.println(strA.equals(strB)); // false,说明区分大小写
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：equalsIgnoreCase()判断</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = &quot;Hello&quot;;
+        String strB = &quot;hello&quot;;
+        System.out.println(strA.equals(strB)); // false,说明区分大小写
+        System.out.println(strA.equalsIgnoreCase(strB)); // true,说明不区分大小写
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：compareTo()</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = &quot;Hello&quot;;
+        String strB = &quot;hello&quot;;
+        System.out.println(strA.compareTo(strB)); // -32
+        if (strA.compareTo(strB) &gt; 0){
+            System.out.println(&quot;大于&quot;);
+        } else if (strA.compareTo(strB) == 0){
+            System.out.println(&quot;两个字符串相等&quot;);
+        } else {
+            System.out.println(&quot;小于&quot;);
+        }
+    }
+}
+</code></pre>
+<p>只有String对象才能进行大小判断。</p>
+<h3 id="string类常用方法字符串查找"><a class="markdownIt-Anchor" href="#string类常用方法字符串查找"></a> String类常用方法(字符串查找)</h3>
+<p>要判断指定内容的字符串是否存在于一个字符串中，可使用如下方法：</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public boolean contains (String s)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">判断指定内容是否存在</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public int indexOf(String s)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">由前向后查找指定字符串的位置，找到后返回首字母索引，未找到，返回-1。</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">public int indexOf(String s,int fromIndex)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">从指定索引由前向后查找指定字符串的位置，找到后返回首字母的索引。未找到，返回-1</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">public int lastindexOf(String s)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">由后向前查找指定字符串的位置，找到后返回首字母的索引，如果找不到，返回-1</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:center">public int lastindexOf(String s, int fromIndex)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">由后向前从指定位置查找指定字符串的位置，找到后返回首字母的索引，如果找不到，返回-1</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:center">public boolean startsWith (String prefix)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">判断是否以指定字符串开头</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:center">public boolean startsWith (String prefix，int toffset)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">从指定位置开始判断是否是以指定字符串开头</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align:center">public boolean endsWith(String suffix)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">判断是否以指定字符串结尾</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：查找字符串位置</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;helloworld&quot;;
+        // 返回满足条件的单词的首字母索引
+        System.out.println(str.indexOf(&quot;world&quot;)); // 5，为w的索引
+        // 从索引5开始查满足条件单词的索引
+        System.out.println(str.indexOf(&quot;l&quot;,5)); // 8
+        // 从后向前查
+        System.out.println(str.lastIndexOf(&quot;l&quot;)); // 8
+    }
+}
+</code></pre>
+<p>在某些程序中，需要查找指定字符串是否存在，早期方法如下：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;helloworld&quot;;
+        if (str.indexOf(&quot;world&quot;) != -1){
+            System.out.println(&quot;该字符串存在&quot;);
+        } else {
+            System.out.println(&quot;该字符串不存在&quot;);
+        }
+    }
+}
+</code></pre>
+<p>JDK1.5出现<code>contains()</code>，使用如下：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;helloworld&quot;;
+        if (str.contains(&quot;world&quot;)) {
+            System.out.println(&quot;该字符串存在&quot;);
+        } else {
+            System.out.println(&quot;该字符串不存在&quot;);
+        }
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：开头或结尾判断内容</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;helloworld&quot;;
+        // 从开头开始查
+        System.out.println(str.startsWith(&quot;he&quot;));
+        // 从索引2开始查找
+        System.out.println(str.startsWith(&quot;ll&quot;,2));
+        // 从结尾开始查找
+        System.out.println(str.endsWith(&quot;ld&quot;));
+    }
+}
+</code></pre>
+<h3 id="string类常用方法字符串替换"><a class="markdownIt-Anchor" href="#string类常用方法字符串替换"></a> String类常用方法(字符串替换)</h3>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public String replaceAll(String regex，String replacement)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">全部替换</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public String replaceFirst(String regex，String replacement)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:center">替换首个满足条件的内容</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;helloworld&quot;;
+        // 替换所有
+        String resultA = str.replace(&quot;l&quot;,&quot;_&quot;); // he__owor_d
+        // 只替换第一个
+        String resultB = str.replaceFirst(&quot;l&quot;,&quot;_&quot;); // he_loworld
+        System.out.println(resultA);
+        System.out.println(resultB);
+    }
+}
+</code></pre>
+<h3 id="string类常用方法字符串截取"><a class="markdownIt-Anchor" href="#string类常用方法字符串截取"></a> String类常用方法(字符串截取)</h3>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public String substring(int beginIndex)</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">从指定索引截取到结尾</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public String substring(int beginIndex,int endIndex)</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">截取指定范围内的内容</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;helloworld&quot;;
+        // 从索引5开始截取直到结尾
+        String resultA = str.substring(5); 
+        // 截取索引5到8之间
+        String resultB = str.substring(5,8); 
+        System.out.println(resultA); // world
+        System.out.println(resultB); // wor
+    }
+}
+</code></pre>
+<h3 id="string类常用方法字符串拆分"><a class="markdownIt-Anchor" href="#string类常用方法字符串拆分"></a> String类常用方法(字符串拆分)</h3>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public String[] split (String regex)</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">按照指定的字符串进行全部拆分</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public String[] split (String regex，int limit)</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">按照指定的字符串进行部分拆分，最后一个数组长度由limit决定</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：全部拆分</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;hello world&quot;;
+        // 按照空格拆分单词
+        String result[] = str.split(&quot; &quot;);
+        for (int x = 0; x &lt; result.length; x++) {
+            System.out.println(result[x]);
+            // 结果：hello
+            // world
+        }
+    }
+}
+</code></pre>
+<p>在拆分的时候，只写一个空字符串（<code>&quot;&quot;</code>不是<code>null</code>），表示按照每一个字符进行拆分。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;hello world&quot;;
+        // 按照空字符串拆分
+        String result[] = str.split(&quot;&quot;);
+        for (int x = 0; x &lt; result.length; x++) {
+            System.out.println(result[x]);
+            // 结果：h e l l o w o r l d
+        }
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：部分拆分</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;hello world nihao mldn&quot;;
+        // 把字符串按空格拆成3个，前2个拆完后，后面的不再按空格拆
+        String result[] = str.split(&quot; &quot;,3);
+        for (int x = 0; x &lt; result.length; x++) {
+            System.out.println(result[x]);
+            // 结果：&quot;hello&quot; &quot;world&quot; &quot;nihao mldn&quot;
+        }
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：IP地址拆分</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;192.168.1.1&quot;;
+        String result[] = str.split(&quot;\\.&quot;);
+        for (int x = 0; x &lt; result.length; x++) {
+            System.out.println(result[x]);
+            // 结果为：192 168 1 1
+        }
+    }
+}
+</code></pre>
+<p>上述代码中，只用<code>.</code>无法拆分，当遇到这种拆分时，需要使用<code>\\.</code>进行转义后拆分。<br>
+<strong>范例</strong>：拆分“张三:20|李四:25|王五:23”</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;张三:20|李四:25|王五:23&quot;;
+        String result[] = str.split(&quot;\\|&quot;);
+        for (int x = 0; x &lt; result.length; x++) {
+            String temp[] = result[x].split(&quot;:&quot;);
+            System.out.println(&quot;姓名：&quot; + temp[0] + &quot;,年龄&quot; + temp[1]);
+        }
+    }
+}
+</code></pre>
+<h3 id="string类其他方法"><a class="markdownIt-Anchor" href="#string类其他方法"></a> String类其他方法</h3>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">public String concat (String str)</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">字符串连接</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">public String toLowerCase ()</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">把字符串转为小写</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">public String toUpperCase ()</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">把字符串转为大写</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">public String trim ()</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">去掉字符串中左右两边的空格，中间空格保留</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:center">public int length()</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">取得字符串长度</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:center">public String intern ()</td>
+<td style="text-align:center">普通方法</td>
+<td style="text-align:center">数据入池操作</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">public boolean isEmpty ()</td>
+<td style="text-align:center">普通方法</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：字符串连接</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String strA = &quot;hello&quot;;
+        String strB = strA + &quot; world&quot;;
+        String strC = &quot;hello&quot; + &quot;world&quot;;
+        String strD = &quot;hello world&quot;;
+        String strE = strA.concat(&quot; world&quot;);
+        System.out.println(strB == strC); // false
+        System.out.println(strB == strD); // false
+        System.out.println(strB == strE); // false
+        System.out.println(strC == strD); // false
+        System.out.println(strC == strE); // false
+        System.out.println(strD == strE); // false
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：字符串进行大小写转换</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;*Hello*&quot;;
+        // 只转换小写字母
+        System.out.println(str.toUpperCase()); // *HELLO*
+        // 只转换大写字母
+        System.out.println(str.toLowerCase()); // *hello*
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：去掉空格</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot; Hello World &quot;;
+        System.out.println(&quot;【&quot; + str + &quot;】&quot;); // 【 Hello World 】
+        System.out.println(&quot;【&quot; + str.trim() + &quot;】&quot;); // 【Hello World】
+    }
+}
+</code></pre>
+<p>用户进行数据输入时，可能携带无用的空格，接收到这些数据后就要消掉这些无用的空格，这时候就用到了<code>trim()</code>。<br>
+<strong>范例</strong>：取得字符串长度</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;Hello World&quot;;
+        System.out.println(str.length()); // 11
+    }
+}
+</code></pre>
+<p>某些情况要求用户输入的数据长度有限制，可以利用此方法判断。<br>
+<strong>范例</strong>：判断是否是空字符串</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;&quot;;
+        System.out.println(str.isEmpty()); // true
+        System.out.println(&quot;&quot;.equals(str)); // true
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：实现首字母大写，其余字母小写</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;hElLo&quot;;
+        System.out.println(initcap(str)); // Hello
+    }
+
+    public static String initcap(String temp) {
+        // 截取第一个字母，将其变为大写；截取首字母之后的字母将其变为小写
+        return temp.substring(0, 1).toUpperCase() + temp.substring(1).toLowerCase();
+    }
+}
+</code></pre>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
