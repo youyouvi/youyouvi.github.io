@@ -39,7 +39,7 @@
     
     <title>
         
-            Docker Hub Mysql官方镜像实现首次启动后初始化库表 | 
+            Java基础知识(七) | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Docker">
+    <meta name="keywords" content="Blog,Java">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Docker Hub Mysql官方镜像实现首次启动后初始化库表 | Ember">
+    <meta property="og:title" content="Java基础知识(七) | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Docker"> 
+    <meta property="og:article:tag" content="Java"> 
 
     
-        <meta property="article:published_time" content="Fri Sep 29 2017 19:59:23 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Sep 30 2017 12:25:40 GMT+0800" />
+        <meta property="article:published_time" content="Sat Oct 14 2017 10:00:14 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Oct 14 2017 10:29:39 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Docker Hub Mysql官方镜像实现首次启动后初始化库表 | Ember">
+    <meta name="twitter:title" content="Java基础知识(七) | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/语言/Java基础知识(七)/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html",
-    "headline": "Docker Hub Mysql官方镜像实现首次启动后初始化库表",
-    "datePublished": "Fri Sep 29 2017 19:59:23 GMT+0800",
-    "dateModified": "Sat Sep 30 2017 12:25:40 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/语言/Java基础知识(七)/index.html",
+    "headline": "Java基础知识(七)",
+    "datePublished": "Sat Oct 14 2017 10:00:14 GMT+0800",
+    "dateModified": "Sat Oct 14 2017 10:29:39 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",DockerBlog",
+    "keywords": ",JavaBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现首次启动后初始化库表"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 实现首次启动后初始化库表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建mysql_data文件夹将datasql放入"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 创建mysql_data文件夹，将data.sql放入：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动容器"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 启动容器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入容器进行验证"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 进入容器进行验证</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定sql文件运行顺序"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 指定sql文件运行顺序</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用传递分析实例"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 引用传递分析实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用传递"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 引用传递</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用传递实例"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 引用传递实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据表与简单java类映射"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 数据表与简单Java类映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一对多映射"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 一对多映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#双向一对多映射"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> 双向一对多映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多对多映射"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"> 多对多映射</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Docker Hub Mysql官方镜像实现首次启动后初始化库表
+                Java基础知识(七)
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 29</span>
+        <span>2017 - 10 - 14</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAELElEQVR42u3aW27jMBAEwNz/0tkDZO10D2XEGpe+FotEFIsBOK+vb0/wfCHAhAkTJkyYPJgwYcL09kxf8fPz53++5z+LPfj/R6v//K1k9efrtnvEhAkTJkz7mPIlH31ui9tu4zlx8rX1HjFhwoQJ0zqm5HpOrvPk8m6hE9CEqfgtTJgwYcL0kUzJ5TpLbvMkuU2PMWHChAkTptmW8pJrwjcrMbchAiZMmDBh+mSmvDV4FXQbQFxVwH15LRwTJkyYML0ZU3sl3/HffzDfhAkTJkyY3oDpFSlrW3hNwos2QJkl5JgwYcKEaR9T+7l5a/Pkek6Y8i/MR4IwYcKECdM+prYwmiyW0CfN0ba4nI/7RGVfTJgwYcK0iClHmV2ueaDQss5oovdgwoQJE6bVTHnCmV/wJ2XlWTKcp/GYMGHChGk3U35xzsq1eSiQH9gsFS8aq5gwYcKEaQVTnqYmrO1vteM+J4dXNzgxYcKECdMKpnbb7aDPSeE1b5fmQUP+B4EJEyZMmDYx5eOeswGdk63OGpNtWFDXwjFhwoQJ0w2ZZkXbWfPyfOxmlroXxWVMmDBhwrSI6dptJ1udJdLtgc0aqJgwYcKEaRNTXthN0sj8ze3GzrnrI8SECRMmTCuY2nGWPI08uZLzcGRGGe0OEyZMmDAtZXpdMjkrKF/bziz+CDBhwoQJ0yKmtt3YhghFaXWUhLdDRcPBHUyYMGHCdEOmqwZlkmLuVYM4s6ChLRNjwoQJE6YdTPU1WQ7otIHFrMF5VcCBCRMmTJj2MZ0P1iQl18sKr6O0NlklipswYcKECdNtmZLxl5Oxm/PtzZLkiwMCTJgwYcJ0W6Y8RHhF6DBrXuZHmCfPmDBhwoRpH9PJ64olR0M27SjP7JgfrosJEyZMmJYytWlwsr2Ta36WMOcF4of/jwkTJkyYVjC1ozb5QE97DCfvaY8w2hEmTJgwYVrBlCeTs1GbWfszCSPy9+f7woQJEyZMu5nacmqe1s6u8/bATtqimDBhwoRpK9Mr2pbf5ZOXlWcDQO3wECZMmDBh2so0K+PmaXB+hQ/LsuUbfknIMWHChAnTCqa8LDtrE75uNKdNsDFhwoQJ0ycznZdNT678k1blbK2jwR1MmDBhwnQrplmBtb1u2xZjHojkX9KmzZgwYcKEaQfTrPVYJJCXBgfPD/IknY7iJkyYMGHCdEOmq0qoeaCQN0dnX3jyfkyYMGHCtJUpb22eJMnPQ4f6wg5S4ijFxYQJEyZMH8OUbKkt8l71k+erJ/SYMGHChAnTbAMn4cXzizwPa+rvxIQJEyZMmOLBnXzDs+Q2KePWx4YJEyZMmNYx5S9qi7B5g3OW3NatypOAABMmTJgw3ZBpNriTfEoSfMyKucmG82N44XwTJkyYMGH6UyZPFBB4MGHChAkTJkweTJgwvcvzD6RLUvJL0edjAAAAAElFTkSuQmCC">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0UlEQVR42u3aQXIbMQwEQP3/084DUt6aAeREJpsnlS3vsnkZA+Dr68r1wsbGxsbGxsbGxv5I9ite9Wsen/PdT/7+nD/5ec/Y2NjYZ7MTwLu+k+Pz7yT7wcbGxr6B/Rw2z69MMG00fhtF5Z6xsbGxsVtSS01CCxsbGxv7pwNs1mZ63knyW2xsbGzstkGTN4aeY6mNvX2TCxsbG/tsdj40/ZzP/3S+jY2Njf3B7Fk5MWsAbcLsa72wsbGxT2XvG/pJi6duAAVHWY+NsbGxsQ9l5+379vpOvqHNECJvOWFjY2OfzW6bR/lQNh8z5A2j4SAZGxsb+wL2bNOz8iM/xLylVVzZwcbGxj6O3UbCrKGflC7t839k0IuNjY39q9htyTELpH27qo26eiqCjY2N/cvZ7crDY3MQebERlVLY2NjYh7LrJnt8Wee9l4HaUQQ2Njb2Pey2rT+Lt1nJkcdbNFrAxsbGPpSdx0A7BkjA7YA5D0tsbGzse9izqzbtsDY5rPzKzvDQsbGxsa9hJ/GTt5naUUQCmMUhNjY29tnsPDDagiEfOWxGv1HEYmNjYx/KHg5NS9IskNpjrXtp2NjY2EewN6PZHNwWOZsroXVuY2NjYx/E3o8N8rHrJj6fd1IHGDY2NvYvZ+9Hqm05sVl5oGJjY2Pfw569YD8SmB10HrTY2NjYt7GTTW/Kj7ykmQ0botYYNjY29gXs9h/92cg2f3ve3oqODBsbG/tK9qZxn//t68cWNjY29g3sdrXXd9qmfz6KqEsmbGxs7EPZm6uNSZnRFgz5EddPw8bGxj6avSktZpvLDzcPsNV4ABsbG/sI9v6yY/T6tx7TG3pp2NjY2FeyN62lZ9jsik80QsbGxsbGLiNqPxKYlUz/IbexsbGxP4advzIPm9lQNmK0EYiNjY19NHsTOQk7KR5m5VBx6NjY2NiHsu9Z2NjY2NjY2NjY2B+z/gAVcXvuh/xlNgAAAABJRU5ErkJggg==">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Docker/">Docker</a>
+        <a class="post_tag-link" href="/tags/Java/">Java</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表&url=http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(七)&url=http://yov.oschina.io/article/语言/Java基础知识(七)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/语言/Java基础知识(七)/index.html&title=Java基础知识(七)" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(七)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/语言/Java基础知识(七)/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,102 +510,853 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
-<p>在Docker Hub中查看MySQL官方镜像的Dockerfile:</p>
-<pre class="highlight"><code class="">
-COPY docker-entrypoint.sh /usr/local/bin/
+        <h2 id="引用传递分析实例"><a class="markdownIt-Anchor" href="#引用传递分析实例"></a> 引用传递分析实例</h2>
+<h3 id="引用传递"><a class="markdownIt-Anchor" href="#引用传递"></a> 引用传递</h3>
+<p>1.引用传递核心意义：同一块堆内存可以被不同栈内存所指向，不同栈内存可以对同一块堆内存进行修改。<br>
+<strong>范例</strong>：引用传递</p>
+<pre class="highlight"><code class="">public class Message {
+    private int num = 10;
 
-RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+    public Message(int num) {
+        this.num = num;
+    }
 
-ENTRYPOINT [&quot;docker-entrypoint.sh&quot;]
-</code></pre>
-<p>镜像启动时，会运行<code>entrypoint.sh</code>脚本，该脚本的shell命令中:</p>
-<pre class="highlight"><code class="">echo
-    for f in /docker-entrypoint-initdb.d/*; do
-		case &quot;$f&quot; in
-			*.sh)     echo &quot;$0: running $f&quot;; . &quot;$f&quot; ;;
-			*.sql)    echo &quot;$0: running $f&quot;; &quot;${mysql[@]}&quot; &lt; &quot;$f&quot;; echo ;;
-			*.sql.gz) echo &quot;$0: running $f&quot;; gunzip -c &quot;$f&quot; | &quot;${mysql[@]}&quot;; echo ;;
-			*)        echo &quot;$0: ignoring $f&quot; ;;
-		esac
-		echo
-done
-</code></pre>
-<p>上述shell命令会遍历<code>/docker-entrypoint-initdb.d/</code>文件中的sh文件，sql文件，sql.gz压缩包，随后按照sh&gt;sql&gt;sql.gz的顺序依次执行。当该文件夹只存在一种文件时，便会按照文件名排序后执行。</p>
-<h2 id="实现首次启动后初始化库表"><a class="markdownIt-Anchor" href="#实现首次启动后初始化库表"></a> 实现首次启动后初始化库表</h2>
-<h3 id="创建mysql_data文件夹将datasql放入"><a class="markdownIt-Anchor" href="#创建mysql_data文件夹将datasql放入"></a> 创建mysql_data文件夹，将data.sql放入：</h3>
-<pre class="highlight"><code class="data.sql">-- 创建数据库 
-DROP database IF EXISTS `docker_database`;
-create database `docker_database` default character set utf8 collate utf8_general_ci; 
--- 切换到test_data数据库
-use docker_database; 
--- 建表 
-DROP TABLE IF EXISTS `person`; 
+    public int getNum() {
+        return num;
+    }
 
-CREATE TABLE `person` ( 
-	`id` bigint(20) NOT NULL, 
-	`name` varchar(255) DEFAULT NULL, 
-	`age` bigint(20) NOT NULL,
-	PRIMARY KEY (`id`) 
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
--- 插入数据 
-INSERT INTO `user` (`id`,`name`,`age` ) 
-VALUES 
-   (0,'Tom',18);
+    public void setNum(int num) {
+        this.num = num;
+    }
+}
+
+public class TMessage {
+    public static void main(String[] args) {
+        Message msg = new Message(30);
+        System.out.println(msg.getNum()); // 30
+        fun(msg); // 引用传递
+        System.out.println(msg.getNum()); // 100
+    }
+
+    public static void fun(Message temp) {
+        temp.setNum(100);
+    }
+}
 </code></pre>
-<h3 id="启动容器"><a class="markdownIt-Anchor" href="#启动容器"></a> 启动容器</h3>
-<pre><code>$ docker run --name test -v /home/master/mysql_data:/docker-entrypoint-initdb.d -d -e MYSQL_ROOT_PASSWORD=123456  mysql 
+<p>对上述代码进行内存分析：<br>
+<img src="/article/语言/Java基础知识(七)/10-1.png" alt="无法加载" title="内存分析"><br>
+2.引用</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String msg  = &quot;Hello&quot;;
+        fun(msg);
+        System.out.println(msg); // Hello
+    }
+    public static void fun(String temp) {
+        temp = &quot;World&quot;;
+    }
+}
 </code></pre>
-<h3 id="进入容器进行验证"><a class="markdownIt-Anchor" href="#进入容器进行验证"></a> 进入容器进行验证</h3>
-<pre><code>$ docker exec -it sql /bin/bash
+<p>出现上述结果原因：String对象的内容一旦声明不可改变，对象内容的改变依靠的是引用地址的改变。内存分析如下：<br>
+<img src="/article/语言/Java基础知识(七)/10-2.png" alt="无法加载" title="内存分析"><br>
+3.引用传递</p>
+<pre class="highlight"><code class="">public class Message {
+    private String info = &quot;nihao&quot;;
+
+    public Message(String info) {
+        this.info = info;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+}
+
+public class TMessage {
+    public static void main(String[] args) {
+        Message msg = new Message(&quot;Hello&quot;);
+        System.out.println(msg.getInfo()); // Hello
+        fun(msg);
+        System.out.println(msg.getInfo()); // World
+    }
+
+    public static void fun(Message temp) {
+        temp.setInfo(&quot;World&quot;);
+    }
+}
 </code></pre>
-<pre class="highlight"><code class="">root@6da21b87a0a5:/# mysql -u root -p 
-Enter password:
-mysql&gt; use docker_database;
-mysql&gt; show tables;
-+---------------------------+
-| Tables_in_docker_database |
-+---------------------------+
-| person                    |
-+---------------------------+
-1 row in set (0.00 sec)
-mysql&gt; select * from person;
-+----+------+------+
-| id | name | age  |
-+----+------+------+
-|  0 | Tom  |   18 |
-+----+------+------+
-1 row in set (0.00 sec)
-mysql&gt; insert into person(id ,name ,age)values(1,'Jane',17);
-Query OK, 1 row affected (0.06 sec)
-mysql&gt; select * from person;                                
-+----+------+------+
-| id | name | age  |
-+----+------+------+
-|  0 | Tom  |   18 |
-|  1 | Jane |   17 |
-+----+------+------+
-2 rows in set (0.00 sec)
+<p>内存分析如下：<br>
+<img src="/article/语言/Java基础知识(七)/10-3.png" alt="无法加载" title="内存分析"><br>
+<strong>上述内存分析，是按照int型数据的特点进行的。实</strong>际info是String对象，应该按照如下方式进行分析：<br>
+<img src="/article/语言/Java基础知识(七)/10-4.png" alt="无法加载" title="内存分析"><br>
+<strong>结论</strong>：虽然<code>String</code>是一个类，属于引用数据类型，但由于其内容不可改的特点，我们常将其当作基本数据类型。即每个String变量只能保存一个数据。</p>
+<h3 id="引用传递实例"><a class="markdownIt-Anchor" href="#引用传递实例"></a> 引用传递实例</h3>
+<blockquote>
+<p>要求：通过面向对象的方式描述每个人有车或没车。</p>
+</blockquote>
+<p><strong>实现步骤</strong>：<br>
+1.创建数据库：应设计两张表:<code>汽车表</code>和<code>人员表</code>;<br>
+2.根据数据表，定义两个类：</p>
+<blockquote>
+<p>（编写简单java类时，可按照数据表的设计来写，规则如下：<br>
+类名 = 表名；<br>
+属性名(类型) = 表字段(类型);<br>
+一个实例化对象 = 一行记录；<br>
+多个实例化对象 = 多行记录<br>
+引用关系 = 外键描述）</p>
+</blockquote>
+<pre class="highlight"><code class="">public class Member {
+    private int mId;
+    private String name;
+}
+
+public class Car {
+    private String pName;
+}
 </code></pre>
-<p>重启该容器后，数据依然存在。但启动一个新容器后，该容器数据依然为初始状态。</p>
-<h2 id="指定sql文件运行顺序"><a class="markdownIt-Anchor" href="#指定sql文件运行顺序"></a> 指定sql文件运行顺序</h2>
-<p><code>entrypoint.sh</code>脚本执行sql文件的顺序是按照文件名排序的，这可能导致一些文件执行顺序不符合预期，从而出现错误。例如预期是数据库创建后，再执行表格创建，最后插入数据，而因为文件名，可能数据库先创建后，插入数据，最后创建表格，从而使得数据插入失败。要解决该问题有如下几种方法：</p>
-<ol>
-<li>将文件按照预期顺序，进行命名，比如1_xx,2_xx;</li>
-<li>将必须有前后顺序的sql文件合并在一个sql文件中;</li>
-<li>将sql文件单独放在一个文件夹如data_mysql,将指定sql文件执行顺序的shell脚本放在shell_mysql文件中。容器启动时，将shell_mysql映射到docker-entrypoint-initdb.d文件夹，data_mysql映射到容器内其他文件夹。<br>
-假设：data_mysql文件夹存放三个sql文件: database.sql,table.sql,data.sql,shell_mysql存放data.sh</li>
-</ol>
-<pre class="highlight"><code class="data.sh">#!/bin/bash
-mysql -uroot -p$MYSQL_ROOT_PASSWORD &lt;&lt;EOF
-source /usr/local/work/database.sql;
-source /usr/local/work/table.sql;
-source /usr/local/work/data.sql; 
+<p>3.利用<code>引用</code>来描述两个类的外键，从而使得两个类有联系</p>
+<pre class="highlight"><code class="">public class Member {
+    private int mId;
+    private String name;
+    // 有Car类实例化对象表示有车
+    // Car为null表示没车
+    private Car car;
+
+    public Member(int mId, String name) {
+        this.mId = mId;
+        this.name = name;
+    }
+
+    public String getInfo() {
+        return &quot;人员编号：&quot; + this.mId + &quot;,姓名：&quot; + this.name;
+    }
+}
+
+public class Car {
+    private Member member; // 车属于一个人
+    private String pName;
+
+    public Car(String pName) {
+        this.pName = pName;
+    }
+
+    public String getInfo() {
+        return &quot;车名：&quot; + this.pName;
+    }
+}
 </code></pre>
-<p>启动容器：</p>
-<pre><code>$ docker run --name test -e WORK_PATH=/usr/local/work -e MYSQL_ROOT_PASSWORD=123456 -v /home/master/shell_mysql:/docker-entrypoint-initdb.d -v /home/master/data_mysql:/usr/local/work mysql
+<p>4.当两个类的对象产生，为这两个对象设置彼此的关系：</p>
+<pre class="highlight"><code class="">public class Member {
+    private int mId;
+    private String name;
+    // 有Car类实例化对象表示有车
+    // Car为null表示没车
+    private Car car;
+
+    public Member(int mId, String name) {
+        this.mId = mId;
+        this.name = name;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public String getInfo() {
+        return &quot;人员编号：&quot; + this.mId + &quot;,姓名：&quot; + this.name;
+    }
+}
+
+public class Car {
+    private Member member; // 车属于一个人
+    private String pName;
+
+    public Car(String pName) {
+        this.pName = pName;
+    }
+
+    public String getInfo() {
+        return &quot;车名：&quot; + this.pName;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+}
 </code></pre>
-<p>数据结果应与上述一致。</p>
+<p><strong>5.测试</strong><br>
+测试分为两步：</p>
+<blockquote>
+<p>（1）根据定义的结构关系设置数据<br>
+（2）根据定义的结构关系取出数据</p>
+</blockquote>
+<pre class="highlight"><code class="">public class TCar {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Member m = new Member(1,&quot;张三&quot;);
+        Car c = new Car(&quot;宝马&quot;);
+        // 设置车与人的关系：张三有辆宝马
+        m.setCar(c);
+        c.setMember(m);
+        // 2. 取出数据
+        // 通过人找到车
+        System.out.println(m.getCar().getInfo());
+        // 通过车找到人
+        System.out.println(c.getMember().getInfo());
+    }
+}
+</code></pre>
+<p>6.进一步设计：每个人都有孩子，孩子还可能有车</p>
+<blockquote>
+<p>思路：<br>
+（1）设计一个孩子类，如有孙子，在设计孙子类，以此类推。该方案过于冗余，不合适；<br>
+（2）在Member类中设计属性child，类型为Member：</p>
+</blockquote>
+<pre class="highlight"><code class="">private Member child; // 孩子
+public Member getChild() {
+    return child;
+}
+
+public void setChild(Member child) {
+    this.child = child;
+}
+</code></pre>
+<p><strong>测试</strong>：</p>
+<pre class="highlight"><code class="">public class TCar {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Member m = new Member(1,&quot;张三&quot;);
+        Member child =  new Member(1,&quot;张四&quot;);
+        Car c = new Car(&quot;宝马&quot;);
+        Car cc  =new Car(&quot;法拉利&quot;);
+        // 设置车与人的关系：张三有辆宝马
+        m.setCar(c);
+        c.setMember(m);
+        // 设置车与人的关系：张四有辆法拉利
+        child.setCar(cc);
+        c.setMember(child);
+        // 设置人与人的关系：张四是张三的儿子
+        m.setChild(child);
+        // 2. 取出数据
+        // 通过人找到车
+        System.out.println(m.getCar().getInfo());
+        // 通过车找到人
+        System.out.println(c.getMember().getInfo());
+        // 通过人找到孩子
+        System.out.println(m.getChild().getInfo());
+        // 通过人找到孩子的车
+        System.out.println(m.getChild().getCar().getInfo());
+    }
+}
+</code></pre>
+<p>7.利用引用描述电脑：电脑由主机、键盘、内存、CPU、显卡等组成，下面用伪代码描述：</p>
+<pre class="highlight"><code class="">class 键盘{}
+class 鼠标{}
+class CPU{}
+class 硬盘{}
+class 内存{}
+class 显示器{}
+class 主机{}
+class 主板{}
+class 主机{
+    private CPU 对象[];
+    private 硬盘 对象[];
+    private 主板 对象;
+    private 内存 对象[];
+}
+class 电脑{
+    private 主机 对象;
+    private 显示器 对象;
+    private 键盘 对象;
+    private 鼠标 对象;
+}
+</code></pre>
+<p>上述设计思路称为<code>合成设计模式</code>。<strong>引用</strong>是实现两个不同类之间互相关联的主要手段。</p>
+<h3 id="数据表与简单java类映射"><a class="markdownIt-Anchor" href="#数据表与简单java类映射"></a> 数据表与简单Java类映射</h3>
+<blockquote>
+<p><strong>要求</strong>：通过程序描述部门和雇员关系<br>
+<strong>属性</strong>：<br>
+·dept：deptno,dname,loc;<br>
+·emp：empno, ename,job,sal,comm,deptno,mgr<br>
+<strong>关系</strong>：<br>
+·一个部门有多个雇员；<br>
+·一个雇员有一个或零个领导。</p>
+</blockquote>
+<p>第一步： 根据数据表创建简单java类</p>
+<pre class="highlight"><code class="">/**
+ * 部门类
+ */
+public class Dept {
+    private int depNo; // 编号
+    private String dName; // 名字
+    private String address; // 地址
+    // setter,getter,无参构造方法略
+
+    public Dept(int depNo, String dName, String address) {
+        this.depNo = depNo;
+        this.dName = dName;
+        this.address = address;
+    }
+
+    public String getInfo() {
+        return &quot;部门编号：&quot; + this.depNo +
+                &quot;,部门名称：&quot; + this.dName +
+                &quot;,地址：&quot; + this.address;
+    }
+}
+
+/**
+ * 员工类
+ */
+public class Emp {
+    private int eNo; // 编号
+    private String eName; // 姓名
+    private String job; // 职位
+    private double sal; // 工资
+    private double comm; // 佣金
+
+    // setter,getter,无参构造方法略
+    public Emp(int eNo, String eName, String job, double sal, double comm) {
+        this.eNo = eNo;
+        this.eName = eName;
+        this.job = job;
+        this.sal = sal;
+        this.comm = comm;
+    }
+    
+    public String getInfo() {
+        return &quot;编  号&quot; + this.eNo + &quot;\n&quot; +
+                &quot;姓 名&quot; + this.eName + &quot;\n&quot; +
+                &quot;职 位&quot; + this.job + &quot;\n&quot; +
+                &quot;工 资&quot; + this.sal + &quot;\n&quot; +
+                &quot;佣 金&quot; + this.comm;
+    }
+}
+</code></pre>
+<p>第二步：设置外键关系<br>
+· 一个雇员属于一个部门，应在雇员类中保存部门信息</p>
+<pre class="highlight"><code class="">private Dept dept; // 对应的部门信息
+
+public Dept getDept() {
+    return dept;
+}
+
+public void setDept(Dept dept) {
+    this.dept = dept;
+}
+</code></pre>
+<p>· 一个部门有的多个雇员，可用数组在部门类中保存雇员信息：</p>
+<pre class="highlight"><code class="">private Emp emps[]; // 多个雇员信息
+
+public Emp[] getEmps() {
+    return emps;
+}
+
+public void setEmps(Emp[] emps) {
+    this.emps = emps;
+}
+</code></pre>
+<p>· 一个雇员有一个领导（定义在Emp类中）</p>
+<pre class="highlight"><code class="">private Emp mgr; // 领导信息
+
+public Emp getMgr() {
+    return mgr;
+}
+
+public void setMgr(Emp mgr) {
+    this.mgr = mgr;
+}
+</code></pre>
+<p>第三步：测试<br>
+（1）设置数据：</p>
+<pre class="highlight"><code class="">public class Demo {
+   public static void main(String[] args) {
+       // 1. 产生对象
+       Dept dept = new Dept(10, &quot;财务部&quot;, &quot;北京&quot;); // 部门信息
+       //  员工信息
+       Emp eA = new Emp(1111, &quot;张三&quot;, &quot;保安&quot;, 800.0, 0.0);
+       Emp eB = new Emp(1101, &quot;李四&quot;, &quot;秘书&quot;, 2800.0, 500.0);
+       Emp eC = new Emp(1001, &quot;王五&quot;, &quot;经历&quot;, 6800.0, 1500.0);
+       // 2. 设置员工与领导关系
+       eA.setMgr(eB);
+       eB.setMgr(eC);
+       // 3. 设置员工和部门关系
+       eA.setDept(dept);
+       eB.setDept(dept);
+       eC.setDept(dept);
+       dept.setEmps(new Emp[]{eA, eB, eC});
+   }
+}
+</code></pre>
+<p>（2）：根据给定的结构取出数据，要求如下：</p>
+<blockquote>
+<p>|-根据一个雇员查询他所对应的领导信息和部门信息；<br>
+|-根据一个部门查询所有雇员以及其所对应的领导信息；</p>
+</blockquote>
+<pre class="highlight"><code class="">// 第二步：取出数据
+// 1. 通过员工找到领导信息和部门信息
+System.out.println(eA.getInfo()); // 获取员工信息
+System.out.println(&quot;\t|-&quot; + eA.getMgr().getInfo()); // 获取领导信息
+System.out.println(&quot;\t|-&quot; + eA.getDept().getInfo()); // 获取部门信息
+// 2. 根据部门找到所有员工及其领导信息
+System.out.println(&quot;---------------------------------------------&quot;);
+System.out.println(dept.getInfo());
+for (int x = 0; x &lt; dept.getEmps().length; x++) {
+    System.out.println(&quot;\t|-&quot; + dept.getEmps()[x].getInfo()); // 获取员工信息
+    if (dept.getEmps()[x].getMgr() != null) {
+        System.out.println(&quot;\t\t|-&quot; + dept.getEmps()[x].getMgr().getInfo()); // 获取领导信息
+    }
+}
+</code></pre>
+<p>上述代码都是依靠代码链取出数据。</p>
+<h3 id="一对多映射"><a class="markdownIt-Anchor" href="#一对多映射"></a> 一对多映射</h3>
+<blockquote>
+<p>要求：通过程序描述省份和城市的关系<br>
+1.通过一个城市找到它对应的省份信息；<br>
+2.通过一个省份找到所有城市的信息。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Province {
+    private int pId;
+    private String pName;
+    private City cities[];
+    // getter,setter,无参构造方法略
+
+    public Province(int pId, String pName) {
+        this.pId = pId;
+        this.pName = pName;
+    }
+
+    public City[] getCities() {
+        return cities;
+    }
+
+    public void setCities(City[] cities) {
+        this.cities = cities;
+    }
+
+    public String getInfo() {
+        return &quot;省份ID：&quot; + this.pId + &quot;，省名：&quot; + this.pName;
+    }
+}
+
+class City {
+    private int cId;
+    private String cName;
+    private Province province;
+
+    // getter,setter,无参构造方法略
+    public City(int cId, String cName) {
+        this.cId = cId;
+        this.cName = cName;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
+    public String getInfo() {
+        return &quot;城市ID：&quot; + this.cId + &quot;，市名：&quot; + this.cName;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Province province = new Province(350, &quot;福建省&quot;);
+        City cA = new City(1, &quot;福州&quot;);
+        City cB = new City(2, &quot;厦门&quot;);
+        City cC = new City(3, &quot;泉州&quot;);
+        cA.setProvince(province);
+        cB.setProvince(province);
+        cC.setProvince(province);
+        province.setCities(new City[]{cA, cB, cC});
+        System.out.println(cA.getInfo());
+        System.out.println(&quot;\t|-&quot; + cA.getProvince().getInfo());
+        System.out.println(&quot;==================================&quot;);
+        System.out.println(province.getInfo());
+        for (int x = 0; x &lt; province.getCities().length; x++) {
+            System.out.println(&quot;\t|-&quot; + province.getCities()[x].getInfo());
+        }
+    }
+}
+</code></pre>
+<p>上述代码存在不足：<strong>每次添加城市，就要修改数组的引用关系</strong></p>
+<h3 id="双向一对多映射"><a class="markdownIt-Anchor" href="#双向一对多映射"></a> 双向一对多映射</h3>
+<blockquote>
+<p>要求：通过程序描述类型-子类型-商品的关系<br>
+（1）通过一个类型找到它对应的子类型；<br>
+（2）过一个类型找到它所对应的商品；<br>
+（3）通过一个子类型找到所有对应的商品。</p>
+</blockquote>
+<pre class="highlight"><code class=""> class Type {
+    private int tId;
+    private String tName;
+    private SonType sonTypes[];
+    private Product products[];
+
+    // getter,setter,无参构造方法略
+    public Type(int tId, String tName) {
+        this.tId = tId;
+        this.tName = tName;
+    }
+
+    public SonType[] getSontypes() {
+        return this.sonTypes;
+    }
+
+    public void setSontypes(SonType[] sontypes) {
+        this.sonTypes = sontypes;
+    }
+
+    public Product[] getProducts() {
+        return products;
+    }
+
+    public void setProducts(Product[] products) {
+        this.products = products;
+    }
+
+    public String getInfo() {
+        return &quot;类型编号：&quot; + this.tId + &quot;,类型名称：&quot; + this.tName;
+    }
+}
+
+class SonType {
+    private int sId;
+    private String sName;
+    private Type type;
+    private Product products[];
+    // getter,setter,无参构造方法略
+
+    public SonType(int sId, String sName) {
+        this.sId = sId;
+        this.sName = sName;
+    }
+
+    public int getsId() {
+        return sId;
+    }
+
+    public void setsId(int sId) {
+        this.sId = sId;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Product[] getProducts() {
+        return products;
+    }
+
+    public void setProducts(Product[] products) {
+        this.products = products;
+    }
+
+    public String getInfo() {
+        return &quot;子类型编号：&quot; + this.sId + &quot;,子类型名称：&quot; + this.sName;
+    }
+}
+
+class Product {
+    private int pId;
+    private String name;
+    private double price;
+    private Type type;
+    private SonType sonType;
+    // getter,setter,无参构造方法略
+
+    public Product(int pId, String name, double price) {
+        this.pId = pId;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public SonType getSonType() {
+        return sonType;
+    }
+
+    public void setSonType(SonType sonType) {
+        this.sonType = sonType;
+    }
+
+    public String getInfo() {
+        return &quot;商品编号：&quot; + this.pId + &quot;,商品名称：&quot; + this.name + &quot;,价格：&quot; + this.price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Type type = new Type(1, &quot;家电类&quot;);
+        SonType stA = new SonType(11, &quot;小型家电&quot;);
+        SonType stB = new SonType(12, &quot;大型家电&quot;);
+        Product pA = new Product(111, &quot;剃须刀&quot;, 99.0);
+        Product pB = new Product(112, &quot;热水壶&quot;, 29.0);
+        Product pC = new Product(121, &quot;电冰箱&quot;, 1199.0);
+        Product pD = new Product(122, &quot;电热水器&quot;, 399.0);
+
+        stA.setType(type);
+        stB.setType(type);
+        pA.setType(type);
+        pB.setType(type);
+        pC.setType(type);
+        pD.setType(type);
+        type.setSontypes(new SonType[]{stA, stB});
+        type.setProducts(new Product[]{pA, pB, pC, pD});
+
+        pA.setSonType(stA);
+        pB.setSonType(stA);
+        pC.setSonType(stB);
+        pD.setSonType(stB);
+        stA.setProducts(new Product[]{pA, pB});
+        stB.setProducts(new Product[]{pC, pD});
+
+
+
+        System.out.println(type.getInfo());
+        for (int x = 0; x &lt; type.getSontypes().length; x++) {
+            System.out.println(&quot;\t|- &quot; + type.getSontypes()[x].getInfo());
+        }
+        System.out.println(&quot;--------------------------------------&quot;);
+        System.out.println(type.getInfo());
+        for (int x = 0; x &lt; type.getProducts().length; x++) {
+            System.out.println(&quot;\t|- &quot; + type.getProducts()[x].getInfo());
+            System.out.println(&quot;\t\t|- &quot; + type.getProducts()[x].getSonType().getInfo());
+        }
+        System.out.println(&quot;--------------------------------------&quot;);
+        System.out.println(stA.getInfo());
+        for (int x = 0; x &lt; stA.getProducts().length; x++) {
+            System.out.println(&quot;\t|- &quot; + stA.getProducts()[x].getInfo());
+        }
+    }
+}
+</code></pre>
+<h3 id="多对多映射"><a class="markdownIt-Anchor" href="#多对多映射"></a> 多对多映射</h3>
+<blockquote>
+<p>要求：通过程序描述管理员-角色-组-权限的关系；<br>
+（1）根据一个管理员找到它对应的角色，以及每个角色包含的所有权限组的信息，以及每个权限组所包含的权限的内容；<br>
+（2）根据一个权限组找到所有具备此权限组的角色以及每个角色所拥有的管理员信息；<br>
+<code>角色_权限组</code>表是关系表，保存的是两个外键的关联关系，不需要为其生成映射类。只有实体表才需要生成映射类，多对多的中间转换表只需通过类属性的关系引用即可。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Admin {
+    private String aid;
+    private String password;
+    private Role role;
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return this.role;
+    }
+
+    public Admin(String aid, String password) {
+        this.aid = aid;
+        this.password = password;
+    }
+
+    public String getInfo() {
+        return &quot;管理员编号:&quot; + this.aid + &quot;，管理员密码：&quot; + this.password;
+    }
+}
+
+class Role {
+    private int rid;
+    private String title;
+    private Admin admins[];
+    private Group groups[];
+
+    public void setAdmins(Admin admins[]) {
+        this.admins = admins;
+    }
+
+    public Admin[] getAdmins() {
+        return this.admins;
+    }
+
+    public void setGroups(Group groups[]) {
+        this.groups = groups;
+    }
+
+    public Group[] getGroups() {
+        return this.groups;
+    }
+
+    public Role(int rid, String title) {
+        this.rid = rid;
+        this.title = title;
+    }
+
+    public String getInfo() {
+        return &quot;角色编号：&quot; + this.rid + &quot;，角色名称&quot; + this.title;
+    }
+}
+
+class Group {
+    private int gid;
+    private String title;
+    private Role roles[];
+    private Action actions[];
+
+    public void setActions(Action actions[]) {
+        this.actions = actions;
+    }
+
+    public Action[] getActions() {
+        return this.actions;
+    }
+
+    public void setRoles(Role roles[]) {
+        this.roles = roles;
+    }
+
+    public Role[] getRoles() {
+        return this.roles;
+    }
+
+    public Group(int gid, String title) {
+        this.gid = gid;
+        this.title = title;
+    }
+
+    public String getInfo() {
+        return &quot;权限组编号：&quot; + this.gid + &quot;，权限组名称：&quot; + this.title;
+    }
+}
+
+class Action {
+    private int aid;
+    private String title;
+    private String url;
+    private Group group;
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Group getGroup() {
+        return this.group;
+    }
+
+    public Action(int aid, String title, String url) {
+        this.aid = aid;
+        this.title = title;
+        this.url = url;
+    }
+
+    public String getInfo() {
+        return &quot;权限编号：&quot; + this.aid + &quot;权限名称：&quot; + this.title + &quot;,权限路径：&quot; + this.url;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Admin a1 = new Admin(&quot;admin&quot;, &quot;123456&quot;);
+        Admin a2 = new Admin(&quot;root&quot;, &quot;654321&quot;);
+        Admin a3 = new Admin(&quot;guest&quot;, &quot;654321&quot;);
+        Role r1 = new Role(1, &quot;系统管理员&quot;);
+        Role r2 = new Role(1, &quot;信息管理员&quot;);
+        Group g1 = new Group(10, &quot;信息管理&quot;);
+        Group g2 = new Group(11, &quot;用户管理&quot;);
+        Group g3 = new Group(12, &quot;数据管理&quot;);
+        Group g4 = new Group(13, &quot;接口管理&quot;);
+        Group g5 = new Group(14, &quot;备份管理&quot;);
+        Action ac1 = new Action(1001, &quot;新闻发布&quot;, &quot;-&quot;);
+        Action ac2 = new Action(1002, &quot;新闻列表&quot;, &quot;-&quot;);
+        Action ac3 = new Action(1003, &quot;新闻审核&quot;, &quot;-&quot;);
+        Action ac4 = new Action(1004, &quot;增加用户&quot;, &quot;-&quot;);
+        Action ac5 = new Action(1005, &quot;用户列表&quot;, &quot;-&quot;);
+        Action ac6 = new Action(1006, &quot;登陆日志&quot;, &quot;-&quot;);
+        Action ac7 = new Action(1007, &quot;雇员数据&quot;, &quot;-&quot;);
+        Action ac8 = new Action(1008, &quot;部门数据&quot;, &quot;-&quot;);
+        Action ac9 = new Action(1009, &quot;公司数据&quot;, &quot;-&quot;);
+        Action ac10 = new Action(1010, &quot;服务传输&quot;, &quot;-&quot;);
+        Action ac11 = new Action(1011, &quot;短信平台&quot;, &quot;-&quot;);
+        Action ac12 = new Action(1012, &quot;全部备份&quot;, &quot;-&quot;);
+        Action ac13 = new Action(1013, &quot;局部备份&quot;, &quot;-&quot;);
+
+        a1.setRole(r1);
+        a2.setRole(r2);
+        a3.setRole(r2);
+        r1.setAdmins(new Admin[]{a1});
+        r2.setAdmins(new Admin[]{a2, a3});
+
+        r1.setGroups(new Group[]{g1, g2, g3, g4, g5});
+        r2.setGroups(new Group[]{g1, g2});
+        g1.setRoles(new Role[]{r1, r2});
+        g2.setRoles(new Role[]{r1, r2});
+        g3.setRoles(new Role[]{r1});
+        g4.setRoles(new Role[]{r1});
+        g5.setRoles(new Role[]{r1});
+
+        g1.setActions(new Action[]{ac1, ac2, ac3});
+        g2.setActions(new Action[]{ac4, ac5, ac6});
+        g3.setActions(new Action[]{ac7, ac8, ac9});
+        g4.setActions(new Action[]{ac10, ac11});
+        g5.setActions(new Action[]{ac12, ac13});
+
+        ac1.setGroup(g1);
+        ac2.setGroup(g1);
+        ac3.setGroup(g1);
+        ac4.setGroup(g2);
+        ac5.setGroup(g2);
+        ac6.setGroup(g2);
+        ac7.setGroup(g3);
+        ac8.setGroup(g3);
+        ac9.setGroup(g3);
+        ac10.setGroup(g4);
+        ac11.setGroup(g4);
+        ac12.setGroup(g5);
+        ac13.setGroup(g5);
+
+        System.out.println(a1.getInfo());
+        System.out.println(a1.getRole().getInfo());
+        for (int x = 0; x &lt; a1.getRole().getGroups().length; x++) {
+            System.out.println(&quot;\t|-&quot; + a1.getRole().getGroups()[x].getInfo());
+            for (int y = 0; y &lt; a1.getRole().getGroups()[x].getActions().length; y++) {
+                System.out.println(&quot;\t\t|-&quot; + a1.getRole().getGroups()[x].getActions()[y].getInfo());
+            }
+        }
+        System.out.println(&quot;-------------------------------------------------&quot;);
+        System.out.println(g2.getInfo());
+        for (int x = 0; x &lt; g2.getRoles().length; x++) {
+            System.out.println(g2.getRoles()[x].getInfo());
+            for (int y = 0; y &lt; g2.getRoles()[x].getAdmins().length; y++) {
+                System.out.println(&quot;\t\t|-&quot; + g2.getRoles()[x].getAdmins()[y].getInfo());
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -614,7 +1365,7 @@ source /usr/local/work/data.sql;
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/">http://yov.oschina.io/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/语言/Java基础知识(七)/">http://yov.oschina.io/article/语言/Java基础知识(七)/</a>
                     </p>
                 </blockquote>
         
@@ -662,21 +1413,13 @@ source /usr/local/work/data.sql;
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/article/容器/Kubernetes安装及使用/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/article/容器/Docker实现mysql容器启动后自动建库/" id="post_nav-older" class="next-content">
+        <a href="/article/容器/Centos7上部署Docker私有仓库/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
