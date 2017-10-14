@@ -39,7 +39,7 @@
     
     <title>
         
-            Kubernetes安装及使用 | 
+            Java基础知识(八) | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Kubernetes">
+    <meta name="keywords" content="Blog,Java">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -268,18 +268,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Kubernetes安装及使用 | Ember">
+    <meta property="og:title" content="Java基础知识(八) | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Kubernetes"> 
+    <meta property="og:article:tag" content="Java"> 
 
     
-        <meta property="article:published_time" content="Sat Sep 30 2017 16:11:30 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Sep 30 2017 16:44:56 GMT+0800" />
+        <meta property="article:published_time" content="Sat Oct 14 2017 10:34:53 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Oct 14 2017 14:59:22 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Kubernetes安装及使用 | Ember">
+    <meta name="twitter:title" content="Java基础知识(八) | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -287,7 +287,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/article/容器/Kubernetes安装及使用/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/语言/Java基础知识(八)/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -299,10 +299,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/article/容器/Kubernetes安装及使用/index.html",
-    "headline": "Kubernetes安装及使用",
-    "datePublished": "Sat Sep 30 2017 16:11:30 GMT+0800",
-    "dateModified": "Sat Sep 30 2017 16:44:56 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/语言/Java基础知识(八)/index.html",
+    "headline": "Java基础知识(八)",
+    "datePublished": "Sat Oct 14 2017 10:34:53 GMT+0800",
+    "dateModified": "Sat Oct 14 2017 14:59:22 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -320,7 +320,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",KubernetesBlog",
+    "keywords": ",JavaBlog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -386,7 +386,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 环境配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置目标"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 配置目标:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#共同配置即master和node都需要进行的操作"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 共同配置（即master和node都需要进行的操作）</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象比较"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 对象比较</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键字static"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 关键字static</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#static-定义属性"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> static 定义属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#static-定义方法"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> static 定义方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主方法"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 主方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#static应用案例"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> static应用案例</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -418,7 +418,7 @@
         
     
             <p class="article-headline-p">
-                Kubernetes安装及使用
+                Java基础知识(八)
             </p>
         </div>
 
@@ -437,7 +437,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 30</span>
+        <span>2017 - 10 - 14</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -459,7 +459,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0klEQVR42u3aO5bbMBAEQN3/0uvUibjdA8qmgELkxxUJFJLxfF4/R64XNjY2NjY2NjY29iPZr3hd//7dN9+99ffz6NDBGX45FTY2NvbW7HbL5JfXv7/+ZnL1+ZmxsbGxz2En2yRHXHkr/2sbGrGxsbGx2/A2S2Py72BjY2NjrwewNly1iUS+FzY2NjZ2W6B5d7h7Ww75tX68loaNjY39eHZ7xCf8+z/0t7GxsbEfyV5ZeUBqw97PBxY2Njb2ruxZIpG8e2/QystVw+FLbGxs7C9nJw3XdphmdrltSzg5FTY2Nvbe7HbUJt8mTz9m38y/jI2NjX0Oe5Z4zEJO3k5uC1tFewAbGxt7C/Z1oJqVitoRnySNSQJqEcCwsbGxN2KvpA35ZbVHL8JScAXY2NjYJ7DbLddbtjcXjFYyMGxsbOwvZ99VSMrTidk38yQHGxsb+0x2+6F8yGalbZxfaxIysbGxsXdl12GgbOiuJCorl1vU0rCxsbG3YOchZJZyrDcD1stY2NjY2HuzZyWkTw/lJG/dMLKDjY2N/eXslf/ot+/edWWzFjI2Njb23uzr4lH+ZDZYk58hD3vY2NjYZ7KTgybhpG3lrjQJllIRbGxs7O3YOSlJFdo0Ji9mtc0MbGxs7BPYddN0oXG7cn15ooKNjY19Mrsdu1l5kge5vG2MjY2NfSZ7vbTUJhIzWJJ4vH2OjY2NvTV7vbHaDujk6dBsiAcbGxv7ZPYnWrZtSJuN+9zWHsDGxsb+Kna7ZgGmvbL1XbCxsbHPYbchIS/lJ6lIi28DHjY2NvY57FnQygcrkzLTrER1w8gONjY29kbsNlXIk408yVkpJw0DGDY2NvbB7NlFJEM2s0TolxYFNjY2NvZNhf484M2KR9jY2Ngns5NyT5Ie5AnGevOg2BEbGxt7a3bb6J2lJTmpbSH/o/42NjY29iPZ5yxsbGxsbGxsbGzsx6w/f3dc/2oiXbEAAAAASUVORK5CYII=">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0ElEQVR42u3aQXKDQAwEQP//084LwCMJHLzbnFJAAb0HKxrt673l8cLGxsbGxsbGxsZ+JPsVH4ePO7h6/pyjM+fPnHwzNjY29trsDz/9rXuOzuT4/J7oe7CxsbE3YJ8Xm/kS9Erj+YIm34yNjY2NnZSc5HzCOAdjY2NjY3+ngOVh0PmXJFexsbGxsautRbWAVRuSXsG7PUvDxsbGfjw7H5o+5++vzrexsbGxH8yetBPVBmNSzN7jAxsbG3tV9iTQz0vdpGnpLRk2Njb2PuzkcdVxQnI1ia7yghqVTGxsbOyl2dXhbjIwqI4Z8sCoOUjGxsbG3oBdDZV6TUu+3Hm5Km/ZwcbGxl6O3XtoNdBPQqK8vJWDMGxsbOxF2b2WY/5Z1VCpWurKUxFsbGzsn2VXC1U17pksRN5sRJEWNjY29tLsXkmrDhh6g+TeWBcbGxt7H3Y+ap0Ma3stR17eotECNjY29qLs3tA3WZqrNvr03o6NjY29D7sa+vSGwckYOG91qjEWNjY29m7s5PVJM5C3GVe1NB/ejo2Njb00e7JRpvpZkxirFzxhY2Njr81uDk2LpKQVmYx4R1kaNjY29nLs6guq44GcNN/6iY2Njb0DOw+PkiI32hwZ35ksOjY2NvY+7HkbUA3058WpuhkUGxsbe21279/6pI0ptwrFgpRQsbGxsfdhJwWmCq7GRtWgqhxpYWNjY2/A7kVI5+x5CJUPGz40MNjY2NjbsPMXJ0/oNSFXHdjY2Ng7sHvhUdLG5KTe4lbbJ2xsbOxV2ZOtjZNGJY+resvdnIpgY2Nj/yy7WrTuKGO9eOuW8QA2Njb2z7KrcX/Om5elG7M0bGxs7C3Z+Zaa3gJVt/hEQwtsbGxs7ABz7Uig1zL9Q93GxsbGfgw7f2U+GOgNZSNGtQRiY2NjL82+tuTkJbA6Hq4uBzY2NvYO7H0ObGxsbGxsbGxs7Mccf4wWw6alDfU3AAAAAElFTkSuQmCC">
     
 </ul>
 
@@ -473,7 +473,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Kubernetes/">Kubernetes</a>
+        <a class="post_tag-link" href="/tags/Java/">Java</a>
     </ul>
     
 
@@ -500,7 +500,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kubernetes安装及使用&url=http://yov.oschina.io/article/容器/Kubernetes安装及使用/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(八)&url=http://yov.oschina.io/article/语言/Java基础知识(八)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -518,7 +518,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/容器/Kubernetes安装及使用/index.html&title=Kubernetes安装及使用" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/语言/Java基础知识(八)/index.html&title=Java基础知识(八)" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -527,7 +527,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Kubernetes安装及使用&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/容器/Kubernetes安装及使用/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(八)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/语言/Java基础知识(八)/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -545,98 +545,460 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="环境配置"><a class="markdownIt-Anchor" href="#环境配置"></a> 环境配置</h2>
-<p><strong>系统要求</strong>: CentOS 7<br>
-<strong>软件版本</strong>: 1.5.2</p>
-<h2 id="配置目标"><a class="markdownIt-Anchor" href="#配置目标"></a> 配置目标:</h2>
+        <h2 id="对象比较"><a class="markdownIt-Anchor" href="#对象比较"></a> 对象比较</h2>
+<p>1.数字比较用<code>==</code>，字符串比较用<code>equals(String str)</code>。</p>
+<blockquote>
+<p>要进行对象比较，必须对对象中所有属性的值进行比较。</p>
+</blockquote>
+<p><strong>范例</strong>：对象比较的基本方式</p>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    //省略无参构造方法和setter方法
+    public String getTitle() {
+        return this.title;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book(&quot;Java开发&quot;, 79.5);
+        Book bkB = new Book(&quot;JSP&quot;, 45.6);
+        if (bkA.getTitle().equals(bkB.getTitle())
+                &amp;&amp; bkA.getPrice() == bkB.getPrice()) {
+            System.out.println(&quot;bkA和bkB是同一个对象！&quot;);
+        } else {
+            System.out.println(&quot;bkA和bkB是不同对象！&quot;);
+        }
+    }
+}
+</code></pre>
+<p>上述程序存在问题：主方法相当于客户端，客户端的程序逻辑应该越简单越好。所以对象比较应该由对象自己完成，即<strong>对象所对应的类应该提供对象比较的方法。</strong></p>
+<blockquote>
+<p>附：类的属性使用private封装，那么在类的外部就不能通过对象直接调用属性</p>
+</blockquote>
+<pre class="highlight"><code class="">class Info{
+    private String msg = &quot;Hello&quot;;
+    public void print(){
+        System.out.println(&quot;msg = &quot; + this.msg);
+    }
+}
+public class Demo {
+    public static void main(String[] args) {
+        Info x = new Info();
+        x.msg = &quot;sss&quot;; // 报错，无法访问private属性
+        x.print();
+    }
+}
+</code></pre>
+<blockquote>
+<p>附：将一个对象作为参数传回类的方法中，相当于取消封装，使得对象可以直接访问属性。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Info {
+    private String msg = &quot;Hello&quot;;
+
+    public void print() {
+        System.out.println(&quot;msg = &quot; + this.msg);
+    }
+
+    public void fun(Info temp) {
+        // 在类的内部直接利用对象访问私有属性
+        temp.msg = &quot;修改内容&quot;;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Info x = new Info();
+        x.fun(x);
+        x.print(); // msg = 修改内容
+    }
+}
+</code></pre>
+<blockquote>
+<p>附：<strong>一个类接收本类对象</strong>形式的代码在对象比较时很常见。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    //省略无参构造方法和setter方法
+    public String getTitle() {
+        return this.title;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    // 类接收自身对象，对象可以直接访问属性，不需要getter方法
+    // compare()有两个功能：一带回了要比较的信息；二方便属性访问
+    public boolean compare(Book book) {
+        if (book == null) { // 要比较的对象为空
+            return false; // 没必要比较
+        }
+        if (this == book) { // 内存地址相同
+            return true; //避免具体比较，节约时间
+        }
+        // 执行“bkA.equals(bkB)”时，有两个对象：
+        // 一个为当前对象this(调用方法的对象，即bkA）
+        // 一个为传递对象book(引用传递，即bkB）
+        if (this.title.equals(book.title)
+                &amp;&amp; this.price == book.price) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book(&quot;Java开发&quot;, 79.5);
+        Book bkB = new Book(&quot;JSP&quot;, 45.6);
+        if (bkA.compare(bkB)) {
+            System.out.println(&quot;bkA和bkB是同一个对象！&quot;);
+        } else {
+            System.out.println(&quot;bkA和bkB是不同对象！&quot;);
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>总结<br>
+（1）对象比较的方法必须定义在类中；<br>
+（2）对象比较时一定要判断是否为<code>null</code>，内存地址是否相同，属性是否相同。</p>
+</blockquote>
+<h2 id="关键字static"><a class="markdownIt-Anchor" href="#关键字static"></a> 关键字static</h2>
+<h3 id="static-定义属性"><a class="markdownIt-Anchor" href="#static-定义属性"></a> static 定义属性</h3>
+<blockquote>
+<p>问题引出：</p>
+</blockquote>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+    // 为操作方便，暂不封装
+    String pub = &quot;清华大学出版社&quot;;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public String getInfo(){
+        return &quot;书名：&quot; + this.title + &quot;,价格：&quot; + this.price + &quot;,出版社：&quot; + this.pub;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book(&quot;Java开发&quot;, 79.5);
+        Book bkB = new Book(&quot;JSP&quot;, 45.6);
+        System.out.println(bkA.getInfo()); // 清华大学出版社
+        System.out.println(bkB.getInfo()); // 清华大学出版社
+        bkB.pub = &quot;北京大学出版社&quot;;
+        System.out.println(bkA.getInfo()); // 清华大学出版社
+        System.out.println(bkB.getInfo()); // 北京大学出版社
+    }
+}
+</code></pre>
+<blockquote>
+<p>对上述代码进行内存分析：<br>
+<img src="/article/语言/Java基础知识(八)/12-1.png" alt="无法加载" title="内存分析"><br>
+通过内存分析，发现属性重复：每个对象各自占有相同的属性值。假如有1000个该对象，要修改所有对象的pub属性，就需要分别进行修改。因此如果将pub属性定为普通属性，那每个堆内存都保存有各自的pub值。</p>
+</blockquote>
+<p>1.但所有对象的pub值都一样，应将其定为一个共享的属性，即所有对象都指向同一块pub属性。可以利用<code>static</code>定义共享属性。</p>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+    // 为操作方便，暂不封装
+    static String pub = &quot;清华大学出版社&quot;;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public String getInfo(){
+        return &quot;书名：&quot; + this.title + &quot;,价格：&quot; + this.price + &quot;,出版社：&quot; + this.pub;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bkA = new Book(&quot;Java开发&quot;, 79.5);
+        Book bkB = new Book(&quot;JSP&quot;, 45.6);
+        System.out.println(bkA.getInfo()); // 清华大学出版社
+        System.out.println(bkB.getInfo()); // 清华大学出版社
+        bkB.pub = &quot;北京大学出版社&quot;;
+        System.out.println(bkA.getInfo()); // 北京大学出版社
+        System.out.println(bkB.getInfo()); // 北京大学出版社
+    }
+}
+</code></pre>
+<p>使用<code>static</code>定义属性后，只要有一个对象修改属性值，那么所有对象的该属性值都会改变，内存分析如下：<br>
+<img src="/article/语言/Java基础知识(八)/12-2.png" alt="无法加载" title="内存分析"><br>
+2. <code>static</code>定义的属性与普通属性区别在于<strong>保存数据的内存区域不同。</strong><br>
+<code>static</code>定义的是公共属性，任由某个对象直接修改属性值是不合理的，应该由所有对象的代表进行属性访问，即用类访问。<strong>因此<code>static</code>定义的属性，可直接用类名调用：</strong><code>Book.pub = &quot;北京大学出版社&quot;;</code><br>
+3. <code>static</code>属性与普通属性的区别在于：普通属性必须由实例化的对象调用，而在没有实例化对象的情况下，static属性依然可以被调用。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 没有实例化对象的情况下，输出pub的内容
+        System.out.println(Book.pub);
+    }
+}
+</code></pre>
+<p>由结果可知：<strong><code>static</code>虽然定义在类中，但不受对象控制，是独立于类存在的。</strong><br>
+4. 何时使用static定义属性<br>
+编写类时，<code>static</code>不是首选修饰符，<strong>当需要描述共享信息时，才使用static，方便集体修改，不用重复开辟内存空间。</strong></p>
+<h3 id="static-定义方法"><a class="markdownIt-Anchor" href="#static-定义方法"></a> static 定义方法</h3>
+<p>1.<code>static</code>定义的方法也可以直接被类名调用</p>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+    // 为操作方便，暂不封装
+    private static String pub = &quot;清华大学出版社&quot;;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public static void setPub(String p){
+        pub = p;
+    }
+    public String getInfo(){
+        return &quot;书名：&quot; + this.title + &quot;,价格：&quot; + this.price + &quot;,出版社：&quot; + this.pub;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 没有实例化对象的情况下，调用方法
+        Book.setPub(&quot;北京大学出版社&quot;);
+        Book bkA = new Book(&quot;Java开发&quot;, 79.5);
+        System.out.println(bkA.getInfo()); // 北京大学出版社
+    }
+}
+</code></pre>
+<p>上述代码存在问题：类中有两种方法，static方法和普通方法，两种方法间的访问受到限制。<br>
+（1）static方法不能直接使用非static属性或方法，只能调用static属性或方法。</p>
+<pre class="highlight"><code class="">public static void setPub(String p){
+   pub = p;
+   title = &quot;sss&quot;; // 报错，无法引用非静态变量
+   getInfo(); // 报错，无法引用非静态方法
+   System.out.println(this); // 报错，无法引用非静态变量
+}
+</code></pre>
+<p>（2）普通方法可以使用static属性或方法</p>
+<pre class="highlight"><code class="">public String getInfo(){
+    setPub(&quot;&quot;); // 不报错
+    return &quot;,出版社：&quot; + this.pub; // 不报错
+}
+</code></pre>
+<p>出现上述限制的原因：</p>
+<blockquote>
+<p>|- 普通属性和方法必须在对象实例化后分配了堆内存空间，才可以使用；<br>
+|- static定义的方法和属性，不受实例化对象控制，可在没有实例化对象情况下访问。</p>
+</blockquote>
+<p>2.一个方法定义在主类中，并由主方法直接调用，该方法定义格式如下：</p>
+<pre class="highlight"><code class="">public static 返回值类型 方法名(参数类型 参数, 参数类型 参数,...) {
+    方法体; 
+    [return [返回值] ;] // []中内容可写可不写
+}
+</code></pre>
+<p>一个方法定义在类中，由对象直接调用，其语法格式如下：</p>
+<pre class="highlight"><code class="">public 返回值类型 方法名(参数类型 参数, 参数类型 参数,...) {
+    方法体; 
+    [return [返回值] ;] // []中内容可写可不写
+}
+</code></pre>
+<p>观察代码：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        fun();
+    }
+
+    public static void fun() {
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<p>没有static定义的fun()必须通过对象调用，主方法要使用fun()必须实例化对象</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 产生对象，再利用对象调用非static方法
+        new Demo().fun();
+    }
+
+    public void fun() {
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>定义类中方法时，<code>static</code>不是首选修饰符，因为每个对象可以利用自己的属性实现方法的不同调用。</li>
+</ol>
+<pre class="highlight"><code class="">class Flag {
+    private boolean flag;
+
+    public Flag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public void fun() {
+        if (this.flag) {
+            System.out.println(&quot;可以操作&quot;);
+        } else {
+            System.out.println(&quot;不可以操作&quot;);
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Flag fA = new Flag(true);
+        Flag fB = new Flag(false);
+        fA.fun();
+        fB.fun();
+    }
+}
+</code></pre>
+<p>当一个类中没有属性，只有方法时，建议将所有方法定义为static方法。这样就不用每次调用时都需要有实例化对象。</p>
+<pre class="highlight"><code class="">class MyMath {
+    public static int add(int x, int y) {
+        return x + y;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println(MyMath.add(10, 20));
+    }
+}
+</code></pre>
+<h3 id="主方法"><a class="markdownIt-Anchor" href="#主方法"></a> 主方法</h3>
+<p>1.主方法的组成：</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th style="text-align:center">master端</th>
-<th style="text-align:right">node端</th>
+<th style="text-align:center">组成</th>
+<th style="text-align:center">作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>IP</td>
-<td style="text-align:center">10.0.0.100</td>
-<td style="text-align:right">10.0.0.101</td>
+<td style="text-align:center">public</td>
+<td style="text-align:center">主方法是程序的开始，所以主方法必须是可见、public（公共的）的</td>
 </tr>
 <tr>
-<td>etcd</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right"></td>
+<td style="text-align:center">static</td>
+<td style="text-align:center">证明此方法可直接由类名调用</td>
 </tr>
 <tr>
-<td>flannel</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right">✔</td>
+<td style="text-align:center">void</td>
+<td style="text-align:center">主方法是程序的开始，因此不能回头，执行完为止，所以不能有返回值</td>
 </tr>
 <tr>
-<td>kube-apiserver</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right"></td>
+<td style="text-align:center">main</td>
+<td style="text-align:center">系统规定好的方法名，不能修改</td>
 </tr>
 <tr>
-<td>kube-controller-manager</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>kube-scheduler</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>kubelet</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right">✔</td>
-</tr>
-<tr>
-<td>kube-proxy</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right">✔</td>
-</tr>
-<tr>
-<td>docker</td>
-<td style="text-align:center">✔</td>
-<td style="text-align:right">✔</td>
+<td style="text-align:center">String [] args</td>
+<td style="text-align:center">指的是程序运行时传递的参数</td>
 </tr>
 </tbody>
 </table>
-<h2 id="共同配置即master和node都需要进行的操作"><a class="markdownIt-Anchor" href="#共同配置即master和node都需要进行的操作"></a> 共同配置（即master和node都需要进行的操作）</h2>
-<p>(1)修改/etc/hosts文件，添加master和node节点IP</p>
-<pre class="highlight"><code class="">$ echo &quot;10.0.0.100 centos-master
-  10.0.0.101 centos-minion&quot; &gt;&gt; /etc/hosts
-$ cat /etc/hosts
-  10.0.0.100 centos-master
-  10.0.0.101 centos-minion
+<p><strong>范例</strong>：对主方法传入参数</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        for (int x = 0; x &lt; args.length ; x++) {
+            System.out.println(args[x]); // 未输出参数，为空
+        }
+    }
+}
 </code></pre>
-<p>(2)禁用fierwalld，安装iptables，设置iptables开机自动启动，启用iptables，禁用iptables-services</p>
-<pre class="highlight"><code class=""># 关闭fierwalld
-$ systemctl stop firewalld
-$ systemctl disable firewalld
+<p>多个参数时，必须使用空格分割。<code>cmd执行的是java Demo 1 3 4 6</code><br>
+输出为：<code>1 3 4 6</code><br>
+如果参数本身带有空格，需用<code>&quot;&quot;</code>描述<br>
+cmd执行的是<code>java Demo &quot;Hello world&quot; &quot;Hello Java&quot;</code></p>
+<h3 id="static应用案例"><a class="markdownIt-Anchor" href="#static应用案例"></a> static应用案例</h3>
+<blockquote>
+<p>已知：<br>
+（1）多个对象，都使用同一个static属性；<br>
+（2）static定义方法可以避免实例化对象调用方法的限制。</p>
+</blockquote>
+<p>1.实现对实例化对象个数的统计</p>
+<blockquote>
+<p>要求：每实例化一个对象，就输出&quot;这是第x个实例化对象&quot;<br>
+思路：每次实例化对象，就会调用构造方法，因此可在构造方法中增加一个统计数据的操作，每当新对象产生，该属性值就自增加一。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Book {
+    private static int num = 0;
 
-# 安装iptables，启动该服务并设置开机自启动
-$ yum install iptables
-$ systemctl start iptables
-$ systemctl enable iptables
+    public Book() {
+        num++;
+        System.out.println(&quot;这是第&quot; + num + &quot;个实例化对象&quot;);
+    }
+}
 
-# 关闭iptables-services
-$ systemctl disable iptables-services 
-$ systemctl stop iptables-services 
-
-# 关闭iptables-services时，可能出现&quot;Failed to issue method call: Access denied&quot;
-# 解决方法：修改SElinux配置
-$ vi /etc/selinux/config
-  # SELINUX=enforcing    #注释掉
-  # SELINUXTYPE=targeted #注释掉
-    SELINUX=disabled #增加
-  :wq! #保存退出
-$ setenforce 0 #使配置立即生效
+public class Demo {
+    public static void main(String[] args) {
+        new Book();
+        new Book();
+        new Book();
+    }
+}
 </code></pre>
-<p>(3)安装</p>
+<p>2.实现属性的自动设置</p>
+<blockquote>
+<p>要求：类中有一个无参构造方法，一个有参构造方法，有参构造方法的功能是传递title值。不论调用的哪个构造方法，均可为title赋值，且属性值尽量不重复。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private static int num = 0;
+
+    public Book() {
+        this(&quot;Title:No.&quot; + num++);
+    }
+    public Book(String title){
+        this.title = title;
+    }
+    public String getTitle(){
+        return  this.title;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println(new Book(&quot;Java开发&quot;).getTitle()); // Java开发
+        System.out.println(new Book().getTitle()); // Title:No.0
+        System.out.println(new Book().getTitle()); // Title:No.1
+    }
+}
+</code></pre>
+<blockquote>
+<p>总结<br>
+（1）类定义属性或方法首时选不是static属性或方法；<br>
+（2）static属性或方法可直接用类名调用；<br>
+（3）static属性保存在全局数据区。<br>
+（4）内存区有四种: 栈内存（对象的地址），堆内存（普通属性），全局数据区（static属性），全局代码区（所有的方法）</p>
+</blockquote>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -645,7 +1007,7 @@ $ setenforce 0 #使配置立即生效
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/容器/Kubernetes安装及使用/">http://yov.oschina.io/article/容器/Kubernetes安装及使用/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/语言/Java基础知识(八)/">http://yov.oschina.io/article/语言/Java基础知识(八)/</a>
                     </p>
                 </blockquote>
         
@@ -693,21 +1055,13 @@ $ setenforce 0 #使配置立即生效
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/article/语言/Java基础知识(三)/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/article/容器/Docker Hub mysql官方镜像实现首次启动后初始化库表/" id="post_nav-older" class="next-content">
+        <a href="/article/语言/Java基础知识(七)/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
