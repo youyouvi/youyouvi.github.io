@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Sat Sep 23 2017 16:57:17 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Sep 25 2017 16:47:05 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Oct 14 2017 20:54:39 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/语言/Go基础知识/index.html",
     "headline": "Go基础知识",
     "datePublished": "Sat Sep 23 2017 16:57:17 GMT+0800",
-    "dateModified": "Mon Sep 25 2017 16:47:05 GMT+0800",
+    "dateModified": "Sat Oct 14 2017 20:54:39 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -344,6 +344,15 @@
 
     <!-- Left aligned menu below button -->
     
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#入门"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go语言环境安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Go语言环境安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一个go程序"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 第一个Go程序</span></a></li></ol></li></ol>
+    </ul>
     
 
 
@@ -501,7 +510,32 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <h2 id="入门"><a class="markdownIt-Anchor" href="#入门"></a> 入门</h2>
+<p>Go语言是一门编译型语言，是一个开源的编程语言，能让构造简单、而且高效的软件变得容易。Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似用途的巨型中央服务器的系统编程语言。对于高性能分布式系统领域而言，Go 语言无疑比大多数其它语言有着更高的开发效率。它提供了海量并行的支持，这对于游戏服务端的开发而言是再好不过了。</p>
+<h3 id="go语言环境安装"><a class="markdownIt-Anchor" href="#go语言环境安装"></a> Go语言环境安装</h3>
+<p>Go语言安装包下载地址为<a href="https://golang.org/dl/">Golang</a>。Windows使用mis后缀的安装包即可。默认情况msi文件会安装在c:\Go目录下。Go语言的开发工具可以使用<a href="http://sourceforge.net/projects/liteide/files/">LitelDE</a>，是一款开源、跨平台的轻量级Go语言集成开发环境.。也可以在Eclipse或IDEA中安装Go语言插件。</p>
+<h3 id="第一个go程序"><a class="markdownIt-Anchor" href="#第一个go程序"></a> 第一个Go程序</h3>
+<pre class="highlight"><code class="">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	fmt.Println(&quot;Hello World!&quot;)
+}
+</code></pre>
+<p>Go的工具链将源代码及其依赖转换成计算机的机器指令（静态编译）。Go提供的工具都通过<code>go</code>命令调用。其中<code>go run</code>就是编译go的源文件，链接库文件，并运行生成的可执行文件。</p>
+<pre class="highlight"><code class="">$ go run helloworld.go
+</code></pre>
+<p>Go语言支持Unicode，可以处理任何语言的文本，包括中文。<br>
+如果要编译上述程序，保存编译结果以备将来使用，可以使用<code>build</code>子命令：</p>
+<pre class="highlight"><code class="">$ go build helloworld.go
+</code></pre>
+<p>这个命令生成一个名为helloworld的可执行的二进制文件（注：Windows系统下生成的是<code>helloworld.exe</code>），之后可以随时运行它，不需要任何处理（注：因为是静态编译，所以不必担心系统库更新时的冲突）。</p>
+<p>Go语言的代码通过包（package）组织，包类似与其他语言中的库（libraries）或者模块（modules）。一个包由单个目录下的一个或多个go源代码文件组成，目录定义包的作用。每个源文件都以package声明语句为开始。上述例子就是<code>package main</code>，紧跟着导入（import）的包，之后是程序代码。</p>
+<p><code>fmt包</code>含有格式化输出、接收输入的函数，<code>Println</code>是其中一个基础函数。</p>
+<p><code>main包</code>比较特殊，定义了一个独立可执行的程序，而不是一个库。main包中的main函数是整个程序执行时的入口。import声明告诉编译器需要哪些包，缺少必要的包或者导入不需要的包，程序都无法编译通过。</p>
+<p>组成程序的函数、变量、常量、类型的声明语句分别由关键字<code>func</code>、<code>var</code>、<code>const</code>、<code>type</code>定义。一个函数的声明由<code>func</code>关键字、函数名、参数列表、返回值列表（mian函数不含返回值）以及包含在大括号里的函数体组成。<strong>Go语言不需在语句末尾添加分号，除非一行有多条语句。</strong></p>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -663,7 +697,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
             </ul>
         </li>
         
@@ -681,7 +715,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">10</span></a>
+                <a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">11</span></a>
             </ul>
         </li>
         
@@ -737,7 +771,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">21</span>
+                <span class="sidebar-badge">22</span>
             </a>
         </li>
         
