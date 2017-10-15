@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Sat Sep 23 2017 16:57:17 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Oct 14 2017 20:54:39 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Oct 15 2017 15:36:23 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/语言/Go基础知识/index.html",
     "headline": "Go基础知识",
     "datePublished": "Sat Sep 23 2017 16:57:17 GMT+0800",
-    "dateModified": "Sat Oct 14 2017 20:54:39 GMT+0800",
+    "dateModified": "Sun Oct 15 2017 15:36:23 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#入门"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go语言环境安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Go语言环境安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一个go程序"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 第一个Go程序</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#入门"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go语言环境安装"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Go语言环境安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一个go程序"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 第一个Go程序</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#程序结构"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 程序结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#命名"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 命名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#声明"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 声明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简短变量声明"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text"> 简短变量声明</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#指针"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text"> 指针</span></a></li></ol></li></ol></li></ol>
     </ul>
     
 
@@ -535,6 +535,184 @@ func main() {
 <p><code>fmt包</code>含有格式化输出、接收输入的函数，<code>Println</code>是其中一个基础函数。</p>
 <p><code>main包</code>比较特殊，定义了一个独立可执行的程序，而不是一个库。main包中的main函数是整个程序执行时的入口。import声明告诉编译器需要哪些包，缺少必要的包或者导入不需要的包，程序都无法编译通过。</p>
 <p>组成程序的函数、变量、常量、类型的声明语句分别由关键字<code>func</code>、<code>var</code>、<code>const</code>、<code>type</code>定义。一个函数的声明由<code>func</code>关键字、函数名、参数列表、返回值列表（mian函数不含返回值）以及包含在大括号里的函数体组成。<strong>Go语言不需在语句末尾添加分号，除非一行有多条语句。</strong></p>
+<h2 id="程序结构"><a class="markdownIt-Anchor" href="#程序结构"></a> 程序结构</h2>
+<h3 id="命名"><a class="markdownIt-Anchor" href="#命名"></a> 命名</h3>
+<p>Go语言的<code>函数名、变量名、常量名、类型名、语句标号和包名</code>等所有命名的规则是：</p>
+<blockquote>
+<p>（1）由字母、下划线、或数字组成，以字母或下划线开头，区分大小写。<br>
+（2）不能使用关键字。Go语言有25个关键字：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">break</th>
+<th style="text-align:center">default</th>
+<th style="text-align:center">func</th>
+<th style="text-align:center">interface</th>
+<th style="text-align:center">select</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">case</td>
+<td style="text-align:center">defer</td>
+<td style="text-align:center">go</td>
+<td style="text-align:center">map</td>
+<td style="text-align:center">struct</td>
+</tr>
+<tr>
+<td style="text-align:center">chan</td>
+<td style="text-align:center">else</td>
+<td style="text-align:center">goto</td>
+<td style="text-align:center">package</td>
+<td style="text-align:center">switch</td>
+</tr>
+<tr>
+<td style="text-align:center">const</td>
+<td style="text-align:center">fallthrough</td>
+<td style="text-align:center">if</td>
+<td style="text-align:center">range</td>
+<td style="text-align:center">type</td>
+</tr>
+<tr>
+<td style="text-align:center">continue</td>
+<td style="text-align:center">for</td>
+<td style="text-align:center">import</td>
+<td style="text-align:center">return</td>
+<td style="text-align:center">var</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>（3）Go语言还有30多个预定义的名字，如int和true等，对应内建的常量、类型和函数。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">内建常量</th>
+<th style="text-align:center">true  false iota nil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">内建类型</td>
+<td style="text-align:center">int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 uintptr float32  float64 complex128 complex64 bool  byte  rune  string  error</td>
+</tr>
+<tr>
+<td style="text-align:center">内建函数</td>
+<td style="text-align:center">make  len  cap  new  append   copy  close  delete  complex  real imag  panic  revover</td>
+</tr>
+</tbody>
+</table>
+<p>内部预定义的名字不是关键字，因为可以在定义中重新使用它们。在一些特殊场景重新定义它们时要避免过度而引起的语义混乱。<br>
+（4）命名长度没有限制，但应尽量短小。如果作用域较大，生命周期长，应见名知意。<br>
+（5）Go语言推荐使用驼峰式命名，而对于<code>ASCII</code>和<code>HTML</code>这样的缩略词则不变，即<code>escapeHTML</code>，而不是<code>escapeHtml</code>。<br>
+（6）如果一个标识符是在函数内部定义的，那么它只在函数内部有效。如果在函数外部定义，则当前包中所有的文件都可以访问该标识符。名字开头字母的大小写决定了标识符在包外的可见性：如果开头是大写字母，那么它是公开，可被外部包访问，如fmt包的Printf函数就可以在fmt包外访问。包的名字一般总是小写。</p>
+<h3 id="声明"><a class="markdownIt-Anchor" href="#声明"></a> 声明</h3>
+<p>声明语句定义了程序的各种实体对象以及部分或全部的属性。Go语言主要有四种类型声明语句：<code>var、const、type和func</code>，分别对应<code>变量、常量、类型和函数实体对象</code>的声明。</p>
+<p>（1）一个Go程序对应一个或多个go源文件。每个源文件以包的声明语句开始，说明该文件属于哪个包。之后是<code>import</code>语句，然后是包一级的类型、变量、常量、函数声明语句。<br>
+<strong>范例</strong>：声明常量、函数、变量</p>
+<pre class="highlight"><code class="">package main  // 包声明
+
+import &quot;fmt&quot;  // 导入依赖包
+
+const  boilingF = 212.0   // 定义常量
+
+/**
+进行摄氏度和华氏度的转换
+ */
+func main() {   // 定义函数
+	var f = boilingF   // 定义变量
+	var c = (f - 32) * 5 / 9
+	fmt.Printf(&quot;boiling point = %g°F or %g°C\n&quot;, f, c)
+}
+</code></pre>
+<p>上述代码中，<code>bilingF</code>是包级别的声明,作用范围为包内的所有文件。f和c是在函数内部声明的，作用范围仅在函数内部。</p>
+<p>（2）一个函数的声明由<code>函数名、参数、可选的返回值和函数体</code>组成。如果没有返回值，就可不定义返回值。函数的执行从第一个语句，依次执行直到遇到return语句或执行完毕。<br>
+<strong>如果要多次进行摄氏度与华氏度的转换，可以将其定义为函数。</strong></p>
+<pre class="highlight"><code class="">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	const freezingF, boilingF = 32.0, 212.0
+	fmt.Printf(&quot;%g°F = %g°C\n&quot;, freezingF, fToC(freezingF))
+	fmt.Printf(&quot;%g°F = %g°C\n&quot;, boilingF, fToC(boilingF))
+}
+
+/** 华氏度转为摄氏度
+ * f: 华氏度值
+ * return: 返回float64类型数据
+ */
+func fToC(f float64) float64  {
+	return (f - 32) * 5 / 9
+}
+</code></pre>
+<h3 id="变量"><a class="markdownIt-Anchor" href="#变量"></a> 变量</h3>
+<p>变量声明的一般语法：<code>var 变量名 类型 = 表达式</code></p>
+<blockquote>
+<p>类型或表达式可省略其一。如果省略类型，则根据表达式推断变量的类型;如果省略表达式，则变量的值为默认值：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">初始值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">数值类型</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">布尔型</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">字符串型</td>
+<td style="text-align:center">空字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">接口或引用类型(包括slice、指针、map、chan和函数)</td>
+<td style="text-align:center">nil</td>
+</tr>
+<tr>
+<td style="text-align:center">数组或结构体等聚合类型</td>
+<td style="text-align:center">每个元素或字段对应该类型的初始值</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Go的零值初始化机制可以保证每个变量都被初始化，因此Go中不存在未初始化的变量。这个特性可以简化很多代码，在不增加额外工作的情况下，确保边界条件下的合理行为。</p>
+</blockquote>
+<p>可以在声明语句中同时声明一组变量，或用一组初始化表达式声明并初始化一组变量，如果忽略每个变量的类型，就可以声明多个不同类型变量（类型由初始表达式推导）</p>
+<pre class="highlight"><code class="">var i, j, k int  // int, int, int
+var b, f, s = true, 2.3, &quot;four&quot;  // bool, float64, string
+</code></pre>
+<p>变量也可以通过调用函数，由函数的返回值进行初始化：</p>
+<pre class="highlight"><code class="">var f, err = os.Open(name)
+</code></pre>
+<h4 id="简短变量声明"><a class="markdownIt-Anchor" href="#简短变量声明"></a> 简短变量声明</h4>
+<p>简短变量声明，变量的类型根据表达式自动推导，语法<code>变量名 := 表达式</code></p>
+<blockquote>
+<p>因为其简洁灵活的特点，简短变量声明常用于大部分的局部变量；var声明常用于需要显示变量类型的地方或者变量稍后会被重新赋值的而初始值无关紧要的地方。</p>
+</blockquote>
+<pre class="highlight"><code class="">i := 100
+var boilong float64 = 100
+var name []string
+</code></pre>
+<p>简短变量声明也同var一样可以声明一组变量，表达式可以是函数。<br>
+（1）简短变量声明左边的变量如果是已经被声明过的，那么此时该语句对该变量的作用只是赋值（简短变量声明一句中至少有一个变量是新地！）</p>
+<pre class="highlight"><code class="">in, err := os.Open(infile)
+out, err := os.Open(outfile)  // 此时&quot;:=&quot; 对于err只是进行赋值
+out, err := os.Create(outfile) // 报错,没有新的变量
+</code></pre>
+<p>解决上述错误的方法是将第二个简短变量声明改为普通的多重赋值语句。</p>
+<blockquote>
+<p>简短变量声明只对已经在同级作用范围声明的变量起到赋值作用，如果是作用域外的声明，则会在当前作用域重新声明一个新的变量。</p>
+</blockquote>
+<h4 id="指针"><a class="markdownIt-Anchor" href="#指针"></a> 指针</h4>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
