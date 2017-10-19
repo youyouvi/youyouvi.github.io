@@ -3,6 +3,804 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(十)]]></title>
+      <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81)/</url>
+      <content type="html"><![CDATA[<h2 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h2>
+<blockquote>
+<p>链表是引用的加强应用.<br>
+知识点前提：依赖于引用传递；this表示当前对象。</p>
+</blockquote>
+<h3 id="链表基本概念"><a class="markdownIt-Anchor" href="#链表基本概念"></a> 链表基本概念</h3>
+<p>1.链表是一种简单的数据结构，功能是<strong>依靠引用关系实现多个数据的保存。</strong><br>
+<img src="/article/语言/Java基础知识(十)/15-1.png" alt="无法加载" title="数据保存"><br>
+根据上图编写代码：</p>
+<blockquote>
+<p>要求：定义一个Node类，保存String类型数据，同时拥有下一个节点的引用。</p>
+</blockquote>
+<pre class="highlight"><code class="">// 每个链表由多个节点组成
+class Node { // 定义节点类
+    private String data; // 要保存的数据
+    private Node next;   // 要保存的下一个节点
+
+    // 每个Node对象都必须保存相应的数据
+    public Node(String data) { // 有数据才有Node
+        this.data = data;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
+    }
+
+    public Node getNext() {
+        return this.next;
+    }
+
+    public String getData() {
+        return this.data;
+    }
+}
+
+</code></pre>
+<p><code>Node</code>类专门负责保存节点关系，需要其他类负责Node之间的关系匹配。<br>
+<strong>范例</strong>：使用循环取出数据</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Node root = new Node(&quot;火车头&quot;);
+        Node n1 = new Node(&quot;车厢A&quot;);
+        Node n2 = new Node(&quot;车厢B&quot;);
+        root.setNext(n1);
+        n1.setNext(n2);
+        // 2. 取出数据
+        Node currentNode = root; //从根节点开始读取数据
+        while (currentNode != null) { // 当前节点存在数据
+            System.out.println(currentNode.getData());
+            // 将下一节点设置为当前节点
+            currentNode = currentNode.getNext();
+        }
+    }
+}
+</code></pre>
+<p>利用循环取出数据不够便捷，应使用递归。<br>
+<strong>范例</strong>：使用递归取出数据</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Node root = new Node(&quot;火车头&quot;);
+        Node n1 = new Node(&quot;车厢A&quot;);
+        Node n2 = new Node(&quot;车厢B&quot;);
+        root.setNext(n1);
+        n1.setNext(n2);
+        print(root);
+    }
+    public static void print(Node current){
+        if (current == null){ // 节点不存在
+            return ; // 结束方法调用
+        }
+        System.out.println(current.getData());
+        print(current.getNext()); // 递归调用
+    }
+}
+</code></pre>
+<p><strong>因为循环次数未知，所以使用while循环。节点操作中，递归比while循环更直观。</strong></p>
+<blockquote>
+<p><strong>问题：为什么要设置Node类</strong><br>
+答：数据本身不具有先后关系，因此需要使用Node类封装份数据，同时利用Node类指向下一节点。</p>
+</blockquote>
+<h3 id="链表基本实现"><a class="markdownIt-Anchor" href="#链表基本实现"></a> 链表基本实现</h3>
+<p>通过分析发现：</p>
+<blockquote>
+<p>(1)用户操作过程中，Node类应该是不可见的，即用户无需关注Node类的结构<br>
+(2)Node之间的关系不应该由用户定义，而应该由一个专门的类处理。</p>
+</blockquote>
+<p><strong>范例</strong>：定义Link类，隐藏Node类<br>
+程序要描述的步骤如下：<br>
+<strong>第一步：</strong><br>
+<img src="/article/语言/Java基础知识(十)/15-2.png" alt="无法加载" title="数据保存"><br>
+<strong>第二步：</strong><br>
+<img src="/article/语言/Java基础知识(十)/15-3.png" alt="无法加载" title="数据保存"><br>
+<strong>第三步：</strong><br>
+<img src="/article/语言/Java基础知识(十)/15-4.png" alt="无法加载" title="数据保存"><br>
+<strong>第四步：</strong><br>
+<img src="/article/语言/Java基础知识(十)/15-5.png" alt="无法加载" title="数据保存"></p>
+<pre class="highlight"><code class="">// 处理Node对象间关系
+class Link {
+    private Node root; // 根节点
+
+    // 设置数据
+    public void add(String data) {
+        // 为了设置数据的先后关系，将data包装在Node对象中
+        Node newNode = new Node(data);
+        if (this.root == null) { // 保存数据时，根节点不存在
+            // 该判断执行一次，因为链表只有一个根节点
+            this.root = newNode; // 将新节点设置为根节点
+        } else { // 根节点存在
+            // 新节点应交给Node决定
+            // 从root之后设置合适的位置
+            this.root.addNode(newNode);
+        }
+    }
+
+    // 输出数据
+    public void print() {
+        if (this.root != null) {
+            this.root.printNode();
+        }
+    }
+}
+</code></pre>
+<p><strong>范例</strong>:根据Link类，修改Node类</p>
+<pre class="highlight"><code class="">class Node { 
+    private String data; 
+    private Node next;  
+
+    public Node(String data) { 
+        this.data = data;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
+    }
+
+    public Node getNext() {
+        return this.next;
+    }
+
+    public String getData() {
+        return this.data;
+    }
+
+    // 添加节点
+    // 第一次Link调用: this = link.root
+    // 第二次Node调用：this = link.root.next
+    // 第三次Node调用：this = link.root.next.next
+    public void addNode(Node newNode) {
+        if (this.next == null) { // 当前节点的next为空
+            this.next = newNode; // 保存为新节点
+        } else { 
+            // 当前节点的next的next继续保存
+            this.next.addNode(newNode);
+        }
+    }
+    // 第一次Link调用: this = link.root
+    // 第二次Node调用：this = link.root.next
+    // 第三次Node调用：this = link.root.next.next
+    public void printNode() {
+        System.out.println(this.data); // 输出当前节点数据
+        if (this.next != null) { // 当前节点有next
+            this.next.printNode(); // 输出next节点信息
+        }
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：测试</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Link link = new Link(); // 负责数据操作
+        // 增加数据
+        link.add(&quot;火车头&quot;);
+        link.add(&quot;车厢A&quot;);
+        link.add(&quot;车厢B&quot;);
+        // 输出数据
+        link.print();
+    }
+}
+</code></pre>
+<p>由上述代码可知链表操作的基本特点：</p>
+<blockquote>
+<p>（1）对于客户端而言Node是不可见的，只能利用Link中的方法<br>
+（2）Link类的功能是控制Node对象的产生和根节点的使用；<br>
+（3）Node类的功能是保存数据以及配置引用关系。</p>
+</blockquote>
+<h3 id="可用链表基本结构"><a class="markdownIt-Anchor" href="#可用链表基本结构"></a> 可用链表基本结构</h3>
+<p>1.可用链表指的是能实现数据的增删改查的链表。<br>
+2.可用链表开发要求：Node类负责节点数据的保存以及节点关系的匹配，因此Node类不能被单独使用，即外部不能绕过Link去使用Node<br>
+<strong>范例</strong>：修改Node结构，使得Node类只能被Link类使用</p>
+<blockquote>
+<p>思路：将Node类变为private定义的内部类。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Link { // 链表类，外部可见
+    // Node定义在内部让其只为Link服务
+    private class Node { 
+        private String data; // 保存数据
+        private Node next; // 引用关系
+
+        public Node(String data) { 
+            this.data = data;
+        }
+    }
+
+    // ====================以上为内部类=====================
+    private Node root; // 根节点
+}
+</code></pre>
+<p>上述代码即为可用链表的基本结构，后续为其增加功能代码。</p>
+<h3 id="增加数据功能"><a class="markdownIt-Anchor" href="#增加数据功能"></a> 增加数据功能</h3>
+<blockquote>
+<p>思路：数据的增加应由Link负责节点对象的产生，以及根节点的维护。节点间的关系匹配，由Node类处理。</p>
+</blockquote>
+<p><strong>范例</strong>：Node类中添加<code>addNode()</code>，Link类中添加<code>add()</code></p>
+<pre class="highlight"><code class="">// 设置关系
+public void addNode(Node newNode) {
+    if (this.next == null) {
+        this.next = newNode;
+    } else {
+        this.next.addNode(newNode);
+    }
+}
+
+public void add(String data) {
+    if (data == null) { // 输入数据为空
+        return;
+    }
+    Node newNode = new Node(data); // 要保存的数据
+    if (this.root == null) { // 根节点不存在
+        this.root = newNode; // 设为根节点
+    } else { //  根节点存在，交由Node处理
+        this.root.addNode(newNode);
+    }
+}
+</code></pre>
+<p>范例：测试</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Link link = new Link();
+        link.add(&quot;火车头&quot;);
+        link.add(&quot;车厢A&quot;);
+        link.add(&quot;车厢B&quot;);
+    }
+}
+
+</code></pre>
+<h3 id="获取链表长度"><a class="markdownIt-Anchor" href="#获取链表长度"></a> 获取链表长度</h3>
+<blockquote>
+<p>思路：每个链表对象都只有一个root，可以在Link类中设置count属性，随后每次添加数据后，count自增。</p>
+</blockquote>
+<p>范例：修改Link类<br>
+（1）增加count属性:<code>private int count = 0; // 节点的个数</code><br>
+（2）在add()添加统计节点个数的操作</p>
+<pre class="highlight"><code class="">public void add(String data) {
+   if (data == null) { 
+       return;
+   }
+   Node newNode = new Node(data); 
+   if (this.root == null) { 
+       this.root = newNode; 
+   } else { // 
+       this.root.addNode(newNode);
+   }
+   this.count++; // 每次增加节点，count+1
+}
+</code></pre>
+<p>（3）添加获取链表长度的方法size()</p>
+<pre class="highlight"><code class="">public int size() {
+    return this.count;
+}
+</code></pre>
+<p>（4）判断链表是否为空，有两种方式，一是判断root是否为null，二是判断count是否为0，在此采用第二种方式，在Link类中添加isEmpty()</p>
+<pre class="highlight"><code class="">public boolean isEmpty() {
+    return this.count == 0;
+}
+</code></pre>
+<h3 id="内容查询"><a class="markdownIt-Anchor" href="#内容查询"></a> 内容查询</h3>
+<blockquote>
+<p>思路：判断链表中是否存在某数据，以String为例，仅需遍历链表中的数据，与要查询的数据记性匹配（使用equals(String str)），如果匹配成功返回true，反之返回false。<br>
+<img src="/article/语言/Java基础知识(十)/15-6.png" alt="无法加载" title="内容查询"><br>
+根据上图编写代码：<br>
+（1）Link中添加contains()</p>
+</blockquote>
+<pre class="highlight"><code class="">public boolean contains(String data) {
+    if (data == null || root == null) {
+        return false;
+    }
+    return this.root.containsNode(data);
+}
+</code></pre>
+<p>Link从root节点开始查询数据是否存在，数据不存在，Node开始查询非根节点。<br>
+（2）Node中添加containsNode()</p>
+<pre class="highlight"><code class="">public boolean containsNode(String data) {
+    if (data.equals(this.data)) { // 当前数据等于要目标数据
+        return true; // 结束查询
+    } else { // 当前数据不等于目标数据
+        if (this.next != null) { // 有后续节点
+            return this.next.containsNode(data);
+        } else { 
+            return false;
+        }
+    }
+}
+</code></pre>
+<p>（3）测试</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Link link = new Link();
+        link.add(&quot;火车头&quot;);
+        link.add(&quot;车厢A&quot;);
+        link.add(&quot;车厢B&quot;);
+        System.out.println(link.contains(&quot;火车头&quot;));
+    }
+}
+</code></pre>
+<blockquote>
+<p>案例中使用的是String类型数据，所以判断数据使用equals(String str)。如果判断的是自定义类型数据，就需要定义一个对象比较的方法，方法名暂定为compare()。</p>
+</blockquote>
+<h3 id="根据索引取得数据"><a class="markdownIt-Anchor" href="#根据索引取得数据"></a> 根据索引取得数据</h3>
+<blockquote>
+<p>链表中保存有多个对象。数组也可以保存多个对象。链表和数组相比优势在于没有长度限制。因此链表相当于一个动态对象数组，具备像数组那样根据索引取得元素的功能。<br>
+由于是动态对象数组，所以元素的索引也是动态生成的。<br>
+<img src="/article/语言/Java基础知识(十)/15-7.png" alt="无法加载" title="内容查询"><br>
+根据上图，编写代码：<br>
+（1）Link中增加foot属性，表示Node的索引:<code>private int foot = 0; // 索引</code><br>
+每次查询前，应该重置为0.链表查询数据前应先判断要查询的索引小于索引总数。</p>
+</blockquote>
+<pre class="highlight"><code class="">public String get(int index) {
+    if (index &gt; this.count) { // 超出查询范围
+        return null;
+    }
+    this.foot = 0;
+    return this.root.getNode(index); // 查询交给Node类
+}
+</code></pre>
+<p>（2）Node定义getNode()，内部类和外部类间可以方便地进行私有属性的访问。</p>
+<pre class="highlight"><code class="">public String getNode(int index) {
+    // 当前foot内容与要查询的索引比较
+    // foot自增，目的是下次查询方便
+    if (Link.this.foot++ == index) {
+        return this.data;
+    } else {
+        return this.next.getNode(index);
+    }
+}
+</code></pre>
+<h3 id="修改链表数据"><a class="markdownIt-Anchor" href="#修改链表数据"></a> 修改链表数据</h3>
+<blockquote>
+<p>修改和查询思路差不多，不同的是查询是当满足索引值时，返回数据；修改是满足索引时，对数据重新赋值。</p>
+</blockquote>
+<p>（1）Link添加<code>set(int index, String data)</code></p>
+<pre class="highlight"><code class="">public void set(int index, String data) {
+    if (index &gt; this.count) {
+        return;
+    }
+    this.foot = 0; // 重置foot,作为索引
+    this.root.setNode(index, data); // Node进行修改数据
+}
+</code></pre>
+<p>（2）Node添加<code>setNode(int index, String data)</code></p>
+<pre class="highlight"><code class="">public void setNode(int index, String data) {
+    if (Link.this.foot++ == index) {
+        this.data = data;
+    } else {
+        this.next.setNode(index, data);
+    }
+}
+</code></pre>
+<h3 id="删除链表数据"><a class="markdownIt-Anchor" href="#删除链表数据"></a> 删除链表数据</h3>
+<blockquote>
+<p>删除链表数据应分为两种情况：<br>
+（1）要删除的是根节点，root.next()变为root，在Link中处理，因为由Link来维护root；<br>
+（2）要删除的是非根节点，当前节点的上一节点.next()=当前节点.next()，即空出了当前节点。非根节点应交由Node处理。</p>
+</blockquote>
+<p>1.Node添加removeNode(Node previous, String data)</p>
+<pre class="highlight"><code class="">public void removeNode(Node previous, String data) {
+    // 参数中传递上一个节点和要删除的数据
+    if (data.equals(this.data)) {
+        previous.next = this.next;
+    } else {
+        this.next.removeNode(this, data);
+    }
+}
+</code></pre>
+<ol start="2">
+<li>Link添加remove(String data)</li>
+</ol>
+<pre class="highlight"><code class="">public void remove(String data) {
+    if (this.contains(data)) { // 判断数据是否存在
+        if (data.equals(this.root.data)) { // 判断数据是否是root数据
+            this.root = this.root.next;
+        } else {
+            // root是Node对象，此处直接访问内部类私有操作
+            this.root.next.removeNode(this.root, data);
+        }
+this.count -- ; // 删除后数据个数减少
+    }
+}
+</code></pre>
+<h3 id="对象数组转换"><a class="markdownIt-Anchor" href="#对象数组转换"></a> 对象数组转换</h3>
+<blockquote>
+<p>开发中，类中不应该有输出语句。想输出数据应将数据返回到调用处。链表属于动态数组，因此可以将链表以对象数组的形式返回。<br>
+<img src="/article/语言/Java基础知识(十)/15-8.png" alt="无法加载" title="对象数组转换"><br>
+由上图可知，Link的<code>toArray()</code>要返回一个对象数组，且该数组也要由Node操作。因此该数组应定义为Link的属性。<br>
+（1）Link添加一个数组属性，便于Node和Link访问。添加toArray()</p>
+</blockquote>
+<pre class="highlight"><code class="">private String[] retArray; // 返回的数组
+
+public String[] toArray() {
+    if (this.root == null) {
+        return null;
+    }
+    this.foot = 0; // 需要脚标控制
+    this.retArray = new String[this.count]; // 根据保存内容开辟数组
+    this.root.toArrayNode();
+    return this.retArray;
+}
+</code></pre>
+<p>（2）Node添加toArrayNode()进行数组数据保存</p>
+<pre class="highlight"><code class="">public void toArrayNode() {
+    Link.this.retArray[Link.this.foot++] = this.data;
+    if (this.next != null) {
+        this.next.toArrayNode();
+    }
+}
+</code></pre>
+<p><strong>链表数据变为对象数组取出是重要功能！</strong></p>
+<h3 id="链表使用"><a class="markdownIt-Anchor" href="#链表使用"></a> 链表使用</h3>
+<blockquote>
+<p>上述链表只能操作String数据。下面要使用链表操作自定义类，由于链表具有contains()，因此类中需定义对象比较的方法。</p>
+</blockquote>
+<p>（1）定义Book类（setter/getter暂时省略）</p>
+<pre class="highlight"><code class="">class Book {
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public String getInfo() {
+        return &quot;书名：&quot; + this.title + &quot;,价格&quot; + this.price;
+    }
+
+    public boolean compare(Book book) {
+        if (book == null) {
+            return false;
+        }
+        if (this == book) {
+            return true;
+        }
+        if (this.title.equals(book.title)
+                &amp;&amp; this.price == book.price) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+</code></pre>
+<p>（2）修改链表</p>
+<pre class="highlight"><code class="">class Link { 
+    private class Node { // 节点类
+        private Book data; // 保存数据
+        private Node next; // 引用关系
+
+        public Node(Book data) { 
+            this.data = data;
+        }
+
+        // 设置关系
+        public void addNode(Node newNode) {
+            if (this.next == null) {
+                this.next = newNode;
+            } else {
+                this.next.addNode(newNode);
+            }
+        }
+
+        // 数据查询
+        public boolean containsNode(Book data) {
+            if (data.equals(this.data)) { // 当前数据等于要目标数据
+                return true; // 结束查询
+            } else { // 当前数据不等于目标数据
+                if (this.next != null) { // 有后续节点
+                    return this.next.containsNode(data);
+                } else { // 没有后续节点
+                    return false;
+                }
+            }
+        }
+
+
+        public Book getNode(int index) {
+            // 当前foot内容与要查询的索引比较
+            // foot自增，目的是下次查询方便
+            if (Link.this.foot++ == index) {
+                return this.data;
+            } else {
+                return this.next.getNode(index);
+            }
+        }
+
+        // 修改节点信息
+        public void setNode(int index, Book data) {
+            if (Link.this.foot++ == index) {
+                this.data = data;
+            } else {
+                this.next.setNode(index, data);
+            }
+        }
+
+        // 删除非根节点
+        public void removeNode(Node previous, Book data) {
+            // 参数中传递上一个节点和要删除的数据
+            if (data.equals(this.data)) {
+                previous.next = this.next;
+            } else {
+                this.next.removeNode(this, data);
+            }
+        }
+
+        public void toArrayNode() {
+            Link.this.retArray[Link.this.foot++] = this.data;
+            if (this.next != null) {
+                this.next.toArrayNode();
+            }
+        }
+    }
+
+
+    // ====================以上为内部类=====================
+    private Node root; // 根节点
+    private int count = 0; // 节点的个数
+    private int foot = 0; // 索引
+    private Book[] retArray; // 返回的数组
+
+    public void add(Book data) {
+        if (data == null) { // 输入数据为空
+            return;
+        }
+        Node newNode = new Node(data); // 要保存的数据
+        if (this.root == null) { // 根节点不存在
+            this.root = newNode; // 设为根节点
+        } else { //  根节点存在，交由Node处理
+            this.root.addNode(newNode);
+        }
+        this.count++; // 每次增加节点，count+1
+    }
+
+    // 获取链表长度
+    public int size() {
+        return this.count;
+    }
+
+    // 判断是否为空链表
+    public boolean isEmpty() {
+        return this.count == 0;
+    }
+
+
+    // 判断数据是否存在
+    public boolean contains(Book data) {
+        if (data == null || root == null) {
+            return false;
+        }
+        return this.root.containsNode(data);
+    }
+
+    // 根据索引获取信息
+    public Book get(int index) {
+        if (index &gt; this.count) { // 超出查询范围
+            return null;
+        }
+        this.foot = 0;
+        return this.root.getNode(index); // 查询交给Node类
+    }
+
+    // 设置信息
+    public void set(int index, Book data) {
+        if (index &gt; this.count) {
+            return;
+        }
+        this.foot = 0; // 重置foot,作为索引
+        this.root.setNode(index, data); // Node进行修改数据
+    }
+
+
+    // 判断删除节点是否为root
+    public void remove(Book data) {
+        if (this.contains(data)) { // 判断数据是否存在
+            if (data.equals(this.root.data)) { // 判断数据是否是root数据
+                this.root = this.root.next;
+            } else {
+                // root是Node对象，此处直接访问内部类私有操作
+                this.root.next.removeNode(this.root, data);
+            }
+            this.count--; // 删除后数据个数减少
+        }
+    }
+
+    public Book[] toArray() {
+        if (this.root == null) {
+            return null;
+        }
+        this.foot = 0; // 需要脚标控制
+        this.retArray = new Book[this.count]; // 根据保存内容开辟数组
+        this.root.toArrayNode();
+        return this.retArray;
+    }
+}
+</code></pre>
+<p>（3）测试</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Link all = new Link();
+        all.add(new Book(&quot;Java开发&quot;, 69.8));
+        all.add(new Book(&quot;JSP&quot;, 78.8));
+        all.add(new Book(&quot;C++开发&quot;, 19.8));
+        System.out.println(&quot;保存书的个数：&quot; + all.size());
+        System.out.println(all.contains(new Book(&quot;Java开发&quot;, 69.8)));
+        all.remove(new Book(&quot;C++开发&quot;, 19.8));
+        Book[] books = all.toArray();
+        for (int x = 0; x &lt; books.length; x++) {
+            System.out.println(books[x].getInfo());
+        }
+    }
+}
+</code></pre>
+<p>链表的最佳应用就是横向替换对象数组。</p>
+<h3 id="在映射中使用链表"><a class="markdownIt-Anchor" href="#在映射中使用链表"></a> 在映射中使用链表</h3>
+<blockquote>
+<p>链表属于动态对象数组。之前进行数据表映射时，都会出现对象数组的概念，现在就用链表来进行对象保存。本节以一对多为例，即用前文中的省份-城市表为例：</p>
+</blockquote>
+<p>（1）对于使用链表的类，要添加对象比较的方法</p>
+<pre class="highlight"><code class="">class Province {
+    private int pid;
+    private String pname;
+    private Link cities = new Link();
+
+    public Link getCities() {
+        return this.cities;
+    }
+
+    //getter/setter,无参构造方法略
+    public Province(int pid, String pname) {
+        this.pid = pid;
+        this.pname = pname;
+    }
+
+    public boolean compare(Province province) {
+        if (province == null) {
+            return false;
+        }
+        if (this == province) {
+            return true;
+        }
+        if (this.pid == province.pid &amp;&amp; this.pname.equals(province.pname)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String getInfo() {
+        return &quot;省份ID：&quot; + this.pid + &quot;,省份名称：&quot; + this.pname;
+    }
+}
+
+
+class City {
+    private int cid;
+    private String cname;
+    private Province province;
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
+    public Province getProvince() {
+        return this.province;
+    }
+
+    //getter/setter,无参构造方法略
+    public City(int cid, String cname) {
+        this.cid = cid;
+        this.cname = cname;
+    }
+
+    public String getInfo() {
+        return &quot;城市ID：&quot; + this.cid + &quot;,城市名称：&quot; + this.cname;
+    }
+
+    public boolean compare(City city) {
+        if (city == null) {
+            return false;
+        }
+        if (this == city) {
+            return true;
+        }
+        if (this.cid == city.cid &amp;&amp; this.cname.equals(city.cname)
+                &amp;&amp; this.province.compare(city.province)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+</code></pre>
+<p>此时只需将链表中的Book改为City即可。<br>
+在此时发现问题：每定义一个新的类，链表就需要重新进行修改。方法解决了代码重复问题。但是该问题不属于代码重复，属于数据类型不同意，该问题需要依靠面向对象的特性的来结局。</p>
+<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
+<blockquote>
+<p>（1）本章所讲的只是最基础的单向链表；<br>
+（2）链表中应有如下方法：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th style="text-align:left">方法名称</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:left">public void add(数据类型 变量)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">向链表中添加数据</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:left">public int size()</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">取得链表中数据个数</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:left">public boolean isEmpty()</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">判断是否为空链表</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:left">public boolean contains(数据类型 变量)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">判断数据是否存在</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:left">public 数据类型 get(int index)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">根据索引取得数据</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:left">public void set(int index,数据类型 变量)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">修改数据</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:left">public void remove(数据类型 变量)</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">删除指定数据</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align:left">public 数据类型 [] toArray()</td>
+<td style="text-align:center">普通</td>
+<td style="text-align:left">将链表以对象数组的形式转换</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      
+        <categories>
+            
+            <category> 语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础知识(九)]]></title>
       <url>/article/%E8%AF%AD%E8%A8%80/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B9%9D)/</url>
       <content type="html"><![CDATA[<h2 id="代码块"><a class="markdownIt-Anchor" href="#代码块"></a> 代码块</h2>
@@ -5472,9 +6270,306 @@ __强调__
     </entry>
     
     <entry>
-      <title><![CDATA[SpringBoot使用]]></title>
+      <title><![CDATA[SpringBoot基础应用]]></title>
       <url>/article/%E6%A1%86%E6%9E%B6/SpringBoot%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<h2 id="第一个spring-boot应用"><a class="markdownIt-Anchor" href="#第一个spring-boot应用"></a> 第一个Spring Boot应用</h2>
+<h3 id="创建项目"><a class="markdownIt-Anchor" href="#创建项目"></a> 创建项目</h3>
+<p>1.打开 IDEA, 选择 <code>Create New Project</code><br>
+2.左侧菜单选择<code>Spring Initializr</code>, Next即可<br>
+3.<code>Project Metadata</code>默认即可，Next<br>
+4.<code>Dependencies</code>选择Web中的<code>Web</code>即可,Next<br>
+5.<code>Project Name</code>默认即可,finsh</p>
+<h3 id="项目结构"><a class="markdownIt-Anchor" href="#项目结构"></a> 项目结构</h3>
+<pre class="highlight"><code class="">demo   // 项目名
+|- .idea
+|- .mvn
+|- src  // 代码存放区
+   |- main 
+      |- java
+         |- com.example.demo // java包
+            |- DemoApplication.java  // 项目启动类
+      |- resources
+         |- static     // 用于存放css,js等样式文件
+         |- templates  // 用于存放html文件
+         application.properties  // 项目配置文件
+   |- test //测试代码存放区
+|- target
+.gitignore
+mvnw
+mvnw.cmd
+demo.iml
+pom.xml // 项目对象模型,添加项目依赖等配置
+</code></pre>
+<h3 id="demoapplicationjava"><a class="markdownIt-Anchor" href="#demoapplicationjava"></a> DemoApplication.java</h3>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PersonApplication.class, args);
+	}
+}
+
+</code></pre>
+<p>右键<code>run</code>,然后在浏览器中输入<code>localhost:8080</code>即可访问页面,因为当前未定义页面,因此显示<code>Error Page</code></p>
+<h3 id="第一个页面"><a class="markdownIt-Anchor" href="#第一个页面"></a> 第一个页面</h3>
+<p>在<code>com.example.demo</code>文件下创建<code>HelloController.java</code></p>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController 
+public class HelloController {
+	// 设置请求路径为 /hello,请求方式为get
+    @RequestMapping(value = &quot;/hello&quot;, method = RequestMethod.GET)
+    public String say() {
+        return &quot;Hello World!&quot;;
+    }
+}
+</code></pre>
+<p>右键<code>run</code>,然后在浏览器中输入<code>localhost:8080/hello</code>即可访问页面,此时可在页面看到<code>Hello World!</code></p>
+<h3 id="项目属性配置"><a class="markdownIt-Anchor" href="#项目属性配置"></a> 项目属性配置</h3>
+<blockquote>
+<p>建议将项目中application.properties改为application.yml,便于配置</p>
+</blockquote>
+<pre class="highlight"><code class="">server:
+  port: 8080           # 端口号
+  context-path: /demo  # 主路径配置
+age: 18                # 自定义属性
+content: &quot;age: ${age}&quot; # 配置文件中调用属性
+</code></pre>
+<p>获取配置文件中的属性值</p>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController 
+public class HelloController {
+    @Value(&quot;${content}&quot;)
+	private String content;
+
+    @RequestMapping(value = &quot;/hello&quot;, method = RequestMethod.GET)
+    public String say() {
+        return content;
+    }
+}
+</code></pre>
+<p>右键<code>run</code>,然后在浏览器中输入<code>localhost:8080/demo/hello</code>即可访问页面,此时可在页面看到<code>age: 18</code></p>
+<h4 id="当有一系列属性值时"><a class="markdownIt-Anchor" href="#当有一系列属性值时"></a> 当有一系列属性值时</h4>
+<p>可将其定义为某个属性的子属性</p>
+<pre class="highlight"><code class="">server:
+  port: 8080
+person:
+  name: Tom
+  age: 40
+</code></pre>
+<p>定义一个PersonProperties类</p>
+<pre class="highlight"><code class="">package com.temp.person;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
+@Component // 将类实例化到Spring容器中
+@ConfigurationProperties(prefix = &quot;person&quot;)  // 获取前缀为person的配置
+public class PersonProperties {
+    private String name;
+    private Integer age;
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+}
+</code></pre>
+<p>获取配置文件中的值:</p>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import org.springframework.web.bind.annotation.RequestMapping; 
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController 
+public class HelloController {
+    @Autowired
+    private PersonProperties personProperties;  // 定义对象,从而间接获取属性值
+
+    @RequestMapping(value = &quot;/hello&quot;, method = RequestMethod.GET)
+    public String say() {
+        return personProperties.getName;
+    }
+}
+</code></pre>
+<p>右键<code>run</code>,然后在浏览器中输入<code>localhost:8080/demo/hello</code>即可访问页面,此时可在页面看到<code>Tom</code>。<strong>对于配置文件中属性的读取建议采用该方式</strong>。</p>
+<h4 id="多种配置文件"><a class="markdownIt-Anchor" href="#多种配置文件"></a> 多种配置文件</h4>
+<p>假设现在有两种配置文件application-dev.yml和application-prod.yml</p>
+<pre class="highlight"><code class="">[application-dev.yml]
+demo:
+  name: you 
+  age: 20
+
+[application-prod.yml]
+demo:
+  name: you 
+  age: 20
+</code></pre>
+<p>只需在application.yml中</p>
+<pre class="highlight"><code class="">spring:
+  profiles:
+  # 选择要调用的配置文件
+    active: dev
+</code></pre>
+<p>当要使用某种时,active设为那个文件的值即可。</p>
+<h3 id="controller的基本使用"><a class="markdownIt-Anchor" href="#controller的基本使用"></a> Controller的基本使用</h3>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Controller</td>
+<td>处理http请求</td>
+</tr>
+<tr>
+<td>@RestController</td>
+<td>Spring4之后新加的注解，原先返回json需要@ResponseBody配合@Controller</td>
+</tr>
+<tr>
+<td>@RequestMapping</td>
+<td>配置url映射</td>
+</tr>
+<tr>
+<td>@PathVariable</td>
+<td>获取url中的数据</td>
+</tr>
+<tr>
+<td>@RequestParam</td>
+<td>获取请求参数的值</td>
+</tr>
+<tr>
+<td>@GetMapping</td>
+<td>组合注解</td>
+</tr>
+</tbody>
+</table>
+<h4 id="访问路径和访问方式"><a class="markdownIt-Anchor" href="#访问路径和访问方式"></a> 访问路径和访问方式</h4>
+<p>1.<code>@RequestMapping(value = &quot;/hello&quot;, method = RequestMethod.GET)</code>设置访问路径为&quot;hello&quot;,请求方式为get，可以简写为<code>@GetMapping(value = &quot;/hello&quot;)</code><br>
+2.可将路径设为集合,使得访问的路径不同,但请求的资源相同:<code>@RequestMapping(value = {&quot;hello&quot;, &quot;hi&quot;})</code><br>
+3.可以为整个类设置访问路径,如下：</p>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController 
+@GetMapping(value = &quot;/demo&quot;)
+public class HelloController {
+    @GetMapping(value = {&quot;/hello&quot;, &quot;hi&quot;})
+    public String say() {
+        return &quot;Hello World!&quot;;
+    }
+}
+</code></pre>
+<p>在浏览器输入地址<code>http://localhost:8080/demo/hello</code>和<code>http://localhost:8080/demo/hi</code>均能看到页面显示<code>Hello World!</code>.</p>
+<h4 id="获取路径参数"><a class="markdownIt-Anchor" href="#获取路径参数"></a> 获取路径参数</h4>
+<p>1.<code>@PathVariable</code> 获取路径参数</p>
+<pre class="highlight"><code class="">@GetMapping(value = &quot;/hello/{id}&quot;)
+public Integer say(@PathVariable(&quot;id&quot;) Integer id) {
+   return id;
+}
+</code></pre>
+<p>在浏览器输入地址<code>http://localhost:8080/hello/100</code>此时页面显示<code>100</code><br>
+2.<code>@RequestParam</code> 获取请求参数</p>
+<pre class="highlight"><code class="">@GetMapping(value = &quot;/hello&quot;)
+// 获取路径中参数id的值,id可不存在，默认为0
+public Integer say(@RequestParam(value = &quot;id&quot;,required = false,defaultValue =&quot;0&quot;) Integer id) {
+    return id;
+}
+</code></pre>
+<p>在浏览器输入地址<code>http://localhost:8080/hello/100?id=100</code>此时页面显示<code>100</code></p>
+<h3 id="数据库操作"><a class="markdownIt-Anchor" href="#数据库操作"></a> 数据库操作</h3>
+<blockquote>
+<p>Java客户端使用Spring-Data-Jpa组件。<br>
+JPA（Java Persistence API）定义了一系列对象持久化的标准,目前实现这一规范的产品有Hibernate、TopLink等。</p>
+</blockquote>
+<h4 id="restful-api设计"><a class="markdownIt-Anchor" href="#restful-api设计"></a> RESTful API设计</h4>
+<table>
+<thead>
+<tr>
+<th>请求类型</th>
+<th>请求路径</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Get</td>
+<td>/person</td>
+<td>获取数据列表</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/person</td>
+<td>添加数据</td>
+</tr>
+<tr>
+<td>Get</td>
+<td>/person/id</td>
+<td>根据id获取数据</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/person/id</td>
+<td>根据id修改数据</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>/person/id</td>
+<td>根据id删除数据</td>
+</tr>
+</tbody>
+</table>
+<h4 id="添加依赖"><a class="markdownIt-Anchor" href="#添加依赖"></a> 添加依赖</h4>
+<p>在<code>pom.xml</code>添加jpa依赖和MySQL组件</p>
+<pre class="highlight"><code class="">	&lt;dependency&gt;
+		&lt;groupId&gt;mysql&lt;/groupId&gt;
+		&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+		&lt;scope&gt;runtime&lt;/scope&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+		&lt;scope&gt;test&lt;/scope&gt;
+	&lt;/dependency&gt;
+</code></pre>
+<h4 id="修改配置文件"><a class="markdownIt-Anchor" href="#修改配置文件"></a> 修改配置文件</h4>
+<p>在<code>application.yml</code>中添加数据库配置</p>
+<pre class="highlight"><code class="">
+</code></pre>
+]]></content>
       
         <categories>
             
@@ -5486,6 +6581,8 @@ __强调__
         <tags>
             
             <tag> Java </tag>
+            
+            <tag> 框架 </tag>
             
         </tags>
         
@@ -6188,6 +7285,12 @@ description: 描述
   
     
     <entry>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Gallery]]></title>
       <url>/gallery/index.html</url>
       <content type="html"></content>
@@ -6198,12 +7301,6 @@ description: 描述
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
