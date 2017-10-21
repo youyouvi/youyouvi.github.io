@@ -3,9 +3,401 @@
   
     
     <entry>
-      <title><![CDATA[SpringBoot基础应用进阶]]></title>
-      <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8%E8%BF%9B%E9%98%B6/</url>
-      <content type="html"><![CDATA[<p>本部分代码是基于</p>
+      <title><![CDATA[SpringBoot小例子进阶]]></title>
+      <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%B0%8F%E4%BE%8B%E5%AD%90%E8%BF%9B%E9%98%B6/</url>
+      <content type="html"><![CDATA[<p>本部分代码是基于<code>SpringBoot基础应用</code>博文的。</p>
+<blockquote>
+<p>代码结构如下：</p>
+</blockquote>
+<pre class="highlight"><code class="">demo   // 项目名
+|- .idea
+|- .mvn
+|- src  // 代码存放区
+   |- main 
+      |- java
+         |- com.example.demo          // java包
+         	|- aspect                 // 拦截器
+         	   |- HttpAspect.java     
+         	|- controller             // 控制器
+         	   |- PersonController   
+         	|- domain                 // 实体类
+         	   |- Person   
+         	   |- Result              // 定义异常的响应信息的格式
+         	|- enums
+         	   |- ResultEnum          // 定义异常的code和信息
+         	|- exception              // 自定义异常
+         	   |- PersonException     
+         	|- handle                 // 捕获异常
+         	   |- ExceptionHandle 
+         	|- repository             // jpa操作
+         	   |- PersonRepository
+         	|- service                // 处理业务逻辑
+         	   |- PersonService  
+            |- DemoApplication.java   // 项目启动类
+      |- resources
+         |- static     // 用于存放css,js等样式文件
+         |- templates  // 用于存放html文件
+         application.properties  // 项目配置文件
+   |- test //测试代码存放区
+|- target
+.gitignore
+mvnw
+mvnw.cmd
+demo.iml
+pom.xml // 项目对象模型,添加项目依赖等配置
+</code></pre>
+<h2 id="实现表单验证"><a class="markdownIt-Anchor" href="#实现表单验证"></a> 实现表单验证</h2>
+<blockquote>
+<p>要求： age小于18的数据无法入库</p>
+</blockquote>
+<h3 id="修改person类"><a class="markdownIt-Anchor" href="#修改person类"></a> 修改Person类</h3>
+<pre class="highlight"><code class="">package com.example.demo.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+@Entity
+public class Person {
+    @Id
+    @GeneratedValue
+    private Integer id;
+    private String name;
+
+    // @Min 使得该属性必须大于18,当数值小于18时,有提示信息
+    @Min(value = 18, message = &quot;年龄小于18无法添加&quot;)
+    private Integer age;
+
+    public Person() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+}
+</code></pre>
+<h3 id="修改personcontroller类addperson"><a class="markdownIt-Anchor" href="#修改personcontroller类addperson"></a> 修改PersonController类addPerson()</h3>
+<pre class="highlight"><code class="">     /**
+     * 通过post方式访问localhost:8080/person?name=Jane&amp;age=10可添加数据
+     * @param person 要添加的person对象
+     * @param bindingResult 获取绑定结果信息
+     * @return 返回Person类信息
+     */
+    @PostMapping(value = &quot;/person&quot;)
+    public Person addPerson(@Valid Person person, BindingResult bindingResult) {
+    	// 当输入数据不符合要求时,后台输出错误信息
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
+        return  personRepository.save(person);
+    }
+</code></pre>
+<p><code>@Valid</code>用于对传入的数据进行校验。</p>
+<h2 id="使用aop处理请求"><a class="markdownIt-Anchor" href="#使用aop处理请求"></a> 使用AOP处理请求</h2>
+<blockquote>
+<p>什么是AOP<br>
+(1)AOP(面向切面, Aspect Oriented Programming)是一种编程范式,是一种程序设计思想。思想是将通用逻辑从业务逻辑中分离出来<br>
+<img src="/article/框架/Spring Boot/SpringBoot小例子进阶/AOP%E6%80%9D%E6%83%B3.png" alt="无法加载" title="AOP"><br>
+将纵向的分析变为横向分析,从而将通用逻辑从业务逻辑中分离出来。<br>
+(2)除了AOP还有OOP(面向对象,Object Oriented Programming),POP(面向过程,Proceduer Oriented Programming)</p>
+</blockquote>
+<h3 id="aop统一处理请求日志"><a class="markdownIt-Anchor" href="#aop统一处理请求日志"></a> AOP统一处理请求日志</h3>
+<blockquote>
+<p>要求：记录每一个http请求</p>
+</blockquote>
+<h4 id="添加依赖"><a class="markdownIt-Anchor" href="#添加依赖"></a> 添加依赖</h4>
+<pre class="highlight"><code class="">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="创建httpaspect类"><a class="markdownIt-Anchor" href="#创建httpaspect类"></a> 创建HttpAspect类</h4>
+<p><code>@Aspect</code>实现切面注入;<code>@Component</code>将该类注册到SpringBoot容器中</p>
+<pre class="highlight"><code class="">package com.example.demo.aspect;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+
+// 切面注入
+@Aspect
+@Component
+public class HttpAspect {
+	// 日志对象
+    private final static Logger LOGGER = LoggerFactory.getLogger(HttpAspect
+            .class);
+
+	// 指明哪些方法需要执行AOP
+    @Pointcut(&quot;execution(public * com.example.demo.controller.PersonController&quot; +
+            &quot;.*(..))&quot;)
+    public void log() {}
+
+    /**
+     * 该方法功能是将请求中的信息输出至日志中
+     * @Before 在使用PersonController中方法前先执行该注解下的方法
+     * @param joinpoint 目标类连接点对象
+     */
+    @Before(&quot;log()&quot;)
+    public void doBefore(JoinPoint joinpoint) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes)
+                RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        // 获取url
+        LOGGER.info(&quot;url = {}&quot;, request.getRequestURL());
+        // 获取请求方式
+        LOGGER.info(&quot;method = {}&quot;, request.getMethod());
+        // 获取请求方的ip
+        LOGGER.info(&quot;ip = {}&quot;, request.getRemoteAddr());
+        // 获取被调用的方法名
+        LOGGER.info(&quot;class_method = {}&quot;,
+                joinpoint.getSignature().getDeclaringTypeName() +
+                        &quot;.&quot; + joinpoint.getSignature().getName() + &quot;()&quot;);
+        // 获取请求参数
+        LOGGER.info(&quot;args = {}&quot;, joinpoint.getArgs());
+
+    }
+
+    /** 该方法功能是将响应中的信息输出至日志中
+     * @AfterReturning 使得该类可以接收HttpResponse中对象信息
+     * @param object 返回的对象信息
+     */
+    @AfterReturning(returning = &quot;object&quot;, pointcut = &quot;log()&quot;)
+    public void doAfterReturning(Object object) {
+        LOGGER.info(&quot;response = {}&quot;, object.toString());
+    }
+}
+</code></pre>
+<h2 id="统一异常处理"><a class="markdownIt-Anchor" href="#统一异常处理"></a> 统一异常处理</h2>
+<blockquote>
+<p>要求:获取Person对象的age并判断<br>
+age &lt; 12 : 返回&quot;正在上小学&quot;<br>
+age &gt; 12 &amp;&amp; age &lt; 15: 返回&quot;正在上初中&quot;</p>
+</blockquote>
+<h3 id="定义异常响应信息格式"><a class="markdownIt-Anchor" href="#定义异常响应信息格式"></a> 定义异常响应信息格式</h3>
+<pre class="highlight"><code class="">package com.example.demo.domain;
+
+
+public class Result&lt;T&gt; {
+
+    private Integer code; // 错误码
+    private String msg;   // 提示信息
+    private T data;       // 具体内容
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+}
+</code></pre>
+<h3 id="自定义异常类"><a class="markdownIt-Anchor" href="#自定义异常类"></a> 自定义异常类</h3>
+<pre class="highlight"><code class="">package com.example.demo.exception;
+
+import com.example.demo.enums.ResultEnum;
+
+public class PersonException extends RuntimeException {
+    private Integer code;
+
+    public PersonException(ResultEnum resultEnum) {
+        super(resultEnum.getMsg());
+        this.code = resultEnum.getCode();
+    }
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+}
+</code></pre>
+<h3 id="规范响应code和msg"><a class="markdownIt-Anchor" href="#规范响应code和msg"></a> 规范响应code和msg</h3>
+<pre class="highlight"><code class="">package com.example.demo.enums;
+
+public enum ResultEnum {
+    UNKNOW_ERROR(-1, &quot;未知错误&quot;),
+    SUCCESS(200, &quot;添加成功&quot;),
+    PRIMARY_SCHOOL(403, &quot;在上小学&quot;),
+    MIDDLE_SCHOOL(404, &quot;在上初中&quot;),
+    ;
+    private Integer code;
+    private String msg;
+
+    ResultEnum(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+}
+</code></pre>
+<h3 id="进行异常捕获"><a class="markdownIt-Anchor" href="#进行异常捕获"></a> 进行异常捕获</h3>
+<pre class="highlight"><code class="">package com.example.demo.handle;
+
+import com.example.demo.domain.Result;
+import com.example.demo.exception.PersonException;
+import com.example.demo.util.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@ControllerAdvice
+public class ExceptionHandle {
+    private final static Logger LOGGER = LoggerFactory.getLogger
+            (ExceptionHandle.class);
+    @ExceptionHandler(value = Exception.class)
+    @ResponseBody
+    public Result handle(Exception e){
+        if (e instanceof PersonException) {
+            PersonException personException = (PersonException) e;
+            return ResultUtil.error(personException.getCode(),
+                    personException.getMessage());
+        } else {
+            LOGGER.error(&quot;[系统异常] {}&quot;, e);
+            return ResultUtil.error(-1, &quot;未知错误&quot;);
+        }
+    }
+}
+</code></pre>
+<h3 id="进行逻辑判断从而判断异常"><a class="markdownIt-Anchor" href="#进行逻辑判断从而判断异常"></a> 进行逻辑判断,从而判断异常</h3>
+<pre class="highlight"><code class="">package com.example.demo.service;
+
+import com.example.demo.domain.Person;
+import com.example.demo.enums.ResultEnum;
+import com.example.demo.exception.PersonException;
+import com.example.demo.repository.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PersonService {
+    @Autowired
+    private PersonRepository personRepository;
+
+    public void getAge(Integer id) throws Exception{
+        Person person = personRepository.findOne(id);
+        Integer age = person.getAge();
+        if (age &lt; 10) {
+            throw new PersonException(ResultEnum.PRIMARY_SCHOOL);
+        } else if (age &gt; 10 &amp;&amp; age &lt; 16) {
+            throw new PersonException(ResultEnum.MIDDLE_SCHOOL);
+        }
+    }
+}
+</code></pre>
+<h2 id="单元测试"><a class="markdownIt-Anchor" href="#单元测试"></a> 单元测试</h2>
+<p>对Service进行测试</p>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import com.example.demo.domain.Person;
+import com.example.demo.service.PersonService;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class PersonServiceTest {
+    @Autowired
+    private PersonService personService;
+    @Test
+    public void findOneTest() {
+        Person person = personService.findOne(9);
+        // 断言
+        Assert.assertEquals(new Integer(19), person.getAge());
+    }
+}
+</code></pre>
+<p>对API进行测试</p>
+<pre class="highlight"><code class="">package com.example.demo.controller;
+
+import com.example.demo.domain.Person;
+import com.example.demo.repository.PersonRepository;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet
+        .AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+public class PersonControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+    @Test
+    public void personList() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get(&quot;/person&quot;)).
+                // 对状态码进行断言
+                andExpect(MockMvcResultMatchers.status().isOk()).
+                // 对响应文本进行断言
+                andExpect(MockMvcResultMatchers.content().string(&quot;&quot;));
+    }
+
+}
+</code></pre>
 ]]></content>
       
         <categories>
@@ -6293,8 +6685,8 @@ __强调__
     </entry>
     
     <entry>
-      <title><![CDATA[SpringBoot基础应用]]></title>
-      <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</url>
+      <title><![CDATA[SpringBoot小例子]]></title>
+      <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%B0%8F%E4%BE%8B%E5%AD%90/</url>
       <content type="html"><![CDATA[<h2 id="第一个spring-boot应用"><a class="markdownIt-Anchor" href="#第一个spring-boot应用"></a> 第一个Spring Boot应用</h2>
 <h3 id="创建项目"><a class="markdownIt-Anchor" href="#创建项目"></a> 创建项目</h3>
 <p>1.打开 IDEA, 选择 <code>Create New Project</code><br>
@@ -6642,6 +7034,15 @@ public class Person {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Person{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, name='&quot; + name + '\'' +
+                &quot;, age=&quot; + age +
+                '}';
     }
 }
 </code></pre>
@@ -7495,14 +7896,14 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Timeline]]></title>
-      <url>/timeline/index.html</url>
+      <title><![CDATA[Tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[Timeline]]></title>
+      <url>/timeline/index.html</url>
       <content type="html"></content>
     </entry>
     

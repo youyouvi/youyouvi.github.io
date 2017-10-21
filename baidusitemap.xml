@@ -4,12 +4,34 @@
 
     
   <url>
-    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2017-10-21T06:05:24.992Z</lastmod>
+    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%B0%8F%E4%BE%8B%E5%AD%90%E8%BF%9B%E9%98%B6/</loc>
+    <lastmod>2017-10-21T13:10:31.827Z</lastmod>
     <data>
         <display>
-        <title>SpringBoot基础应用进阶</title>
+        <title>SpringBoot小例子进阶</title>
         <pubTime>2017-10-21T05:42:31.770Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="框架" url="http://yov.oschina.io/categories/%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%B0%8F%E4%BE%8B%E5%AD%90/</loc>
+    <lastmod>2017-10-21T12:52:51.821Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot小例子</title>
+        <pubTime>2017-09-23T08:58:23.811Z</pubTime>
         
         <tag>Java</tag>
          
@@ -239,28 +261,6 @@
            
              
               <breadCrumb title="Go" url="http://yov.oschina.io/categories/Go/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2017-10-21T05:20:57.437Z</lastmod>
-    <data>
-        <display>
-        <title>SpringBoot基础应用</title>
-        <pubTime>2017-09-23T08:58:23.811Z</pubTime>
-        
-        <tag>Java</tag>
-         
-        <tag>框架</tag>
-         
-         
-           
-             
-              <breadCrumb title="框架" url="http://yov.oschina.io/categories/%E6%A1%86%E6%9E%B6/"/>
           
         </display>
     </data>

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8%E8%BF%9B%E9%98%B6/</loc>
+    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%B0%8F%E4%BE%8B%E5%AD%90%E8%BF%9B%E9%98%B6/</loc>
     
-    <lastmod>2017-10-21T06:05:24.992Z</lastmod>
+    <lastmod>2017-10-21T13:10:31.827Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%B0%8F%E4%BE%8B%E5%AD%90/</loc>
+    
+    <lastmod>2017-10-21T12:52:51.821Z</lastmod>
     
   </url>
   
@@ -82,13 +89,6 @@
     <loc>http://yov.oschina.io/article/Go/Go%20Base/Go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     
     <lastmod>2017-10-21T05:57:57.492Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2017-10-21T05:20:57.437Z</lastmod>
     
   </url>
   
