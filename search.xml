@@ -6567,7 +6567,175 @@ JPA（Java Persistence API）定义了一系列对象持久化的标准,目前�
 </code></pre>
 <h4 id="修改配置文件"><a class="markdownIt-Anchor" href="#修改配置文件"></a> 修改配置文件</h4>
 <p>在<code>application.yml</code>中添加数据库配置</p>
-<pre class="highlight"><code class="">
+<pre class="highlight"><code class="">spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver  # 驱动
+    url: jdbc:mysql://127.0.0.1:3306/dbperson # 数据库url
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: udate
+    show-sql: true
+</code></pre>
+<h4 id="创建数据表"><a class="markdownIt-Anchor" href="#创建数据表"></a> 创建数据表</h4>
+<p>在Spring Boot中可通过创建实体类，自动生成数据表</p>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity  // 注册实体,Spring Boot会自动将其变为数据表
+public class Person {
+    @Id  // 设为数据表中id属性
+    @GeneratedValue   // 设置为自增
+    private Integer id;  
+    private String name;
+    private Integer age;
+
+    public Person() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+}
+</code></pre>
+<p>Spring Boot会将上述代码中类的属性变为数据表的字段。</p>
+<h4 id="创建personrepository接口"><a class="markdownIt-Anchor" href="#创建personrepository接口"></a> 创建PersonRepository接口</h4>
+<p>该接口继承JpaRepositoy,实现sql语句</p>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface PersonRepository extends JpaRepository&lt;Person, Integer&gt; {
+
+	// 自定义方法,实现通过年龄找数据
+    List&lt;Person&gt; findByAge(Integer age);
+}
+</code></pre>
+<h4 id="创建personcontroller实现访问时根据访问方式和路径实现数据操作"><a class="markdownIt-Anchor" href="#创建personcontroller实现访问时根据访问方式和路径实现数据操作"></a> 创建PersonController,实现访问时根据访问方式和路径实现数据操作</h4>
+<pre class="highlight"><code class="">package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@RestController
+public class PersonController {
+    @Autowired
+    private PersonRepository personRepository;
+
+    /**
+     * 通过get方式访问localhost:8080/person可获取全部数据
+     * @return 数据类集
+     */
+    @GetMapping(value = &quot;/person&quot;)
+    public List&lt;Person&gt; personList(){
+        return personRepository.findAll();
+    }
+
+    /**
+     * 通过post方式访问localhost:8080/person?name=Jane&amp;age=10可添加数据
+     * @param name 数据表的name字段
+     * @param age  数据表的age字段
+     * @return 返回Person对象
+     */
+    @PostMapping(value = &quot;/person&quot;)
+    public Person addPerson(@RequestParam(&quot;name&quot;) String name,
+                            @RequestParam(&quot;age&quot;) Integer age) {
+        Person person = new Person();
+        person.setName(name);
+        person.setAge(age);
+        return  personRepository.save(person);
+    }
+
+    /**
+     * 通过get方式访问localhost:8080/person/1可获取id为1的数据
+     * @param id 要查询的数据id
+     * @return Person对象
+     */
+    @GetMapping(value = &quot;/person/{id}&quot;)
+    public Person findPersonById(@PathVariable(&quot;id&quot;) Integer id) {
+        return personRepository.findOne(id);
+    }
+
+    /**
+     * 通过put方式访问localhost:8080/person/1?name=Jane&amp;age=10可将id为1的数据修改
+     * @param id 要修改的数据id
+     * @return Person对象
+     */
+    @PutMapping(value = &quot;/person/{id}&quot;)
+    public Person updatePersonByid(@PathVariable(&quot;id&quot;) Integer id,
+                                   @RequestParam(&quot;name&quot;) String name,
+                                   @RequestParam(&quot;age&quot;) Integer age) {
+        Person person = personRepository.findOne(id);
+        person.setName(name);
+        person.setAge(age);
+        return  personRepository.save(person);
+    }
+
+    /**
+     * 通过delete方式访问localhost:8080/person/1可将id为1的数据删除
+     * @param id 要删除数据的id
+     */
+    @DeleteMapping(value = &quot;/person/{id}&quot;)
+    public void deletePersonById(@PathVariable(&quot;id&quot;) Integer id) {
+        personRepository.delete(id);
+    }
+
+    /**
+     * 通过get方式访问localhost:8080/person/age/10可查找age为10的数据
+     * @param age 要查找的年龄
+     */
+    @GetMapping(value = &quot;/person/age/{age}&quot;)
+    public List&lt;Person&gt; personListByAge(@PathVariable(&quot;age&quot;) Integer age) {
+        return personRepository.findByAge(age);
+    }
+
+    /**
+     * 实现事务管理,批量增加数据,一个数据失败，全部数据不得入库
+     * @Transactional 用于标注事务管理
+     */
+    @PostMapping(value = &quot;/person/two&quot;)
+    @Transactional
+    public void addTwoPerson() {
+        Person personA = new Person();
+        personA.setName(&quot;Tony&quot;);
+        personA.setAge(13);
+        personRepository.save(personA);
+
+        Person personB = new Person();
+        personB.setName(&quot;Maria&quot;);
+        personB.setAge(18);
+        personRepository.save(personB);
+    }
+}
 </code></pre>
 ]]></content>
       
