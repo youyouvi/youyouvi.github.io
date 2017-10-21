@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java基础知识(九) | 
+        
+        Ember
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="子语">
+    <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="keywords" content="Blog,Java基础">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/fa.png">
+    <link rel="icon" sizes="192x192" href="/img/fa.png">
+    <link rel="apple-touch-icon" href="/img/mao.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ember">
+
+    <!-- Site Verification -->
+    
+    <meta name="baidu-site-verification" content="k8tNw6G5YO" />
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #000000 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #000000 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #000000 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg6.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yov.oschina.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java基础知识(九) | Ember">
+    <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
+    <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta property="og:article:tag" content="Java基础"> 
+
+    
+        <meta property="article:published_time" content="Sun Oct 15 2017 09:28:21 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Oct 21 2017 13:58:17 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Java基础知识(九) | Ember">
+    <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yov.oschina.io" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(九)/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java Base/Java基础知识(九)/index.html",
+    "headline": "Java基础知识(九)",
+    "datePublished": "Sun Oct 15 2017 09:28:21 GMT+0800",
+    "dateModified": "Sat Oct 21 2017 13:58:17 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "子语",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/head.jpg"
+        },
+        "description": "一切有为法,如梦幻泡影.如露亦如电,应作如是观."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ember",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/fa.png"
+        }
+    },
+    "keywords": ",Java基础Blog",
+    "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码块"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 代码块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#普通代码块"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 普通代码块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构造块"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 构造块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态块"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 静态块</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内部类"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 内部类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内部类基本概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 内部类基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#static定义内部类"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> static定义内部类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法中定义内部类"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 方法中定义内部类</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java基础知识(九)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/head.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>子语</strong>
+        <span>2017 - 10 - 15</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACy0lEQVR42u3aQXbbMAwFQN//0u0B2ij/A0njksOVn2TLGC4MA+Dr15XrhY2NjY2NjY2Njf2W7Fe8/vKgx+t/3n1+8kevP7rbxoyNjY19NvuTn/51EMmn8hiGMWNjY2NfwN6kluetSZJckvBmMWNjY2Njb4qEJF3N3o+NjY2N/R0JLAHkmOQuNjY2NvasoZOMDZKGUVLAtEUONjY29p3sTYv/p17/0/k2NjY29huz2zU7jtOG2451o8ixsbGxD2XPGkDPAbWj349iSLa+KHuwsbGxD2V/xyGbPF21raj8G7GxsbGxnx+3GdPOUmB7pWgqYWNjYx/Hzseom6Fs20JK2MWgFxsbG/s4dntoMnlnsnEtaZbYsLGxsW9g78uG/cghKWY2A2BsbGzss9l5ctpcnyE324SNjY19M/s59Pa4ZNuEmpU0qwoMGxsb+yB222zKW0X5UHk2SKgHvdjY2NhHsJOiIklgCSYfMyTNrHY4gY2NjX0qu236zBJJXlrMeFETChsbG/tQdpIe2uuzFlJerswix8bGxr6HvUk8eVnSJqd9gsTGxsY+lZ389Z+B24KhTkjxZ7GxsbHPZm+aNfXxx/IoT7s+eSY2Njb20ew8YUSN+C86rLNJk3UFho2NjX0ce1M8tNvRpsbZJmJjY2PfwG6/oC0S8vTWljHDphI2Njb20ewWEI1a49ATfL1x2NjY2Bew8xHvbACcJJ72kCU2NjY2dp422mOReeJ5rVdU5GBjY2Mfym5XW67kG9QmtjoGbGxs7EPZsxb/PpS6uV82v4ZnTrGxsbH/W/YsaeWFyqyoaLd41UvDxsbGPoKdA9pW0b4s+YKNw8bGxsYuD9nsebMRBTY2Njb2rKgYtuzXDawiKmxsbOwL2ElTqU1X7XPyYqYeLWNjY2MfzW6bNXmSS9pPs3ja4TQ2Njb2qex7FjY2NjY2NjY2NvbbrN+v6KS3R+nGIAAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java基础/">Java基础</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(九)&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(九)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(九)/index.html&title=Java基础知识(九)" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(九)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(九)/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="代码块"><a class="markdownIt-Anchor" href="#代码块"></a> 代码块</h2>
+<blockquote>
+<p>代码块是<code>{}</code>定义的一段语句，根据定义的位置和关键字的不同，代码块分为四种：<strong>普通代码块，构造块，静态块和同步代码块</strong>。</p>
+</blockquote>
+<h3 id="普通代码块"><a class="markdownIt-Anchor" href="#普通代码块"></a> 普通代码块</h3>
+<p>1.写在方法中的代码块，称为<strong>普通代码块</strong>。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        { // 普通代码块
+            int num = 10; // 局部变量
+            System.out.println(&quot;num = &quot; + num); // 10
+        }
+        int num = 100; // 全局变量
+        System.out.println(&quot;num = &quot; + num); // 100
+    }
+}
+</code></pre>
+<p><strong>普通代码块的功能</strong>是防止方法中代码过多时出现变量重名问题，对方法的代码进行局部分割。**编写方法时，代码不应太长，**因此也没必要使用普通代码块。</p>
+<h3 id="构造块"><a class="markdownIt-Anchor" href="#构造块"></a> 构造块</h3>
+<p>1.写在类中的代码块，称为<strong>构造块</strong>。</p>
+<pre class="highlight"><code class="">class Book {
+    public Book(){ // 构造方法
+        System.out.println(&quot;A. Book类的构造方法&quot;);
+    }
+    { // 构造块
+        System.out.println(&quot;B. Book类的构造块&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        new Book();
+        // B. Book类的构造块
+        // A. Book类的构造方法
+    }
+}
+</code></pre>
+<p>输出结果显示：<strong>构造块的调用优先于构造方法。</strong></p>
+<h3 id="静态块"><a class="markdownIt-Anchor" href="#静态块"></a> 静态块</h3>
+<p>static定义的代码块，称为<strong>静态块</strong>。静态块的使用，分为两种情况：<br>
+1.在非主类中使用</p>
+<pre class="highlight"><code class="">class Book {
+    public Book(){ // 构造方法
+        System.out.println(&quot;A. Book类的构造方法&quot;);
+    }
+    { // 构造块
+        System.out.println(&quot;B. Book类的构造块&quot;);
+    }
+    static {
+        System.out.println(&quot;C. Book类的静态块&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        new Book(); // C B A
+        new Book(); // B A
+    }
+}
+</code></pre>
+<p>结果显示：**静态块优先于构造块。**且不论实例化多少个对象，<strong>静态块只执行一次</strong>。static主要功能是为类中的static属性初始化。</p>
+<pre class="highlight"><code class="">class Book {
+    public static String msg;
+    static {
+        msg = &quot;Hello&quot;.substring(0,2);
+        System.out.println(&quot;C. Book类的静态块&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println(Book.msg);
+    }
+}
+</code></pre>
+<p>2.在主类中定义</p>
+<pre class="highlight"><code class="">public class Demo {
+    static {
+        System.out.println(&quot;**************&quot;);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello World !&quot;);
+        // **************
+        // Hello World !
+    }
+}
+</code></pre>
+<p>结果显示：静态块优先于<code>main()</code>方法执行。在编写测试时，可以使用静态块。</p>
+<h2 id="内部类"><a class="markdownIt-Anchor" href="#内部类"></a> 内部类</h2>
+<blockquote>
+<p>从开发角度来说，尽量不要使用内部类</p>
+</blockquote>
+<h3 id="内部类基本概念"><a class="markdownIt-Anchor" href="#内部类基本概念"></a> 内部类基本概念</h3>
+<p>1.<strong>内部类</strong>是指在一个类的内部定义其他的类。<br>
+<strong>范例</strong>：内部类</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    class Inner { // 内部类
+        public void print() {
+            System.out.println(msg);
+        }
+    }
+
+    public void fun() {
+        // 实例化内部类对象，调用print()方法
+        new Inner().print();
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 实例化外部类对象
+        Outer out = new Outer();
+        out.fun(); // 调用外部类方法，Hello World
+    }
+}
+</code></pre>
+<p>上述代码牺牲了程序的结构，实现了一个重要功能。<br>
+2.为说明内部类特点，现将内部类取出，作为一个单独的类，并要求实现与之前一样的功能。<br>
+<strong>范例</strong>：取出内部类</p>
+<pre class="highlight"><code class="">class Outer { 
+    private String msg = &quot;Hello World&quot;;
+
+    public void fun() {
+        new Inner().print();
+    }
+}
+
+class Inner { 
+    public void print() {
+        System.out.println(msg);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Outer out = new Outer();
+        out.fun(); // 报错，msg属于Outer，Inner无法调用
+    }
+}
+</code></pre>
+<p>（1）要想使得<code>Inner</code>调用<code>msg</code>，就需在<code>Outer</code>中写一个<code>getMsg()</code></p>
+<pre class="highlight"><code class="">public String getMsg(){
+    return this.msg;
+}
+</code></pre>
+<p>（2）<code>Inner</code>要调用<code>Outer</code>的<code>getMsg()</code>方法，必须实例化一个<code>Outer</code>对象</p>
+<pre class="highlight"><code class="">class Outer { 
+    private String msg = &quot;Hello World&quot;;
+
+    public String getMsg(){
+        return this.msg;
+    }
+
+    public void fun() {
+        new Inner().print();
+    }
+}
+
+class Inner {
+    public void print() {
+        System.out.println(new Outer().getMsg());
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Outer out = new Outer();
+        out.fun();
+    }
+}
+</code></pre>
+<p>上述的做法不合理，最好是将主方法中的Outer对象传递给Inner对象。</p>
+<pre class="highlight"><code class="">class Outer { 
+    private String msg = &quot;Hello World&quot;;
+
+    public String getMsg() {
+        return this.msg;
+    }
+
+    public void fun() {
+        new Inner(this).print();
+    }
+}
+
+class Inner {
+    private Outer out;
+
+    public Inner(Outer out) {
+        this.out = out;
+    }
+
+    public void print() {
+        System.out.println(this.out.getMsg());
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Outer out = new Outer();
+        out.fun();
+    }
+}
+</code></pre>
+<p>由此可得内部类的特点：</p>
+<blockquote>
+<p>内部类可以直接访问外部类的私有属性和方法，外部类也可以通过内部类对象访问内部类的私有属性。</p>
+</blockquote>
+<p><strong>范例</strong>：访问内部类私有属性</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    class Inner { // 内部类
+        private  String info = &quot;世界你好&quot;;
+        public void print() {
+            System.out.println(msg);
+        }
+    }
+
+    public void fun() {
+        // 实例化内部类对象
+        Inner in = new Inner();
+        // 使用内部类对象访问内部类私有属性
+        System.out.println(in.info);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Outer out = new Outer();
+        out.fun();
+    }
+}
+</code></pre>
+<p>3.观察代码</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    class Inner { // 内部类
+        private  String info = &quot;世界你好&quot;;
+        public void print() {
+            System.out.println(this.msg); // 报错，找不到msg
+        }
+    }
+
+    public void fun() {
+        new Inner().print();
+    }
+}
+</code></pre>
+<p><strong>报错原因</strong>：<code>this.msg</code>指向的是<code>Inner</code>类，而<code>Inner</code>类中没有<code>msg</code>属性。因此要访问<code>Outer</code>的<code>msg</code>属性，需要使用<code>Outer.this.msg</code>.</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    class Inner { // 内部类
+        public void print() {
+            // 外部类.this = 外部类的当前对象
+            System.out.println(Outer.this.msg); 
+        }
+    }
+
+    public void fun() {
+        new Inner().print();
+    }
+}
+</code></pre>
+<p>4.内部类的class文件名: <code>Outer$Inner.class</code><br>
+直接实例化内部类对象语法：<code>外部类.内部类 对象名 = new 外部类().new 内部类();</code><br>
+<strong>范例</strong>：实例化内部类对象</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Outer.Inner in = new Outer().new Inner();
+        in.print();
+    }
+}
+</code></pre>
+<p>上述代码说明：</p>
+<blockquote>
+<p>要想使用内部类对象，必须先实例化外部类对象。开发中一般是通过外部类访问内部类，不用创建内部类对象。</p>
+</blockquote>
+<p>5.内部类只想被外部类使用，不能被外部调用，应使用<code>private</code>定义</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    private class Inner { // 内部类
+        public void print() {
+            // 外部类.this = 外部类的当前对象
+            System.out.println(Outer.this.msg);
+       }
+    }
+}
+</code></pre>
+<h3 id="static定义内部类"><a class="markdownIt-Anchor" href="#static定义内部类"></a> static定义内部类</h3>
+<p>使用static定义的属性或方法不受实例化对象控制，因此使用<strong>static定义的内部类也不受外部类实例化对象控制。</strong><br>
+1.static定义的内部类只能访问外部类中static定义的属性或方法</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    static class Inner { // 内部类
+        public void print() {
+            System.out.println(msg); // 报错，无法引用非静态变量msg
+        }
+    }
+}
+</code></pre>
+<p>2.static定义的内部类，相当于外部类<br>
+取得static定义的内部类对象语法：<code>外部类.内部类 对象 = new 外部类.内部类();</code>由该语法可知，static定义的内部类，不需要先实例化外部类对象，再实例化内部类对象，相当于<strong>内部类成了一个外部类。</strong></p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private static String msg = &quot;Hello World&quot;;
+
+    static class Inner { // 内部类
+        public void print() {
+            System.out.println(msg);
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Outer.Inner in = new Outer.Inner();
+        in.print();
+    }
+}
+</code></pre>
+<h3 id="方法中定义内部类"><a class="markdownIt-Anchor" href="#方法中定义内部类"></a> 方法中定义内部类</h3>
+<p>1.内部类可定义在外部类中的任意位置。<strong>在方法中定义内部类</strong>是最常见的形式。</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    public void fun() {
+        class Inner { // 定义在方法中的内部类
+            public void print() {
+                System.out.println(msg);
+            }
+        }
+        new Inner().print();
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        new Outer().fun();
+    }
+}
+</code></pre>
+<p>2.方法可以接收参数，也可以定义变量<br>
+<strong>范例</strong>：访问方法中定义的参数或变量</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    public void fun(int num) { // 方法参数
+        double score = 99.9; // 方法变量
+        class Inner { // 定义在方法中的内部类
+            public void print() {
+                System.out.println(&quot;属性：&quot; + msg);
+                System.out.println(&quot;方法参数：&quot; + num);
+                System.out.println(&quot;方法变量：&quot; + score);
+            }
+        }
+        new Inner().print();
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        new Outer().fun(100);
+    }
+}
+</code></pre>
+<p><strong>方法中的内部类可以访问方法中未用关键字修饰的参数或变量，该操作仅限于JDK1.8后</strong>！在JDK1.8之前的版本严格要求：方法中的内部类只能访问<code>final</code>标记的参数或变量，所以上述代码在JDK1.7前应该改为如下形式：</p>
+<pre class="highlight"><code class="">class Outer { // 外部类
+    private String msg = &quot;Hello World&quot;;
+
+    public void fun(final int num) { // 方法参数
+       final double score = 99.9; // 方法变量
+        class Inner { // 定义在方法中的内部类
+            public void print() {
+                System.out.println(&quot;属性：&quot; + msg);
+                System.out.println(&quot;方法参数：&quot; + num);
+                System.out.println(&quot;方法变量：&quot; + score);
+            }
+        }
+        new Inner().print();
+    }
+}
+</code></pre>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(九)/">http://yov.oschina.io/article/Java/Java Base/Java基础知识(九)/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'youyouvi',
+        repo: 'youyouvi.github.io',
+        oauth: {
+            client_id: 'fdcff2e0ff2fdfecce93',
+            client_secret: 'c0cf25fd016b2c8831a622a292a3692daa54c73a',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/article/Java/Java Base/Java基础知识(十)/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/article/Java/Java Base/Java基础知识(八)/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/head.jpg" alt="子语's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        yo.vi@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HGVzMmp1XHpzZHF9dXAyf3Nx" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">links</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">24</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/youyouvi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Ember
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <!--<div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>-->
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

@@ -5,7 +5,8 @@
     <entry>
       <title><![CDATA[SpringBoot基础应用进阶]]></title>
       <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8%E8%BF%9B%E9%98%B6/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>本部分代码是基于</p>
+]]></content>
       
         <categories>
             
@@ -26,7 +27,7 @@
     
     <entry>
       <title><![CDATA[Java基础知识(十)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81)/</url>
       <content type="html"><![CDATA[<h2 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h2>
 <blockquote>
 <p>链表是引用的加强应用.<br>
@@ -34,7 +35,7 @@
 </blockquote>
 <h3 id="链表基本概念"><a class="markdownIt-Anchor" href="#链表基本概念"></a> 链表基本概念</h3>
 <p>1.链表是一种简单的数据结构，功能是<strong>依靠引用关系实现多个数据的保存。</strong><br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-1.png" alt="无法加载" title="数据保存"><br>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-1.png" alt="无法加载" title="数据保存"><br>
 根据上图编写代码：</p>
 <blockquote>
 <p>要求：定义一个Node类，保存String类型数据，同时拥有下一个节点的引用。</p>
@@ -118,13 +119,13 @@ class Node { // 定义节点类
 <p><strong>范例</strong>：定义Link类，隐藏Node类<br>
 程序要描述的步骤如下：<br>
 <strong>第一步：</strong><br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-2.png" alt="无法加载" title="数据保存"><br>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-2.png" alt="无法加载" title="数据保存"><br>
 <strong>第二步：</strong><br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-3.png" alt="无法加载" title="数据保存"><br>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-3.png" alt="无法加载" title="数据保存"><br>
 <strong>第三步：</strong><br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-4.png" alt="无法加载" title="数据保存"><br>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-4.png" alt="无法加载" title="数据保存"><br>
 <strong>第四步：</strong><br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-5.png" alt="无法加载" title="数据保存"></p>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-5.png" alt="无法加载" title="数据保存"></p>
 <pre class="highlight"><code class="">// 处理Node对象间关系
 class Link {
     private Node root; // 根节点
@@ -307,7 +308,7 @@ public void add(String data) {
 <h3 id="内容查询"><a class="markdownIt-Anchor" href="#内容查询"></a> 内容查询</h3>
 <blockquote>
 <p>思路：判断链表中是否存在某数据，以String为例，仅需遍历链表中的数据，与要查询的数据记性匹配（使用equals(String str)），如果匹配成功返回true，反之返回false。<br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-6.png" alt="无法加载" title="内容查询"><br>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-6.png" alt="无法加载" title="内容查询"><br>
 根据上图编写代码：<br>
 （1）Link中添加contains()</p>
 </blockquote>
@@ -350,7 +351,7 @@ public void add(String data) {
 <blockquote>
 <p>链表中保存有多个对象。数组也可以保存多个对象。链表和数组相比优势在于没有长度限制。因此链表相当于一个动态对象数组，具备像数组那样根据索引取得元素的功能。<br>
 由于是动态对象数组，所以元素的索引也是动态生成的。<br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-7.png" alt="无法加载" title="内容查询"><br>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-7.png" alt="无法加载" title="内容查询"><br>
 根据上图，编写代码：<br>
 （1）Link中增加foot属性，表示Node的索引:<code>private int foot = 0; // 索引</code><br>
 每次查询前，应该重置为0.链表查询数据前应先判断要查询的索引小于索引总数。</p>
@@ -430,7 +431,7 @@ this.count -- ; // 删除后数据个数减少
 <h3 id="对象数组转换"><a class="markdownIt-Anchor" href="#对象数组转换"></a> 对象数组转换</h3>
 <blockquote>
 <p>开发中，类中不应该有输出语句。想输出数据应将数据返回到调用处。链表属于动态数组，因此可以将链表以对象数组的形式返回。<br>
-<img src="/article/语言/Java Base/Java基础知识(十)/15-8.png" alt="无法加载" title="对象数组转换"><br>
+<img src="/article/Java/Java Base/Java基础知识(十)/15-8.png" alt="无法加载" title="对象数组转换"><br>
 由上图可知，Link的<code>toArray()</code>要返回一个对象数组，且该数组也要由Node操作。因此该数组应定义为Link的属性。<br>
 （1）Link添加一个数组属性，便于Node和Link访问。添加toArray()</p>
 </blockquote>
@@ -809,14 +810,14 @@ class City {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -824,7 +825,7 @@ class City {
     
     <entry>
       <title><![CDATA[Java基础知识(九)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B9%9D)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B9%9D)/</url>
       <content type="html"><![CDATA[<h2 id="代码块"><a class="markdownIt-Anchor" href="#代码块"></a> 代码块</h2>
 <blockquote>
 <p>代码块是<code>{}</code>定义的一段语句，根据定义的位置和关键字的不同，代码块分为四种：<strong>普通代码块，构造块，静态块和同步代码块</strong>。</p>
@@ -1217,14 +1218,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -1232,7 +1233,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Java基础知识(八)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%85%AB)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%85%AB)/</url>
       <content type="html"><![CDATA[<h2 id="对象比较"><a class="markdownIt-Anchor" href="#对象比较"></a> 对象比较</h2>
 <p>1.数字比较用<code>==</code>，字符串比较用<code>equals(String str)</code>。</p>
 <blockquote>
@@ -1407,7 +1408,7 @@ public class Demo {
 </code></pre>
 <blockquote>
 <p>对上述代码进行内存分析：<br>
-<img src="/article/语言/Java Base/Java基础知识(八)/12-1.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(八)/12-1.png" alt="无法加载" title="内存分析"><br>
 通过内存分析，发现属性重复：每个对象各自占有相同的属性值。假如有1000个该对象，要修改所有对象的pub属性，就需要分别进行修改。因此如果将pub属性定为普通属性，那每个堆内存都保存有各自的pub值。</p>
 </blockquote>
 <p>1.但所有对象的pub值都一样，应将其定为一个共享的属性，即所有对象都指向同一块pub属性。可以利用<code>static</code>定义共享属性。</p>
@@ -1440,7 +1441,7 @@ public class Demo {
 }
 </code></pre>
 <p>使用<code>static</code>定义属性后，只要有一个对象修改属性值，那么所有对象的该属性值都会改变，内存分析如下：<br>
-<img src="/article/语言/Java Base/Java基础知识(八)/12-2.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(八)/12-2.png" alt="无法加载" title="内存分析"><br>
 2. <code>static</code>定义的属性与普通属性区别在于<strong>保存数据的内存区域不同。</strong><br>
 <code>static</code>定义的是公共属性，任由某个对象直接修改属性值是不合理的，应该由所有对象的代表进行属性访问，即用类访问。<strong>因此<code>static</code>定义的属性，可直接用类名调用：</strong><code>Book.pub = &quot;北京大学出版社&quot;;</code><br>
 3. <code>static</code>属性与普通属性的区别在于：普通属性必须由实例化的对象调用，而在没有实例化对象的情况下，static属性依然可以被调用。</p>
@@ -1691,14 +1692,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -1706,7 +1707,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Java基础知识(七)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%83)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%83)/</url>
       <content type="html"><![CDATA[<h2 id="引用传递分析实例"><a class="markdownIt-Anchor" href="#引用传递分析实例"></a> 引用传递分析实例</h2>
 <h3 id="引用传递"><a class="markdownIt-Anchor" href="#引用传递"></a> 引用传递</h3>
 <p>1.引用传递核心意义：同一块堆内存可以被不同栈内存所指向，不同栈内存可以对同一块堆内存进行修改。<br>
@@ -1741,7 +1742,7 @@ public class TMessage {
 }
 </code></pre>
 <p>对上述代码进行内存分析：<br>
-<img src="/article/语言/Java Base/Java基础知识(七)/10-1.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(七)/10-1.png" alt="无法加载" title="内存分析"><br>
 2.引用</p>
 <pre class="highlight"><code class="">public class Demo {
     public static void main(String[] args) {
@@ -1755,7 +1756,7 @@ public class TMessage {
 }
 </code></pre>
 <p>出现上述结果原因：String对象的内容一旦声明不可改变，对象内容的改变依靠的是引用地址的改变。内存分析如下：<br>
-<img src="/article/语言/Java Base/Java基础知识(七)/10-2.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(七)/10-2.png" alt="无法加载" title="内存分析"><br>
 3.引用传递</p>
 <pre class="highlight"><code class="">public class Message {
     private String info = &quot;nihao&quot;;
@@ -1787,9 +1788,9 @@ public class TMessage {
 }
 </code></pre>
 <p>内存分析如下：<br>
-<img src="/article/语言/Java Base/Java基础知识(七)/10-3.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(七)/10-3.png" alt="无法加载" title="内存分析"><br>
 <strong>上述内存分析，是按照int型数据的特点进行的。实</strong>际info是String对象，应该按照如下方式进行分析：<br>
-<img src="/article/语言/Java Base/Java基础知识(七)/10-4.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(七)/10-4.png" alt="无法加载" title="内存分析"><br>
 <strong>结论</strong>：虽然<code>String</code>是一个类，属于引用数据类型，但由于其内容不可改的特点，我们常将其当作基本数据类型。即每个String变量只能保存一个数据。</p>
 <h3 id="引用传递实例"><a class="markdownIt-Anchor" href="#引用传递实例"></a> 引用传递实例</h3>
 <blockquote>
@@ -2558,14 +2559,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -2646,7 +2647,7 @@ $ curl localhost:5000/v2/_catalog   // 查看仓库镜像
     
     <entry>
       <title><![CDATA[Java基础知识(六)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%85%AD)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%85%AD)/</url>
       <content type="html"><![CDATA[<h2 id="关键字this"><a class="markdownIt-Anchor" href="#关键字this"></a> 关键字this</h2>
 <h3 id="this调用属性"><a class="markdownIt-Anchor" href="#this调用属性"></a> this调用属性</h3>
 <pre class="highlight"><code class="">class Book {
@@ -2937,14 +2938,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -2952,7 +2953,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Java基础知识(五)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%94)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%94)/</url>
       <content type="html"><![CDATA[<h2 id="string类的特点及使用"><a class="markdownIt-Anchor" href="#string类的特点及使用"></a> String类的特点及使用</h2>
 <blockquote>
 <p>JDK_API文档由下面几部分组成：<br>
@@ -3005,7 +3006,7 @@ public class Demo {
 }
 </code></pre>
 <p>对上述代码进行内存分析：<br>
-<img src="/article/语言/Java Base/Java基础知识(五)/8-1.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(五)/8-1.png" alt="无法加载" title="内存分析"><br>
 由内存分析可知，String对象使用<code>==</code>比较时，比较的是对象的<strong>栈内存地址的值</strong>。<br>
 2.要比较字符串的内容，应使用String类中的方法<code>public boolean equals（String str）</code></p>
 <pre class="highlight"><code class="">public class Demo {
@@ -3058,7 +3059,7 @@ public class Demo {
 <p>1.<strong>直接赋值</strong><br>
 直接赋值就是给字符串匿名对象设置对象名。<br>
 此时内存中会开辟堆内存，并且有一块栈内存指向堆内存：<br>
-<img src="/article/语言/Java Base/Java基础知识(五)/8-2.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(五)/8-2.png" alt="无法加载" title="内存分析"><br>
 观察下列代码：</p>
 <pre class="highlight"><code class="">public class Demo {
     public static void main(String[] args) {
@@ -3074,11 +3075,11 @@ public class Demo {
 }
 </code></pre>
 <p>由上述结果可知，strA，strB，strC都指向同一块堆内存：<br>
-<img src="/article/语言/Java Base/Java基础知识(五)/8-3.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(五)/8-3.png" alt="无法加载" title="内存分析"><br>
 <strong>共享设计模式</strong>：JVM底层存在一个对象池，保存有对象。当使用直接赋值定义String对象时，会将该对象使用的匿名对象入池保存。而后如果有其他String对象也采用直接赋值方式且内容相同时，便不再开辟新的堆内存，而是引用对象池中已有的匿名对象。<br>
 2.<strong>构造方法实例化</strong><br>
 使用构造方法定义String对象，就需要每次开辟新的堆内存。<br>
-<img src="/article/语言/Java Base/Java基础知识(五)/8-4.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(五)/8-4.png" alt="无法加载" title="内存分析"><br>
 由内存分析可知，使用构造方法实例化时开辟了两块堆内存，并且其中一块会成为垃圾。</p>
 <pre class="highlight"><code class="">public class Demo {
     public static void main(String[] args) {
@@ -3103,7 +3104,7 @@ public class Demo {
 }
 </code></pre>
 <p>对上述代码进行内存分析：<br>
-<img src="/article/语言/Java Base/Java基础知识(五)/8-5.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(五)/8-5.png" alt="无法加载" title="内存分析"><br>
 分析后可知，字符串内容并未改变（Java规定String对象内容不可变）,字符串内容的变动实际是引用关系的变化,每次都会出现垃圾。因此字符串内容不要频繁改动。</p>
 <h3 id="string类常用方法字符与字符串"><a class="markdownIt-Anchor" href="#string类常用方法字符与字符串"></a> String类常用方法(字符与字符串)</h3>
 <p>很多语言利用字符数组描述字符串，Java中String类的方法也有相似方法：</p>
@@ -3717,14 +3718,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -3732,7 +3733,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Java基础知识(四)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%9B%9B)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%9B%9B)/</url>
       <content type="html"><![CDATA[<h2 id="数组的定义及使用"><a class="markdownIt-Anchor" href="#数组的定义及使用"></a> 数组的定义及使用</h2>
 <h3 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h3>
 <p>1.<strong>数组</strong>是一组变量的集合。数组属于引用数据类型。<br>
@@ -3760,7 +3761,7 @@ public class Demo {
 }
 </code></pre>
 <p>5.数组属于**引用数据类型，**因此要进行内存分配。与保存对象的区别是对象的堆内存保存的是属性，数组的堆内存保存的是数据。<br>
-<img src="/article/语言/Java Base/Java基础知识(四)/7-1.png" alt="无法加载" title="数组内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(四)/7-1.png" alt="无法加载" title="数组内存分析"><br>
 <strong>范例</strong>：分步完成</p>
 <pre class="highlight"><code class="">public class Demo {
     public static void main(String[] args) {
@@ -3775,7 +3776,7 @@ public class Demo {
     }
 }
 </code></pre>
-<p><img src="/article/语言/Java Base/Java基础知识(四)/7-2.png" alt="无法加载" title="数组内存分析"><br>
+<p><img src="/article/Java/Java Base/Java基础知识(四)/7-2.png" alt="无法加载" title="数组内存分析"><br>
 6.数组可以进行引用传递。</p>
 <pre class="highlight"><code class="">public class Demo {
     public static void main(String[] args) {
@@ -3791,7 +3792,7 @@ public class Demo {
     }
 }
 </code></pre>
-<p><img src="/article/语言/Java Base/Java基础知识(四)/7-3.png" alt="无法加载" title="数组内存分析"><br>
+<p><img src="/article/Java/Java Base/Java基础知识(四)/7-3.png" alt="无法加载" title="数组内存分析"><br>
 以上都是<code>动态初始化数组</code>，即先开辟数组，再为数组赋值。<br>
 7.静态初始化数组：<br>
 在定义数组的同时为其赋值，语法：<br>
@@ -3911,7 +3912,7 @@ public class Demo {
 }
 </code></pre>
 <p><strong>内存分析：</strong><br>
-<img src="/article/语言/Java Base/Java基础知识(四)/7-4.png" alt="无法加载" title="数组内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(四)/7-4.png" alt="无法加载" title="数组内存分析"><br>
 <code>change()</code>执行完毕后，<code>temp</code>不再指向<code>datas</code>的堆内存，但<code>change()</code>对<code>datas</code>数据的修改被保存下来。<br>
 2.<strong>数组排序（冒泡排序）</strong>：<br>
 数据的不同会造成排序次数的不同，但不论有多少数据，**总的排序次数不会超过数组长度。**只要排序次数达到数组长度的平方，就能排序成功。</p>
@@ -4207,14 +4208,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -4222,7 +4223,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Java基础知识(三)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%89)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%89)/</url>
       <content type="html"><![CDATA[<h2 id="方法的定义与使用"><a class="markdownIt-Anchor" href="#方法的定义与使用"></a> 方法的定义与使用</h2>
 <h3 id="方法的基本概念"><a class="markdownIt-Anchor" href="#方法的基本概念"></a> 方法的基本概念</h3>
 <ol>
@@ -4482,7 +4483,7 @@ public class Book {
 </tr>
 </tbody>
 </table>
-<p><img src="/article/语言/Java Base/Java基础知识(三)/6-1.png" alt="无法加载" title="内存分析"><br>
+<p><img src="/article/Java/Java Base/Java基础知识(三)/6-1.png" alt="无法加载" title="内存分析"><br>
 <strong>范例</strong>：分步使用实例化对象</p>
 <pre class="highlight"><code class="">public class Demo {
     public static void main(String[] args) {
@@ -4495,7 +4496,7 @@ public class Book {
 }
 </code></pre>
 <p><strong>内存分析</strong>：使用关键字<strong>new</strong>开辟了新的的堆内存，堆内存中保存类定义的属性，此时所有的属性值都为<strong>默认值</strong>。<br>
-<img src="/article/语言/Java Base/Java基础知识(三)/6-2.png" alt="无法加载" title="内存分析"><br>
+<img src="/article/Java/Java Base/Java基础知识(三)/6-2.png" alt="无法加载" title="内存分析"><br>
 使用未实例化的对象，程序运行时会出现“NullPointerException（空指向异常）”</p>
 <h3 id="对象引用分析"><a class="markdownIt-Anchor" href="#对象引用分析"></a> 对象引用分析</h3>
 <p>1.在引用分析中，每次使用<code>new</code>关键字便会开辟新的堆内存。假设声明了两个对象，且都用new分别进行了实例化，那么<strong>两个对象占据的是不同的堆内存，因此不会互相影响。</strong><br>
@@ -4513,7 +4514,7 @@ public class Book {
    }
 }
 </code></pre>
-<p><img src="/article/语言/Java Base/Java基础知识(三)/6-3.png" alt="无法加载" title="内存分析"><br>
+<p><img src="/article/Java/Java Base/Java基础知识(三)/6-3.png" alt="无法加载" title="内存分析"><br>
 2. <strong>范例</strong>：对象引用传递</p>
 <pre class="highlight"><code class="">public class Demo {
     public static void main(String[] args) {
@@ -4529,7 +4530,7 @@ public class Book {
     }
 }
 </code></pre>
-<p><img src="/article/语言/Java Base/Java基础知识(三)/6-4.png" alt="无法加载" title="内存分析"><br>
+<p><img src="/article/Java/Java Base/Java基础知识(三)/6-4.png" alt="无法加载" title="内存分析"><br>
 由于两个对象指向同一块堆内存，所以任意一个对象修改了堆内存的属性值后，都会影响到其他对象的值。<strong>在引用中，一块堆内存可以被多个栈内存指向，但一个栈内存只能保存一个堆内存的地址。</strong><br>
 3. <strong>范例</strong>：引用传递</p>
 <pre class="highlight"><code class="">public class Demo {
@@ -4547,7 +4548,7 @@ public class Book {
     }
 }
 </code></pre>
-<p><img src="/article/语言/Java Base/Java基础知识(三)/6-5.png" alt="无法加载" title="内存分析"><br>
+<p><img src="/article/Java/Java Base/Java基础知识(三)/6-5.png" alt="无法加载" title="内存分析"><br>
 通过内存分析可知，<strong>在引用时，一块没有栈内存指向的堆内存将成为垃圾，最后被垃圾收集器(GC)回收，回收后，释放其所占空间。</strong></p>
 <h3 id="封装性"><a class="markdownIt-Anchor" href="#封装性"></a> 封装性</h3>
 <pre class="highlight"><code class="">public class Demo {
@@ -4855,14 +4856,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -5785,7 +5786,7 @@ Docker使用的<code>分层存储以及镜像技术</code>，使得应用重复�
     
     <entry>
       <title><![CDATA[Java基础知识(二)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%8C)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%BA%8C)/</url>
       <content type="html"><![CDATA[<h2 id="运算符"><a class="markdownIt-Anchor" href="#运算符"></a> 运算符</h2>
 <blockquote>
 <p>常用运算符：四则运算符、逻辑运算符、三目运算符和位运算符。</p>
@@ -6175,14 +6176,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         
@@ -6780,7 +6781,7 @@ public class PersonController {
     
     <entry>
       <title><![CDATA[Go基础知识]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Go%20Base/Go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      <url>/article/Go/Go%20Base/Go%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
       <content type="html"><![CDATA[<h2 id="入门"><a class="markdownIt-Anchor" href="#入门"></a> 入门</h2>
 <p>Go语言是一门编译型语言，是一个开源的编程语言，能让构造简单、而且高效的软件变得容易。Go 语言被设计成一门应用于搭载 Web 服务器，存储集群或类似用途的巨型中央服务器的系统编程语言。对于高性能分布式系统领域而言，Go 语言无疑比大多数其它语言有着更高的开发效率。它提供了海量并行的支持，这对于游戏服务端的开发而言是再好不过了。</p>
 <h3 id="go语言环境安装"><a class="markdownIt-Anchor" href="#go语言环境安装"></a> Go语言环境安装</h3>
@@ -6988,14 +6989,14 @@ out, err := os.Create(outfile) // 报错,没有新的变量
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Go </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Go </tag>
+            <tag> Go基础 </tag>
             
         </tags>
         
@@ -7003,7 +7004,7 @@ out, err := os.Create(outfile) // 报错,没有新的变量
     
     <entry>
       <title><![CDATA[Java基础知识(一)]]></title>
-      <url>/article/%E8%AF%AD%E8%A8%80/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%80)/</url>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E4%B8%80)/</url>
       <content type="html"><![CDATA[<h2 id="java基础知识"><a class="markdownIt-Anchor" href="#java基础知识"></a> Java基础知识</h2>
 <blockquote>
 <p>Java是一门<strong>面向对象</strong>语言，支持多线程编程;通过使用更为简单的<strong>引用</strong>来进行内存关系的匹配，而不是复杂的指针;Java提供<strong>垃圾自动回收机制</strong>，能更好地处理垃圾空间;可以实现多平台的移植。</p>
@@ -7329,14 +7330,14 @@ public class Demo {
       
         <categories>
             
-            <category> 语言 </category>
+            <category> Java </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> Java </tag>
+            <tag> Java基础 </tag>
             
         </tags>
         

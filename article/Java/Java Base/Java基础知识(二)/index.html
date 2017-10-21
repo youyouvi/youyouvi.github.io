@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java基础知识(二) | 
+        
+        Ember
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="子语">
+    <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="keywords" content="Blog,Java基础">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/fa.png">
+    <link rel="icon" sizes="192x192" href="/img/fa.png">
+    <link rel="apple-touch-icon" href="/img/mao.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ember">
+
+    <!-- Site Verification -->
+    
+    <meta name="baidu-site-verification" content="k8tNw6G5YO" />
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #000000 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #000000 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #000000 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg6.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yov.oschina.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java基础知识(二) | Ember">
+    <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
+    <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta property="og:article:tag" content="Java基础"> 
+
+    
+        <meta property="article:published_time" content="Sun Sep 24 2017 11:29:54 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Oct 21 2017 13:58:30 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Java基础知识(二) | Ember">
+    <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yov.oschina.io" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(二)/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java Base/Java基础知识(二)/index.html",
+    "headline": "Java基础知识(二)",
+    "datePublished": "Sun Sep 24 2017 11:29:54 GMT+0800",
+    "dateModified": "Sat Oct 21 2017 13:58:30 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "子语",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/head.jpg"
+        },
+        "description": "一切有为法,如梦幻泡影.如露亦如电,应作如是观."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ember",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/fa.png"
+        }
+    },
+    "keywords": ",Java基础Blog",
+    "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运算符"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本运算符"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 基本运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三目运算符"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 三目运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逻辑运算符"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 逻辑运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#位运算符"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 位运算符</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java程序逻辑控制"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Java程序逻辑控制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分支结构"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 分支结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#循环结构"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 循环结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#循环控制"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 循环控制</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java基础知识(二)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/head.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>子语</strong>
+        <span>2017 - 09 - 24</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2ElEQVR42u3awXKjMBAEUP//T2eve9jg7hHZGOlxcjkY9KAqU9Oj19eRxwsbGxsbGxsbGxv7I9mv+Pj7/NkVrn/7j4Vefl/fCxsbG3tr9pt//TE7+e13V0hgszVjY2Njn8NObnP9OUcmsOQxFYUWGxsbGzsoWtdXy8tScmVsbGxs7PUCtvIgkkaiLZzY2NjY2EVAU8Y913e5bjzyR/+DWRo2Njb2x7PXG4b///nX5tvY2NjYH8a+62iL0Eo5HK4QGxsbe1P2bDPlbNCbhEp3hVZ1B4aNjY39WPY1NS9RSelKtua0DUYxwMDGxsbemj0Lbu5qXZKlt98UoRI2Njb2Ruz1Ie46Izlz9mKwsbGxT2DngU7bJKyH/rMACxsbG/scdluu2jPzcH8l6qrn29jY2NibsmfNQNIe1AtdOHM46MXGxsZ+OHuF1Jafla0/w2KJjY2NvTV7faSaPKbZQCJvQm4Y9GJjY2M/kJ2H9bPwKH9AbdtTrx8bGxt7U3Ye1szCo7uulg99h3UbGxsb+7HsdjAw23CTF7Acho2NjY2dRzOz7TJ5qJQA8nFC0YFhY2Njb8RObpAMaO+CzUrXmyEENjY29gHslSFu207Mhgqz14ONjY19JnudurLE9RZlWMCwsbGxH8hORq3JsvJrJr9av0I038bGxsbegt22BO0AoH1k+XCiHjNjY2NjH8Bui1B0szgMWh/ovmmTsLGxsbdmt4BZMzCLsWYNDzY2NvaZ7GSkOnsQeayfjyV+fKcSNjY29kPYdTRTjl3zMcBdjx4bGxv7NPYrPvLy045yZwFT8hqwsbGxz2GvR/yzDZR5UZxFVNjY2NinsduYPt8ouTJ+aEtsXcCwsbGxD2YnZSbfTDlrhJLWBRsbGxt7eJtyW+dKeISNjY2N3TYJ7V/z4Cl/JXVzgo2Njb01e2XQe9eWnSIemn2DjY2NvSn7nAMbGxsbGxsbGxv7Y44/It6RA9wAAeIAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java基础/">Java基础</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(二)&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(二)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(二)/index.html&title=Java基础知识(二)" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(二)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(二)/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="运算符"><a class="markdownIt-Anchor" href="#运算符"></a> 运算符</h2>
+<blockquote>
+<p>常用运算符：四则运算符、逻辑运算符、三目运算符和位运算符。</p>
+</blockquote>
+<h3 id="基本运算符"><a class="markdownIt-Anchor" href="#基本运算符"></a> 基本运算符</h3>
+<ol>
+<li><code>=</code>为赋值运算符。</li>
+<li>四则运算符基本组成：<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>、<code>%</code>。<strong>不要使用运算符编写过于复杂的计算。</strong></li>
+</ol>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        double numB = 20;
+        int numC = 3;
+        System.out.println(&quot;加法计算：&quot; + (numA + numB));
+        System.out.println(&quot;减法计算：&quot; + (numA - numB));
+        System.out.println(&quot;乘法计算：&quot; + (numA * numB));
+        System.out.println(&quot;除法计算：&quot; + (numA / numB));
+        System.out.println(&quot;求模计算：&quot; + (numA % numC));
+    }
+}
+</code></pre>
+<ol start="3">
+<li>简化运算符：<code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>:</li>
+</ol>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        numA += 2; // 等同于 numA = numA + 2
+        System.out.println(&quot;加法计算&quot; + (numA)); // 12
+    }
+}
+</code></pre>
+<ol start="4">
+<li><code>++</code>（自增），<code>--</code>（自减）：位置不同，功能也不同：<br>
+·<code>++变量</code>，<code>--变量</code>：先对变量加/减1，再使用自增或自减后的变量进行计算;<br>
+·<code>变量++</code>，<code>变量--</code>：先使用变量进行计算，再进行变量加/减1。</li>
+</ol>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        int numB = 20;
+        // ++变量，先numA + 1
+        // 然后(numA + 1) + numB内容
+        // 最后对numB加1
+        int result = (++numA) + (numB++);
+        System.out.println(&quot;numA=&quot; + numA); // 11
+        System.out.println(&quot;numB=&quot; + numB); // 21
+        System.out.println(&quot;result=&quot; + result); // 31
+    }
+}
+</code></pre>
+<h3 id="三目运算符"><a class="markdownIt-Anchor" href="#三目运算符"></a> 三目运算符</h3>
+<p>三目运算符根据布尔表达式的结果进行赋值：</p>
+<pre><code>value_type value_name = 布尔表达式 ? true_value : false_value;
+</code></pre>
+<p>利用三目运算符可以减少判断代码:</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int numA = 10;
+        int numB = 20;
+        int max = 0;
+        /** 使用三目运算符
+         *  当numA大于numB,返回true,max = numA
+         *  当numA小于numB,返回false,max = numB
+         */
+        max = numA&gt;numB ? numA : numB;
+        // 不使用三目运算符
+        // if (numA &gt; numB) {
+        //    max = numA;
+        //} else {
+        //    max = numB;
+        //}
+        System.out.println(max);
+    }
+}
+</code></pre>
+<h3 id="逻辑运算符"><a class="markdownIt-Anchor" href="#逻辑运算符"></a> 逻辑运算符</h3>
+<ol>
+<li>逻辑运算符：与<code>&amp;，&amp;&amp;</code>、或<code>|，||</code>、非<code>!</code></li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        boolean flag = true;
+        System.out.println(!flag); // false
+    }
+}
+</code></pre>
+<ol start="2">
+<li>布尔表达式的连接，只能使用<code>与</code>和<code>或</code>操作</li>
+</ol>
+<blockquote>
+<p><code>与</code>：所有条件都为true时，结果为true;有一个为false，结果就是false.</p>
+</blockquote>
+<p><strong>范例</strong>：普通与<code>&amp;</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 除数不能为0
+        if ((1 == 2) &amp; (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // 报错
+        }
+    }
+}
+</code></pre>
+<p><strong>结果</strong>：程序报错，因为<code>&amp;</code>会对所有条件进行判断。但就与的特点而言，前一个条件为false，结果就是false，后续的判断没有意义。<br>
+<strong>范例</strong>：短路与<code>&amp;&amp;</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        // 除数不能为0
+        if ((1 == 2) &amp;&amp; (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // false,不报错
+        }
+    }
+}
+</code></pre>
+<p><strong>结果</strong>:程序不报错，因为<code>&amp;&amp;</code>只要有一个条件为false后，后续判断就不再进行，从而提高了效率。</p>
+<blockquote>
+<p>或操作：一个条件为true，结果为true。</p>
+</blockquote>
+<p><strong>范例</strong>：普通或<code>|</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        if ((1 &lt; 2 ) | (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // 报错
+        }
+    }
+}
+</code></pre>
+<p><strong>结果</strong>：使用<code>|</code>，会对所有条件进行判断，但是或运算的特点是：一个条件为true，结果就是true。<br>
+<strong>范例</strong>：短路或<code>||</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        if ((1 &lt; 2 ) || (10 / 0 == 0)){
+            System.out.println(&quot;Hello&quot;); // true,不报错
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>因此使用逻辑运算时就使用<code>&amp;&amp;</code>和<code>||</code>。</p>
+</blockquote>
+<h3 id="位运算符"><a class="markdownIt-Anchor" href="#位运算符"></a> 位运算符</h3>
+<ol>
+<li>数学计算为十进制。Java支持二进制、八进制和十六进制。如果要想将十进制变为二进制，采用的方式为：除2，取余，倒序。</li>
+<li>位运算主要是进行二进制数据操作，位运算符：<code>&amp;</code>、<code>|</code>、<code>&gt;&gt;</code>(移位)、<code>&lt;&lt;</code>、<code>^</code>(反码)、<code>~</code>。<br>
+<strong>范例</strong>：位与<code>&amp;</code></li>
+</ol>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 9;
+        int numB = 11;
+        System.out.println(numA &amp; numB); // 9
+    }
+}
+</code></pre>
+<p><strong>运算过程</strong>：</p>
+<pre><code>  1001 → 9
+&amp; 1011 → 11
+  1001 →  9
+</code></pre>
+<p><strong>范例</strong>：位或<code>|</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int numA = 9;
+        int numB = 11;
+        System.out.println(numA | numB); // 11
+    }
+}
+</code></pre>
+<p><strong>运算过程</strong>：</p>
+<pre><code>  1001 → 9
+| 1011 → 11
+  1011 → 11
+</code></pre>
+<p><strong>范例</strong>：移位（最快方式计算2的3次方）</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int num = 2;
+        num = num &lt;&lt; 2; // 向左移位
+        System.out.println(num); // 8,相当于2的3次方
+    }
+}
+</code></pre>
+<p><strong>运算过程</strong>：</p>
+<pre><code>    0010 → 2
+2&lt;&lt; 1000 → 8
+</code></pre>
+<blockquote>
+<p><strong>章节小问题：请解释<code>&amp;</code>与<code>&amp;&amp;</code>的区别，以及<code>|</code>与<code>||</code>的区别:</strong><br>
+1. 在逻辑运算中：<br>
+  |- <code>&amp;</code>和<code>|</code>会对所有条件进行判断后，返回结果<br>
+  |- <code>&amp;&amp;</code>只要一个条件返回false，就不进行后续判断，结果为false<br>
+  |- <code>||</code>只要一个条件为true，就不进行后续判断，结果为true<br>
+2. 在位运算中：<br>
+  |- <code>&amp;</code>为位与元算，<code>|</code>为位或元算<br>
+  |- <code>&amp;&amp;</code>和<code>||</code>不能用于位运算</p>
+</blockquote>
+<h2 id="java程序逻辑控制"><a class="markdownIt-Anchor" href="#java程序逻辑控制"></a> Java程序逻辑控制</h2>
+<p>程序逻辑结构主要分为三种：顺序结构、分支结构、循环结构。顺序结构执行顺序是从前到后，但有时是以代码所在的{}为界限。</p>
+<h3 id="分支结构"><a class="markdownIt-Anchor" href="#分支结构"></a> 分支结构</h3>
+<ol>
+<li>分支结构即判断结构，有两种语法：if和switch.</li>
+<li>if语句:<br>
+if语句的格式:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>if</th>
+<th style="text-align:center">if…else</th>
+<th style="text-align:right">if…else if…else</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p><strong>范例</strong>：if判断</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        double score = 90.0;
+        if (score &lt; 60.0) {
+            System.out.println(&quot;不及格&quot;);
+        } else if (score &lt; 90) {
+            System.out.println(&quot;良&quot;);
+        } else {
+            System.out.println(&quot;优秀&quot;);
+        }
+    }
+}
+</code></pre>
+<ol start="3">
+<li>switch语句:<br>
+switch判断<strong>不能使用布尔表达式</strong>，JDK1.5之前只能进行<code>整数或字符</code>判断，JDK1.5增加了<code>枚举</code>判断，JDK1.7增加了<code>String</code>判断，语法：</li>
+</ol>
+<pre class="highlight"><code class="">switch (数字/字符/枚举/字符串){
+    case 内容 : 内容满足时执行的代码 ; break;
+    case 内容 : 内容满足时执行的代码 ; break;
+    ...
+    default {
+        内容都不满足case时执行;
+        break;
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：使用switch</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int num = 2;
+        switch (num) {
+            case 1:
+                System.out.println(&quot;数字1&quot;);
+                break;
+            case 2:
+                System.out.println(&quot;数字2&quot;);
+                break;
+            default:
+                System.out.println(&quot;大于2的数字&quot;);
+                break;
+        }
+    }
+}
+</code></pre>
+<p>switch默认从第一个符合条件的case语句开始执行，直到整个switch执行完毕或遇到break关键字，才停止执行。<strong>程序区分大小写</strong>。</p>
+<h3 id="循环结构"><a class="markdownIt-Anchor" href="#循环结构"></a> 循环结构</h3>
+<ol>
+<li>当某段代码需要重复执行时，可使用循环语句实现，循环有两种：for循环和while循环。</li>
+<li>while循环：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>while循环</th>
+<th style="text-align:right">do…while循环</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>while（布尔语句）｛｝</td>
+<td style="text-align:right">do｛｝while（布尔语句);</td>
+</tr>
+</tbody>
+</table>
+<p><strong>范例</strong>：实现1到100的累加（<strong>while循环先判断再执行</strong>）：</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+   public static void main(String[] args) {
+       int sum = 0;
+       int current = 1; // 循环的初始化条件
+       while (current &lt;= 100) { // 循环结束条件
+           sum += current; // 累加
+           current++; // 修改循环的初始化条件
+       }
+       System.out.println(sum); // 5050
+   }
+}
+</code></pre>
+<p><strong>范例</strong>：实现1到100的累加（<strong>do…while循环是先执行再判断）</strong></p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int sum = 0;
+        int current = 1;
+        do {
+            sum += current;
+            current++;
+        } while (current &lt;= 100);
+        System.out.println(sum);
+    }
+}
+</code></pre>
+<p>do…while循环先执行再判断，即不论循环条件是否满足，都至少执行一次，<strong>因此开发中不建议使用do…while。</strong></p>
+<ol start="3">
+<li>for循环：</li>
+</ol>
+<pre class="highlight"><code class="">for (循环初始化条件; 循环结束条件; 循环条件变更) {
+    循环语句;
+}
+</code></pre>
+<p>即使三个条件都不写，但是<strong>两个&quot;;&quot;必须保留。</strong><br>
+<strong>范例</strong>：实现1~100的累加</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 0; i &lt;= 100; i++) {
+            sum += i;
+        }
+        System.out.println(sum);
+    }
+}
+</code></pre>
+<ol start="4">
+<li>开发原则:<br>
+（1）循环次数未知，循环结束条件已知时使用<code>while</code>循环；<br>
+（2）循环次数已知，使用<code>for</code>循环。</li>
+<li>循环嵌套</li>
+</ol>
+<pre class="highlight"><code class="">public class 九九乘法表 {
+    public static void main(String[] args) {
+        for (int x = 1; x &lt;= 9; x++) {
+            for (int y = 1; y &lt;= x; y++) {
+                System.out.print(x + &quot;*&quot; + y + &quot;=&quot; + (x * y) + &quot;\t&quot;);
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
+<h3 id="循环控制"><a class="markdownIt-Anchor" href="#循环控制"></a> 循环控制</h3>
+<p>循环控制有两个语句：<code>continue</code>（退出本次循环）和<code>break</code>（结束整个循环）。该语句要和判断语句一起使用。<br>
+<strong>范例</strong>：continue使用</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+   public static void main(String[] args) {
+       for (int x = 0; x &lt; 5; x++) {
+           if (x == 3) {
+               continue; // 跳出本次循环，不进行后续的输出操作
+           }
+           System.out.print(x + &quot;,&quot;); // 0,1,2,4,
+       }
+   }
+}
+</code></pre>
+<p><strong>范例</strong>：break</p>
+<pre class="highlight"><code class="">package com.java.demo;
+public class Demo {
+    public static void main(String[] args) {
+        for (int x = 0; x &lt; 5; x++) {
+            if (x == 3) {
+                break; // 结束整体循环
+            }
+            System.out.print(x + &quot;,&quot;); // 0,1,2,
+        }
+    }
+}
+</code></pre>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(二)/">http://yov.oschina.io/article/Java/Java Base/Java基础知识(二)/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'youyouvi',
+        repo: 'youyouvi.github.io',
+        oauth: {
+            client_id: 'fdcff2e0ff2fdfecce93',
+            client_secret: 'c0cf25fd016b2c8831a622a292a3692daa54c73a',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/article/容器/Docker/Docker的简单说明/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/article/语言/Markdown语法/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/head.jpg" alt="子语's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        yo.vi@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HGVzMmp1XHpzZHF9dXAyf3Nx" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">links</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">24</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/youyouvi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Ember
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <!--<div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>-->
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
