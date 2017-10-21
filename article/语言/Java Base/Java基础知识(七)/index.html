@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java基础知识(七) | 
+        
+        Ember
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="子语">
+    <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="keywords" content="Blog,Java">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/fa.png">
+    <link rel="icon" sizes="192x192" href="/img/fa.png">
+    <link rel="apple-touch-icon" href="/img/mao.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ember">
+
+    <!-- Site Verification -->
+    
+    <meta name="baidu-site-verification" content="k8tNw6G5YO" />
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #000000 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #000000 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #000000 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg6.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yov.oschina.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java基础知识(七) | Ember">
+    <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
+    <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta property="og:article:tag" content="Java"> 
+
+    
+        <meta property="article:published_time" content="Sat Oct 14 2017 10:00:14 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Oct 14 2017 10:29:39 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Java基础知识(七) | Ember">
+    <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yov.oschina.io" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yov.oschina.io/article/语言/Java Base/Java基础知识(七)/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yov.oschina.io/article/语言/Java Base/Java基础知识(七)/index.html",
+    "headline": "Java基础知识(七)",
+    "datePublished": "Sat Oct 14 2017 10:00:14 GMT+0800",
+    "dateModified": "Sat Oct 14 2017 10:29:39 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "子语",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/head.jpg"
+        },
+        "description": "一切有为法,如梦幻泡影.如露亦如电,应作如是观."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ember",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/fa.png"
+        }
+    },
+    "keywords": ",JavaBlog",
+    "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用传递分析实例"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 引用传递分析实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用传递"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 引用传递</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用传递实例"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 引用传递实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据表与简单java类映射"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 数据表与简单Java类映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一对多映射"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 一对多映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#双向一对多映射"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> 双向一对多映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多对多映射"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"> 多对多映射</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java基础知识(七)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/head.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>子语</strong>
+        <span>2017 - 10 - 14</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2ElEQVR42u3aS27jMBAFQN//0pntLCbye015opDFVSDQMosG0ujP6+vI9cLGxsbGxsbGxsZ+JPsVr+/2//38H19WvuH622dnxsbGxj6B/eZff8C73vnd0duLmJ0ZGxsb+xz2LDjlsOudyUlWzoyNjY2NnezP04Y3wQYbGxsb+8MBLEFeP8nByRuwsbGxsesCTRy0ZsnJbP8Ha2nY2NjYj2e3jd4n/P0D/W1sbGzsR7LrEcZvXtomLcmnvm5d2NjY2LuykwLQbJimbR7kF503DLCxsbFPYOchajZYk6cKeUFqOGCEjY2NvTW7BcwuKE821pvB2NjY2Oew22GavLR0FztJbLCxsbFPZrdpSRLqPpfkJDtvaPRiY2Nj/yp2HQbKhGSW9rTNiagIhY2NjX0AO2/9zoo7bUHqrgCJjY2NfQL7+nV3HbotD600HqIAho2Njb0p+3OjNq9yzcpSwwCGjY2N/WvZK8Epp86aEEWaMeuKYGNjY2/ETsrxbTMgwazAllIRbGxs7O3Y7UvvfZIkEistXmxsbOxz2LMyUz5ec/29eXNi9hwbGxv7BHabcrSjOe1ATxsC31wcNjY29qbs/18wmo3j5EERGxsb+zT2rDGwXujPP5WkQFEIxMbGxt6UnZeTkjQgD1F5upJfEzY2NvaZ7LwBMEtF2mJQm7QUI6HY2NjYx7Db68hbwu2ozc1NC2xsbOxN2W17NRmpmSUSs9GcomiFjY2NvSm7LRWtBLy2/LSeLGFjY2Ofxl4JVO3OlQLWMLBhY2Njb8puC0DrISppLcwGMYv2ADY2NvZ27DZo5eGnDTl52tMWwrCxsbFPYOfjj0lRqT3iLHVZSkWwsbGxj2TnSUUb9tqBy/qnwsbGxsYODteO7Ky0jet2BTY2NvYB7LwM1DYJ2jSmvdYkLcHGxsbem73OaItESXtgpcz0kf42NjY29iPZ5yxsbGxsbGxsbGzsx6w/kog0NoLixM8AAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java/">Java</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(七)&url=http://yov.oschina.io/article/语言/Java Base/Java基础知识(七)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/语言/Java Base/Java基础知识(七)/index.html&title=Java基础知识(七)" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(七)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/语言/Java Base/Java基础知识(七)/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="引用传递分析实例"><a class="markdownIt-Anchor" href="#引用传递分析实例"></a> 引用传递分析实例</h2>
+<h3 id="引用传递"><a class="markdownIt-Anchor" href="#引用传递"></a> 引用传递</h3>
+<p>1.引用传递核心意义：同一块堆内存可以被不同栈内存所指向，不同栈内存可以对同一块堆内存进行修改。<br>
+<strong>范例</strong>：引用传递</p>
+<pre class="highlight"><code class="">public class Message {
+    private int num = 10;
+
+    public Message(int num) {
+        this.num = num;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+}
+
+public class TMessage {
+    public static void main(String[] args) {
+        Message msg = new Message(30);
+        System.out.println(msg.getNum()); // 30
+        fun(msg); // 引用传递
+        System.out.println(msg.getNum()); // 100
+    }
+
+    public static void fun(Message temp) {
+        temp.setNum(100);
+    }
+}
+</code></pre>
+<p>对上述代码进行内存分析：<br>
+<img src="/article/语言/Java Base/Java基础知识(七)/10-1.png" alt="无法加载" title="内存分析"><br>
+2.引用</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String msg  = &quot;Hello&quot;;
+        fun(msg);
+        System.out.println(msg); // Hello
+    }
+    public static void fun(String temp) {
+        temp = &quot;World&quot;;
+    }
+}
+</code></pre>
+<p>出现上述结果原因：String对象的内容一旦声明不可改变，对象内容的改变依靠的是引用地址的改变。内存分析如下：<br>
+<img src="/article/语言/Java Base/Java基础知识(七)/10-2.png" alt="无法加载" title="内存分析"><br>
+3.引用传递</p>
+<pre class="highlight"><code class="">public class Message {
+    private String info = &quot;nihao&quot;;
+
+    public Message(String info) {
+        this.info = info;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+}
+
+public class TMessage {
+    public static void main(String[] args) {
+        Message msg = new Message(&quot;Hello&quot;);
+        System.out.println(msg.getInfo()); // Hello
+        fun(msg);
+        System.out.println(msg.getInfo()); // World
+    }
+
+    public static void fun(Message temp) {
+        temp.setInfo(&quot;World&quot;);
+    }
+}
+</code></pre>
+<p>内存分析如下：<br>
+<img src="/article/语言/Java Base/Java基础知识(七)/10-3.png" alt="无法加载" title="内存分析"><br>
+<strong>上述内存分析，是按照int型数据的特点进行的。实</strong>际info是String对象，应该按照如下方式进行分析：<br>
+<img src="/article/语言/Java Base/Java基础知识(七)/10-4.png" alt="无法加载" title="内存分析"><br>
+<strong>结论</strong>：虽然<code>String</code>是一个类，属于引用数据类型，但由于其内容不可改的特点，我们常将其当作基本数据类型。即每个String变量只能保存一个数据。</p>
+<h3 id="引用传递实例"><a class="markdownIt-Anchor" href="#引用传递实例"></a> 引用传递实例</h3>
+<blockquote>
+<p>要求：通过面向对象的方式描述每个人有车或没车。</p>
+</blockquote>
+<p><strong>实现步骤</strong>：<br>
+1.创建数据库：应设计两张表:<code>汽车表</code>和<code>人员表</code>;<br>
+2.根据数据表，定义两个类：</p>
+<blockquote>
+<p>（编写简单java类时，可按照数据表的设计来写，规则如下：<br>
+类名 = 表名；<br>
+属性名(类型) = 表字段(类型);<br>
+一个实例化对象 = 一行记录；<br>
+多个实例化对象 = 多行记录<br>
+引用关系 = 外键描述）</p>
+</blockquote>
+<pre class="highlight"><code class="">public class Member {
+    private int mId;
+    private String name;
+}
+
+public class Car {
+    private String pName;
+}
+</code></pre>
+<p>3.利用<code>引用</code>来描述两个类的外键，从而使得两个类有联系</p>
+<pre class="highlight"><code class="">public class Member {
+    private int mId;
+    private String name;
+    // 有Car类实例化对象表示有车
+    // Car为null表示没车
+    private Car car;
+
+    public Member(int mId, String name) {
+        this.mId = mId;
+        this.name = name;
+    }
+
+    public String getInfo() {
+        return &quot;人员编号：&quot; + this.mId + &quot;,姓名：&quot; + this.name;
+    }
+}
+
+public class Car {
+    private Member member; // 车属于一个人
+    private String pName;
+
+    public Car(String pName) {
+        this.pName = pName;
+    }
+
+    public String getInfo() {
+        return &quot;车名：&quot; + this.pName;
+    }
+}
+</code></pre>
+<p>4.当两个类的对象产生，为这两个对象设置彼此的关系：</p>
+<pre class="highlight"><code class="">public class Member {
+    private int mId;
+    private String name;
+    // 有Car类实例化对象表示有车
+    // Car为null表示没车
+    private Car car;
+
+    public Member(int mId, String name) {
+        this.mId = mId;
+        this.name = name;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public String getInfo() {
+        return &quot;人员编号：&quot; + this.mId + &quot;,姓名：&quot; + this.name;
+    }
+}
+
+public class Car {
+    private Member member; // 车属于一个人
+    private String pName;
+
+    public Car(String pName) {
+        this.pName = pName;
+    }
+
+    public String getInfo() {
+        return &quot;车名：&quot; + this.pName;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+}
+</code></pre>
+<p><strong>5.测试</strong><br>
+测试分为两步：</p>
+<blockquote>
+<p>（1）根据定义的结构关系设置数据<br>
+（2）根据定义的结构关系取出数据</p>
+</blockquote>
+<pre class="highlight"><code class="">public class TCar {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Member m = new Member(1,&quot;张三&quot;);
+        Car c = new Car(&quot;宝马&quot;);
+        // 设置车与人的关系：张三有辆宝马
+        m.setCar(c);
+        c.setMember(m);
+        // 2. 取出数据
+        // 通过人找到车
+        System.out.println(m.getCar().getInfo());
+        // 通过车找到人
+        System.out.println(c.getMember().getInfo());
+    }
+}
+</code></pre>
+<p>6.进一步设计：每个人都有孩子，孩子还可能有车</p>
+<blockquote>
+<p>思路：<br>
+（1）设计一个孩子类，如有孙子，在设计孙子类，以此类推。该方案过于冗余，不合适；<br>
+（2）在Member类中设计属性child，类型为Member：</p>
+</blockquote>
+<pre class="highlight"><code class="">private Member child; // 孩子
+public Member getChild() {
+    return child;
+}
+
+public void setChild(Member child) {
+    this.child = child;
+}
+</code></pre>
+<p><strong>测试</strong>：</p>
+<pre class="highlight"><code class="">public class TCar {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Member m = new Member(1,&quot;张三&quot;);
+        Member child =  new Member(1,&quot;张四&quot;);
+        Car c = new Car(&quot;宝马&quot;);
+        Car cc  =new Car(&quot;法拉利&quot;);
+        // 设置车与人的关系：张三有辆宝马
+        m.setCar(c);
+        c.setMember(m);
+        // 设置车与人的关系：张四有辆法拉利
+        child.setCar(cc);
+        c.setMember(child);
+        // 设置人与人的关系：张四是张三的儿子
+        m.setChild(child);
+        // 2. 取出数据
+        // 通过人找到车
+        System.out.println(m.getCar().getInfo());
+        // 通过车找到人
+        System.out.println(c.getMember().getInfo());
+        // 通过人找到孩子
+        System.out.println(m.getChild().getInfo());
+        // 通过人找到孩子的车
+        System.out.println(m.getChild().getCar().getInfo());
+    }
+}
+</code></pre>
+<p>7.利用引用描述电脑：电脑由主机、键盘、内存、CPU、显卡等组成，下面用伪代码描述：</p>
+<pre class="highlight"><code class="">class 键盘{}
+class 鼠标{}
+class CPU{}
+class 硬盘{}
+class 内存{}
+class 显示器{}
+class 主机{}
+class 主板{}
+class 主机{
+    private CPU 对象[];
+    private 硬盘 对象[];
+    private 主板 对象;
+    private 内存 对象[];
+}
+class 电脑{
+    private 主机 对象;
+    private 显示器 对象;
+    private 键盘 对象;
+    private 鼠标 对象;
+}
+</code></pre>
+<p>上述设计思路称为<code>合成设计模式</code>。<strong>引用</strong>是实现两个不同类之间互相关联的主要手段。</p>
+<h3 id="数据表与简单java类映射"><a class="markdownIt-Anchor" href="#数据表与简单java类映射"></a> 数据表与简单Java类映射</h3>
+<blockquote>
+<p><strong>要求</strong>：通过程序描述部门和雇员关系<br>
+<strong>属性</strong>：<br>
+·dept：deptno,dname,loc;<br>
+·emp：empno, ename,job,sal,comm,deptno,mgr<br>
+<strong>关系</strong>：<br>
+·一个部门有多个雇员；<br>
+·一个雇员有一个或零个领导。</p>
+</blockquote>
+<p>第一步： 根据数据表创建简单java类</p>
+<pre class="highlight"><code class="">/**
+ * 部门类
+ */
+public class Dept {
+    private int depNo; // 编号
+    private String dName; // 名字
+    private String address; // 地址
+    // setter,getter,无参构造方法略
+
+    public Dept(int depNo, String dName, String address) {
+        this.depNo = depNo;
+        this.dName = dName;
+        this.address = address;
+    }
+
+    public String getInfo() {
+        return &quot;部门编号：&quot; + this.depNo +
+                &quot;,部门名称：&quot; + this.dName +
+                &quot;,地址：&quot; + this.address;
+    }
+}
+
+/**
+ * 员工类
+ */
+public class Emp {
+    private int eNo; // 编号
+    private String eName; // 姓名
+    private String job; // 职位
+    private double sal; // 工资
+    private double comm; // 佣金
+
+    // setter,getter,无参构造方法略
+    public Emp(int eNo, String eName, String job, double sal, double comm) {
+        this.eNo = eNo;
+        this.eName = eName;
+        this.job = job;
+        this.sal = sal;
+        this.comm = comm;
+    }
+    
+    public String getInfo() {
+        return &quot;编  号&quot; + this.eNo + &quot;\n&quot; +
+                &quot;姓 名&quot; + this.eName + &quot;\n&quot; +
+                &quot;职 位&quot; + this.job + &quot;\n&quot; +
+                &quot;工 资&quot; + this.sal + &quot;\n&quot; +
+                &quot;佣 金&quot; + this.comm;
+    }
+}
+</code></pre>
+<p>第二步：设置外键关系<br>
+· 一个雇员属于一个部门，应在雇员类中保存部门信息</p>
+<pre class="highlight"><code class="">private Dept dept; // 对应的部门信息
+
+public Dept getDept() {
+    return dept;
+}
+
+public void setDept(Dept dept) {
+    this.dept = dept;
+}
+</code></pre>
+<p>· 一个部门有的多个雇员，可用数组在部门类中保存雇员信息：</p>
+<pre class="highlight"><code class="">private Emp emps[]; // 多个雇员信息
+
+public Emp[] getEmps() {
+    return emps;
+}
+
+public void setEmps(Emp[] emps) {
+    this.emps = emps;
+}
+</code></pre>
+<p>· 一个雇员有一个领导（定义在Emp类中）</p>
+<pre class="highlight"><code class="">private Emp mgr; // 领导信息
+
+public Emp getMgr() {
+    return mgr;
+}
+
+public void setMgr(Emp mgr) {
+    this.mgr = mgr;
+}
+</code></pre>
+<p>第三步：测试<br>
+（1）设置数据：</p>
+<pre class="highlight"><code class="">public class Demo {
+   public static void main(String[] args) {
+       // 1. 产生对象
+       Dept dept = new Dept(10, &quot;财务部&quot;, &quot;北京&quot;); // 部门信息
+       //  员工信息
+       Emp eA = new Emp(1111, &quot;张三&quot;, &quot;保安&quot;, 800.0, 0.0);
+       Emp eB = new Emp(1101, &quot;李四&quot;, &quot;秘书&quot;, 2800.0, 500.0);
+       Emp eC = new Emp(1001, &quot;王五&quot;, &quot;经历&quot;, 6800.0, 1500.0);
+       // 2. 设置员工与领导关系
+       eA.setMgr(eB);
+       eB.setMgr(eC);
+       // 3. 设置员工和部门关系
+       eA.setDept(dept);
+       eB.setDept(dept);
+       eC.setDept(dept);
+       dept.setEmps(new Emp[]{eA, eB, eC});
+   }
+}
+</code></pre>
+<p>（2）：根据给定的结构取出数据，要求如下：</p>
+<blockquote>
+<p>|-根据一个雇员查询他所对应的领导信息和部门信息；<br>
+|-根据一个部门查询所有雇员以及其所对应的领导信息；</p>
+</blockquote>
+<pre class="highlight"><code class="">// 第二步：取出数据
+// 1. 通过员工找到领导信息和部门信息
+System.out.println(eA.getInfo()); // 获取员工信息
+System.out.println(&quot;\t|-&quot; + eA.getMgr().getInfo()); // 获取领导信息
+System.out.println(&quot;\t|-&quot; + eA.getDept().getInfo()); // 获取部门信息
+// 2. 根据部门找到所有员工及其领导信息
+System.out.println(&quot;---------------------------------------------&quot;);
+System.out.println(dept.getInfo());
+for (int x = 0; x &lt; dept.getEmps().length; x++) {
+    System.out.println(&quot;\t|-&quot; + dept.getEmps()[x].getInfo()); // 获取员工信息
+    if (dept.getEmps()[x].getMgr() != null) {
+        System.out.println(&quot;\t\t|-&quot; + dept.getEmps()[x].getMgr().getInfo()); // 获取领导信息
+    }
+}
+</code></pre>
+<p>上述代码都是依靠代码链取出数据。</p>
+<h3 id="一对多映射"><a class="markdownIt-Anchor" href="#一对多映射"></a> 一对多映射</h3>
+<blockquote>
+<p>要求：通过程序描述省份和城市的关系<br>
+1.通过一个城市找到它对应的省份信息；<br>
+2.通过一个省份找到所有城市的信息。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Province {
+    private int pId;
+    private String pName;
+    private City cities[];
+    // getter,setter,无参构造方法略
+
+    public Province(int pId, String pName) {
+        this.pId = pId;
+        this.pName = pName;
+    }
+
+    public City[] getCities() {
+        return cities;
+    }
+
+    public void setCities(City[] cities) {
+        this.cities = cities;
+    }
+
+    public String getInfo() {
+        return &quot;省份ID：&quot; + this.pId + &quot;，省名：&quot; + this.pName;
+    }
+}
+
+class City {
+    private int cId;
+    private String cName;
+    private Province province;
+
+    // getter,setter,无参构造方法略
+    public City(int cId, String cName) {
+        this.cId = cId;
+        this.cName = cName;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
+    public String getInfo() {
+        return &quot;城市ID：&quot; + this.cId + &quot;，市名：&quot; + this.cName;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Province province = new Province(350, &quot;福建省&quot;);
+        City cA = new City(1, &quot;福州&quot;);
+        City cB = new City(2, &quot;厦门&quot;);
+        City cC = new City(3, &quot;泉州&quot;);
+        cA.setProvince(province);
+        cB.setProvince(province);
+        cC.setProvince(province);
+        province.setCities(new City[]{cA, cB, cC});
+        System.out.println(cA.getInfo());
+        System.out.println(&quot;\t|-&quot; + cA.getProvince().getInfo());
+        System.out.println(&quot;==================================&quot;);
+        System.out.println(province.getInfo());
+        for (int x = 0; x &lt; province.getCities().length; x++) {
+            System.out.println(&quot;\t|-&quot; + province.getCities()[x].getInfo());
+        }
+    }
+}
+</code></pre>
+<p>上述代码存在不足：<strong>每次添加城市，就要修改数组的引用关系</strong></p>
+<h3 id="双向一对多映射"><a class="markdownIt-Anchor" href="#双向一对多映射"></a> 双向一对多映射</h3>
+<blockquote>
+<p>要求：通过程序描述类型-子类型-商品的关系<br>
+（1）通过一个类型找到它对应的子类型；<br>
+（2）过一个类型找到它所对应的商品；<br>
+（3）通过一个子类型找到所有对应的商品。</p>
+</blockquote>
+<pre class="highlight"><code class=""> class Type {
+    private int tId;
+    private String tName;
+    private SonType sonTypes[];
+    private Product products[];
+
+    // getter,setter,无参构造方法略
+    public Type(int tId, String tName) {
+        this.tId = tId;
+        this.tName = tName;
+    }
+
+    public SonType[] getSontypes() {
+        return this.sonTypes;
+    }
+
+    public void setSontypes(SonType[] sontypes) {
+        this.sonTypes = sontypes;
+    }
+
+    public Product[] getProducts() {
+        return products;
+    }
+
+    public void setProducts(Product[] products) {
+        this.products = products;
+    }
+
+    public String getInfo() {
+        return &quot;类型编号：&quot; + this.tId + &quot;,类型名称：&quot; + this.tName;
+    }
+}
+
+class SonType {
+    private int sId;
+    private String sName;
+    private Type type;
+    private Product products[];
+    // getter,setter,无参构造方法略
+
+    public SonType(int sId, String sName) {
+        this.sId = sId;
+        this.sName = sName;
+    }
+
+    public int getsId() {
+        return sId;
+    }
+
+    public void setsId(int sId) {
+        this.sId = sId;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Product[] getProducts() {
+        return products;
+    }
+
+    public void setProducts(Product[] products) {
+        this.products = products;
+    }
+
+    public String getInfo() {
+        return &quot;子类型编号：&quot; + this.sId + &quot;,子类型名称：&quot; + this.sName;
+    }
+}
+
+class Product {
+    private int pId;
+    private String name;
+    private double price;
+    private Type type;
+    private SonType sonType;
+    // getter,setter,无参构造方法略
+
+    public Product(int pId, String name, double price) {
+        this.pId = pId;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public SonType getSonType() {
+        return sonType;
+    }
+
+    public void setSonType(SonType sonType) {
+        this.sonType = sonType;
+    }
+
+    public String getInfo() {
+        return &quot;商品编号：&quot; + this.pId + &quot;,商品名称：&quot; + this.name + &quot;,价格：&quot; + this.price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Type type = new Type(1, &quot;家电类&quot;);
+        SonType stA = new SonType(11, &quot;小型家电&quot;);
+        SonType stB = new SonType(12, &quot;大型家电&quot;);
+        Product pA = new Product(111, &quot;剃须刀&quot;, 99.0);
+        Product pB = new Product(112, &quot;热水壶&quot;, 29.0);
+        Product pC = new Product(121, &quot;电冰箱&quot;, 1199.0);
+        Product pD = new Product(122, &quot;电热水器&quot;, 399.0);
+
+        stA.setType(type);
+        stB.setType(type);
+        pA.setType(type);
+        pB.setType(type);
+        pC.setType(type);
+        pD.setType(type);
+        type.setSontypes(new SonType[]{stA, stB});
+        type.setProducts(new Product[]{pA, pB, pC, pD});
+
+        pA.setSonType(stA);
+        pB.setSonType(stA);
+        pC.setSonType(stB);
+        pD.setSonType(stB);
+        stA.setProducts(new Product[]{pA, pB});
+        stB.setProducts(new Product[]{pC, pD});
+
+
+
+        System.out.println(type.getInfo());
+        for (int x = 0; x &lt; type.getSontypes().length; x++) {
+            System.out.println(&quot;\t|- &quot; + type.getSontypes()[x].getInfo());
+        }
+        System.out.println(&quot;--------------------------------------&quot;);
+        System.out.println(type.getInfo());
+        for (int x = 0; x &lt; type.getProducts().length; x++) {
+            System.out.println(&quot;\t|- &quot; + type.getProducts()[x].getInfo());
+            System.out.println(&quot;\t\t|- &quot; + type.getProducts()[x].getSonType().getInfo());
+        }
+        System.out.println(&quot;--------------------------------------&quot;);
+        System.out.println(stA.getInfo());
+        for (int x = 0; x &lt; stA.getProducts().length; x++) {
+            System.out.println(&quot;\t|- &quot; + stA.getProducts()[x].getInfo());
+        }
+    }
+}
+</code></pre>
+<h3 id="多对多映射"><a class="markdownIt-Anchor" href="#多对多映射"></a> 多对多映射</h3>
+<blockquote>
+<p>要求：通过程序描述管理员-角色-组-权限的关系；<br>
+（1）根据一个管理员找到它对应的角色，以及每个角色包含的所有权限组的信息，以及每个权限组所包含的权限的内容；<br>
+（2）根据一个权限组找到所有具备此权限组的角色以及每个角色所拥有的管理员信息；<br>
+<code>角色_权限组</code>表是关系表，保存的是两个外键的关联关系，不需要为其生成映射类。只有实体表才需要生成映射类，多对多的中间转换表只需通过类属性的关系引用即可。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Admin {
+    private String aid;
+    private String password;
+    private Role role;
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return this.role;
+    }
+
+    public Admin(String aid, String password) {
+        this.aid = aid;
+        this.password = password;
+    }
+
+    public String getInfo() {
+        return &quot;管理员编号:&quot; + this.aid + &quot;，管理员密码：&quot; + this.password;
+    }
+}
+
+class Role {
+    private int rid;
+    private String title;
+    private Admin admins[];
+    private Group groups[];
+
+    public void setAdmins(Admin admins[]) {
+        this.admins = admins;
+    }
+
+    public Admin[] getAdmins() {
+        return this.admins;
+    }
+
+    public void setGroups(Group groups[]) {
+        this.groups = groups;
+    }
+
+    public Group[] getGroups() {
+        return this.groups;
+    }
+
+    public Role(int rid, String title) {
+        this.rid = rid;
+        this.title = title;
+    }
+
+    public String getInfo() {
+        return &quot;角色编号：&quot; + this.rid + &quot;，角色名称&quot; + this.title;
+    }
+}
+
+class Group {
+    private int gid;
+    private String title;
+    private Role roles[];
+    private Action actions[];
+
+    public void setActions(Action actions[]) {
+        this.actions = actions;
+    }
+
+    public Action[] getActions() {
+        return this.actions;
+    }
+
+    public void setRoles(Role roles[]) {
+        this.roles = roles;
+    }
+
+    public Role[] getRoles() {
+        return this.roles;
+    }
+
+    public Group(int gid, String title) {
+        this.gid = gid;
+        this.title = title;
+    }
+
+    public String getInfo() {
+        return &quot;权限组编号：&quot; + this.gid + &quot;，权限组名称：&quot; + this.title;
+    }
+}
+
+class Action {
+    private int aid;
+    private String title;
+    private String url;
+    private Group group;
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Group getGroup() {
+        return this.group;
+    }
+
+    public Action(int aid, String title, String url) {
+        this.aid = aid;
+        this.title = title;
+        this.url = url;
+    }
+
+    public String getInfo() {
+        return &quot;权限编号：&quot; + this.aid + &quot;权限名称：&quot; + this.title + &quot;,权限路径：&quot; + this.url;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Admin a1 = new Admin(&quot;admin&quot;, &quot;123456&quot;);
+        Admin a2 = new Admin(&quot;root&quot;, &quot;654321&quot;);
+        Admin a3 = new Admin(&quot;guest&quot;, &quot;654321&quot;);
+        Role r1 = new Role(1, &quot;系统管理员&quot;);
+        Role r2 = new Role(1, &quot;信息管理员&quot;);
+        Group g1 = new Group(10, &quot;信息管理&quot;);
+        Group g2 = new Group(11, &quot;用户管理&quot;);
+        Group g3 = new Group(12, &quot;数据管理&quot;);
+        Group g4 = new Group(13, &quot;接口管理&quot;);
+        Group g5 = new Group(14, &quot;备份管理&quot;);
+        Action ac1 = new Action(1001, &quot;新闻发布&quot;, &quot;-&quot;);
+        Action ac2 = new Action(1002, &quot;新闻列表&quot;, &quot;-&quot;);
+        Action ac3 = new Action(1003, &quot;新闻审核&quot;, &quot;-&quot;);
+        Action ac4 = new Action(1004, &quot;增加用户&quot;, &quot;-&quot;);
+        Action ac5 = new Action(1005, &quot;用户列表&quot;, &quot;-&quot;);
+        Action ac6 = new Action(1006, &quot;登陆日志&quot;, &quot;-&quot;);
+        Action ac7 = new Action(1007, &quot;雇员数据&quot;, &quot;-&quot;);
+        Action ac8 = new Action(1008, &quot;部门数据&quot;, &quot;-&quot;);
+        Action ac9 = new Action(1009, &quot;公司数据&quot;, &quot;-&quot;);
+        Action ac10 = new Action(1010, &quot;服务传输&quot;, &quot;-&quot;);
+        Action ac11 = new Action(1011, &quot;短信平台&quot;, &quot;-&quot;);
+        Action ac12 = new Action(1012, &quot;全部备份&quot;, &quot;-&quot;);
+        Action ac13 = new Action(1013, &quot;局部备份&quot;, &quot;-&quot;);
+
+        a1.setRole(r1);
+        a2.setRole(r2);
+        a3.setRole(r2);
+        r1.setAdmins(new Admin[]{a1});
+        r2.setAdmins(new Admin[]{a2, a3});
+
+        r1.setGroups(new Group[]{g1, g2, g3, g4, g5});
+        r2.setGroups(new Group[]{g1, g2});
+        g1.setRoles(new Role[]{r1, r2});
+        g2.setRoles(new Role[]{r1, r2});
+        g3.setRoles(new Role[]{r1});
+        g4.setRoles(new Role[]{r1});
+        g5.setRoles(new Role[]{r1});
+
+        g1.setActions(new Action[]{ac1, ac2, ac3});
+        g2.setActions(new Action[]{ac4, ac5, ac6});
+        g3.setActions(new Action[]{ac7, ac8, ac9});
+        g4.setActions(new Action[]{ac10, ac11});
+        g5.setActions(new Action[]{ac12, ac13});
+
+        ac1.setGroup(g1);
+        ac2.setGroup(g1);
+        ac3.setGroup(g1);
+        ac4.setGroup(g2);
+        ac5.setGroup(g2);
+        ac6.setGroup(g2);
+        ac7.setGroup(g3);
+        ac8.setGroup(g3);
+        ac9.setGroup(g3);
+        ac10.setGroup(g4);
+        ac11.setGroup(g4);
+        ac12.setGroup(g5);
+        ac13.setGroup(g5);
+
+        System.out.println(a1.getInfo());
+        System.out.println(a1.getRole().getInfo());
+        for (int x = 0; x &lt; a1.getRole().getGroups().length; x++) {
+            System.out.println(&quot;\t|-&quot; + a1.getRole().getGroups()[x].getInfo());
+            for (int y = 0; y &lt; a1.getRole().getGroups()[x].getActions().length; y++) {
+                System.out.println(&quot;\t\t|-&quot; + a1.getRole().getGroups()[x].getActions()[y].getInfo());
+            }
+        }
+        System.out.println(&quot;-------------------------------------------------&quot;);
+        System.out.println(g2.getInfo());
+        for (int x = 0; x &lt; g2.getRoles().length; x++) {
+            System.out.println(g2.getRoles()[x].getInfo());
+            for (int y = 0; y &lt; g2.getRoles()[x].getAdmins().length; y++) {
+                System.out.println(&quot;\t\t|-&quot; + g2.getRoles()[x].getAdmins()[y].getInfo());
+            }
+            System.out.println();
+        }
+    }
+}
+</code></pre>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/语言/Java Base/Java基础知识(七)/">http://yov.oschina.io/article/语言/Java Base/Java基础知识(七)/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'youyouvi',
+        repo: 'youyouvi.github.io',
+        oauth: {
+            client_id: 'fdcff2e0ff2fdfecce93',
+            client_secret: 'c0cf25fd016b2c8831a622a292a3692daa54c73a',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/article/语言/Java Base/Java基础知识(八)/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/article/容器/Docker/Centos7上部署Docker私有仓库/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/head.jpg" alt="子语's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        yo.vi@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HGVzMmp1XHpzZHF9dXAyf3Nx" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">12</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">links</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">24</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/youyouvi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Ember
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <!--<div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>-->
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
