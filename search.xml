@@ -3,6 +3,635 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(十一)]]></title>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E4%B8%80)/</url>
+      <content type="html"><![CDATA[<h2 id="继承性"><a class="markdownIt-Anchor" href="#继承性"></a> 继承性</h2>
+<blockquote>
+<p>继承性的作用是解决代码重用问题。</p>
+</blockquote>
+<h3 id="继承问题的引出"><a class="markdownIt-Anchor" href="#继承问题的引出"></a> 继承问题的引出</h3>
+<p>范例:定义两个类Person和Student</p>
+<pre class="highlight"><code class="">class Person{
+	private String name;
+	private int age;
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setAge(int age){
+		this.age = age;
+	}
+	public String getName(){
+		return this.name; 
+	}
+	public int getAge(){
+		return this.age;
+	}
+}	
+class Student{
+    private String name;
+	private int age;
+	private String school;
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setAge(int age){
+		this.age = age;
+	}
+	public void setSchool(String school){
+		this.school = school;
+	}
+	public String getName(){
+		return this.name; 
+	}
+	public int getAge(){
+		return this.age;
+	}
+	public String getSchool(){
+		return this.school; 
+	}
+}
+</code></pre>
+<p>由代码可见Studen和Person存在代码重复。在自然关系上，Student是Person的一种，只是Student描述的更细致，范围更小。</p>
+<h3 id="实现继承"><a class="markdownIt-Anchor" href="#实现继承"></a> 实现继承</h3>
+<p>继承使用关键字<code>extends</code>实现，语法如下：<code>class 子类 extends 父类{}</code><br>
+子类也被称为<code>派生类</code>，父类也被称为<code>基类、超类或super类</code>。<br>
+<strong>范例</strong>：实现继承</p>
+<pre class="highlight"><code class="">class Person { // 父类
+    private String name;
+    private int age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+class Student extends Person { // 继承Person类
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Student stu = new Student();
+        stu.setName(&quot;张三&quot;);
+        stu.setAge(18);
+        System.out.println(&quot;姓名：&quot; + stu.getName() + &quot;,年龄：&quot; + stu.getAge());
+    }
+}
+</code></pre>
+<p>Student继承了Person，可以使用Person类中的方法。<br>
+<strong>范例</strong>：在Student中添加属性和方法</p>
+<pre class="highlight"><code class="">class Student extends Person { // 继承Person类
+    private String school;
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+}
+</code></pre>
+<p>由上述代码，可知继承性的优点：</p>
+<blockquote>
+<p>（1）子类可以直接使用父类的属性和方法，进行代码重用；<br>
+（2）子类可以扩充属于自己的操作。</p>
+</blockquote>
+<h3 id="继承的限制"><a class="markdownIt-Anchor" href="#继承的限制"></a> 继承的限制</h3>
+<p><strong>Java中继承存在如下限制：</strong><br>
+1、Java不允许多重继承，但允许多层继承。<br>
+C++允许多继承，即一个子类可以同时继承多个父类。但该操作在Java中是不允许的。多继承是为了使子类可以同时拥有多个父类的操作。Java中使用多层继承替代，语法如下：</p>
+<pre class="highlight"><code class="">class A{}
+class B extends A{}
+class C extends B{}
+</code></pre>
+<p>相当于C是B的子类，是A的孙子类。多层继承没有层数限制，但最好不超过三层。<br>
+2、子类继承父类时，会继承父类全部操作。对于私有操作属于隐式继承，对于非私有操作属于显式继承。</p>
+<pre class="highlight"><code class="">class A {
+    private String msg;
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+}
+
+class B extends A {
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.setMsg(&quot;Hello&quot;);
+        System.out.println(b.getMsg()); // Hello
+    }
+}
+</code></pre>
+<p>上述代码显示B类中也存在属性msg,因为如果msg不存在，setMsg()设置的内容就不能保存，即getMsg()无法输出内容。</p>
+<pre class="highlight"><code class="">class B extends A {
+    public void fun() {
+        System.out.println(msg); // 报错，无法访问
+    }
+}
+</code></pre>
+<p>但是在B类中无法直接访问msg，因为msg是A类的私有属性，只能间接访问。<br>
+3、在实例化子类对象之前，会先调用父类构造方法（默认是无参构造方法），以保证父类对象先实例化，而后在实例化子类对象。</p>
+<pre class="highlight"><code class="">class A {
+    public A() {
+        System.out.println(&quot;A 构造方法&quot;);
+    }
+}
+
+class B extends A {
+    public B() {
+        System.out.println(&quot;B 构造方法&quot;);
+    }
+
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        // A 构造方法
+        // B 构造方法
+    }
+}
+</code></pre>
+<p>由结果可知，在实例化子类对象前，会先实例化父类对象。对于子类构造方法来说相当于隐藏一个”super()”.</p>
+<pre class="highlight"><code class="">class B extends A {
+    public B() {
+        super(); // 父类有无参构造方法时，加不加都一样
+        System.out.println(&quot;B 构造方法&quot;);
+    }
+}
+</code></pre>
+<blockquote>
+<p>何时要在子类构造方法中添加super()：如果父类中没有无参构造方法，就必须使用super调用父类的有参构造方法。</p>
+</blockquote>
+<pre class="highlight"><code class="">class A {
+    public A(String title) {
+        System.out.println(&quot;A 构造方法&quot;);
+    }
+}
+
+class B extends A {
+    public B() {
+        // 子类默认调用无参构造，但A中没有无参构造
+        System.out.println(&quot;B 构造方法&quot;);
+    }
+}
+</code></pre>
+<p>上述代码执行后，不会调用A中的有参构造，因此需要在B类中的构造方法添加super():</p>
+<pre class="highlight"><code class="">class A {
+    public A(String title) {
+        System.out.println(&quot;A 构造方法&quot;);
+    }
+}
+
+class B extends A {
+    public B(String title) {
+        super(title);
+        System.out.println(&quot;B 构造方法&quot;);
+    }
+}
+</code></pre>
+<p><code>super()</code>必须放在子类构造方法的第一行。而<code>this()</code>也应该放在构造方法的首行。</p>
+<blockquote>
+<p><strong>问题：子类构造方法未添加super()，系统默认使用super()调用父类的无参构造方法。如果在子类构造方法中添加this()，那么子类是不是无法调用父类构造方法？</strong></p>
+</blockquote>
+<pre class="highlight"><code class="">class B extends A {
+    public B() { // 报错，构造递归调用
+        this(); 
+        System.out.println(&quot;B 构造方法&quot;);
+    }
+}
+</code></pre>
+<p>由结果可知，super()和this()不能同时存在。不论子类怎么修改，子类构造方法执行前都必须先执行父类的构造方法。</p>
+<h3 id="方法覆写"><a class="markdownIt-Anchor" href="#方法覆写"></a> 方法覆写</h3>
+<p>继承性的特点是子类可以对父类已有的功能进行扩展。子类在定义属性或方法时有可能与父类重名，该操作就称为覆写。<br>
+1、<strong>方法覆写</strong>：子类定义一个与父类方法的方法名、参数类型及个数、返回值都相同的方法。</p>
+<pre class="highlight"><code class="">class A {
+    public void fun() {
+        System.out.println(&quot;A中的方法&quot;);
+    }
+}
+
+class B extends A {
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.fun(); // A中的方法
+    }
+}
+</code></pre>
+<p>此时B中没有fun()，所以调用的是从A继承的fun().<br>
+<strong>范例</strong>：方法覆写</p>
+<pre class="highlight"><code class="">class A {
+    public void fun() {
+        System.out.println(&quot;A中的方法&quot;);
+    }
+}
+
+class B extends A {
+    public void fun(){ // 方法覆写
+        System.out.println(&quot;覆写的方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.fun(); // 覆写的方法
+    }
+}
+</code></pre>
+<p>当方法覆写后，此时会调用子类中覆写的方法。<br>
+2、覆写结果的分析要素：</p>
+<blockquote>
+<p>（1）实例化的是那个类；<br>
+（2）该对象调用的方法是否被覆写，如果未覆写将调用父类中的方法。</p>
+</blockquote>
+<pre class="highlight"><code class="">class B extends A {
+    public String fun(){ 
+        System.out.println(&quot;覆写的方法&quot;);
+        // 报错，B中fun()无法覆盖A中fun()，返回类型不兼容
+        return &quot;Hello&quot;;
+    }
+}
+</code></pre>
+<p><strong>进行方法覆写时，不能改变方法中的返回值和参数个数。</strong><br>
+3、方法覆写的使用原则：父类方法不能满足子类需求，但又必须使用该方法名时，要进行方法覆写。<br>
+方法覆写时还要考虑到权限问题，被子类覆写的方法不能拥有比父类更高的访问控制权限。</p>
+<blockquote>
+<p>访问控制权限：public&gt;default&gt;private，private的访问权限最严格。即如果父类方法使用public方法，子类覆写此方法时，只能使用public。父类使用的是default，子类覆写时，只能用default或public.</p>
+</blockquote>
+<p><strong>范例</strong>：正确覆写</p>
+<pre class="highlight"><code class="">class A {
+    void fun() {
+        System.out.println(&quot;A中的方法&quot;);
+    }
+}
+
+class B extends A {
+    public void fun(){
+        System.out.println(&quot;覆写的方法&quot;);
+    }
+}
+</code></pre>
+<p><strong>错误覆写</strong>：</p>
+<pre class="highlight"><code class="">class A {
+    public void fun() {
+        System.out.println(&quot;A中的方法&quot;);
+    }
+}
+
+class B extends A {
+    void fun(){
+        System.out.println(&quot;覆写的方法&quot;);
+        // 报错，正在尝试分配更低权限。
+    }
+}
+</code></pre>
+<p>上述代码中子类使用default，比public权限更严格，不符合方法覆写原则。</p>
+<blockquote>
+<p>问题：父类方法使用private声明，子类使用public声明该方法，是覆写吗？<br>
+答：从概念上，private声明权限高于public，因此从权限上而言符合覆写的要求。观察下述代码：</p>
+</blockquote>
+<pre class="highlight"><code class="">class A {
+    public void fun() {
+        print();
+    }
+    private void print(){
+        System.out.println(&quot;Hello&quot;);
+    }
+}
+
+class B extends A {
+    public void print(){
+        System.out.println(&quot;World&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.fun(); // Hello
+    }
+}
+</code></pre>
+<p>从上述代码来看，子类并没有覆写print()，因为使用private定义的方法对于子类而言是不可见，因此子类定义的print()虽然符合覆写的要求，但是实际只是相当于定义了一个全新的方法，而不是方法覆写。而正确的覆写结果应该如下：</p>
+<pre class="highlight"><code class="">class A {
+    public void fun() {
+        print();
+    }
+    public void print(){
+        System.out.println(&quot;Hello&quot;);
+    }
+}
+
+class B extends A {
+    public void print(){
+        System.out.println(&quot;World&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.fun(); // World
+    }
+}
+</code></pre>
+<p>5、默认情况下，子类对象调用是一定是覆写后的方法。</p>
+<pre class="highlight"><code class="">class A {
+    public void print(){
+        System.out.println(&quot;Hello&quot;);
+    }
+}
+
+class B extends A {
+    public void print(){
+        print();  // 等同于this.print()
+        System.out.println(&quot;World&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.print(); // 报错，方法递归调用，死循环
+    }
+}
+</code></pre>
+<p>上述代码中，B类会优先调用B中print()，因此发生了递归调用。如果B中没有print()，则会调用父类中的。<br>
+<strong>范例</strong>：调用父类中方法<code>super.方法名()</code></p>
+<pre class="highlight"><code class="">class B extends A {
+    public void print(){
+        super.print();
+        System.out.println(&quot;World&quot;);
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>super.方法名()与this.方法名()的区别：</strong><br>
+（1）this.方法名()会优先查找本类中是否有目标方法，如果有则直接调用，没有就继续在父类中查找。<br>
+（2）super.方法名()会直接在父类中查找目标方法，不会在子类中查找。</p>
+</blockquote>
+<blockquote>
+<p><strong>问题：请说明重载（overloading）和覆写（override）的区别</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>区别</th>
+<th>重载</th>
+<th>覆写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>英文单词</td>
+<td>Overloading</td>
+<td>Overrid</td>
+</tr>
+<tr>
+<td>2</td>
+<td>发生范围</td>
+<td>发生在一个类中</td>
+<td>发生在继承关系中</td>
+</tr>
+<tr>
+<td>3</td>
+<td>定义</td>
+<td>方法名相同，参数类型及个数不相同</td>
+<td>方法名称、参数类型及个数，方法返回值都相同</td>
+</tr>
+<tr>
+<td>4</td>
+<td>权限</td>
+<td>没有权限限制</td>
+<td>被覆写的方法不能拥有比父类更严格的权限</td>
+</tr>
+</tbody>
+</table>
+<p>在方法重载时，返回值可以不同，但为了程序设计的统一性，应尽量保证返回值类型一致。</p>
+<h3 id="属性覆写"><a class="markdownIt-Anchor" href="#属性覆写"></a> 属性覆写</h3>
+<p>1、子类定义了与父类完全相同的属性名时，称为属性覆写。</p>
+<pre class="highlight"><code class="">class A {
+    String info = &quot;Hello&quot;;
+}
+
+class B extends A {
+    String info = &quot;World&quot;;
+    public void print(){
+        System.out.println(super.info); // 调用父类属性
+        System.out.println(this.info);  // 调用本类属性
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.print();
+    }
+}
+</code></pre>
+<p>由于在开发中，类的属性必须封装，而封装后，属性覆写就没有意义。因为父类定义的私有属性，子类不可见，因此不会互相影响。</p>
+<blockquote>
+<p><strong>问题：super和this的区别</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>区别</th>
+<th>this</th>
+<th>super</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>功能</td>
+<td>调用本类中的操作</td>
+<td>子类调用父类中的操作</td>
+</tr>
+<tr>
+<td>2</td>
+<td>形式</td>
+<td>先从本类查找目标操作,再从父类中查找</td>
+<td>只查找父类</td>
+</tr>
+<tr>
+<td>3</td>
+<td>特殊</td>
+<td>表示本类的当前对象</td>
+<td>super不能单独使用</td>
+</tr>
+</tbody>
+</table>
+<p>在开发中，对于本类或父类的操作，最好加上this.或super.，这样便于代码调试。</p>
+<h3 id="继承综合实战数组操作"><a class="markdownIt-Anchor" href="#继承综合实战数组操作"></a> 继承综合实战：数组操作</h3>
+<blockquote>
+<p>要求：定义Array类，在类中可以进行整型数组的操作：由外部传入数组的数据，可以进行数据的保存和输出，并且在这个类上派生出两个子类：<br>
+（1）排序类：通过此类取得的数据可以进行排序；<br>
+（2）反转类：通过此类取得的数据采用倒序的方式输出。<br>
+开发时，先不考虑子类，先开发父类。</p>
+</blockquote>
+<h4 id="根据要求定义父类array实现其操作"><a class="markdownIt-Anchor" href="#根据要求定义父类array实现其操作"></a> 根据要求定义父类Array，实现其操作。</h4>
+<blockquote>
+<p>思路：开辟好数组后，根据索引，一一存放数据。</p>
+</blockquote>
+<pre class="highlight"><code class="">class Array {
+    private int data[]; // 数组
+    private int foot; // 脚标
+    // 开辟数组空间
+    public Array(int len) {
+        if (len &gt; 0) { 
+            this.data = new int[len];
+        } else { // 数组默认长度为1
+            this.data = new int[1];
+        }
+    }
+    // 为数组添加数据
+    public boolean add(int num) {
+        if (this.foot &lt; this.a[this.foot++] = num; // 保存数据
+            return true;
+        }
+        return false;
+    }
+    // 取得数组内容
+    public int[] getData() {
+        return this.data;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Array array = new Array(3);
+        System.out.println(array.add(10)); // true
+        System.out.println(array.add(20)); // true
+        System.out.println(array.add(30)); // true
+        // 超出数组长度，false
+        System.out.println(array.add(40));
+        int[] temp = array.getData();
+        for (int x = 0; x &lt; temp.length; x++) {
+            System.out.println(temp[x]); // 10 20 30
+        }
+    }
+}
+</code></pre>
+<p>####定义子类。</p>
+<blockquote>
+<p>思路：将Array类getData()返回的结果进行排序输出即可，因此要覆写父类的方法。</p>
+</blockquote>
+<pre class="highlight"><code class="">// 定义一个排序数组的子类
+class SortArray extends Array {
+    // Array中没有无参构造方法，
+    // 需要明确调用父类的有参构造方法
+    public SortArray(int len) {
+        super(len);
+    }
+    // Array的getData()无法排序，进行方法覆写
+    public int[] getData() {
+        // 调用类库中的方法排序
+        java.util.Arrays.sort(super.getData());
+        return super.getData();
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        SortArray array = new SortArray(3);
+        System.out.println(array.add(20)); // true
+        System.out.println(array.add(30)); // true
+        System.out.println(array.add(10)); // true
+        // 超出数组长度，false
+        System.out.println(array.add(40));
+        int[] temp = array.getData();
+        for (int x = 0; x &lt; temp.length; x++) {
+            System.out.println(temp[x]); // 10 20 30
+        }
+    }
+}
+</code></pre>
+<p>####定义反转子类，也要保持客户端操作不变，因此要覆写父类的方法。</p>
+<pre class="highlight"><code class="">// 定义一个反转子类
+class ReverseArray extends Array {
+    public ReverseArray(int len) {
+        super(len);
+    }
+
+    public int[] getData() {
+        int center = super.getData().length / 2;
+        int head = 0;
+        int tail = super.getData().length - 1;
+        for (int x = 0; x &lt; center; x++) {
+            int temp = super.getData()[head];
+            super.getData()[head] = super.getData()[tail];
+            super.getData()[tail] = temp;
+            head++;
+            tail--;
+        }
+        return super.getData();
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        ReverseArray array = new ReverseArray(3);
+        System.out.println(array.add(20)); // true
+        System.out.println(array.add(10)); // true
+        System.out.println(array.add(30)); // true
+        // 超出数组长度，false
+        System.out.println(array.add(40));
+        int[] temp = array.getData();
+        for (int x = 0; x &lt; temp.length; x++) {
+            System.out.println(temp[x]); // 10 20 30
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>总结</strong>：<br>
+子类扩充方法时，尽量根据需求覆写父类方法，而不是直接定义新方法。</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[SpringBoot小例子进阶]]></title>
       <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/SpringBoot%E5%B0%8F%E4%BE%8B%E5%AD%90%E8%BF%9B%E9%98%B6/</url>
       <content type="html"><![CDATA[<p>本部分代码是基于<code>SpringBoot基础应用</code>博文的。</p>
@@ -7877,16 +8506,16 @@ description: 描述
   
     
     <entry>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[About]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Gallery]]></title>
-      <url>/gallery/index.html</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
