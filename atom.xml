@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yov.oschina.io/"/>
-  <updated>2017-10-22T08:29:57.020Z</updated>
+  <updated>2017-10-22T12:48:32.912Z</updated>
   <id>http://yov.oschina.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用IDEA将SpringBoot打包成war</title>
+    <link href="http://yov.oschina.io/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/%E4%BD%BF%E7%94%A8IDEA%E5%B0%86SpringBoot%E6%89%93%E6%88%90war%E5%8C%85/"/>
+    <id>http://yov.oschina.io/article/框架/Spring Boot/使用IDEA将SpringBoot打成war包/</id>
+    <published>2017-10-22T12:33:06.711Z</published>
+    <updated>2017-10-22T12:48:32.912Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="修改pomxml"><a class="markdownIt-Anchor" href="#修改pomxml"></a> 修改pom.xml</h2><h3 id="将package格式改为war"><a class="markdownIt-Anchor" href="#将package格式改为war"></a> 将package格式改为war</h3><pre class="highlight"><code class="">&lt;groupId&gt;com&lt;/groupId&gt;&lt;artifactId&gt;demo&lt;/artifactId&gt;&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;&lt;packaging&gt;war&lt;/packaging&gt;</code></pre><h3 id="排除内置tomcat"><a class="markdownIt-Anchor" href="#排除内置tomcat"></a> 排除内置tomcat</h3><pre class="highlight"><code class="">&lt;dependency&gt;&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;&lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;&lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt;</code></pre><h3 id="打包过程跳过测试"><a class="markdownIt-Anchor" href="#打包过程跳过测试"></a> 打包过程跳过测试</h3><pre class="highlight"><code class="">&lt;plugin&gt;&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;&lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;&lt;configuration&gt;&lt;skip&gt;true&lt;/skip&gt;&lt;/configuration&gt;&lt;/plugin&gt;</code></pre><h2 id="打包"><a class="markdownIt-Anchor" href="#打包"></a> 打包</h2><p>打开IDE右侧边栏的<code>Maven Projects</code></p><pre class="highlight"><code class="">demo |- Lifecycle |- clean |- validate |- compile |- test |- package |- verify |- install |- site |- deploy |- Plugins |- Dependencies</code></pre><p>双击<code>package</code>即可开始打包，打包后,会在项目文件<code>target</code>中。</p><h2 id="发布war包"><a class="markdownIt-Anchor" href="#发布war包"></a> 发布war包</h2><p>删除tomcat下webapps中的文件,将文件war包文件复制放入。点击tomcat中bin文件夹下的startup.bat，此时便可进行访问localhost查看SpringBoot。</p><pre class="highlight"><code class="">  .   ____          _            __ _ _ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )  '  |____| .__|_| |_|_| |_\__, | / / / / =========|_|==============|___/=/_/_/_/ :: Spring Boot ::        (v1.5.8.RELEASE)20:45:57 CST 2017]; root of context hierarchy2017-10-22 20:46:01.008  INFO 5972 --- [ost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/hello],methods=[GET]}&quot; onto public java.lang.String com.demo.DemoApplication.hello()2017-10-22 20:46:01.016  INFO 5972 --- [ost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)2017-10-22 20:46:01.030  INFO 5972 --- [ost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView 2017-10-22 20:46:01.635  INFO 5972 --- [ost-startStop-1] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup2017-10-22 20:46:01.687  INFO 5972 --- [ost-startStop-1] com.demo.DemoApplication                 : Started DemoApplication in 5.963 seconds (JVM running for 11.781)2017-10-22 20:46:02.385  WARN 5972 --- [ost-startStop-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [682] milliseconds.application archive E:\apache-tomcat-8.0.45\webapps\ROOT.war has finished in 10,051 ms22-Oct-2017 20:46:02.430 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [&quot;http-apr-8888&quot;]22-Oct-2017 20:46:02.454 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [&quot;ajp-apr-8009&quot;]22-Oct-2017 20:46:02.468 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 10192 ms</code></pre><p>在上述信息中，告诉了我们可以访问的端口为8888.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;修改pomxml&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#修改pomxml&quot;&gt;&lt;/a&gt; 修改pom.xml&lt;/h2&gt;
+&lt;h3 id=&quot;将package格式改为war&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; hr
+      
+    
+    </summary>
+    
+      <category term="框架" scheme="http://yov.oschina.io/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="Java" scheme="http://yov.oschina.io/tags/Java/"/>
+    
+      <category term="框架" scheme="http://yov.oschina.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Java基础知识(十一)</title>
@@ -532,33 +560,6 @@
     
     
       <category term="Java基础" scheme="http://yov.oschina.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Markdown语法</title>
-    <link href="http://yov.oschina.io/article/%E8%AF%AD%E8%A8%80/Markdown%E8%AF%AD%E6%B3%95/"/>
-    <id>http://yov.oschina.io/article/语言/Markdown语法/</id>
-    <published>2017-09-23T09:19:24.606Z</published>
-    <updated>2017-09-25T08:47:54.232Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Markdown是一种轻量级的标记语言，语法简单，由一些符号组成，这些符号作用一目了然，实现易读易写的目标。Markdown兼容HTML，即你可以直接在文本中添加HTML语言，但是你不能在HTML区块标签间使用Markdown语法。</p></blockquote><h2 id="markdown语法"><a class="markdownIt-Anchor" href="#markdown语法"></a> Markdown语法</h2><h3 id="区块元素"><a class="markdownIt-Anchor" href="#区块元素"></a> 区块元素</h3><h4 id="段落与换行"><a class="markdownIt-Anchor" href="#段落与换行"></a> 段落与换行</h4><p>一个Markdown段落是由一个或多个连续的文本行组成的。在Markdown中是<strong>无法使用空格或制表符来缩进的</strong>，因为其默认一个空格就是一个空行。</p><h4 id="标题"><a class="markdownIt-Anchor" href="#标题"></a> 标题</h4><p>Markdown支持两种标题的语法，类Setext形式和类Atx形式，接下来介绍的类Atx形式：该形式是在行首插入1到6个<code>#</code>，对应1到6级标题。</p><pre><code># 这是H1## 这是H2...###### 这是H6</code></pre><h4 id="区块引用blockquotes"><a class="markdownIt-Anchor" href="#区块引用blockquotes"></a> 区块引用Blockquotes</h4><p>Markdown标记区块引用方式如下：</p><pre><code>&gt; 文本内容。&gt;&gt; 文本中也可以使用嵌套引用，只要根据层次加上不同数量的&gt;</code></pre><p>在引用的区域中，也可以使用其他的Markdown语法。</p><h4 id="列表"><a class="markdownIt-Anchor" href="#列表"></a> 列表</h4><p>Markdown支持有序列表和无序列表。无序列表使用<code>星号</code>、<code>减号</code>或<code>加号</code>作为列表标记:</p><pre><code>* red- green+ blue</code></pre><p>有序列表则使用数字接着一个英文句号：</p><pre><code>1. red2. green3. blue</code></pre><p>如果列表项目间用空行分开，在输出HTML时Markdowm就会将内容用段落标签包起来，即：</p><pre class="highlight"><code class="">* blue*red</code></pre><p>会被转换为：</p><pre class="highlight"><code class="bash">&lt;ul&gt;&lt;li&gt;&lt;p&gt;blue&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;red&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</code></pre><p>如果要在列表项目中放入引用，就需要缩进</p><pre><code>* red&gt; this is color</code></pre><p>如果要放入代码块，那就需要连续缩进两次。并且为避免行首出现数字-句号-空白，应在句号前加反斜杠。</p><h4 id="代码区域"><a class="markdownIt-Anchor" href="#代码区域"></a> 代码区域</h4><p>要在Markdown中建立代码区块很简单，只需要缩进4个空格或一个tab即可。</p><h4 id="分隔线"><a class="markdownIt-Anchor" href="#分隔线"></a> 分隔线</h4><p>你可以在一行使用三个以上的<code>星号</code>、<code>减号</code>、<code>下划线</code>来建立一个分隔线，行内不能有其他东西。你可以在星号或减号中间插入空格。</p><pre><code>星号：  * * *减号：  - - -下划线：_ _ _ </code></pre><h3 id="区段元素"><a class="markdownIt-Anchor" href="#区段元素"></a> 区段元素</h3><h4 id="链接"><a class="markdownIt-Anchor" href="#链接"></a> 链接</h4><p>Markdown支持两种形式的链接语法：行内式和参考式。建立一个行内式的链接，只要在方块括号后面紧接着圆括号插入链接即可，如果想要加上链接的title文字，只要网址后面用双引号把title文字包起来即可。</p><pre><code>[example](https://www.baidu.com &quot;Title&quot;)</code></pre><h4 id="强调"><a class="markdownIt-Anchor" href="#强调"></a> 强调</h4><p>Markdown使用星号和下划线标记强调，被<code>*</code>或<code>_</code>包围的字词会被转为用<code>&lt;em&gt;</code>标签包围，而用两个<code>*</code>或<code>_</code>包起来，则变为<code>&lt;strong&gt;</code></p><pre><code>*强调*_强调_**强调**__强调__</code></pre><p>如果只想在文字前后插入普通的星号或下划线，可以使用反斜杠：</p><pre><code>\*文字\*</code></pre><h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h4><p>如果要标记一小段行内代码，可以使用反引号把它包起来，例如：</p><pre><code>`printf()`</code></pre><p>如果要在代码中插入反引号，你可以用多个反引号开启或结束代码区段:</p><pre><code>`` (`) `` 将变为  &lt;p&gt;&lt;code&gt;(`)&lt;/code&gt;&lt;/p&gt;</code></pre><h4 id="图片"><a class="markdownIt-Anchor" href="#图片"></a> 图片</h4><p>插入图片有两种方式：行内式和参考式</p><pre><code>![替代图片的文字](/path/to/img.jpg &quot;文字&quot;)</code></pre><h2 id="结束"><a class="markdownIt-Anchor" href="#结束"></a> 结束</h2><p>感谢您的阅读，如果您有什么问题，请在下方留言，谢谢。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;Markdown是一种轻量级的标记语言，语法简单，由一些符号组成，这些符号作用一目了然，实现易读易写的目标。Markdown兼容HTML，即你可以直接在文本中添加HTML语言，但是你不能在HTML区块标签间使用Markdown语法。&lt;/p&gt;
-&lt;/b
-      
-    
-    </summary>
-    
-      <category term="语言" scheme="http://yov.oschina.io/categories/%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="Markdown" scheme="http://yov.oschina.io/tags/Markdown/"/>
     
   </entry>
   

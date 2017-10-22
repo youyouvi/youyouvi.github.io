@@ -3,6 +3,92 @@
   
     
     <entry>
+      <title><![CDATA[使用IDEA将SpringBoot打包成war]]></title>
+      <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/%E4%BD%BF%E7%94%A8IDEA%E5%B0%86SpringBoot%E6%89%93%E6%88%90war%E5%8C%85/</url>
+      <content type="html"><![CDATA[<h2 id="修改pomxml"><a class="markdownIt-Anchor" href="#修改pomxml"></a> 修改pom.xml</h2>
+<h3 id="将package格式改为war"><a class="markdownIt-Anchor" href="#将package格式改为war"></a> 将package格式改为war</h3>
+<pre class="highlight"><code class="">&lt;groupId&gt;com&lt;/groupId&gt;
+&lt;artifactId&gt;demo&lt;/artifactId&gt;
+&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+&lt;packaging&gt;war&lt;/packaging&gt;
+</code></pre>
+<h3 id="排除内置tomcat"><a class="markdownIt-Anchor" href="#排除内置tomcat"></a> 排除内置tomcat</h3>
+<pre class="highlight"><code class="">&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+	&lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="打包过程跳过测试"><a class="markdownIt-Anchor" href="#打包过程跳过测试"></a> 打包过程跳过测试</h3>
+<pre class="highlight"><code class="">&lt;plugin&gt;
+	&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+	&lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+	&lt;configuration&gt;
+		&lt;skip&gt;true&lt;/skip&gt;
+	&lt;/configuration&gt;
+&lt;/plugin&gt;
+</code></pre>
+<h2 id="打包"><a class="markdownIt-Anchor" href="#打包"></a> 打包</h2>
+<p>打开IDE右侧边栏的<code>Maven Projects</code></p>
+<pre class="highlight"><code class="">demo
+ |- Lifecycle
+	 |- clean
+	 |- validate
+	 |- compile
+	 |- test
+	 |- package
+	 |- verify
+	 |- install
+	 |- site
+	 |- deploy
+ |- Plugins
+ |- Dependencies
+</code></pre>
+<p>双击<code>package</code>即可开始打包，打包后,会在项目文件<code>target</code>中。</p>
+<h2 id="发布war包"><a class="markdownIt-Anchor" href="#发布war包"></a> 发布war包</h2>
+<p>删除tomcat下webapps中的文件,将文件war包文件复制放入。点击tomcat中bin文件夹下的startup.bat，此时便可进行访问localhost查看SpringBoot。</p>
+<pre class="highlight"><code class="">
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.8.RELEASE)
+
+20:45:57 CST 2017]; root of context hierarchy
+2017-10-22 20:46:01.008  INFO 5972 --- [ost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/hello],methods=[GET]}&quot; onto public java.lang.String com.demo.DemoApplication.hello()
+2017-10-22 20:46:01.016  INFO 5972 --- [ost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-10-22 20:46:01.030  INFO 5972 --- [ost-startStop-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView 
+2017-10-22 20:46:01.635  INFO 5972 --- [ost-startStop-1] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-10-22 20:46:01.687  INFO 5972 --- [ost-startStop-1] com.demo.DemoApplication                 : Started DemoApplication in 5.963 seconds (JVM running for 11.781)
+2017-10-22 20:46:02.385  WARN 5972 --- [ost-startStop-1] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [682] milliseconds.
+application archive E:\apache-tomcat-8.0.45\webapps\ROOT.war has finished in 10,051 ms
+22-Oct-2017 20:46:02.430 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [&quot;http-apr-8888&quot;]
+22-Oct-2017 20:46:02.454 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [&quot;ajp-apr-8009&quot;]
+22-Oct-2017 20:46:02.468 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 10192 ms
+</code></pre>
+<p>在上述信息中，告诉了我们可以访问的端口为8888.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 框架 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 框架 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础知识(十一)]]></title>
       <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E4%B8%80)/</url>
       <content type="html"><![CDATA[<h2 id="继承性"><a class="markdownIt-Anchor" href="#继承性"></a> 继承性</h2>
@@ -8506,12 +8592,6 @@ description: 描述
   
     
     <entry>
-      <title><![CDATA[Gallery]]></title>
-      <url>/gallery/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[About]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
@@ -8519,8 +8599,14 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
+      <title><![CDATA[Timeline]]></title>
+      <url>/timeline/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -8531,8 +8617,8 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Timeline]]></title>
-      <url>/timeline/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
