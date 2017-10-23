@@ -3,6 +3,240 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(十二)]]></title>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E4%BA%8C)/</url>
+      <content type="html"><![CDATA[<h2 id="辅助概念"><a class="markdownIt-Anchor" href="#辅助概念"></a> 辅助概念</h2>
+<h3 id="关键字final"><a class="markdownIt-Anchor" href="#关键字final"></a> 关键字final</h3>
+<p>Java中，<code>final</code>被称为终结器，可以用于定义类、方法、属性，具有如下特点：<br>
+1、final定义的类不能有子类</p>
+<pre class="highlight"><code class="">final class A{}
+class B extends A{} //报错，无法继承A类
+</code></pre>
+<p>开发系统类或者进行一些架构代码开发时使用到<code>final</code>定义类。<br>
+2、final定义的方法不能被方法覆写<br>
+父类中某些方法具备某种隐藏的特性，或子类必须使用该方法时，使用final定义，意思是子类不要破坏父类中该方法的结构。</p>
+<pre class="highlight"><code class="">class A{
+    public final void fun(){}
+}
+class B extends A{
+    public void fun(){} // 报错，无法覆写方法
+}
+
+</code></pre>
+<p>3、final定义的变量就成了常量。常量必须在定义时设置好值，且不能修改。</p>
+<pre class="highlight"><code class="">class A {
+    final double GOOD = 100.0;
+
+    public void fun() {
+        GOOD = 200; // 无法修改常量GOOD的值
+    }
+}
+</code></pre>
+<p>用final定义变量，就可以使用变量名来描述一些数据。开发中常量名均为大写，变量名首个单词小写，之后的单词首字母大写。<br>
+4、全局常量：public static final 声明的变量就是全局常量:</p>
+<pre class="highlight"><code class="">public static final String MSG = &quot;MLDN&quot;;
+</code></pre>
+<p>static数据存在公共数据区，因此MSG是一个公共常量。</p>
+<blockquote>
+<p>总结：<br>
+（1）final定义的类和方法不能继承，不能覆写；<br>
+（2）public static final 定义的是全局常量，常量名全部大写。</p>
+</blockquote>
+<h3 id="对象多态性"><a class="markdownIt-Anchor" href="#对象多态性"></a> 对象多态性</h3>
+<p>多态性依赖于方法覆写。</p>
+<pre class="highlight"><code class="">class A {
+    public void print() {
+        System.out.println(&quot;A中的方法&quot;);
+    }
+}
+
+class B extends A {
+    public void print() {
+        System.out.println(&quot;覆写的方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        B b = new B();
+        b.print(); // 覆写的方法
+    }
+}
+</code></pre>
+<p>1、多态性分为两种：</p>
+<pre class="highlight"><code class="">（1）方法的多态性
+	|- 方法重载：同一个方法名，根据传入的参数类型或个数的不同，执行不同方法体；
+	|- 方法覆写：同一个方法，根据对象所属的子类不同，执行不同方法体。
+（2）对象的多态性：指发生在具有继承关系的类中，父类与子类的转换。
+	|- 向上转型（自动完成）：父类 父类对象 = 子类实例化;
+	|- 向下转型（强制完成）：子类 子类对象 = （父类）父类实例化;
+</code></pre>
+<p><strong>范例</strong>：向上转型</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        A a = new B();
+        a.print(); // 覆写的方法
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：向下转型</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        B b = (B) new A(); // 向下转型
+        b.print(); // 覆写的方法
+    }
+}
+</code></pre>
+<p>2、向上转型：由于子类对象都可以自动向上转型，所以可应用于参数的统一。</p>
+<pre class="highlight"><code class="">class A {
+    public void print() {
+        System.out.println(&quot;A中的方法&quot;);
+    }
+}
+
+class B extends A {
+    public void print() {
+        System.out.println(&quot;B覆写的方法&quot;);
+    }
+}
+
+class C extends A {
+    public void print() {
+        System.out.println(&quot;C覆写的方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a1 = new B(); // 向上转型
+        A a2 = new C(); // 向上转型
+        a1.print(); // B覆写的方法
+        a2.print(); // C覆写的方法
+    }
+}
+</code></pre>
+<p>a1,a2参数统一后，还可以调用子类覆写的方法，即同一个方法针对不同子类可以有不同实现。<br>
+3、向下转型：父类发生向上转型后，不能调用子类中自定义的方法。因此当父类要调用子类自定义方法时，需要进行向下转型，将父类对象变为子类对象。</p>
+<pre class="highlight"><code class="">class A {
+}
+
+class B extends A {
+    public void fun() {
+        System.out.println(&quot;自定义方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a = new B(); // 向上转型
+        a.fun(); // 报错，无法调用B自定义方法
+    }
+}
+</code></pre>
+<p>向下转型后，可以调用子类自定义的方法：</p>
+<pre class="highlight"><code class="">class A {
+}
+
+class B extends A {
+    public void fun() {
+        System.out.println(&quot;自定义方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a = new B(); // 向上转型
+        B b = (B) a; // 向下转型
+        b.fun();
+    }
+}
+</code></pre>
+<blockquote>
+<p>问题：上述代码中不适用向下转型,直接实例化子类对象就可以直接调用fun(),为什么还要转型？<br>
+答：数据的操作分为两步：设置数据（最需要进行参数统一）和取出数据。</p>
+</blockquote>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        fun(new B()); // 向上转型
+    }
+    public static void fun(A a){ // 统一参数
+        B b = (B) a; // 向下转型
+        b.fun(); // 调用子类自定义方法
+    }
+}
+</code></pre>
+<p>5、个性化操作在开发中尽量少出现，因为对象的强制转型容易带来安全隐患。</p>
+<pre class="highlight"><code class="">class A {
+    public void print() {
+        System.out.println(&quot;A.print()&quot;);
+    }
+}
+
+class B extends A {
+    public void print() {
+        System.out.println(&quot;B.print()&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a = new A();
+        B b = (B) a;
+        b.print();
+    }
+}
+</code></pre>
+<p>上述代码会报错,<code>Exception in thread &quot;main&quot; java.lang.ClassCastException: A cannot be cast to B at ExDemo.main(ExDemo.java:15)</code>，表示类转换异常，指的是两个没有关系的类对象强制进行向下转型时发生的异常，因此向下转型存在风险。<br>
+为保证转型的安全性，Java提供关键字<code>instanceof</code>,其返回结果为boolean:<code>对象 instanceof 类</code><br>
+如果某个对象是某个类的实例，则会返回true，反之返回false。</p>
+<pre class="highlight"><code class="">class A {
+    public void print() {
+        System.out.println(&quot;A.print()&quot;);
+    }
+}
+
+class B extends A {
+    public void print() {
+        System.out.println(&quot;B.print()&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a = new B();
+        System.out.println(a instanceof A); // true
+        System.out.println(a instanceof B); // true
+        if (a instanceof B) {
+            B b = (B) a;
+            b.print(); // B.print()
+        }
+    }
+}
+</code></pre>
+<p>向下转型前应先进行对象的向上转型，建立关系后才能进行向下转型。</p>
+<blockquote>
+<p>总结：<br>
+（1）大多数情况只使用向上转型，使得参数统一，便于程序设计；子类尽量覆写方法，而不是自定义方法；<br>
+（2）极少情况使用向下转型调用子类的自定义方法，或者不转型。</p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[使用IDEA将SpringBoot打包成war]]></title>
       <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/%E4%BD%BF%E7%94%A8IDEA%E5%B0%86SpringBoot%E6%89%93%E6%88%90war%E5%8C%85/</url>
       <content type="html"><![CDATA[<h2 id="修改pomxml"><a class="markdownIt-Anchor" href="#修改pomxml"></a> 修改pom.xml</h2>
@@ -8599,14 +8833,14 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Timeline]]></title>
-      <url>/timeline/index.html</url>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Gallery]]></title>
-      <url>/gallery/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -8617,8 +8851,8 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
+      <title><![CDATA[Timeline]]></title>
+      <url>/timeline/index.html</url>
       <content type="html"></content>
     </entry>
     
