@@ -219,6 +219,244 @@ public class Demo {
 （1）大多数情况只使用向上转型，使得参数统一，便于程序设计；子类尽量覆写方法，而不是自定义方法；<br>
 （2）极少情况使用向下转型调用子类的自定义方法，或者不转型。</p>
 </blockquote>
+<h2 id="抽象类"><a class="markdownIt-Anchor" href="#抽象类"></a> 抽象类</h2>
+<h3 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h3>
+<p>1、抽象类是含有抽象方法的类。抽象方法没有方法体，必须用<code>abstract</code>定义。</p>
+<pre class="highlight"><code class="">abstract class A { // 抽象类
+    public void fun(){方法体;} // 普通方法
+    public abstract void print(); // 抽象方法
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a = new A(); // 报错，A是抽象类，无法实例化
+    }
+}
+</code></pre>
+<p>结果显示，<strong>无法直接实例化抽象类对象</strong>.普通类的对象实例化后,该对象可以调用类中的属性和方法.而抽象类中存在抽象方法,抽象方法没有方法体无法调用，因此无法产生实例化对象.<br>
+2、抽象类使用原则：</p>
+<blockquote>
+<p>（1）抽象类必须有子类；<br>
+（2）抽象类的子类（非抽象类时）必须覆写抽象类中所有的抽象方法（强制子类进行方法覆写）<br>
+（3）抽象类对象的实例化依靠子类完成，采用向上转型方式。</p>
+</blockquote>
+<p><strong>范例</strong>：使用抽象类</p>
+<pre class="highlight"><code class="">abstract class A { // 抽象类
+    public void fun() { // 普通方法
+        System.out.println(&quot;普通方法&quot;);
+    }
+
+    public abstract void print(); // 抽象方法
+}
+
+class B extends A {
+    // 强制要求对抽象方法进行覆写，否则会报错
+    public void print() {
+        System.out.println(&quot;覆写后的抽象方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a = new B(); // 向上转型
+        a.fun();
+        a.print();
+    }
+}
+</code></pre>
+<p>由上述代码，可知：</p>
+<blockquote>
+<p>（1）抽象类的子类明确要求方法覆写，而普通类没有；<br>
+（2）抽象类只比普通类多了抽象方法，其他部分相同；<br>
+（3）抽象类对象必须经过向上转型才能实例化；<br>
+（4）虽然子类可以继承任何类，但开发中，普通类最好继承抽象类。</p>
+</blockquote>
+<h3 id="使用限制"><a class="markdownIt-Anchor" href="#使用限制"></a> 使用限制</h3>
+<p>1、抽象类由于存在属性，因此会有构造方法来初始化属性。子类对象实例化时依然先执行父类构造方法，再调用子类构造方法。<br>
+2、抽象类不能使用final定义，因为抽象类必须有子类。<br>
+3、抽象外部类不允许使用<code>static</code>定义，而抽象内部类可以使用<code>static</code>声明。使用<code>static</code>定义的抽象内部类相当于抽象外部类，继承时使用<code>外部类.内部类</code>的形式表示类名。</p>
+<pre class="highlight"><code class="">abstract class A { // 抽象类
+    static abstract class B {
+        public abstract void print();
+    }
+}
+
+class X extends A.B {
+    public void print() {
+        System.out.println(&quot;*****&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A.B ab = new X(); // 向上转型
+        ab.print();
+    }
+}
+</code></pre>
+<p>4、<code>static</code>定义的方法可以没有实例化对象的情况下直接调用，即使是抽象类中的static方法。</p>
+<pre class="highlight"><code class="">abstract class A { // 抽象类
+    public static void print() {
+        System.out.println(&quot;static方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A.print(); // static方法
+        A a = new A() ; // 报错
+    }
+}
+</code></pre>
+<p>5、有时抽象类只需要一个特定的子类操作，因此可以将该子类定义为该抽象类的内部类。</p>
+<pre class="highlight"><code class="">abstract class A { // 抽象类
+    public abstract void print();
+
+    private static class B extends A { // 内部抽象类子类
+        public void print() {
+            System.out.println(&quot;Hello&quot;);
+        }
+    }
+
+    public static A getInstance() { // 获取B的实例化对象
+        return new B();
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 客户端得到抽象类对象时，B对其不可见
+        A a = A.getInstance();
+        a.print();
+    }
+}
+</code></pre>
+<p>上述设计在系统类库中较为常见，目的是：为用户隐藏不需要知道的子类。<br>
+6、观察下述代码：</p>
+<pre class="highlight"><code class="">abstract class A { // 抽象类
+    // 1. 先调用父类构造
+    public A() {
+        this.print();
+    }
+
+    public abstract void print();
+}
+
+class B extends A {
+    private int num = 100;
+    // 3.调用子类构造，并初始化num = 30.运行结束，未输出初始化后的num
+    public B(int num) {
+        this.num = num;
+    }
+    // 2. 父类构造调用子类的print，此时num = 0,打印输出。
+    public void print() {
+        System.out.println(&quot;num = &quot; + num);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        new B(30); // 4. 结果为0
+    }
+}
+</code></pre>
+<p>在构造方法执行完之前，属性的内容均为其对应的数据类型的默认值。子类在执行构造方法前必先执行父类的构造方法，因为此时子类构造方法还没执行，就调用<code>print()</code>输出了num的值，所以num为<code>0</code>.</p>
+<h3 id="模板设计模式"><a class="markdownIt-Anchor" href="#模板设计模式"></a> 模板设计模式</h3>
+<blockquote>
+<p>要求：设计三个类，通过类描述如下行为：<br>
+（1）机器人：充电、工作；<br>
+（2）人：吃饭、工作、睡觉；<br>
+（3）猪：吃饭、睡觉<br>
+<strong>思路</strong>：定义一个抽象类，具有吃饭、睡觉、工作的抽象方法。根据子类的不同，具体实现抽象方法。<br>
+<img src="/article/Java/Java Base/Java基础知识(十二)/18-2.png" alt="无法加载" title="思路图"></p>
+</blockquote>
+<pre class="highlight"><code class="">abstract class Action {
+    public static final int EAT = 1;
+    public static final int SLEEP = 5;
+    public static final int WORK = 7;
+
+    public void command(int flag) {
+        switch (flag) {
+            case EAT:
+                this.eat();
+                break;
+            case SLEEP:
+                this.sleep();
+                break;
+            case WORK:
+                this.work();
+                break;
+            case EAT + WORK:
+                this.eat();
+                this.work();
+                break;
+        }
+    }
+    // 不确定方法中的具体行为，定义为抽象类
+    public abstract void eat();
+
+    public abstract void sleep();
+
+    public abstract void work();
+}
+</code></pre>
+<p><strong>定义子类</strong>：</p>
+<pre class="highlight"><code class="">class Robot extends Action {
+    public void eat() {
+        System.out.println(&quot;机器人正在补充能量&quot;);
+    }
+
+    public void sleep() {
+    }
+
+    public void work() {
+        System.out.println(&quot;机器人正在工作&quot;);
+    }
+}
+
+class Human extends Action {
+    public void eat() {
+        System.out.println(&quot;人正在吃饭&quot;);
+    }
+
+    public void sleep() {
+        System.out.println(&quot;人正在睡觉&quot;);
+    }
+
+    public void work() {
+        System.out.println(&quot;人正在工作&quot;);
+    }
+}
+
+class Pig extends Action {
+    public void eat() {
+        System.out.println(&quot;猪正在吃饭&quot;);
+    }
+
+    public void sleep() {
+        System.out.println(&quot;猪正在睡觉&quot;);
+    }
+
+    public void work() {
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：测试程序</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        fun(new Robot());
+        fun(new Human());
+        fun(new Pig());
+    }
+
+    public static void fun(Action act) {
+        act.command(Action.EAT);
+        act.command(Action.SLEEP);
+        act.command(Action.WORK);
+    }
+}
+</code></pre>
+<p>结果显示：子类要实现操作，必须按照Action类的标准。</p>
 ]]></content>
       
         <categories>
@@ -238,7 +476,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[使用IDEA将SpringBoot打包成war]]></title>
-      <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/%E4%BD%BF%E7%94%A8IDEA%E5%B0%86SpringBoot%E6%89%93%E6%88%90war%E5%8C%85/</url>
+      <url>/article/%E6%A1%86%E6%9E%B6/Spring%20Boot/%E4%BD%BF%E7%94%A8IDEA%E5%B0%86SpringBoot%E6%89%93%E5%8C%85%E6%88%90war%E5%8C%85/</url>
       <content type="html"><![CDATA[<h2 id="修改pomxml"><a class="markdownIt-Anchor" href="#修改pomxml"></a> 修改pom.xml</h2>
 <h3 id="将package格式改为war"><a class="markdownIt-Anchor" href="#将package格式改为war"></a> 将package格式改为war</h3>
 <pre class="highlight"><code class="">&lt;groupId&gt;com&lt;/groupId&gt;
@@ -7679,7 +7917,8 @@ public class DemoApplication {
 }
 
 </code></pre>
-<p>右键<code>run</code>,然后在浏览器中输入<code>localhost:8080</code>即可访问页面,因为当前未定义页面,因此显示<code>Error Page</code></p>
+<p><code>@SpringBootApplication</code>标注它是一个SpringBoot应用,main方法使说明它是主程序,在应用启动时首先被执行。<br>
+右键<code>run</code>,然后在浏览器中输入<code>localhost:8080</code>即可访问页面,因为当前未定义页面,因此显示<code>Error Page</code></p>
 <h3 id="第一个页面"><a class="markdownIt-Anchor" href="#第一个页面"></a> 第一个页面</h3>
 <p>在<code>com.example.demo</code>文件下创建<code>HelloController.java</code></p>
 <pre class="highlight"><code class="">package com.example.demo;
@@ -7697,7 +7936,8 @@ public class HelloController {
     }
 }
 </code></pre>
-<p>右键<code>run</code>,然后在浏览器中输入<code>localhost:8080/hello</code>即可访问页面,此时可在页面看到<code>Hello World!</code></p>
+<p><code>RestController</code>注解该类是一个控制器。当用户访问指定路径时,将调用say()返回&quot;Hello World&quot;。<br>
+右键<code>run</code>,然后在浏览器中输入<code>localhost:8080/hello</code>即可访问页面,此时可在页面看到<code>Hello World!</code></p>
 <h3 id="项目属性配置"><a class="markdownIt-Anchor" href="#项目属性配置"></a> 项目属性配置</h3>
 <blockquote>
 <p>建议将项目中application.properties改为application.yml,便于配置</p>
@@ -8826,13 +9066,6 @@ description: 描述
   
     
     <entry>
-      <title><![CDATA[About]]></title>
-      <url>/about/index.html</url>
-      <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Gallery]]></title>
       <url>/gallery/index.html</url>
       <content type="html"></content>
@@ -8848,6 +9081,13 @@ description: 描述
       <title><![CDATA[Tags]]></title>
       <url>/tags/index.html</url>
       <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[About]]></title>
+      <url>/about/index.html</url>
+      <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
+]]></content>
     </entry>
     
     <entry>
