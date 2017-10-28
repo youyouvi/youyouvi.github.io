@@ -39,7 +39,7 @@
     
     <title>
         
-            分类: 容器 | 
+            Java基础知识(十三) | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog">
+    <meta name="keywords" content="Blog,Java基础">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -100,6 +100,9 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
             
         
 
@@ -230,15 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: 容器 | Ember">
+    <meta property="og:title" content="Java基础知识(十三) | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    
+    <meta property="og:article:tag" content="Java基础"> 
 
+    
+        <meta property="article:published_time" content="Sat Oct 28 2017 20:06:18 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Oct 28 2017 20:25:13 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="分类: 容器 | Ember">
+    <meta name="twitter:title" content="Java基础知识(十三) | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -246,13 +252,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/categories/容器/page/2/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(十三)/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java Base/Java基础知识(十三)/index.html",
+    "headline": "Java基础知识(十三)",
+    "datePublished": "Sat Oct 28 2017 20:06:18 GMT+0800",
+    "dateModified": "Sat Oct 28 2017 20:25:13 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "子语",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/head.jpg"
+        },
+        "description": "一切有为法,如梦幻泡影.如露亦如电,应作如是观."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ember",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/fa.png"
+        }
+    },
+    "keywords": ",Java基础Blog",
+    "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
+}
+</script>
 
 
     
@@ -286,105 +322,633 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-        
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接口"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接口的基本定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 接口的基本定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义标准"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 定义标准</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工厂设计模式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 工厂设计模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代理设计模式"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 代理设计模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接口与抽象类的区别"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> 接口与抽象类的区别</span></a></li></ol></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/article/容器/Docker/Docker的简单说明/">Docker的简单说明</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-             Docker简介...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/article/容器/Docker/Docker的简单说明/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/head.jpg" width="44px" height="44px" alt="子语's avatar">
-            </div>
-            <div>
-                <strong>子语</strong>
-                <span>2017-09-24</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/容器/">容器</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/categories/容器/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/categories/容器/">1</a><span class="page-number current">2</span>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 5; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Java基础知识(十三)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/head.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>子语</strong>
+        <span>2017 - 10 - 28</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACzElEQVR42u3aUW4bMQwFQN//0u0B0sTvkW6xlUZfRmKvNDQQhqRev65cL2xsbGxsbGxsbOxHsl/x+vqpr6//sNmXdyZPTnasz4yNjY19NPvNn/4Y1j4nOW4b6G/3wsbGxr6A/d32P7+eHWiWqGbvwcbGxsaeFR6b8uOzocHGxsbG3iSPTzWqHpq3sbGxsR/G3rT4f05CCWbzk7/eS8PGxsZ+PLvFPOH1P51vY2NjYz+Y3a5ZgNrjtiOH6OTY2NjYh7I/1QBqW/z7S0L5dR9sbGzss9ntEfMWTzsqTs6QfwHY2NjYd7LbIeumxZOnz+RaTxI4bGxs7BvY7ZB1X35s3lmnOmxsbOyj2e0Gm7Z+O0jYnA0bGxv7BvZsvNoWDFGpUAaiHjlgY2NjH8pOCo9ZoycPXD7KnTXCsLGxsW9jz4ay+afy0iJvNkVlDDY2NvbR7JbRFhuziz6zZ2JjY2Pfxm6v1OzLmH3aa4sWbGxs7LPZs4O2R9yktLa9tarAsLGxsf9D9my4m6e6TdGyDxM2Njb2Dey8fZOPb2flRJvq8rSKjY2NfTY7Lx4+VR4kV3DyplXyWWxsbOyz2fk//cnG7YWb/WghuRKKjY2NfTa7beLMrvLkwcoDVA+MsbGxsY9mt8kgOfTm0uTsqtCbXbCxsbEvYG/Kkk0g2rJnmPywsbGxj2a3Y9QZoE1ym1KnaCphY2NjH8RePXRUQrSNpHxhY2Nj38netHg2V2pe6zVsKmFjY2Mfwd4khnaQsGkS5W2saNCLjY2NfRC7TRJtCNqSZhPuN4HDxsbGPprdbjkb5c6KirbJhY2NjX0ze9isKce0s3BsGkzY2NjY2LOSI7noswlN/jVgY2NjY+dHz8cDeftpMyrGxsbGvo2db9kWKm0rf5bM3pwZGxsb+2h226xJfpuEKU9FmwYTNjY29tnsexY2NjY2NjY2Njb2Y9ZvXdN77sn7vMsAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java基础/">Java基础</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(十三)&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(十三)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(十三)/index.html&title=Java基础知识(十三)" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(十三)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(十三)/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h2>
+<h3 id="接口的基本定义"><a class="markdownIt-Anchor" href="#接口的基本定义"></a> 接口的基本定义</h3>
+<p>1、<code>接口</code>是只由抽象方法和全局变量组成的类,使用<code>interface</code>关键字定义。</p>
+<pre class="highlight"><code class="">interface A { // 定义接口
+    public static final String MSG = &quot;Hello&quot;; // 全局常量
+
+    public abstract void print(); // 抽象方法
+}
+</code></pre>
+<p>由于接口中存在抽象方法，因此接口对象不能直接实例化，其使用原则如下：</p>
+<blockquote>
+<p>（1）接口必须要有子类，子类可以使用implements关键字实现多接口；<br>
+（2）接口的子类（非抽象类时），必须对接口的抽象方法进行覆写；<br>
+（3）接口的对象可以利用子类对象通过向上转型实现实例化。</p>
+</blockquote>
+<pre class="highlight"><code class="">interface A { // 定义接口
+    public static final String MSG = &quot;Hello&quot;; // 全局常量
+
+    public abstract void print(); // 抽象方法
+}
+
+interface B {
+    public abstract void get();
+}
+
+class X implements A, B { // X 实现A和B两个接口
+    public void print() {
+        System.out.println(&quot;A.抽象方法&quot;);
+    }
+
+    public void get() {
+        System.out.println(&quot;B.抽象方法&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        X x = new X(); // 实例化子类对象
+        A a = x; // 向上转型
+        B b = x; // 向上转型
+        a.print();
+        b.get();
+    }
+}
+</code></pre>
+<p>X是A和B的子类，因此X的对象可以变为A或者B接口的对象。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        A a = new X();
+        B b = (B) a;
+        b.get(); // B.抽象方法
+        System.out.println(a instanceof A); // true
+        System.out.println(b instanceof B); // true
+    }
+}
+</code></pre>
+<p>从结构上来说，A和B接口没有直接关系，但是两个接口拥有共同的子类X，最终实例化的是X，这个子类向上转型为B类对象，因此代码可以执行。<br>
+2、子类同时继承类和接口时，语法:<code>class X extends A implements B {}</code><br>
+接口的组成只有抽象方法和全局变量，因此可以不写<code>abstract</code>和<code>public static final</code>,并且方法是否使用<code>public</code>定义都是一样的，因为接口只能使用<code>public</code>权限。</p>
+<pre class="highlight"><code class="">|interface A{ 
+    public static final String MSG = &quot;Hello&quot;; //全局常量
+	public abstract void print(); //抽象方法
+}	
+|interface A{
+    String MSG = &quot;Hello&quot;; //全局常量
+	void print(); //抽象方法
+}
+</code></pre>
+<p>上述代码是等价的。在接口中，<strong>默认访问权限为<code>public</code></strong>，而不是<code>default</code>。但开发时，定义接口中的方法时要写上public。<br>
+3、一个抽象类只能继承一个抽象类，但一个接口可以使用<code>extends</code>关键字同时继承多个接口，接口不能继承抽象类。</p>
+<pre class="highlight"><code class="">interface A {
+    public void funA();
+}
+
+interface B {
+    public void funB();
+}
+
+interface C extends A, B {
+    public void funC();
+}
+
+class X implements C {
+    public void funA() {
+    }
+
+    public void funB() {
+    }
+
+    public void funC() {
+    }
+}
+</code></pre>
+<p>从继承上来说，抽象类的限制比接口多：</p>
+<blockquote>
+<p>（1）一个抽象类只能继承一个抽象父类，而接口没有该限制；<br>
+（2）一个子类只能继承一个抽象类，但可以实现多接口。</p>
+</blockquote>
+<p>因此Java中接口的功能是<strong>解决单继承限制</strong>。<br>
+4、从概念而言，接口只能由<code>抽象方法和全局变量</code>组成。但接口中可以定义<code>普通内部类、抽象内部类、内部接口</code>。这些内部接口不受接口的概念限制。</p>
+<pre class="highlight"><code class="">interface A {
+    public void funA();
+
+    abstract class B { // 定义抽象内部类
+        public abstract void funB();
+    }
+}
+
+class X implements A { // X实现A接口
+    public void funA() {
+    }
+
+    class Y extends B { // 抽象内部类的子类
+        public void funB() {
+        }
+    }
+}
+</code></pre>
+<p>上述代码形式，几乎不会用到。<br>
+5、在接口中使用<code>static</code>定义一个内部接口，相当于外部接口。</p>
+<pre class="highlight"><code class="">interface A {
+    public void funA();
+
+    static interface B { // 相当于外部接口
+        public void funB();
+    }
+}
+
+class X implements A.B { // X实现B接口
+    public void funB() {
+    }
+}
+</code></pre>
+<blockquote>
+<p>总结：<br>
+接口在实际开发中的三大作用：<br>
+（1）定义不同层之间的操作标准；<br>
+（2）表示一种操作的能力；<br>
+（3）表示将服务器端的远程方法视图暴露给客户端。</p>
+</blockquote>
+<h3 id="定义标准"><a class="markdownIt-Anchor" href="#定义标准"></a> 定义标准</h3>
+<p><img src="/article/Java/Java Base/Java基础知识(十三)/19-1.png" alt="无法加载" title="定义标准"><br>
+根据上图编写代码：电脑利用USB接口标准和其他设备关联。<br>
+<strong>范例</strong>：定义USB标准</p>
+<pre class="highlight"><code class="">// 标准可以连接不同层的操作类
+interface USB { // 接口就是标准
+    public void start();
+    public void stop();
+}
+</code></pre>
+<p><strong>范例</strong>：定义电脑</p>
+<pre class="highlight"><code class="">class Computer{
+    public void plugin(USB usb){ // 插入USB设备
+        usb.start();
+        usb.stop();
+    }
+}
+</code></pre>
+<p>不论是什么设备，只要实现了USB标准，就可以在电脑上使用。<br>
+<strong>范例</strong>：定义U盘</p>
+<pre class="highlight"><code class="">class Flash implements USB {
+    public void start() {
+        System.out.println(&quot;U盘开始使用&quot;);
+    }
+
+    public void stop() {
+        System.out.println(&quot;U盘停止使用&quot;);
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：定义打印机</p>
+<pre class="highlight"><code class="">class Print implements USB {
+    public void start() {
+        System.out.println(&quot;打印机开始使用&quot;);
+    }
+
+    public void stop() {
+        System.out.println(&quot;打印机停止使用&quot;);
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：测试</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Computer com = new Computer();
+        com.plugin(new Flash());
+        com.plugin(new Print());
+    }
+}
+</code></pre>
+<p>Java中，<strong>标准就是被定义为接口</strong>。</p>
+<h3 id="工厂设计模式"><a class="markdownIt-Anchor" href="#工厂设计模式"></a> 工厂设计模式</h3>
+<pre class="highlight"><code class="">interface Fruit {
+    public void eat();
+}
+
+class Apple implements Fruit {
+    public void eat() {
+        System.out.println(&quot;吃苹果&quot;);
+    }
+}
+</code></pre>
+<p>上述代码通过主方法可以取得Fruit对象，但存在如下问题：</p>
+<blockquote>
+<p>附：要确定代码是否合理，标准如下：<br>
+（1）客户端调用简单，不用关注具体实现；<br>
+（2）客户端之外的代码修改，不影响用户的使用，即用户不用关注代码的变更。</p>
+</blockquote>
+<p>由上述标准可知该程序的问题是一个接口不一定只有子类，现在添加一个Fruit子类：</p>
+<pre class="highlight"><code class="">class Orange implements Fruit {
+    public void eat() {
+        System.out.println(&quot;吃橘子&quot;);
+    }
+}
+</code></pre>
+<p>客户端要使用这个新子类，需要修改代码：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Fruit f = new Orange ();
+        f.eat(); // 吃橘子
+    }
+}
+</code></pre>
+<p>在上述代码，我们最关注的是如何获得Fruit对象,之后进行方法调用。至于该对象是怎么实例的,不是客户端的工作。<br>
+1、上述程序中，客户端每次更换对象，就需要修改主方法的代码，这不符合标准。该问题的关键在于<code>new</code>的使用，这种问题是因为<code>耦合度太高（两者联系程度太高）</code>。<strong>耦合度太高，代码不便于维护</strong>。</p>
+<blockquote>
+<p>解决思路：参考Java虚拟机的设定-程序→JVM→适应不同的操作系统。</p>
+</blockquote>
+<p><strong>范例</strong>：增加一个过渡</p>
+<pre class="highlight"><code class="">class Factory { // 工厂设计模式
+    public static Fruit getInstance(String className) {
+        if (&quot;apple&quot;.equals(className)) {
+            return new Apple();
+        } else if (&quot;orange&quot;.equals(className)) {
+            return new Orange();
+        } else {
+            return null;
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Fruit f = Factory.getInstance(&quot;apple&quot;);
+        f.eat(); // 吃苹果
+    }
+}
+</code></pre>
+<p>此时，所有子类对于客户端是不可见的，因为Fruit对象的实例化是通过Factory对象获取的，日后扩充Fruit子类时，只需修改Factory即可，不用修改客户端代码。<br>
+<img src="/article/Java/Java Base/Java基础知识(十三)/19-2.png" alt="无法加载" title="工厂设计模式"><br>
+上图描述的是工厂设计模式，客户端可见的只有接口和Factory。</p>
+<h3 id="代理设计模式"><a class="markdownIt-Anchor" href="#代理设计模式"></a> 代理设计模式</h3>
+<p><img src="/article/Java/Java Base/Java基础知识(十三)/19-3.png" alt="无法加载" title="代理设计模式"><br>
+代理设计模式的核心在于有一个主题操作接口（可能有很多接口），核心操作类只完成核心功能，而代理主题负责完成所有与核心操作有关的辅助性操作。<br>
+1、以<code>去餐馆吃饭为例</code>,外人只看到吃饭,看不到厨师和顾客。皇帝完成核心业务,厨师完成辅助业务。<br>
+<img src="/article/Java/Java Base/Java基础知识(十三)/19-4.png" alt="无法加载" title="去餐馆吃饭"></p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+interface Subject {  // 核心业务
+    public void eat();
+}
+
+class RealSubject implements Subject {   // 实际进行核心业务的对象
+    public void eat() {
+        System.out.println(&quot;顾客在吃饭&quot;);
+    }
+}
+
+class ProxySubject implements Subject {  // 执行代理操作的对象
+    private Subject subject;  // 接收进行核心业务的对象
+
+    public ProxySubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public void prepared() {
+        System.out.println(&quot;为吃做准备&quot;);
+    }
+
+    public void eat() {
+        this.prepared();
+        this.subject.eat();
+        this.destory();
+    }
+
+    public void destory() {
+        System.out.println(&quot;为吃收尾&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Subject sub = new ProxySubject(new RealSubject());
+        sub.eat();  // 调用代理操作
+    }
+}
+</code></pre>
+<h3 id="接口与抽象类的区别"><a class="markdownIt-Anchor" href="#接口与抽象类的区别"></a> 接口与抽象类的区别</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">No.</th>
+<th style="text-align:center">区别</th>
+<th>抽象类</th>
+<th>接口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">关键字</td>
+<td>abstract class</td>
+<td>interface</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">组成</td>
+<td>构造方法、普通方法、抽象方法、static方法、变量、常量</td>
+<td>抽象方法，全局常量</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">子类使用</td>
+<td>class 子类 extends 抽象类</td>
+<td>class 子类implements 接口,接口…</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">关系</td>
+<td>抽象类可以实现多接口</td>
+<td>接口不能继承抽象类，却可以继承多个接口</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">权限</td>
+<td>可以使用任意权限</td>
+<td>只能使用public权限</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">限制</td>
+<td>单继承局限</td>
+<td>没有单继承局限</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">子类</td>
+<td>抽象类和接口都必须有子类，子类必须要覆写全部抽象方法</td>
+<td>抽象类和接口都必须有子类，子类必须要覆写全部抽象方法</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">实例化对象</td>
+<td>依靠子类对象的向上转型进行对象的实例化</td>
+<td>依靠子类对象的向上转型进行对象的实例化</td>
+</tr>
+</tbody>
+</table>
+<p>经过比较发现，抽象类存在单继承限制，因此当抽象类和接口都可以使用时，优先考虑接口。</p>
+<blockquote>
+<p>（1）当进行公共操作时，要定义接口；<br>
+（2）有了接口就需要使用子类完善方法<br>
+（3）自定义的接口，不能直接实例化接口子类，应使用工厂设计模式。</p>
+</blockquote>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(十三)/">http://yov.oschina.io/article/Java/Java Base/Java基础知识(十三)/</a>
+                    </p>
+                </blockquote>
+        
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'youyouvi',
+        repo: 'youyouvi.github.io',
+        oauth: {
+            client_id: 'fdcff2e0ff2fdfecce93',
+            client_secret: 'c0cf25fd016b2c8831a622a292a3692daa54c73a',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/article/Java/Java Base/Java基础知识(十二)/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -768,6 +1332,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
     
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
 
 
 
@@ -780,6 +1348,11 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
         
     
     
