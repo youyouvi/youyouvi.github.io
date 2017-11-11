@@ -3,6 +3,451 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(十四)]]></title>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E5%9B%9B)/</url>
+      <content type="html"><![CDATA[<h2 id="object类"><a class="markdownIt-Anchor" href="#object类"></a> Object类</h2>
+<p>Object类用于统一对象、数组和接口。</p>
+<h3 id="object类基本描述"><a class="markdownIt-Anchor" href="#object类基本描述"></a> Object类基本描述</h3>
+<p>1、<code>Object</code>类是所有类的父类，即任何一个类在没有定义继承某个类时，Object类就是其父类。</p>
+<pre class="highlight"><code class="">class Book{}	
+class Book extends Object{}
+</code></pre>
+<p>上述两个类声明是等价的，Object类是唯一没有父类的类。Object类是所有类的父类，因此可以利用Object类通过向上转型，接收所有类型的对象。</p>
+<pre class="highlight"><code class="">class Book extends Object {
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Object objA = new Book(); // 向上转型
+        Object objB = &quot;Hello&quot;; // 向上转型
+        Book b = (Book) objA; // 向下转型
+        String s = (String) objB; // 向下转型
+    }
+}
+</code></pre>
+<p>因此在不确定参数类型时，使用Object类型是最好的选择。<br>
+2、Object类中定义了一个无参构造方法，因为其是所有类的父类，所以实例化子类对象时必然会调用父类的无参构造方法。</p>
+<blockquote>
+<p>一般而言，定义简单Java类时应覆写Object类中的如下方法：<br>
+· 取得对象信息：public String toString();<br>
+· 对象比较：public boolean equals(Object obj);<br>
+· 取得对象HASH码：public int hashCode();</p>
+</blockquote>
+<h3 id="tostring"><a class="markdownIt-Anchor" href="#tostring"></a> toString()</h3>
+<pre class="highlight"><code class="">class Book extends Object {
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book b = new Book();
+        String s = &quot;Hello&quot;;
+        System.out.println(b); // Book@1540e19d
+        System.out.println(b.toString()); // Book@1540e19d
+        System.out.println(s); // Hello
+    }
+}
+</code></pre>
+<p>上述代码中直接输出实例对象和使用toString()输出的结果是一样。因为输出对象时，会自动调用toString()将对象变为字符串后输出。Object类中的<code>toString()</code>为了适应对象的输出，仅输出对象的编码。<br>
+但是这和我们的想法不符，我们想输出的应该是实例化对象的属性信息，因此要覆写toString()。<br>
+<strong>范例</strong>：覆写toString()</p>
+<pre class="highlight"><code class="">class Book extends Object {
+    private String title;
+    private double price;
+
+    // getter,setter,无参构造方法暂时略
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public String toString() {
+        return &quot;书名：&quot; + this.title + &quot;,价格：&quot; + this.price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book b = new Book(&quot;Java开发&quot;, 20.3);
+        System.out.println(b); // 书名：Java开发,价格：20.3
+    }
+}
+</code></pre>
+<p>此时直接输出对象，调用的就是覆写后的方法。</p>
+<h3 id="equals"><a class="markdownIt-Anchor" href="#equals"></a> equals()</h3>
+<p><strong>范例</strong>：对象比较</p>
+<pre class="highlight"><code class="">class Book extends Object {
+    private String title;
+    private double price;
+
+    // getter,setter,无参构造方法暂时略
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public String toString() {
+        return &quot;书名：&quot; + this.title + &quot;,价格：&quot; + this.price;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) { // 地址相同
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Book)) { // 不是Book类对象
+            return false;
+        }
+        Book book = (Book) obj;
+        if (this.title.equals(book.title)
+                &amp;&amp; this.price == book.price) {
+            return true;
+        }
+        return false;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bA = new Book(&quot;Java开发&quot;, 20.3);
+        Book bB = new Book(&quot;Java开发&quot;, 20.3);
+        System.out.println(bA.equals(bB)); // true
+        System.out.println(bA.equals(&quot;Hello&quot;)); // false
+    }
+}
+</code></pre>
+<p>覆写后的equals()用于进行对象比较。</p>
+<h3 id="object接收引用类型"><a class="markdownIt-Anchor" href="#object接收引用类型"></a> Object接收引用类型</h3>
+<p>1、Object类是所有类的父类，因此Object类对象可以接收所有类型的对象，包括数组和接口对象。<br>
+<strong>范例</strong>：接收数组数据</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Object obj = new int[]{1, 2, 3};
+        System.out.println(obj); // [I@1540e19d表示数组
+        if (obj instanceof int[]) { // 如果是数组，则输出
+            int data[] = (int[]) obj; // 向下转型
+            for (int x = 0; x &lt; data.length; x++) {
+                System.out.println(data[x]);
+            }
+        }
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：接收接口对象</p>
+<pre class="highlight"><code class="">interface A {
+    public void fun();
+}
+
+class B implements A {
+    public void fun() {
+        System.out.println(&quot;Hello&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        A a = new B();
+        Object obj = a;
+        A t = (A) obj;
+        t.fun(); // Hello
+    }
+}
+</code></pre>
+<p>上述代码把参数类型统一为<code>Object</code>，有利于开发。</p>
+<h3 id="object修改链表"><a class="markdownIt-Anchor" href="#object修改链表"></a> Object修改链表</h3>
+<p>此时我们可以利用Object类的特点解决之前开发的链表存在的问题：<strong>由于参数类型不统一，每次使用都要进行重新开发</strong>。<br>
+<strong>范例</strong>：修改链表</p>
+<pre class="highlight"><code class="">class Link { // 链表类，外部可见
+    private class Node { // 节点类
+        private Object data; // 保存数据
+        private Node next; // 引用关系
+
+        public Node(Object data) { // 有数据才有Node
+            this.data = data;
+        }
+
+        // 设置关系
+        public void addNode(Node newNode) {
+            if (this.next == null) {
+                this.next = newNode;
+            } else {
+                this.next.addNode(newNode);
+            }
+        }
+
+        // 数据查询
+        public boolean containsNode(Object data) {
+            if (data.equals(this.data)) { // 当前数据等于要目标数据
+                return true; // 结束查询
+            } else { // 当前数据不等于目标数据
+                if (this.next != null) { // 有后续节点
+                    return this.next.containsNode(data);
+                } else { // 没有后续节点
+                    return false;
+                }
+            }
+        }
+
+
+        public Object getNode(int index) {
+            // 当前foot内容与要查询的索引比较
+            // foot自增，目的是下次查询方便
+            if (Link.this.foot++ == index) {
+                return this.data;
+            } else {
+                return this.next.getNode(index);
+            }
+        }
+
+        // 修改节点信息
+        public void setNode(int index, Object data) {
+            if (Link.this.foot++ == index) {
+                this.data = data;
+            } else {
+                this.next.setNode(index, data);
+            }
+        }
+
+        // 删除非根节点
+        public void removeNode(Node previous, Object data) {
+            // 参数中传递上一个节点和要删除的数据
+            if (data.equals(this.data)) {
+                previous.next = this.next;
+            } else {
+                this.next.removeNode(this, data);
+            }
+        }
+
+
+        public void toArrayNode() {
+            Link.this.retArray[Link.this.foot++] = this.data;
+            if (this.next != null) {
+                this.next.toArrayNode();
+            }
+        }
+    }
+
+
+    // ====================以上为内部类=====================
+    private Node root; // 根节点
+    private int count = 0; // 节点的个数
+    private int foot = 0; // 索引
+    private Object[] retArray; // 返回的数组
+
+    public void add(Object data) {
+        if (data == null) { // 输入数据为空
+            return;
+        }
+        Node newNode = new Node(data); // 要保存的数据
+        if (this.root == null) { // 根节点不存在
+            this.root = newNode; // 设为根节点
+        } else { //  根节点存在，交由Node处理
+            this.root.addNode(newNode);
+        }
+        this.count++; // 每次增加节点，count+1
+    }
+
+
+    // 获取链表长度
+    public int size() {
+        return this.count;
+    }
+
+    // 判断是否为空链表
+    public boolean isEmpty() {
+        return this.count == 0;
+    }
+
+
+    // 判断数据是否存在
+    public boolean contains(Object data) {
+        if (data == null || root == null) {
+            return false;
+        }
+        return this.root.containsNode(data);
+    }
+
+    // 根据索引获取信息
+    public Object get(int index) {
+        if (index &gt; this.count) { // 超出查询范围
+            return null;
+        }
+        this.foot = 0;
+        return this.root.getNode(index); // 查询交给Node类
+    }
+
+
+    // 设置信息
+    public void set(int index, Object data) {
+        if (index &gt; this.count) {
+            return;
+        }
+        this.foot = 0; // 重置foot,作为索引
+        this.root.setNode(index, data); // Node进行修改数据
+    }
+
+    // 判断删除节点是否为root
+    public void remove(Object data) {
+        if (this.contains(data)) { // 判断数据是否存在
+            if (data.equals(this.root.data)) { // 判断数据是否是root数据
+                this.root = this.root.next;
+            } else {
+                // root是Node对象，此处直接访问内部类私有操作
+                this.root.next.removeNode(this.root, data);
+            }
+            this.count--; // 删除后数据个数减少
+        }
+    }
+
+    public Object[] toArray() {
+        if (this.root == null) {
+            return null;
+        }
+        this.foot = 0; // 需要脚标控制
+        this.retArray = new Object[this.count]; // 根据保存内容开辟数组
+        this.root.toArrayNode();
+        return this.retArray;
+    }
+}
+</code></pre>
+<p><strong>范例</strong>: 测试程序</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Link all = new Link();
+        all.add(&quot;A&quot;);
+        all.add(&quot;B&quot;);
+        all.add(&quot;C&quot;);
+        System.out.println(all.size());
+        all.remove(&quot;B&quot;);
+        Object[] data = all.toArray();
+        for (int x = 0; x &lt; data.length; x++) {
+            String str = (String) data[x];
+            System.out.println(str);
+        }
+    }
+}
+</code></pre>
+<h3 id="综合实战-宠物商店"><a class="markdownIt-Anchor" href="#综合实战-宠物商店"></a> 综合实战: 宠物商店</h3>
+<p><strong>要求</strong>: 以程序结构为主,实现一个宠物商店的模型,具有保存多个宠物的信息(名字,年龄),宠物上架、下架、模糊查询功能。<br>
+<strong>思路图</strong>：<br>
+<img src="/article/Java/Java Base/Java基础知识(十四)/20-1.png" alt="无法加载" title="思路图"><br>
+宠物商店的商品（宠物）要符合宠物这一标准（接口），宠物商店借助链表实现上架、下架和模糊查询功能。<br>
+<strong>范例</strong>：定义宠物的标准</p>
+<pre class="highlight"><code class="">interface Pet { // 定义宠物的标准
+    public String getName();
+
+    public int getAge();
+}
+</code></pre>
+<p>宠物商店与具体的宠物无关，只和宠物这一接口有联系。<br>
+<strong>范例</strong>：定义宠物商店</p>
+<pre class="highlight"><code class="">class PetShop {
+    private Link pets = new Link(); // 要保存的宠物信息
+
+    public void add(Pet pet) { // 上架
+        this.pets.add(pet);
+    }
+
+    public void delete(Pet pet) { // 下架
+        this.pets.remove(pet);
+    }
+
+    public Link search(String keyWord) { // 模糊查询，返回的内容个数不明
+        Link result = new Link();
+        // 将集合以数组的形式返回，
+        // 真正要查询的数据是Pet接口对象的getName()的返回值
+        Object obj[] = this.pets.toArray();
+        for (int x = 0; x &lt; obj.length; x++) {
+            Pet p = (Pet) obj[x];
+            if (p.getName().contains(keyWord)) {
+                result.add(p);
+            }
+        }
+        return result;
+    }
+}
+</code></pre>
+<p><strong>范例</strong>： 定义猫类</p>
+<pre class="highlight"><code class="">class Cat implements Pet {
+    private String name;
+    private int age;
+
+    public Cat(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Cat)) {
+            return false;
+        }
+        Cat cat = (Cat) obj;
+        if (this.name.equals(cat.name)
+                &amp;&amp; this.age == cat.age) {
+            return true;
+        }
+        return false;
+    }
+
+    public String toString() {
+        return &quot;猫名：&quot; + this.name + &quot;, 年龄&quot; + this.age;
+    }
+}
+</code></pre>
+<p>可参照上述结构，定义一个狗类。<br>
+<strong>范例</strong>：测试</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        PetShop shop = new PetShop();
+        shop.add(new Cat(&quot;阿猫&quot;, 9));
+        shop.add(new Cat(&quot;猫咪&quot;, 19));
+        shop.add(new Dog(&quot;阿狗&quot;, 10));
+        shop.add(new Dog(&quot;狗子&quot;, 8));
+        // 模糊查询
+        Link all = shop.search(&quot;阿&quot;);
+        Object obj[] = all.toArray();
+        for (int x = 0; x &lt; obj.length; x++) {
+            System.out.println(obj[x]);
+        }
+        shop.delete(new Dog(&quot;狗子&quot;, 8));
+    }
+}
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础知识(十三)]]></title>
       <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E4%B8%89)/</url>
       <content type="html"><![CDATA[<h2 id="接口"><a class="markdownIt-Anchor" href="#接口"></a> 接口</h2>
@@ -9450,6 +9895,12 @@ description: 描述
   
     
     <entry>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[About]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
@@ -9459,12 +9910,6 @@ description: 描述
     <entry>
       <title><![CDATA[Gallery]]></title>
       <url>/gallery/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     

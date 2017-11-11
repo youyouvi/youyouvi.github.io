@@ -39,7 +39,7 @@
     
     <title>
         
-            Java基础知识(七) | 
+            Java基础知识(十四) | 
         
         Ember
     </title>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Java基础知识(七) | Ember">
+    <meta property="og:title" content="Java基础知识(十四) | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta property="og:article:tag" content="Java基础"> 
 
     
-        <meta property="article:published_time" content="Sat Oct 14 2017 10:00:14 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Oct 21 2017 13:58:03 GMT+0800" />
+        <meta property="article:published_time" content="Sat Nov 11 2017 18:24:38 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Nov 11 2017 18:43:19 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Java基础知识(七) | Ember">
+    <meta name="twitter:title" content="Java基础知识(十四) | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(七)/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(十四)/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java Base/Java基础知识(七)/index.html",
-    "headline": "Java基础知识(七)",
-    "datePublished": "Sat Oct 14 2017 10:00:14 GMT+0800",
-    "dateModified": "Sat Oct 21 2017 13:58:03 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java Base/Java基础知识(十四)/index.html",
+    "headline": "Java基础知识(十四)",
+    "datePublished": "Sat Nov 11 2017 18:24:38 GMT+0800",
+    "dateModified": "Sat Nov 11 2017 18:43:19 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用传递分析实例"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 引用传递分析实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用传递"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 引用传递</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用传递实例"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 引用传递实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据表与简单java类映射"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 数据表与简单Java类映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一对多映射"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 一对多映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#双向一对多映射"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> 双向一对多映射</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多对多映射"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"> 多对多映射</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#object类"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Object类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#object类基本描述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> Object类基本描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tostring"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> toString()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#equals"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> equals()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#object接收引用类型"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> Object接收引用类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#object修改链表"><span class="post-toc-number">1.5.</span> <span class="post-toc-text"> Object修改链表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#综合实战-宠物商店"><span class="post-toc-number">1.6.</span> <span class="post-toc-text"> 综合实战: 宠物商店</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Java基础知识(七)
+                Java基础知识(十四)
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 10 - 14</span>
+        <span>2017 - 11 - 11</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC00lEQVR42u3aQU7DQAwF0N7/0rBFQk2/7QSSmTcrFFWpn5Ewtuf1teV5YWNjY2NjY2NjY9+S/YrPz8+/ffWbT/5+z/Hz4++qxoyNjY29A/vDn/5D9nHoySeP31lN/dt3YmNjY2/ATr6mWqKq5ec4kl7M2NjY2NhJgamWojy5ebqxsbGxsfOAknbirCKHjY2NjX3uUCkJLk9K0ngk5e3yWRo2Njb27dnzhuHvf/63/TY2Njb2zdi9k5eu3hWcvFAVYsbGxsZelN0b6CcXd65LTXUoho2Njb02OwH3BvR5iaqe3sgJGxsbewf2fMw0b2aOy2r+pDxUwsbGxl6InbcNVzCql4FOXg9gY2NjP5yd/KOfNC15OqoFrzrAwsbGxt6HnQeXNwD5UmGS3LzQYmNjY6/Knqxmk1B66975Jwv7bWxsbOyHs3sNQLW09NbGOf60WRo2Njb2A9l5eUhCPA4lDzp5Q3khgY2Njb00u4rPU5Aw8mFWvgaOhkrY2NjYS7CrK9UJIB8zJaWxmg5sbGzsVdmTcU+vpUlajrNWFNjY2Ni7sedjnd5QKWl4er8MbGxs7H3YhXVp0IQkBWzyPEkHNjY29p7syYin2k5UL/QkT8qtCDY2NvbS7PzrJ41EVHhaV3aaBQwbGxv7gezekqC6Bs5D7BW5KE3Y2NjYi7KrJSof6OfFKWd/DQ42Njb22uz5GjWB9YZHeSQfFhvY2NjYS7Mni9XeOiEfY+WNBzY2NjZ2tRk46+JObyV8+VYEGxsb+yHsXmtx1kWfKjsph9jY2Ni7sV/xmTQSvcZjvmzGxsbG3oc9H/FXm5ZqUayOqLCxsbH3ZCdFKw+luh6uXuJMEo2NjY2NnTQYvWs3VWRvpIWNjY2NnZeWahmrprjarmBjY2Pvyc6bhDkvb0V6bQk2Njb2buzqoveKKzuF8VDvCTY2Nvai7H0ONjY2NjY2NjY29m3ONw8daDrnNzDyAAAAAElFTkSuQmCC">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0ElEQVR42u3ay04DMQwF0P7/T8MWqWJ6bQ9Q4jMr1EeakwVWrv34WPk8sLGxsbGxsbGxsd+S/Yif689/ffd6/ed3nz/53Wq9PWNjY2NvYL/413+53fyV6/WvjyY5jhf7wcbGxl7ATspS/pPXmGtSUhTzPWNjY2Nj5+WqWn6q1wlsbGxs7N9nJ5eTyevY2NjY2NWAJgri46tLHjzdEIRhY2NjH82uNnrf4e8/6G9jY2NjvyW79yQDPcl3J63c8p6xsbGxD2VXhx2rmB472Vv589jY2Nhr2NWhnCjQiUP8/BKSXEuwsbGxN7CrbYCkyZoXsPyg5y0EbGxs7FPZd229V9jyK0dvTBMbGxt7A3vSUq0Wv2rJya9M5eFLbGxs7EPZ+UbnV5T8W9VBImxsbOxt7ByZfCtnJAc0v6hgY2Nj72Enl4H5ofRWyA/3RXSFjY2NfSg72dDkMpAPTfai/8LYEDY2NvZKdh4GTaL8atnrXWywsbGxz2ZXR22SqCg5gt5lprkmNjY29tHsXhnrRUJ5mJWPeDaHL7GxsbEPYldLTh7oVMOmu0Y/sbGxsbexe+Wn1yTIy1I1lhpdRbCxsbGPYE9GZKot4SQGStoPhQsSNjY29mJ21EaNG7R3jVpWG8bY2NjYp7Ino5D54M4kkMqvPdjY2Ng72XkBS3j5CpOhnOoK2NjY2Geze82Aajs2b9nOCx42Njb2NnayRO+He5/Mw6nyt7CxsbEPZY8C98GgZLWtO18fGxsb+1R29ZmUq+SValCVh03Y2NjYp7J7o5NJLFUl3Xso2NjY2NvYd0Xz1UZvtf0wCZiwsbGxN7CrRStvCVdHJ+cltlDAsLGxsdezJ3F/NZBKVvulAoaNjY39b9m9Q0lCqHlruRkqYWNjYx/EroZKeVSUl5xqIzkph9jY2Ngb2PPI5udaC7e9go2NjX0oe8+DjY2NjY2NjY2N/TbPJ4L7fU9b6RpxAAAAAElFTkSuQmCC">
     
 </ul>
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(七)&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(七)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java基础知识(十四)&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(十四)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(七)/index.html&title=Java基础知识(七)" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(十四)/index.html&title=Java基础知识(十四)" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(七)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(七)/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java基础知识(十四)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Java/Java Base/Java基础知识(十四)/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,850 +510,428 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="引用传递分析实例"><a class="markdownIt-Anchor" href="#引用传递分析实例"></a> 引用传递分析实例</h2>
-<h3 id="引用传递"><a class="markdownIt-Anchor" href="#引用传递"></a> 引用传递</h3>
-<p>1.引用传递核心意义：同一块堆内存可以被不同栈内存所指向，不同栈内存可以对同一块堆内存进行修改。<br>
-<strong>范例</strong>：引用传递</p>
-<pre class="highlight"><code class="">public class Message {
-    private int num = 10;
-
-    public Message(int num) {
-        this.num = num;
-    }
-
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
-}
-
-public class TMessage {
-    public static void main(String[] args) {
-        Message msg = new Message(30);
-        System.out.println(msg.getNum()); // 30
-        fun(msg); // 引用传递
-        System.out.println(msg.getNum()); // 100
-    }
-
-    public static void fun(Message temp) {
-        temp.setNum(100);
-    }
-}
+        <h2 id="object类"><a class="markdownIt-Anchor" href="#object类"></a> Object类</h2>
+<p>Object类用于统一对象、数组和接口。</p>
+<h3 id="object类基本描述"><a class="markdownIt-Anchor" href="#object类基本描述"></a> Object类基本描述</h3>
+<p>1、<code>Object</code>类是所有类的父类，即任何一个类在没有定义继承某个类时，Object类就是其父类。</p>
+<pre class="highlight"><code class="">class Book{}	
+class Book extends Object{}
 </code></pre>
-<p>对上述代码进行内存分析：<br>
-<img src="/article/Java/Java Base/Java基础知识(七)/10-1.png" alt="无法加载" title="内存分析"><br>
-2.引用</p>
-<pre class="highlight"><code class="">public class Demo {
-    public static void main(String[] args) {
-        String msg  = &quot;Hello&quot;;
-        fun(msg);
-        System.out.println(msg); // Hello
-    }
-    public static void fun(String temp) {
-        temp = &quot;World&quot;;
-    }
-}
-</code></pre>
-<p>出现上述结果原因：String对象的内容一旦声明不可改变，对象内容的改变依靠的是引用地址的改变。内存分析如下：<br>
-<img src="/article/Java/Java Base/Java基础知识(七)/10-2.png" alt="无法加载" title="内存分析"><br>
-3.引用传递</p>
-<pre class="highlight"><code class="">public class Message {
-    private String info = &quot;nihao&quot;;
-
-    public Message(String info) {
-        this.info = info;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-}
-
-public class TMessage {
-    public static void main(String[] args) {
-        Message msg = new Message(&quot;Hello&quot;);
-        System.out.println(msg.getInfo()); // Hello
-        fun(msg);
-        System.out.println(msg.getInfo()); // World
-    }
-
-    public static void fun(Message temp) {
-        temp.setInfo(&quot;World&quot;);
-    }
-}
-</code></pre>
-<p>内存分析如下：<br>
-<img src="/article/Java/Java Base/Java基础知识(七)/10-3.png" alt="无法加载" title="内存分析"><br>
-<strong>上述内存分析，是按照int型数据的特点进行的。实</strong>际info是String对象，应该按照如下方式进行分析：<br>
-<img src="/article/Java/Java Base/Java基础知识(七)/10-4.png" alt="无法加载" title="内存分析"><br>
-<strong>结论</strong>：虽然<code>String</code>是一个类，属于引用数据类型，但由于其内容不可改的特点，我们常将其当作基本数据类型。即每个String变量只能保存一个数据。</p>
-<h3 id="引用传递实例"><a class="markdownIt-Anchor" href="#引用传递实例"></a> 引用传递实例</h3>
-<blockquote>
-<p>要求：通过面向对象的方式描述每个人有车或没车。</p>
-</blockquote>
-<p><strong>实现步骤</strong>：<br>
-1.创建数据库：应设计两张表:<code>汽车表</code>和<code>人员表</code>;<br>
-2.根据数据表，定义两个类：</p>
-<blockquote>
-<p>（编写简单java类时，可按照数据表的设计来写，规则如下：<br>
-类名 = 表名；<br>
-属性名(类型) = 表字段(类型);<br>
-一个实例化对象 = 一行记录；<br>
-多个实例化对象 = 多行记录<br>
-引用关系 = 外键描述）</p>
-</blockquote>
-<pre class="highlight"><code class="">public class Member {
-    private int mId;
-    private String name;
-}
-
-public class Car {
-    private String pName;
-}
-</code></pre>
-<p>3.利用<code>引用</code>来描述两个类的外键，从而使得两个类有联系</p>
-<pre class="highlight"><code class="">public class Member {
-    private int mId;
-    private String name;
-    // 有Car类实例化对象表示有车
-    // Car为null表示没车
-    private Car car;
-
-    public Member(int mId, String name) {
-        this.mId = mId;
-        this.name = name;
-    }
-
-    public String getInfo() {
-        return &quot;人员编号：&quot; + this.mId + &quot;,姓名：&quot; + this.name;
-    }
-}
-
-public class Car {
-    private Member member; // 车属于一个人
-    private String pName;
-
-    public Car(String pName) {
-        this.pName = pName;
-    }
-
-    public String getInfo() {
-        return &quot;车名：&quot; + this.pName;
-    }
-}
-</code></pre>
-<p>4.当两个类的对象产生，为这两个对象设置彼此的关系：</p>
-<pre class="highlight"><code class="">public class Member {
-    private int mId;
-    private String name;
-    // 有Car类实例化对象表示有车
-    // Car为null表示没车
-    private Car car;
-
-    public Member(int mId, String name) {
-        this.mId = mId;
-        this.name = name;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
-    public String getInfo() {
-        return &quot;人员编号：&quot; + this.mId + &quot;,姓名：&quot; + this.name;
-    }
-}
-
-public class Car {
-    private Member member; // 车属于一个人
-    private String pName;
-
-    public Car(String pName) {
-        this.pName = pName;
-    }
-
-    public String getInfo() {
-        return &quot;车名：&quot; + this.pName;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
-}
-</code></pre>
-<p><strong>5.测试</strong><br>
-测试分为两步：</p>
-<blockquote>
-<p>（1）根据定义的结构关系设置数据<br>
-（2）根据定义的结构关系取出数据</p>
-</blockquote>
-<pre class="highlight"><code class="">public class TCar {
-    public static void main(String[] args) {
-        // 1. 设置数据
-        Member m = new Member(1,&quot;张三&quot;);
-        Car c = new Car(&quot;宝马&quot;);
-        // 设置车与人的关系：张三有辆宝马
-        m.setCar(c);
-        c.setMember(m);
-        // 2. 取出数据
-        // 通过人找到车
-        System.out.println(m.getCar().getInfo());
-        // 通过车找到人
-        System.out.println(c.getMember().getInfo());
-    }
-}
-</code></pre>
-<p>6.进一步设计：每个人都有孩子，孩子还可能有车</p>
-<blockquote>
-<p>思路：<br>
-（1）设计一个孩子类，如有孙子，在设计孙子类，以此类推。该方案过于冗余，不合适；<br>
-（2）在Member类中设计属性child，类型为Member：</p>
-</blockquote>
-<pre class="highlight"><code class="">private Member child; // 孩子
-public Member getChild() {
-    return child;
-}
-
-public void setChild(Member child) {
-    this.child = child;
-}
-</code></pre>
-<p><strong>测试</strong>：</p>
-<pre class="highlight"><code class="">public class TCar {
-    public static void main(String[] args) {
-        // 1. 设置数据
-        Member m = new Member(1,&quot;张三&quot;);
-        Member child =  new Member(1,&quot;张四&quot;);
-        Car c = new Car(&quot;宝马&quot;);
-        Car cc  =new Car(&quot;法拉利&quot;);
-        // 设置车与人的关系：张三有辆宝马
-        m.setCar(c);
-        c.setMember(m);
-        // 设置车与人的关系：张四有辆法拉利
-        child.setCar(cc);
-        c.setMember(child);
-        // 设置人与人的关系：张四是张三的儿子
-        m.setChild(child);
-        // 2. 取出数据
-        // 通过人找到车
-        System.out.println(m.getCar().getInfo());
-        // 通过车找到人
-        System.out.println(c.getMember().getInfo());
-        // 通过人找到孩子
-        System.out.println(m.getChild().getInfo());
-        // 通过人找到孩子的车
-        System.out.println(m.getChild().getCar().getInfo());
-    }
-}
-</code></pre>
-<p>7.利用引用描述电脑：电脑由主机、键盘、内存、CPU、显卡等组成，下面用伪代码描述：</p>
-<pre class="highlight"><code class="">class 键盘{}
-class 鼠标{}
-class CPU{}
-class 硬盘{}
-class 内存{}
-class 显示器{}
-class 主机{}
-class 主板{}
-class 主机{
-    private CPU 对象[];
-    private 硬盘 对象[];
-    private 主板 对象;
-    private 内存 对象[];
-}
-class 电脑{
-    private 主机 对象;
-    private 显示器 对象;
-    private 键盘 对象;
-    private 鼠标 对象;
-}
-</code></pre>
-<p>上述设计思路称为<code>合成设计模式</code>。<strong>引用</strong>是实现两个不同类之间互相关联的主要手段。</p>
-<h3 id="数据表与简单java类映射"><a class="markdownIt-Anchor" href="#数据表与简单java类映射"></a> 数据表与简单Java类映射</h3>
-<blockquote>
-<p><strong>要求</strong>：通过程序描述部门和雇员关系<br>
-<strong>属性</strong>：<br>
-·dept：deptno,dname,loc;<br>
-·emp：empno, ename,job,sal,comm,deptno,mgr<br>
-<strong>关系</strong>：<br>
-·一个部门有多个雇员；<br>
-·一个雇员有一个或零个领导。</p>
-</blockquote>
-<p>第一步： 根据数据表创建简单java类</p>
-<pre class="highlight"><code class="">/**
- * 部门类
- */
-public class Dept {
-    private int depNo; // 编号
-    private String dName; // 名字
-    private String address; // 地址
-    // setter,getter,无参构造方法略
-
-    public Dept(int depNo, String dName, String address) {
-        this.depNo = depNo;
-        this.dName = dName;
-        this.address = address;
-    }
-
-    public String getInfo() {
-        return &quot;部门编号：&quot; + this.depNo +
-                &quot;,部门名称：&quot; + this.dName +
-                &quot;,地址：&quot; + this.address;
-    }
-}
-
-/**
- * 员工类
- */
-public class Emp {
-    private int eNo; // 编号
-    private String eName; // 姓名
-    private String job; // 职位
-    private double sal; // 工资
-    private double comm; // 佣金
-
-    // setter,getter,无参构造方法略
-    public Emp(int eNo, String eName, String job, double sal, double comm) {
-        this.eNo = eNo;
-        this.eName = eName;
-        this.job = job;
-        this.sal = sal;
-        this.comm = comm;
-    }
-    
-    public String getInfo() {
-        return &quot;编  号&quot; + this.eNo + &quot;\n&quot; +
-                &quot;姓 名&quot; + this.eName + &quot;\n&quot; +
-                &quot;职 位&quot; + this.job + &quot;\n&quot; +
-                &quot;工 资&quot; + this.sal + &quot;\n&quot; +
-                &quot;佣 金&quot; + this.comm;
-    }
-}
-</code></pre>
-<p>第二步：设置外键关系<br>
-· 一个雇员属于一个部门，应在雇员类中保存部门信息</p>
-<pre class="highlight"><code class="">private Dept dept; // 对应的部门信息
-
-public Dept getDept() {
-    return dept;
-}
-
-public void setDept(Dept dept) {
-    this.dept = dept;
-}
-</code></pre>
-<p>· 一个部门有的多个雇员，可用数组在部门类中保存雇员信息：</p>
-<pre class="highlight"><code class="">private Emp emps[]; // 多个雇员信息
-
-public Emp[] getEmps() {
-    return emps;
-}
-
-public void setEmps(Emp[] emps) {
-    this.emps = emps;
-}
-</code></pre>
-<p>· 一个雇员有一个领导（定义在Emp类中）</p>
-<pre class="highlight"><code class="">private Emp mgr; // 领导信息
-
-public Emp getMgr() {
-    return mgr;
-}
-
-public void setMgr(Emp mgr) {
-    this.mgr = mgr;
-}
-</code></pre>
-<p>第三步：测试<br>
-（1）设置数据：</p>
-<pre class="highlight"><code class="">public class Demo {
-   public static void main(String[] args) {
-       // 1. 产生对象
-       Dept dept = new Dept(10, &quot;财务部&quot;, &quot;北京&quot;); // 部门信息
-       //  员工信息
-       Emp eA = new Emp(1111, &quot;张三&quot;, &quot;保安&quot;, 800.0, 0.0);
-       Emp eB = new Emp(1101, &quot;李四&quot;, &quot;秘书&quot;, 2800.0, 500.0);
-       Emp eC = new Emp(1001, &quot;王五&quot;, &quot;经历&quot;, 6800.0, 1500.0);
-       // 2. 设置员工与领导关系
-       eA.setMgr(eB);
-       eB.setMgr(eC);
-       // 3. 设置员工和部门关系
-       eA.setDept(dept);
-       eB.setDept(dept);
-       eC.setDept(dept);
-       dept.setEmps(new Emp[]{eA, eB, eC});
-   }
-}
-</code></pre>
-<p>（2）：根据给定的结构取出数据，要求如下：</p>
-<blockquote>
-<p>|-根据一个雇员查询他所对应的领导信息和部门信息；<br>
-|-根据一个部门查询所有雇员以及其所对应的领导信息；</p>
-</blockquote>
-<pre class="highlight"><code class="">// 第二步：取出数据
-// 1. 通过员工找到领导信息和部门信息
-System.out.println(eA.getInfo()); // 获取员工信息
-System.out.println(&quot;\t|-&quot; + eA.getMgr().getInfo()); // 获取领导信息
-System.out.println(&quot;\t|-&quot; + eA.getDept().getInfo()); // 获取部门信息
-// 2. 根据部门找到所有员工及其领导信息
-System.out.println(&quot;---------------------------------------------&quot;);
-System.out.println(dept.getInfo());
-for (int x = 0; x &lt; dept.getEmps().length; x++) {
-    System.out.println(&quot;\t|-&quot; + dept.getEmps()[x].getInfo()); // 获取员工信息
-    if (dept.getEmps()[x].getMgr() != null) {
-        System.out.println(&quot;\t\t|-&quot; + dept.getEmps()[x].getMgr().getInfo()); // 获取领导信息
-    }
-}
-</code></pre>
-<p>上述代码都是依靠代码链取出数据。</p>
-<h3 id="一对多映射"><a class="markdownIt-Anchor" href="#一对多映射"></a> 一对多映射</h3>
-<blockquote>
-<p>要求：通过程序描述省份和城市的关系<br>
-1.通过一个城市找到它对应的省份信息；<br>
-2.通过一个省份找到所有城市的信息。</p>
-</blockquote>
-<pre class="highlight"><code class="">class Province {
-    private int pId;
-    private String pName;
-    private City cities[];
-    // getter,setter,无参构造方法略
-
-    public Province(int pId, String pName) {
-        this.pId = pId;
-        this.pName = pName;
-    }
-
-    public City[] getCities() {
-        return cities;
-    }
-
-    public void setCities(City[] cities) {
-        this.cities = cities;
-    }
-
-    public String getInfo() {
-        return &quot;省份ID：&quot; + this.pId + &quot;，省名：&quot; + this.pName;
-    }
-}
-
-class City {
-    private int cId;
-    private String cName;
-    private Province province;
-
-    // getter,setter,无参构造方法略
-    public City(int cId, String cName) {
-        this.cId = cId;
-        this.cName = cName;
-    }
-
-    public Province getProvince() {
-        return province;
-    }
-
-    public void setProvince(Province province) {
-        this.province = province;
-    }
-
-    public String getInfo() {
-        return &quot;城市ID：&quot; + this.cId + &quot;，市名：&quot; + this.cName;
-    }
+<p>上述两个类声明是等价的，Object类是唯一没有父类的类。Object类是所有类的父类，因此可以利用Object类通过向上转型，接收所有类型的对象。</p>
+<pre class="highlight"><code class="">class Book extends Object {
 }
 
 public class Demo {
     public static void main(String[] args) {
-        Province province = new Province(350, &quot;福建省&quot;);
-        City cA = new City(1, &quot;福州&quot;);
-        City cB = new City(2, &quot;厦门&quot;);
-        City cC = new City(3, &quot;泉州&quot;);
-        cA.setProvince(province);
-        cB.setProvince(province);
-        cC.setProvince(province);
-        province.setCities(new City[]{cA, cB, cC});
-        System.out.println(cA.getInfo());
-        System.out.println(&quot;\t|-&quot; + cA.getProvince().getInfo());
-        System.out.println(&quot;==================================&quot;);
-        System.out.println(province.getInfo());
-        for (int x = 0; x &lt; province.getCities().length; x++) {
-            System.out.println(&quot;\t|-&quot; + province.getCities()[x].getInfo());
-        }
+        Object objA = new Book(); // 向上转型
+        Object objB = &quot;Hello&quot;; // 向上转型
+        Book b = (Book) objA; // 向下转型
+        String s = (String) objB; // 向下转型
     }
 }
 </code></pre>
-<p>上述代码存在不足：<strong>每次添加城市，就要修改数组的引用关系</strong></p>
-<h3 id="双向一对多映射"><a class="markdownIt-Anchor" href="#双向一对多映射"></a> 双向一对多映射</h3>
+<p>因此在不确定参数类型时，使用Object类型是最好的选择。<br>
+2、Object类中定义了一个无参构造方法，因为其是所有类的父类，所以实例化子类对象时必然会调用父类的无参构造方法。</p>
 <blockquote>
-<p>要求：通过程序描述类型-子类型-商品的关系<br>
-（1）通过一个类型找到它对应的子类型；<br>
-（2）过一个类型找到它所对应的商品；<br>
-（3）通过一个子类型找到所有对应的商品。</p>
+<p>一般而言，定义简单Java类时应覆写Object类中的如下方法：<br>
+· 取得对象信息：public String toString();<br>
+· 对象比较：public boolean equals(Object obj);<br>
+· 取得对象HASH码：public int hashCode();</p>
 </blockquote>
-<pre class="highlight"><code class=""> class Type {
-    private int tId;
-    private String tName;
-    private SonType sonTypes[];
-    private Product products[];
-
-    // getter,setter,无参构造方法略
-    public Type(int tId, String tName) {
-        this.tId = tId;
-        this.tName = tName;
-    }
-
-    public SonType[] getSontypes() {
-        return this.sonTypes;
-    }
-
-    public void setSontypes(SonType[] sontypes) {
-        this.sonTypes = sontypes;
-    }
-
-    public Product[] getProducts() {
-        return products;
-    }
-
-    public void setProducts(Product[] products) {
-        this.products = products;
-    }
-
-    public String getInfo() {
-        return &quot;类型编号：&quot; + this.tId + &quot;,类型名称：&quot; + this.tName;
-    }
+<h3 id="tostring"><a class="markdownIt-Anchor" href="#tostring"></a> toString()</h3>
+<pre class="highlight"><code class="">class Book extends Object {
 }
 
-class SonType {
-    private int sId;
-    private String sName;
-    private Type type;
-    private Product products[];
-    // getter,setter,无参构造方法略
-
-    public SonType(int sId, String sName) {
-        this.sId = sId;
-        this.sName = sName;
-    }
-
-    public int getsId() {
-        return sId;
-    }
-
-    public void setsId(int sId) {
-        this.sId = sId;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public Product[] getProducts() {
-        return products;
-    }
-
-    public void setProducts(Product[] products) {
-        this.products = products;
-    }
-
-    public String getInfo() {
-        return &quot;子类型编号：&quot; + this.sId + &quot;,子类型名称：&quot; + this.sName;
+public class Demo {
+    public static void main(String[] args) {
+        Book b = new Book();
+        String s = &quot;Hello&quot;;
+        System.out.println(b); // Book@1540e19d
+        System.out.println(b.toString()); // Book@1540e19d
+        System.out.println(s); // Hello
     }
 }
-
-class Product {
-    private int pId;
-    private String name;
+</code></pre>
+<p>上述代码中直接输出实例对象和使用toString()输出的结果是一样。因为输出对象时，会自动调用toString()将对象变为字符串后输出。Object类中的<code>toString()</code>为了适应对象的输出，仅输出对象的编码。<br>
+但是这和我们的想法不符，我们想输出的应该是实例化对象的属性信息，因此要覆写toString()。<br>
+<strong>范例</strong>：覆写toString()</p>
+<pre class="highlight"><code class="">class Book extends Object {
+    private String title;
     private double price;
-    private Type type;
-    private SonType sonType;
-    // getter,setter,无参构造方法略
 
-    public Product(int pId, String name, double price) {
-        this.pId = pId;
-        this.name = name;
+    // getter,setter,无参构造方法暂时略
+    public Book(String title, double price) {
+        this.title = title;
         this.price = price;
     }
 
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public SonType getSonType() {
-        return sonType;
-    }
-
-    public void setSonType(SonType sonType) {
-        this.sonType = sonType;
-    }
-
-    public String getInfo() {
-        return &quot;商品编号：&quot; + this.pId + &quot;,商品名称：&quot; + this.name + &quot;,价格：&quot; + this.price;
+    public String toString() {
+        return &quot;书名：&quot; + this.title + &quot;,价格：&quot; + this.price;
     }
 }
 
 public class Demo {
     public static void main(String[] args) {
-        Type type = new Type(1, &quot;家电类&quot;);
-        SonType stA = new SonType(11, &quot;小型家电&quot;);
-        SonType stB = new SonType(12, &quot;大型家电&quot;);
-        Product pA = new Product(111, &quot;剃须刀&quot;, 99.0);
-        Product pB = new Product(112, &quot;热水壶&quot;, 29.0);
-        Product pC = new Product(121, &quot;电冰箱&quot;, 1199.0);
-        Product pD = new Product(122, &quot;电热水器&quot;, 399.0);
+        Book b = new Book(&quot;Java开发&quot;, 20.3);
+        System.out.println(b); // 书名：Java开发,价格：20.3
+    }
+}
+</code></pre>
+<p>此时直接输出对象，调用的就是覆写后的方法。</p>
+<h3 id="equals"><a class="markdownIt-Anchor" href="#equals"></a> equals()</h3>
+<p><strong>范例</strong>：对象比较</p>
+<pre class="highlight"><code class="">class Book extends Object {
+    private String title;
+    private double price;
 
-        stA.setType(type);
-        stB.setType(type);
-        pA.setType(type);
-        pB.setType(type);
-        pC.setType(type);
-        pD.setType(type);
-        type.setSontypes(new SonType[]{stA, stB});
-        type.setProducts(new Product[]{pA, pB, pC, pD});
+    // getter,setter,无参构造方法暂时略
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
 
-        pA.setSonType(stA);
-        pB.setSonType(stA);
-        pC.setSonType(stB);
-        pD.setSonType(stB);
-        stA.setProducts(new Product[]{pA, pB});
-        stB.setProducts(new Product[]{pC, pD});
+    public String toString() {
+        return &quot;书名：&quot; + this.title + &quot;,价格：&quot; + this.price;
+    }
 
-
-
-        System.out.println(type.getInfo());
-        for (int x = 0; x &lt; type.getSontypes().length; x++) {
-            System.out.println(&quot;\t|- &quot; + type.getSontypes()[x].getInfo());
+    public boolean equals(Object obj) {
+        if (this == obj) { // 地址相同
+            return true;
         }
-        System.out.println(&quot;--------------------------------------&quot;);
-        System.out.println(type.getInfo());
-        for (int x = 0; x &lt; type.getProducts().length; x++) {
-            System.out.println(&quot;\t|- &quot; + type.getProducts()[x].getInfo());
-            System.out.println(&quot;\t\t|- &quot; + type.getProducts()[x].getSonType().getInfo());
+        if (obj == null) {
+            return false;
         }
-        System.out.println(&quot;--------------------------------------&quot;);
-        System.out.println(stA.getInfo());
-        for (int x = 0; x &lt; stA.getProducts().length; x++) {
-            System.out.println(&quot;\t|- &quot; + stA.getProducts()[x].getInfo());
+        if (!(obj instanceof Book)) { // 不是Book类对象
+            return false;
+        }
+        Book book = (Book) obj;
+        if (this.title.equals(book.title)
+                &amp;&amp; this.price == book.price) {
+            return true;
+        }
+        return false;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bA = new Book(&quot;Java开发&quot;, 20.3);
+        Book bB = new Book(&quot;Java开发&quot;, 20.3);
+        System.out.println(bA.equals(bB)); // true
+        System.out.println(bA.equals(&quot;Hello&quot;)); // false
+    }
+}
+</code></pre>
+<p>覆写后的equals()用于进行对象比较。</p>
+<h3 id="object接收引用类型"><a class="markdownIt-Anchor" href="#object接收引用类型"></a> Object接收引用类型</h3>
+<p>1、Object类是所有类的父类，因此Object类对象可以接收所有类型的对象，包括数组和接口对象。<br>
+<strong>范例</strong>：接收数组数据</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Object obj = new int[]{1, 2, 3};
+        System.out.println(obj); // [I@1540e19d表示数组
+        if (obj instanceof int[]) { // 如果是数组，则输出
+            int data[] = (int[]) obj; // 向下转型
+            for (int x = 0; x &lt; data.length; x++) {
+                System.out.println(data[x]);
+            }
         }
     }
 }
 </code></pre>
-<h3 id="多对多映射"><a class="markdownIt-Anchor" href="#多对多映射"></a> 多对多映射</h3>
-<blockquote>
-<p>要求：通过程序描述管理员-角色-组-权限的关系；<br>
-（1）根据一个管理员找到它对应的角色，以及每个角色包含的所有权限组的信息，以及每个权限组所包含的权限的内容；<br>
-（2）根据一个权限组找到所有具备此权限组的角色以及每个角色所拥有的管理员信息；<br>
-<code>角色_权限组</code>表是关系表，保存的是两个外键的关联关系，不需要为其生成映射类。只有实体表才需要生成映射类，多对多的中间转换表只需通过类属性的关系引用即可。</p>
-</blockquote>
-<pre class="highlight"><code class="">class Admin {
-    private String aid;
-    private String password;
-    private Role role;
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public Role getRole() {
-        return this.role;
-    }
-
-    public Admin(String aid, String password) {
-        this.aid = aid;
-        this.password = password;
-    }
-
-    public String getInfo() {
-        return &quot;管理员编号:&quot; + this.aid + &quot;，管理员密码：&quot; + this.password;
-    }
+<p><strong>范例</strong>：接收接口对象</p>
+<pre class="highlight"><code class="">interface A {
+    public void fun();
 }
 
-class Role {
-    private int rid;
-    private String title;
-    private Admin admins[];
-    private Group groups[];
-
-    public void setAdmins(Admin admins[]) {
-        this.admins = admins;
-    }
-
-    public Admin[] getAdmins() {
-        return this.admins;
-    }
-
-    public void setGroups(Group groups[]) {
-        this.groups = groups;
-    }
-
-    public Group[] getGroups() {
-        return this.groups;
-    }
-
-    public Role(int rid, String title) {
-        this.rid = rid;
-        this.title = title;
-    }
-
-    public String getInfo() {
-        return &quot;角色编号：&quot; + this.rid + &quot;，角色名称&quot; + this.title;
-    }
-}
-
-class Group {
-    private int gid;
-    private String title;
-    private Role roles[];
-    private Action actions[];
-
-    public void setActions(Action actions[]) {
-        this.actions = actions;
-    }
-
-    public Action[] getActions() {
-        return this.actions;
-    }
-
-    public void setRoles(Role roles[]) {
-        this.roles = roles;
-    }
-
-    public Role[] getRoles() {
-        return this.roles;
-    }
-
-    public Group(int gid, String title) {
-        this.gid = gid;
-        this.title = title;
-    }
-
-    public String getInfo() {
-        return &quot;权限组编号：&quot; + this.gid + &quot;，权限组名称：&quot; + this.title;
-    }
-}
-
-class Action {
-    private int aid;
-    private String title;
-    private String url;
-    private Group group;
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public Group getGroup() {
-        return this.group;
-    }
-
-    public Action(int aid, String title, String url) {
-        this.aid = aid;
-        this.title = title;
-        this.url = url;
-    }
-
-    public String getInfo() {
-        return &quot;权限编号：&quot; + this.aid + &quot;权限名称：&quot; + this.title + &quot;,权限路径：&quot; + this.url;
+class B implements A {
+    public void fun() {
+        System.out.println(&quot;Hello&quot;);
     }
 }
 
 public class Demo {
     public static void main(String[] args) {
-        Admin a1 = new Admin(&quot;admin&quot;, &quot;123456&quot;);
-        Admin a2 = new Admin(&quot;root&quot;, &quot;654321&quot;);
-        Admin a3 = new Admin(&quot;guest&quot;, &quot;654321&quot;);
-        Role r1 = new Role(1, &quot;系统管理员&quot;);
-        Role r2 = new Role(1, &quot;信息管理员&quot;);
-        Group g1 = new Group(10, &quot;信息管理&quot;);
-        Group g2 = new Group(11, &quot;用户管理&quot;);
-        Group g3 = new Group(12, &quot;数据管理&quot;);
-        Group g4 = new Group(13, &quot;接口管理&quot;);
-        Group g5 = new Group(14, &quot;备份管理&quot;);
-        Action ac1 = new Action(1001, &quot;新闻发布&quot;, &quot;-&quot;);
-        Action ac2 = new Action(1002, &quot;新闻列表&quot;, &quot;-&quot;);
-        Action ac3 = new Action(1003, &quot;新闻审核&quot;, &quot;-&quot;);
-        Action ac4 = new Action(1004, &quot;增加用户&quot;, &quot;-&quot;);
-        Action ac5 = new Action(1005, &quot;用户列表&quot;, &quot;-&quot;);
-        Action ac6 = new Action(1006, &quot;登陆日志&quot;, &quot;-&quot;);
-        Action ac7 = new Action(1007, &quot;雇员数据&quot;, &quot;-&quot;);
-        Action ac8 = new Action(1008, &quot;部门数据&quot;, &quot;-&quot;);
-        Action ac9 = new Action(1009, &quot;公司数据&quot;, &quot;-&quot;);
-        Action ac10 = new Action(1010, &quot;服务传输&quot;, &quot;-&quot;);
-        Action ac11 = new Action(1011, &quot;短信平台&quot;, &quot;-&quot;);
-        Action ac12 = new Action(1012, &quot;全部备份&quot;, &quot;-&quot;);
-        Action ac13 = new Action(1013, &quot;局部备份&quot;, &quot;-&quot;);
+        A a = new B();
+        Object obj = a;
+        A t = (A) obj;
+        t.fun(); // Hello
+    }
+}
+</code></pre>
+<p>上述代码把参数类型统一为<code>Object</code>，有利于开发。</p>
+<h3 id="object修改链表"><a class="markdownIt-Anchor" href="#object修改链表"></a> Object修改链表</h3>
+<p>此时我们可以利用Object类的特点解决之前开发的链表存在的问题：<strong>由于参数类型不统一，每次使用都要进行重新开发</strong>。<br>
+<strong>范例</strong>：修改链表</p>
+<pre class="highlight"><code class="">class Link { // 链表类，外部可见
+    private class Node { // 节点类
+        private Object data; // 保存数据
+        private Node next; // 引用关系
 
-        a1.setRole(r1);
-        a2.setRole(r2);
-        a3.setRole(r2);
-        r1.setAdmins(new Admin[]{a1});
-        r2.setAdmins(new Admin[]{a2, a3});
+        public Node(Object data) { // 有数据才有Node
+            this.data = data;
+        }
 
-        r1.setGroups(new Group[]{g1, g2, g3, g4, g5});
-        r2.setGroups(new Group[]{g1, g2});
-        g1.setRoles(new Role[]{r1, r2});
-        g2.setRoles(new Role[]{r1, r2});
-        g3.setRoles(new Role[]{r1});
-        g4.setRoles(new Role[]{r1});
-        g5.setRoles(new Role[]{r1});
-
-        g1.setActions(new Action[]{ac1, ac2, ac3});
-        g2.setActions(new Action[]{ac4, ac5, ac6});
-        g3.setActions(new Action[]{ac7, ac8, ac9});
-        g4.setActions(new Action[]{ac10, ac11});
-        g5.setActions(new Action[]{ac12, ac13});
-
-        ac1.setGroup(g1);
-        ac2.setGroup(g1);
-        ac3.setGroup(g1);
-        ac4.setGroup(g2);
-        ac5.setGroup(g2);
-        ac6.setGroup(g2);
-        ac7.setGroup(g3);
-        ac8.setGroup(g3);
-        ac9.setGroup(g3);
-        ac10.setGroup(g4);
-        ac11.setGroup(g4);
-        ac12.setGroup(g5);
-        ac13.setGroup(g5);
-
-        System.out.println(a1.getInfo());
-        System.out.println(a1.getRole().getInfo());
-        for (int x = 0; x &lt; a1.getRole().getGroups().length; x++) {
-            System.out.println(&quot;\t|-&quot; + a1.getRole().getGroups()[x].getInfo());
-            for (int y = 0; y &lt; a1.getRole().getGroups()[x].getActions().length; y++) {
-                System.out.println(&quot;\t\t|-&quot; + a1.getRole().getGroups()[x].getActions()[y].getInfo());
+        // 设置关系
+        public void addNode(Node newNode) {
+            if (this.next == null) {
+                this.next = newNode;
+            } else {
+                this.next.addNode(newNode);
             }
         }
-        System.out.println(&quot;-------------------------------------------------&quot;);
-        System.out.println(g2.getInfo());
-        for (int x = 0; x &lt; g2.getRoles().length; x++) {
-            System.out.println(g2.getRoles()[x].getInfo());
-            for (int y = 0; y &lt; g2.getRoles()[x].getAdmins().length; y++) {
-                System.out.println(&quot;\t\t|-&quot; + g2.getRoles()[x].getAdmins()[y].getInfo());
+
+        // 数据查询
+        public boolean containsNode(Object data) {
+            if (data.equals(this.data)) { // 当前数据等于要目标数据
+                return true; // 结束查询
+            } else { // 当前数据不等于目标数据
+                if (this.next != null) { // 有后续节点
+                    return this.next.containsNode(data);
+                } else { // 没有后续节点
+                    return false;
+                }
             }
-            System.out.println();
         }
+
+
+        public Object getNode(int index) {
+            // 当前foot内容与要查询的索引比较
+            // foot自增，目的是下次查询方便
+            if (Link.this.foot++ == index) {
+                return this.data;
+            } else {
+                return this.next.getNode(index);
+            }
+        }
+
+        // 修改节点信息
+        public void setNode(int index, Object data) {
+            if (Link.this.foot++ == index) {
+                this.data = data;
+            } else {
+                this.next.setNode(index, data);
+            }
+        }
+
+        // 删除非根节点
+        public void removeNode(Node previous, Object data) {
+            // 参数中传递上一个节点和要删除的数据
+            if (data.equals(this.data)) {
+                previous.next = this.next;
+            } else {
+                this.next.removeNode(this, data);
+            }
+        }
+
+
+        public void toArrayNode() {
+            Link.this.retArray[Link.this.foot++] = this.data;
+            if (this.next != null) {
+                this.next.toArrayNode();
+            }
+        }
+    }
+
+
+    // ====================以上为内部类=====================
+    private Node root; // 根节点
+    private int count = 0; // 节点的个数
+    private int foot = 0; // 索引
+    private Object[] retArray; // 返回的数组
+
+    public void add(Object data) {
+        if (data == null) { // 输入数据为空
+            return;
+        }
+        Node newNode = new Node(data); // 要保存的数据
+        if (this.root == null) { // 根节点不存在
+            this.root = newNode; // 设为根节点
+        } else { //  根节点存在，交由Node处理
+            this.root.addNode(newNode);
+        }
+        this.count++; // 每次增加节点，count+1
+    }
+
+
+    // 获取链表长度
+    public int size() {
+        return this.count;
+    }
+
+    // 判断是否为空链表
+    public boolean isEmpty() {
+        return this.count == 0;
+    }
+
+
+    // 判断数据是否存在
+    public boolean contains(Object data) {
+        if (data == null || root == null) {
+            return false;
+        }
+        return this.root.containsNode(data);
+    }
+
+    // 根据索引获取信息
+    public Object get(int index) {
+        if (index &gt; this.count) { // 超出查询范围
+            return null;
+        }
+        this.foot = 0;
+        return this.root.getNode(index); // 查询交给Node类
+    }
+
+
+    // 设置信息
+    public void set(int index, Object data) {
+        if (index &gt; this.count) {
+            return;
+        }
+        this.foot = 0; // 重置foot,作为索引
+        this.root.setNode(index, data); // Node进行修改数据
+    }
+
+    // 判断删除节点是否为root
+    public void remove(Object data) {
+        if (this.contains(data)) { // 判断数据是否存在
+            if (data.equals(this.root.data)) { // 判断数据是否是root数据
+                this.root = this.root.next;
+            } else {
+                // root是Node对象，此处直接访问内部类私有操作
+                this.root.next.removeNode(this.root, data);
+            }
+            this.count--; // 删除后数据个数减少
+        }
+    }
+
+    public Object[] toArray() {
+        if (this.root == null) {
+            return null;
+        }
+        this.foot = 0; // 需要脚标控制
+        this.retArray = new Object[this.count]; // 根据保存内容开辟数组
+        this.root.toArrayNode();
+        return this.retArray;
+    }
+}
+</code></pre>
+<p><strong>范例</strong>: 测试程序</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Link all = new Link();
+        all.add(&quot;A&quot;);
+        all.add(&quot;B&quot;);
+        all.add(&quot;C&quot;);
+        System.out.println(all.size());
+        all.remove(&quot;B&quot;);
+        Object[] data = all.toArray();
+        for (int x = 0; x &lt; data.length; x++) {
+            String str = (String) data[x];
+            System.out.println(str);
+        }
+    }
+}
+</code></pre>
+<h3 id="综合实战-宠物商店"><a class="markdownIt-Anchor" href="#综合实战-宠物商店"></a> 综合实战: 宠物商店</h3>
+<p><strong>要求</strong>: 以程序结构为主,实现一个宠物商店的模型,具有保存多个宠物的信息(名字,年龄),宠物上架、下架、模糊查询功能。<br>
+<strong>思路图</strong>：<br>
+<img src="/article/Java/Java Base/Java基础知识(十四)/20-1.png" alt="无法加载" title="思路图"><br>
+宠物商店的商品（宠物）要符合宠物这一标准（接口），宠物商店借助链表实现上架、下架和模糊查询功能。<br>
+<strong>范例</strong>：定义宠物的标准</p>
+<pre class="highlight"><code class="">interface Pet { // 定义宠物的标准
+    public String getName();
+
+    public int getAge();
+}
+</code></pre>
+<p>宠物商店与具体的宠物无关，只和宠物这一接口有联系。<br>
+<strong>范例</strong>：定义宠物商店</p>
+<pre class="highlight"><code class="">class PetShop {
+    private Link pets = new Link(); // 要保存的宠物信息
+
+    public void add(Pet pet) { // 上架
+        this.pets.add(pet);
+    }
+
+    public void delete(Pet pet) { // 下架
+        this.pets.remove(pet);
+    }
+
+    public Link search(String keyWord) { // 模糊查询，返回的内容个数不明
+        Link result = new Link();
+        // 将集合以数组的形式返回，
+        // 真正要查询的数据是Pet接口对象的getName()的返回值
+        Object obj[] = this.pets.toArray();
+        for (int x = 0; x &lt; obj.length; x++) {
+            Pet p = (Pet) obj[x];
+            if (p.getName().contains(keyWord)) {
+                result.add(p);
+            }
+        }
+        return result;
+    }
+}
+</code></pre>
+<p><strong>范例</strong>： 定义猫类</p>
+<pre class="highlight"><code class="">class Cat implements Pet {
+    private String name;
+    private int age;
+
+    public Cat(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Cat)) {
+            return false;
+        }
+        Cat cat = (Cat) obj;
+        if (this.name.equals(cat.name)
+                &amp;&amp; this.age == cat.age) {
+            return true;
+        }
+        return false;
+    }
+
+    public String toString() {
+        return &quot;猫名：&quot; + this.name + &quot;, 年龄&quot; + this.age;
+    }
+}
+</code></pre>
+<p>可参照上述结构，定义一个狗类。<br>
+<strong>范例</strong>：测试</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        PetShop shop = new PetShop();
+        shop.add(new Cat(&quot;阿猫&quot;, 9));
+        shop.add(new Cat(&quot;猫咪&quot;, 19));
+        shop.add(new Dog(&quot;阿狗&quot;, 10));
+        shop.add(new Dog(&quot;狗子&quot;, 8));
+        // 模糊查询
+        Link all = shop.search(&quot;阿&quot;);
+        Object obj[] = all.toArray();
+        for (int x = 0; x &lt; obj.length; x++) {
+            System.out.println(obj[x]);
+        }
+        shop.delete(new Dog(&quot;狗子&quot;, 8));
     }
 }
 </code></pre>
@@ -1365,7 +943,7 @@ public class Demo {
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(七)/">http://yov.oschina.io/article/Java/Java Base/Java基础知识(七)/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Java/Java Base/Java基础知识(十四)/">http://yov.oschina.io/article/Java/Java Base/Java基础知识(十四)/</a>
                     </p>
                 </blockquote>
         
@@ -1413,21 +991,13 @@ public class Demo {
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/article/Java/Java Base/Java基础知识(八)/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/article/容器/Docker/Centos7上部署Docker私有仓库/" id="post_nav-older" class="next-content">
+        <a href="/article/Java/Java Base/Java基础知识(十三)/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
