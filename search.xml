@@ -3,6 +3,234 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(十五)]]></title>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E4%BA%94)/</url>
+      <content type="html"><![CDATA[<h2 id="扩展概念"><a class="markdownIt-Anchor" href="#扩展概念"></a> 扩展概念</h2>
+<h3 id="匿名内部类"><a class="markdownIt-Anchor" href="#匿名内部类"></a> 匿名内部类</h3>
+<pre class="highlight"><code class="">interface Message {
+    public void print();
+}
+
+class Messagelmpl implements Message {
+    public void print() {
+        System.out.println(&quot;Hello&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        fun(new Messagelmpl());
+    }
+
+    public static void fun(Message msg) {
+        msg.print();
+    }
+}
+</code></pre>
+<p>假如<code>Messagelmpl</code>只使用一次，那么就可以利用匿名内部类。<br>
+<strong>范例</strong>：使用匿名内部类</p>
+<pre class="highlight"><code class="">interface Message {
+    public void print();
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        fun(new Message() {
+            // 匿名内部类
+            public void print() {
+                System.out.println(&quot;Hello&quot;);
+            }
+        });
+    }
+
+    public static void fun(Message msg) {
+        msg.print();
+    }
+}
+</code></pre>
+<p>使用匿名内部类的前提：<strong>必须基于接口或抽象类的应用。</strong><br>
+匿名内部类定义在方法中，方法的参数或是变量要被匿名内部类访问，必须加上<code>final</code>关键字。<strong>匿名内部类的优点在于减少了类的定义。</strong></p>
+<h3 id="基本数据类型的包装类"><a class="markdownIt-Anchor" href="#基本数据类型的包装类"></a> 基本数据类型的包装类</h3>
+<p>1、Java设计的基本原则：一切皆对象，一切操作都以对象的形式进行描述。此时我们发现，有一个矛盾点，基本数据类型不是对象。对于这个矛盾点，我们可以进行处理：</p>
+<pre class="highlight"><code class="">class MyInt { // 定义类
+    private int num; // 类封装基本数据类型
+
+    // 定义构造方法，将基本数据类型传递给对象
+    public MyInt(int num) {
+        this.num = num;
+    }
+
+    public int intValue() { // 返回被封装的数据
+        return this.num;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        MyInt mi = new MyInt(10); // 装箱
+        int temp = mi.intValue(); // 拆箱
+        // 被封装的数据只有拆箱后才能进行计算
+        System.out.println(temp * 2);
+    }
+}
+</code></pre>
+<p>Java为了方便用户使用，专门提供了一组包装类，来包装所有的基本类型：<code>byte(Byte)</code>、<code>short(Short)</code>、<code>int(Integer)</code>、<code>long(Long)</code>、<code>float(Float)</code>、<code>double(Double)</code>、<code>boolean(Boolean)</code>、<code>char（Character）</code>。（）中为基本类型对应的包装类。</p>
+<blockquote>
+<p>以上包装类严格讲分为两种子类型：<br>
+· 对象型包装类（Object直接子类）：Character，Boolean；<br>
+· 数值型包装类（Number直接子类）：Byte、Short、Integer、Float、Long、Double</p>
+</blockquote>
+<p><code>Numbe</code>是一个抽象类，一共定义了六个操作方法：<code>byteValue()</code>、<code>shortValue()</code>、<code>integerValue()</code>、<code>floatValue()</code>、<code>longValue()</code>、<code>doubleValue()</code>。</p>
+<h3 id="装箱与拆箱"><a class="markdownIt-Anchor" href="#装箱与拆箱"></a> 装箱与拆箱</h3>
+<p>1、基本数据类型与包装类间的转换通过以下方式：</p>
+<blockquote>
+<p>· 装箱操作： 将基本数据类型变为包装类的形式：<br>
+|- 每个包装类的构造方法都可以接收各自数据类型的变量；<br>
+· 拆箱操作： 将包装类取出被包装基本数据类型数据：<br>
+|- 利用Number类中提供的一些列xxValue()方法<br>
+<strong>范例</strong>：使用int和Integer</p>
+</blockquote>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Integer obj = new Integer(10); // 装箱
+        int temp = obj.intValue(); // 拆箱
+        System.out.println(temp * 2);
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：使用double和Double</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Double obj = new Double(10.2); // 装箱
+        double temp = obj.doubleValue(); // 拆箱
+        System.out.println(temp * 2);
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：使用boolean和Boolean</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Boolean obj = new Boolean(true); // 装箱
+        boolean temp = obj.booleanValue(); // 拆箱
+        System.out.println(!temp);
+    }
+}
+</code></pre>
+<p>2、所有包装类都利用同种格式的方法进行操作。但在JDK1.5之后，增加了自动装箱和自动拆箱的机制，并且可以直接使用包装类的对象进行数字计算，为开发提供了便利。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Integer obj = 10; // 自动装箱
+        int temp = obj; // 自动拆箱
+        obj++; // 包装类直接进行数学计算
+        System.out.println(temp * obj);
+    }
+}
+</code></pre>
+<p>3、注意点：Integer对象可以直接赋值，也可以使用构造方法赋值，二者有何区别？<br>
+两者的区别可以参考String类直接赋值和构造方法赋值的区别。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Integer objA = 10; // 自动装箱
+        Integer objB = 10; // 自动装箱
+        Integer objC = new Integer(10);
+        System.out.println(objA == objB); // true
+        System.out.println(objA == objC); // false
+        System.out.println(objA.equals(objC)); // true
+    }
+}
+</code></pre>
+<p>使用包装类时，几乎都是直接赋值，很少使用构造方法，判断内容是否相等时依然使用<code>equals()</code>方法。<br>
+4、Object类可以接收一切引用数据类型，由于自动装箱机制的存在，Object也可以接收基本数据类型。</p>
+<blockquote>
+<p>流程：基本数据类型 → 自动装箱（成为对象） → 向上转型为Object。</p>
+</blockquote>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Object obj = 10;
+        // Object不能直接向下转型向int
+        // Object只能自动转型为Integer
+        int temp = (Integer) obj;
+        System.out.println(temp * 2);
+    }
+}
+</code></pre>
+<h3 id="数据类型转换"><a class="markdownIt-Anchor" href="#数据类型转换"></a> 数据类型转换</h3>
+<p>1、包装类多用于数据类型转换：在包装类中提供了将String数据变为基本数据类型的方法。<br>
+如下：</p>
+<blockquote>
+<p>· Integer类：public static int parseInt（String s）；<br>
+· Double类：public static double parseDouble（String s）；<br>
+· Boolean类：public static boolean parseBoolean（String s）；</p>
+</blockquote>
+<p><strong>注意</strong>：<code>Character</code>类不存在将字符串变为字符的方法，但<code>String</code>类的<code>charAt()</code>可以根据索引取出字符。<br>
+<strong>范例</strong>：将String变为int型</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;123&quot;;
+        int temp = Integer.parseInt(str);
+        System.out.println(temp * 2);
+    }
+}
+</code></pre>
+<p>将字符串变为int型的前提是：<strong>该字符串全部为数字</strong>.<br>
+<strong>范例</strong>：将String变为double型</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;12.3&quot;;
+        double temp = Double.parseDouble(str);
+        System.out.println(temp * 2);
+    }
+}
+</code></pre>
+<p><strong>范例</strong>：将String变为boolean</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = &quot;true&quot;;
+        boolean temp = Boolean.parseBoolean(str);
+        System.out.println(!temp);
+    }
+}
+</code></pre>
+<p>Boolean转换时，如果字符串的值不是true或false，默认转为false。<br>
+2、字符串可以变为基本数据类型，基本数据类型也可变为字符串。方法有两种：<br>
+（1）任何基本数据类型与字符串使用<code>+</code>连接后，都会变为String类型数据</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int num = 100;
+        String str = num + &quot;&quot;; // 变为String类
+        System.out.println(str.replaceAll(&quot;0&quot;, &quot;9&quot;)); // 199
+    }
+}
+</code></pre>
+<p>上述方式虽然完成了转换，但产生了垃圾<code>&quot;&quot;</code><br>
+（2）利用<code>public static String valueOf(数据类型 变量)</code></p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int num = 100;
+        String str = String.valueOf(num);
+        System.out.println(str.replaceAll(&quot;0&quot;, &quot;9&quot;)); // 199
+    }
+}
+</code></pre>
+<p>上述方式不会产生垃圾，因此开发中常用上述方法。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础知识(十四)]]></title>
       <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E5%9B%9B)/</url>
       <content type="html"><![CDATA[<h2 id="object类"><a class="markdownIt-Anchor" href="#object类"></a> Object类</h2>
@@ -9895,12 +10123,6 @@ description: 描述
   
     
     <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[About]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
@@ -9914,14 +10136,20 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Timeline]]></title>
-      <url>/timeline/index.html</url>
+      <title><![CDATA[Tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Timeline]]></title>
+      <url>/timeline/index.html</url>
       <content type="html"></content>
     </entry>
     
