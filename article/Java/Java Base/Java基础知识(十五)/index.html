@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Sat Nov 11 2017 19:13:36 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Nov 11 2017 19:43:33 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Nov 22 2017 10:26:44 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java Base/Java基础知识(十五)/index.html",
     "headline": "Java基础知识(十五)",
     "datePublished": "Sat Nov 11 2017 19:13:36 GMT+0800",
-    "dateModified": "Sat Nov 11 2017 19:43:33 GMT+0800",
+    "dateModified": "Wed Nov 22 2017 10:26:44 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扩展概念"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 扩展概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#匿名内部类"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 匿名内部类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本数据类型的包装类"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 基本数据类型的包装类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#装箱与拆箱"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 装箱与拆箱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据类型转换"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 数据类型转换</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扩展概念"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 扩展概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#匿名内部类"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 匿名内部类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本数据类型的包装类"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 基本数据类型的包装类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#装箱与拆箱"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 装箱与拆箱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据类型转换"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 数据类型转换</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包的定义及使用"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 包的定义及使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包的定义"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 包的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#包的导入"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 包的导入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#系统常用包"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 系统常用包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jar命令"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> jar命令</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -718,6 +718,141 @@ public class Demo {
 }
 </code></pre>
 <p>上述方式不会产生垃圾，因此开发中常用上述方法。</p>
+<h2 id="包的定义及使用"><a class="markdownIt-Anchor" href="#包的定义及使用"></a> 包的定义及使用</h2>
+<h3 id="包的定义"><a class="markdownIt-Anchor" href="#包的定义"></a> 包的定义</h3>
+<p>1、包指的是程序的目录。早期开发一个程序是将所有类写在一个java文件中，编译后程序将直接保存在根目录下。利用包可以实现程序拆分，将不同的类根据要求保存在不同目录中。<br>
+包的定义通过关键字<code>package</code>完成。<br>
+范例：定义包</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+public class Demo {
+    public static void main(String[] args) {
+    }
+}
+</code></pre>
+<p>2、定义包时用<code>.</code>表示子目录。如果类中有包的定义，就必须使其保存在对应的目录下，而这些目录不需要手动创建，可以使用命令自动生成：<br>
+（1）打包编译：<code>java -d . Demo.java</code><br>
+|- <code>-d</code>: 根据<code>package</code>定义生成目录；<br>
+|-<code>.</code>：设置保存路径。<code>.</code>表示在当前路径下生成。<br>
+（2）解释程序时不要进入包中解释程序，而是在包外输入类的完整名称<code>包.类</code>：<br>
+|- <code>java com.java.demo.Demo</code></p>
+<h3 id="包的导入"><a class="markdownIt-Anchor" href="#包的导入"></a> 包的导入</h3>
+<p>1、使用包可以将一个完整的程序拆分为不同文件，从而分别保存。这存在问题：不同包间可能要进行互相访问，就需要进行导包操作，使用<code>import</code>语句完成。<br>
+范例：定义com.java.util.Message</p>
+<pre class="highlight"><code class="">package com.java.util;
+
+class Message{
+    public static void print(){
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<p>定义com.java.test.TestMessage</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java..util.Message;
+
+public class TestMessage {
+    public static void print() {
+        Message msg = new Message();
+        msg.print();
+    }
+}
+</code></pre>
+<p>编译时，应先编译Message，再编译TestMessage：<br>
+|- <code>javac -d . Message.java</code><br>
+|- <code>javac -d . TestMessage.java</code><br>
+此时报错：<strong>Message在com.java.util中不是公共的; 无法从外部程序包中对其进行访问</strong><br>
+出现上述问题是因为public class定义的类可以被不同的包访问；而class定义的类只能被本包所访问。因此我们要修改Message.java:</p>
+<pre class="highlight"><code class="">package com.java.util;
+
+public class Message{
+    public static void print(){
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<p>Java编译器考虑到大型程序开发,因此可以使用通配符<code>*</code>：<code>java -d . *.java</code>编译当前目录下所有java文件。<br>
+2、当要导入一个包中多个类时，可以使用<code>import 包.*</code></p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java..util.*;
+
+public class TestMessage {
+    public static void print() {
+        Message msg = new Message();
+        msg.print();
+    }
+}
+</code></pre>
+<p><code>import 包.*</code>并不是导入包中所有的类，而是只导入程序所需的类，因此不用担心性能问题。<br>
+3、一个Java文件可能导入多个包，而不同包中可能存在同名的类。现假设：<br>
+·com.java.util.Message;<br>
+·com.java.demo.Message.</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+public class Message {
+    public static void print() {
+        System.out.println(&quot;世界你好！&quot;);
+    }
+}
+</code></pre>
+<p>由于需要，要同时导入上述两个类：</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java.demo.Message;
+import com.java.util.Message;
+
+public class TestMessage {
+    public static void main(String[] args) {
+        Message msg = new Message();
+        msg.print();
+    }
+}
+</code></pre>
+<p>系统报错：<code>Error:(4, 1) java: com.java.demo.Message的 single-type-import 已定义具有相同简名的类型。</code>为了避免该错误，在使用类时，应加上包名：</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java.demo.Message;
+import com.java.util.Message;
+
+public class TestMessage {
+    public static void main(String[] args) {
+        com.java.demo.Message msg = new com.java.demo.Message();
+        Message.print();
+    }
+}
+</code></pre>
+<h3 id="系统常用包"><a class="markdownIt-Anchor" href="#系统常用包"></a> 系统常用包</h3>
+<p>Java提供了许多程序开发包，此外还有许多第三方包。Java自带的常见系统包如下：</p>
+<blockquote>
+<p>（1）java.lang：包含了String、Object、Integer等类，此包系统自动导入；<br>
+（2）java.lang.reflect：反射开发包；<br>
+（3）java.util：Java的工具包，提供了大量的工具类，像链表；<br>
+（4）java.util.regex：正则工具包；<br>
+（5）java.text：国际化处理程序包；<br>
+（6）<a href="http://java.io">java.io</a>：进行输入、输出处理以及文件操作；<br>
+（7）<a href="http://java.net">java.net</a>：网络编程开发包；<br>
+（8）java.sql：数据库程序开发包；<br>
+（9）java.applet：Applet程序开发包（已经不用了）；<br>
+|-Applet指的是在网页上嵌套的程序，可以使用Applet做一些动态效果，是采用绘图的方式完成的显示。随着时间的发展，Applet程序已经不再使用了（如果要再实现同样的功能，都是用Canvas绘图）。<br>
+（10）java.awt、javax.swing：图形界面的开发包，主要功能是开发单机程序界面。<br>
+|-JDK1.0时推出了awt开发包，但是这个开发包使用了大量的windows图形函数，使Java丧失了可移植性；<br>
+|-JDK1.2时推出了javax.swing开发包，是一个轻量级（Java自己开发的，不再使用windows），所以Java更名为Java2；</p>
+</blockquote>
+<h3 id="jar命令"><a class="markdownIt-Anchor" href="#jar命令"></a> jar命令</h3>
+<p>使用jar命令压缩class文件，压缩的单位为包。<br>
+<img src="/article/Java/Java Base/Java基础知识(十五)/22-1.png" alt="无法加载" title="jar命令"><br>
+范例：定义Message.java文件</p>
+<pre class="highlight"><code class="">package com.java.util;
+
+class Message{
+    public static void print(){
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<p>编译后会生成class文件，此时要交付给用户使用，将改包的代码压缩：<code>jar -cvf my.jar com</code>。生成的jar文件不能直接使用，必须配置CLASSPATH才能使用：<code>SET CLASSPATH = .;jar包所在路径</code>。开发中需要使用大量的第三方jar文件，都需要配置CLASSPATH，最简单的配置就是在环境变量中配置。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -773,6 +908,14 @@ public class Demo {
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/article/Java/Java Base/Java基础知识(十六)/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -872,7 +1015,7 @@ public class Demo {
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
             </ul>
         </li>
         
@@ -890,7 +1033,7 @@ public class Demo {
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">15</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -946,7 +1089,7 @@ public class Demo {
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">30</span>
+                <span class="sidebar-badge">31</span>
             </a>
         </li>
         

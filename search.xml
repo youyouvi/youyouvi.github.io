@@ -3,6 +3,358 @@
   
     
     <entry>
+      <title><![CDATA[Java基础知识(十六)]]></title>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E5%85%AD)/</url>
+      <content type="html"><![CDATA[<h2 id="访问控制权限"><a class="markdownIt-Anchor" href="#访问控制权限"></a> 访问控制权限</h2>
+<h3 id="访问控制权限-2"><a class="markdownIt-Anchor" href="#访问控制权限-2"></a> 访问控制权限</h3>
+<p>Java有四种访问控制权限：<code>public,protected,default,private</code>。</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>范围</th>
+<th style="text-align:center">public</th>
+<th style="text-align:center">protected</th>
+<th style="text-align:center">default</th>
+<th style="text-align:center">private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>在同一个类中</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td>2</td>
+<td>在同一包的不同类</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>3</td>
+<td>在不同包的子类</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>4</td>
+<td>在不同包的非子类</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p><code>protected</code>权限与包的定义有关。<br>
+范例：定义com.java.demoA.A类</p>
+<pre class="highlight"><code class="">package com.java.demoa;
+
+public class A {
+    protected String info = &quot;Hello&quot;;
+}
+</code></pre>
+<p>范例：定义com.java.demoB.B类</p>
+<pre class="highlight"><code class="">package com.java.demoB;
+
+import com.java.demoa.A;
+
+public class B extends A { // 与A处于不同包中
+    public void print() {
+        System.out.println(&quot;A中的info：&quot; + super.info);
+    }
+}
+</code></pre>
+<p>范例：测试</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java.demoB.B;
+
+public class Test {
+    public static void main(String[] args) {
+        new B().print(); // A中的info：Hello
+    }
+}
+</code></pre>
+<p>范例：由Test类直接输出A类中的属性</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java.demoa.A;
+
+public class Test {
+    public static void main(String[] args) {
+        System.out.println(new A().info); // 报错，无法访问info
+    }
+}
+</code></pre>
+<p>由于Test与A不在同一个包，并且没有继承关系，所以是无法访问protected权限。</p>
+<blockquote>
+<p>总结：<br>
+1.Java的封装性是以private、protected、default三种权限为主；<br>
+2.对于权限的选择，建议如下：<br>
+·声明属性就用private；<br>
+·声明方法就用public；<br>
+3.关于命名要求：<br>
+· 类名称每个单词的首字母大写，其余字母小写，例如：StudentInfo；<br>
+· 属性名称第一个单词字母小写，而后每个单词首字母大写，例如：studentName；<br>
+· 方法名称第一个单词字母小写，而后每个单词首字母大写，例如：toString()；<br>
+· 常量名全部大写，例如：MSG；<br>
+· 包名全部小写，例如：com.java.demo</p>
+</blockquote>
+<h3 id="单例设计模式"><a class="markdownIt-Anchor" href="#单例设计模式"></a> 单例设计模式</h3>
+<p>（1）正常情况下，类只有产生实例化对象后才能操作这个类。<br>
+范例：观察程序</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+class Singleton{
+    public void print() {
+        System.out.println(&quot;Hello World!&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Singleton singleton = new Singleton(); // 生成实例化对象
+        singleton.print();
+    }
+}
+</code></pre>
+<p>Singleton类中存在构造方法，没有自定义构造方法时系统会自动生成一个无参无返回值操作的构造方法，即：一个类至少存在一个构造方法。<br>
+范例：修改Singleton类定义</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+class Singleton{
+
+    private Singleton() {} // 构造方法私有化
+
+    public void print() {
+        System.out.println(&quot;Hello World!&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Singleton singleton = new Singleton(); // 报错,无法访问Singleton()
+        singleton.print();
+    }
+}
+</code></pre>
+<p>构造方法私有化后，无法调用构造方法实例化对象。<br>
+范例：调用私有化方法<br>
+分析步骤：<br>
+1.构造方法上使用了private声明，导致构造方法只能内部使用，因此直接在内部实例化对象：</p>
+<pre class="highlight"><code class="">class Singleton{
+    Singleton instance = new Singleton();
+
+    private Singleton() {} // 构造方法私有化
+
+    public void print() {
+        System.out.println(&quot;Hello World!&quot;);
+    }
+}
+</code></pre>
+<p>2.<code>instance</code>是普通属性，普通属性只有实例化对象才可以调用，因此需要使用static声明instance属性，使其不受实例化对象控制。</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+class Singleton{
+    static Singleton instance = new Singleton();
+
+    private Singleton() {} // 构造方法私有化
+
+    public void print() {
+        System.out.println(&quot;Hello World!&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Singleton singleton = Singleton.instance; 
+        singleton.print();
+    }
+}
+</code></pre>
+<p>3.类中属性需要进行封装<code>private static Singleton instance = new Singleton();</code><br>
+4.获取封装的属性要使用<code>getter()</code>，因此要定义一个同样不受实例化对象控制的getter()，使用static定义。</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+class Singleton{
+    private static Singleton instance = new Singleton();
+
+    private Singleton() {} // 构造方法私有化
+
+    public void print() {
+        System.out.println(&quot;Hello World!&quot;);
+    }
+
+    public static Singleton getInstance() {
+        return instance;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Singleton singletonA = Singleton.getInstance();
+        Singleton singletonB = Singleton.getInstance();
+        System.out.println(singletonA == singletonB); // true
+    }
+}
+</code></pre>
+<p>上述代码的意义：要限制一个类实例化底下的个数，首先要锁定的是构造方法，因为实例化对象必须调用构造方法 ，那么构造方法私有化，就无法产生新的对象。此时要实例化一个对象，就需要在类中使用static定义一个公共对象 ，并使用static方法返回该对象，这样不论外部调用多少次，最终该类中只产生了一个对象，这就是<code>单例设计模式（Singleton）</code>。<br>
+（2）单例设计模式有两种形式：饿汉式、懒汉式<br>
+上述单例设计模式就属于饿汉式，即在定义Singleton类时就实例化一个对象，不论该对象最后是否被使用。<br>
+而懒汉式则是在第一次使用时才进行实例化对象，如果不使用， 就不进行实例化操作。<br>
+范例：实现懒汉式</p>
+<pre class="highlight"><code class="">class Singleton{
+    private static Singleton instance;
+
+    private Singleton() {} // 构造方法私有化
+
+    public void print() {
+        System.out.println(&quot;Hello World!&quot;);
+    }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+</code></pre>
+<p>单例设计模式的目的是让该类在整个系统中只有一个实例化对象。</p>
+<h3 id="多例设计模式"><a class="markdownIt-Anchor" href="#多例设计模式"></a> 多例设计模式</h3>
+<p>多例设计模式，可以让一个类产生指定数量的实例化对象。<br>
+范例：定义一个表示性别的类</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+class Sex {
+    private String title;
+    private static final Sex MALE = new Sex(&quot;男&quot;);
+    private static final Sex FEMALe = new Sex(&quot;女&quot;);
+
+    private Sex(String title) {
+        this.title = title;
+    }
+
+    public static Sex getInstance(int ch) {
+        switch (ch) {
+            case 0:
+                return FEMALe;
+            case 1:
+                return MALE;
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Sex sex = Sex.getInstance(0);
+        System.out.println(sex);
+    }
+}
+</code></pre>
+<p>JDK1.7之前，switch只能判断int或char，由于数字或字符表示不太直观，在1.7增加了String判断。</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+class Sex {
+    private String title;
+    private static final Sex MALE = new Sex(&quot;男&quot;);
+    private static final Sex FEMALe = new Sex(&quot;女&quot;);
+
+    private Sex(String title) {
+        this.title = title;
+    }
+
+    public static Sex getInstance(String sex) {
+        switch (sex) {
+            case &quot;woman&quot;:
+                return FEMALe;
+            case &quot;man&quot;:
+                return MALE;
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
+}
+</code></pre>
+<p>如果不想在switch语句中使用String，则可以引入一个标记接口（该方式不好）</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+class Sex {
+    private String title;
+    private static final Sex MALE = new Sex(&quot;男&quot;);
+    private static final Sex FEMALe = new Sex(&quot;女&quot;);
+
+    private Sex(String title) {
+        this.title = title;
+    }
+
+    public static Sex getInstance(int ch) {
+        switch (ch) {
+            case 0:
+                return FEMALe;
+            case 1:
+                return MALE;
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
+}
+
+interface Choose {
+    int WOMAN = 0;
+    int MAN = 1;
+}
+public class Demo {
+    public static void main(String[] args) {
+        Sex sex = Sex.getInstance(Choose.MAN);
+        System.out.println(sex);
+    }
+}
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础知识(十五)]]></title>
       <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E4%BA%94)/</url>
       <content type="html"><![CDATA[<h2 id="扩展概念"><a class="markdownIt-Anchor" href="#扩展概念"></a> 扩展概念</h2>
@@ -213,6 +565,141 @@ public class Demo {
 }
 </code></pre>
 <p>上述方式不会产生垃圾，因此开发中常用上述方法。</p>
+<h2 id="包的定义及使用"><a class="markdownIt-Anchor" href="#包的定义及使用"></a> 包的定义及使用</h2>
+<h3 id="包的定义"><a class="markdownIt-Anchor" href="#包的定义"></a> 包的定义</h3>
+<p>1、包指的是程序的目录。早期开发一个程序是将所有类写在一个java文件中，编译后程序将直接保存在根目录下。利用包可以实现程序拆分，将不同的类根据要求保存在不同目录中。<br>
+包的定义通过关键字<code>package</code>完成。<br>
+范例：定义包</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+public class Demo {
+    public static void main(String[] args) {
+    }
+}
+</code></pre>
+<p>2、定义包时用<code>.</code>表示子目录。如果类中有包的定义，就必须使其保存在对应的目录下，而这些目录不需要手动创建，可以使用命令自动生成：<br>
+（1）打包编译：<code>java -d . Demo.java</code><br>
+|- <code>-d</code>: 根据<code>package</code>定义生成目录；<br>
+|-<code>.</code>：设置保存路径。<code>.</code>表示在当前路径下生成。<br>
+（2）解释程序时不要进入包中解释程序，而是在包外输入类的完整名称<code>包.类</code>：<br>
+|- <code>java com.java.demo.Demo</code></p>
+<h3 id="包的导入"><a class="markdownIt-Anchor" href="#包的导入"></a> 包的导入</h3>
+<p>1、使用包可以将一个完整的程序拆分为不同文件，从而分别保存。这存在问题：不同包间可能要进行互相访问，就需要进行导包操作，使用<code>import</code>语句完成。<br>
+范例：定义com.java.util.Message</p>
+<pre class="highlight"><code class="">package com.java.util;
+
+class Message{
+    public static void print(){
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<p>定义com.java.test.TestMessage</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java..util.Message;
+
+public class TestMessage {
+    public static void print() {
+        Message msg = new Message();
+        msg.print();
+    }
+}
+</code></pre>
+<p>编译时，应先编译Message，再编译TestMessage：<br>
+|- <code>javac -d . Message.java</code><br>
+|- <code>javac -d . TestMessage.java</code><br>
+此时报错：<strong>Message在com.java.util中不是公共的; 无法从外部程序包中对其进行访问</strong><br>
+出现上述问题是因为public class定义的类可以被不同的包访问；而class定义的类只能被本包所访问。因此我们要修改Message.java:</p>
+<pre class="highlight"><code class="">package com.java.util;
+
+public class Message{
+    public static void print(){
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<p>Java编译器考虑到大型程序开发,因此可以使用通配符<code>*</code>：<code>java -d . *.java</code>编译当前目录下所有java文件。<br>
+2、当要导入一个包中多个类时，可以使用<code>import 包.*</code></p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java..util.*;
+
+public class TestMessage {
+    public static void print() {
+        Message msg = new Message();
+        msg.print();
+    }
+}
+</code></pre>
+<p><code>import 包.*</code>并不是导入包中所有的类，而是只导入程序所需的类，因此不用担心性能问题。<br>
+3、一个Java文件可能导入多个包，而不同包中可能存在同名的类。现假设：<br>
+·com.java.util.Message;<br>
+·com.java.demo.Message.</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+public class Message {
+    public static void print() {
+        System.out.println(&quot;世界你好！&quot;);
+    }
+}
+</code></pre>
+<p>由于需要，要同时导入上述两个类：</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java.demo.Message;
+import com.java.util.Message;
+
+public class TestMessage {
+    public static void main(String[] args) {
+        Message msg = new Message();
+        msg.print();
+    }
+}
+</code></pre>
+<p>系统报错：<code>Error:(4, 1) java: com.java.demo.Message的 single-type-import 已定义具有相同简名的类型。</code>为了避免该错误，在使用类时，应加上包名：</p>
+<pre class="highlight"><code class="">package com.java.test;
+
+import com.java.demo.Message;
+import com.java.util.Message;
+
+public class TestMessage {
+    public static void main(String[] args) {
+        com.java.demo.Message msg = new com.java.demo.Message();
+        Message.print();
+    }
+}
+</code></pre>
+<h3 id="系统常用包"><a class="markdownIt-Anchor" href="#系统常用包"></a> 系统常用包</h3>
+<p>Java提供了许多程序开发包，此外还有许多第三方包。Java自带的常见系统包如下：</p>
+<blockquote>
+<p>（1）java.lang：包含了String、Object、Integer等类，此包系统自动导入；<br>
+（2）java.lang.reflect：反射开发包；<br>
+（3）java.util：Java的工具包，提供了大量的工具类，像链表；<br>
+（4）java.util.regex：正则工具包；<br>
+（5）java.text：国际化处理程序包；<br>
+（6）<a href="http://java.io">java.io</a>：进行输入、输出处理以及文件操作；<br>
+（7）<a href="http://java.net">java.net</a>：网络编程开发包；<br>
+（8）java.sql：数据库程序开发包；<br>
+（9）java.applet：Applet程序开发包（已经不用了）；<br>
+|-Applet指的是在网页上嵌套的程序，可以使用Applet做一些动态效果，是采用绘图的方式完成的显示。随着时间的发展，Applet程序已经不再使用了（如果要再实现同样的功能，都是用Canvas绘图）。<br>
+（10）java.awt、javax.swing：图形界面的开发包，主要功能是开发单机程序界面。<br>
+|-JDK1.0时推出了awt开发包，但是这个开发包使用了大量的windows图形函数，使Java丧失了可移植性；<br>
+|-JDK1.2时推出了javax.swing开发包，是一个轻量级（Java自己开发的，不再使用windows），所以Java更名为Java2；</p>
+</blockquote>
+<h3 id="jar命令"><a class="markdownIt-Anchor" href="#jar命令"></a> jar命令</h3>
+<p>使用jar命令压缩class文件，压缩的单位为包。<br>
+<img src="/article/Java/Java Base/Java基础知识(十五)/22-1.png" alt="无法加载" title="jar命令"><br>
+范例：定义Message.java文件</p>
+<pre class="highlight"><code class="">package com.java.util;
+
+class Message{
+    public static void print(){
+        System.out.println(&quot;Hello World !&quot;);
+    }
+}
+</code></pre>
+<p>编译后会生成class文件，此时要交付给用户使用，将改包的代码压缩：<code>jar -cvf my.jar com</code>。生成的jar文件不能直接使用，必须配置CLASSPATH才能使用：<code>SET CLASSPATH = .;jar包所在路径</code>。开发中需要使用大量的第三方jar文件，都需要配置CLASSPATH，最简单的配置就是在环境变量中配置。</p>
 ]]></content>
       
         <categories>
@@ -10123,6 +10610,12 @@ description: 描述
   
     
     <entry>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[About]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
@@ -10130,20 +10623,14 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Gallery]]></title>
-      <url>/gallery/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
       <title><![CDATA[Tags]]></title>
       <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
