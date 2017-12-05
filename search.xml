@@ -3,6 +3,446 @@
   
     
     <entry>
+      <title><![CDATA[Eclipse使用]]></title>
+      <url>/article/%E5%B7%A5%E5%85%B7/Eclipse%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h3 id="eclipse简介"><a class="markdownIt-Anchor" href="#eclipse简介"></a> Eclipse简介</h3>
+<p>Eclipse是一款Java开发IDE，是免费的绿色版本软件，不需要安装，直接解压缩。Eclipse包含以下几个部分：JDT、JUNIT、CVS客户端、插件开发、GIT客户端。</p>
+<h3 id="jdt使用"><a class="markdownIt-Anchor" href="#jdt使用"></a> JDT使用</h3>
+<p>JDT是Eclipse中进行Java程序开发的基础工具。<br>
+Eclipse中项目建立完成后，会在项目的文件目录下生成两个子目录：</p>
+<blockquote>
+<p>· src：保存所有的.java源文件；<br>
+· bin：保存所有的.class文件；</p>
+</blockquote>
+<p>Eclipse最大特点在于代码生成功能。<br>
+1、Eclipse中最常用的快捷键：</p>
+<blockquote>
+<p>·Alt + / ：进行代码提示；<br>
+·Ctrl + 1：为错误的代码给出纠正方案；<br>
+·Ctrl + Shift + O：组织导入，导入其它包的类；<br>
+·Ctrl + D：删除当前行代码；<br>
+·Ctrl + Alt + ↓：删除当前行代码；<br>
+·Ctrl + /：使用单行注释；<br>
+·Ctrl + H：强力搜索；<br>
+·Ctrl + Shift + L：全部快捷键列表；</p>
+</blockquote>
+<p>2、Eclipse中有debug（代码跟踪调试）功能，设置好断点之后，采用调试的方式运行程序。<br>
+进入到调试视图后，Eclipse将等待用户的操作指令，并且在设置断点处停止执行，调试方式有如下几个：</p>
+<blockquote>
+<p>· 单步进入【F5】：指的是进入到执行的方法之中观察方法的执行效果；<br>
+· 单步跳过【F6】：在当前代码的表面上执行；<br>
+· 单步返回【F7】：不再观察了，返回进入处；<br>
+· 恢复执行【F8】：停止调试，直接正常执行完毕；</p>
+</blockquote>
+<p>在调试过程之中可以清楚地知道方法中所有变量的数值的变化情况。</p>
+<h3 id="junit测试工具"><a class="markdownIt-Anchor" href="#junit测试工具"></a> Junit测试工具</h3>
+<p>junit是一个测试工具。对于软件测试分为两种：<br>
+·黑盒测试：针对功能测试，看不见代码<br>
+·白盒测试：针对性能测试，算法的调整<br>
+除了上述两种测试，还有一类测试----用例测试（UseCase测试工程师），junit是一个use case测试工具，但是其使用不麻烦。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java基础知识(十七)]]></title>
+      <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E4%B8%83)/</url>
+      <content type="html"><![CDATA[<h2 id="异常捕获及处理"><a class="markdownIt-Anchor" href="#异常捕获及处理"></a> 异常捕获及处理</h2>
+<p>合理使用异常处理，可以让程序更加健壮。</p>
+<h3 id="异常的产生"><a class="markdownIt-Anchor" href="#异常的产生"></a> 异常的产生</h3>
+<p>异常是导致程序中断执行的一种指令流。当异常出现时，如果没有合理处理，程序就会中断执行。<br>
+范例：不产生异常的代码</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        System.out.println(&quot;2.出发计算：10 / 2 = &quot; + (10 / 2));
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+</code></pre>
+<p>范例：产生异常</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        // 2.中将出现异常
+        System.out.println(&quot;2.出发计算：10 / 2 = &quot; + (10 / 0));
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+
+// 结果为：
+// 1.除法计算开始
+// Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by zero
+// at com.java.util.Demo.main(Demo.java:7)
+</code></pre>
+<p>异常产生后，产生异常的语句以及之后的语句将不再执行。默认情况下系统会输出异常信息，而后自动结束程序的执行。</p>
+<h3 id="异常的处理"><a class="markdownIt-Anchor" href="#异常的处理"></a> 异常的处理</h3>
+<p>1、Java中进行处理异常，使用<code>try</code>、<code>catch</code>、<code>finally</code>这三个关键字，语法如下：</p>
+<pre class="highlight"><code class="">try {
+    // 可能出现异常的语句
+} catch (异常类型 对象1) {
+    // 异常处理
+} catch (异常类型 对象2) {
+    // 异常处理
+} finally {
+    // 不论是否出现异常都执行的语句
+}
+</code></pre>
+<p>对于上述操作的组合有：<code>try…catch</code>、<code>try…catch…finally</code>、<code>try…finally</code>(这个不建议使用)。<br>
+范例：应用异常处理格式</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        try {
+            System.out.println(&quot;2.出发计算：10 / 2 = &quot; + (10 / 0));
+        } catch (ArithmeticException e) {
+
+        }
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+
+// 结果为：
+// 1.除法计算开始
+// 3.除法计算结束
+</code></pre>
+<p>2、出现异常就要处理异常，为了能进行异常处理，可以使用异常类中的<code>printStackTrace()</code>输出完整的异常信息：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        try {
+            System.out.println(&quot;2.出发计算：10 / 2 = &quot; + (10 / 0));
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        }
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+
+// 结果为：
+// 1.除法计算开始
+// java.lang.ArithmeticException: / by zero
+// at com.java.util.Demo.main(Demo.java:7)
+// 3.除法计算结束
+</code></pre>
+<p>范例：使用try…catch…finally</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        try {
+            System.out.println(&quot;2.出发计算：10 / 2 = &quot; + (10 / 0));
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(&quot;不论是否异常，都执行&quot;);
+        }
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+</code></pre>
+<p>3、异常捕获时，一个try语句可以跟多个catch语句。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        try {
+            int x = Integer.parseInt(args[0]);
+            int y = Integer.parseInt(args[1]);
+            System.out.println(&quot;2.出发计算：&quot; + (x / y));
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(&quot;不论是否异常，都执行&quot;);
+        }
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+</code></pre>
+<p>上述程序将由用户输入数据，可能存在以下异常：<br>
+· 用户执行时不输入参数（java Demo）：<code>java.lang.ArrayIndexOutOfBoundsException</code>数组越界错误；<br>
+· 输入的数据不是数字（java Demo a b）：<code>java.lang.NumberFormatException</code>；<br>
+· 被除数为0（java Demo 10 0）：<code>java.lang.ArithmeticException</code><br>
+以上代码只有一个catch，只能处理一个异常，其他异常依然会导致程序中断<br>
+范例：增加多个catch</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        try {
+            int x = Integer.parseInt(args[0]);
+            int y = Integer.parseInt(args[1]);
+            System.out.println(&quot;2.出发计算：&quot; + (x / y));
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(&quot;不论是否异常，都执行&quot;);
+        }
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+</code></pre>
+<h3 id="异常处理流程"><a class="markdownIt-Anchor" href="#异常处理流程"></a> 异常处理流程</h3>
+<p>1、观察两个异常类的继承结构：</p>
+<pre class="highlight"><code class="">NumberFormatException：	
+java.lang.Object
+  |- java.lang.Throwable
+      |- Exception
+          |- RuntimeException
+              |- IllegalArgumentException
+                  |- NumberFormatException	
+ArithmeticException：
+java.lang.Object
+  |-java.lang.Throwable
+      |- Exception
+          |- RuntimeException
+              |- ArithmeticException
+</code></pre>
+<p>由上表可得，所有异常类都是<code>Throwable</code>的子类。Throwable下有两个子类<code>Error</code>和<code>Exception</code>。</p>
+<blockquote>
+<p>请解释Error和Exception的区别：<br>
+· Error：指的是JVM错误，即：此时程序还没有执行，用户不能处理；<br>
+· Exception：指的是程序运行中产生的异常，用户可以处理。</p>
+</blockquote>
+<p>所谓的异常处理指的是Exception以及它的子类异常。<br>
+2、异常处理流程图<br>
+<img src="/article/Java/Java Base/Java基础知识(十七)/24-1.png" alt="无法加载" title="异常处理流程图"><br>
+流程描述：<br>
+1）当程序运行时出现异常，由JVM自动根据异常类型实例化一个与之类型匹配的异常类对象；<br>
+2）产生异常对象后，会判断当前语句是否存在异常处理。如果没有异常处理，就交给JVM进行默认的异常处理（输出异常信息，结束程序调用）；<br>
+3）如果有异常捕获操作，会由try语句捕获产生的异常类实例化对象，之后与catch语句进行比较，如果有符合的捕获类型，则使用catch语句进行异常处理；如果不匹配，则继续向下匹配其它catch语句；<br>
+4）不论异常处理是否能够匹配，都要继续执行，如果程序中存在finally语句，就先执行finally语句中的代码，执行完毕后根据之前catch匹配结果来决定如何执行，如果之前成功捕获异常，那就继续执行finally之后的语句；如果没有成功捕获，就交给JVM进行默认处理。<br>
+整个过程和catch中的异常类型进行匹配，但是所有Java对象都可以自动向上转型。即如果真的要匹配类型，简单的做法就是匹配Exception。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(&quot;1.除法计算开始&quot;);
+        try {
+            int x = Integer.parseInt(args[0]);
+            int y = Integer.parseInt(args[1]);
+            System.out.println(&quot;2.出发计算：&quot; + (x / y));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }  finally {
+            System.out.println(&quot;不论是否异常，都执行&quot;);
+        }
+        System.out.println(&quot;3.除法计算结束&quot;);
+    }
+}
+</code></pre>
+<p>上述将所有的异常都交由Exception类处理，因此程序无法知道具体产生的是什么异常。</p>
+<blockquote>
+<p>说明：<br>
+· 使用多个catch时，范围大的异常一定要放在范围小的异常后面，否则会出现语法错误。<br>
+· 直接捕获Exception比较方便，但不合理，因为所有异常都按照同种方式处理。项目中应根据具体异常类型处理。</p>
+</blockquote>
+<h3 id="throws关键字"><a class="markdownIt-Anchor" href="#throws关键字"></a> throws关键字</h3>
+<p>1、throws关键字主要用于方法声明，将异常交由被调用处（如main方法）处理。<br>
+范例：使用throws关键字</p>
+<pre class="highlight"><code class="">class MyMath {
+    public static int div(int x, int y) throws Exception {
+        // 使用了throws,所以该方法产生的异常交由调用处处理
+        return x / y;
+    }
+}
+</code></pre>
+<p>范例：调用上述方法</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 必须进行异常处理，否则代码报错
+        try {
+            System.out.println(MyMath.div(10, 2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<p>调用了具有throws声明的方法，不论操作是否异常，都需要使用<code>try..catch</code>进行异常处理。<br>
+2.在主方法使用throws关键字后，异常将交给JVM处理，即采用默认处理方式。由于开发的程序多数希望正常结束调用，因此主方法不应该使用throws关键字。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) throws Exception {
+        System.out.println(MyMath.div(10, 0));
+    }
+}
+</code></pre>
+<h3 id="throw关键字"><a class="markdownIt-Anchor" href="#throw关键字"></a> throw关键字</h3>
+<p>1、程序中可以使用throw手工抛出一个异常类的对象。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        try {
+            throw new Exception(&quot;自定义异常&quot;);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>throws与throw的区别：<br>
+·throw：在方法中手工抛出一个异常类对象（该对象可以是自定义的，或者已经存在的）；<br>
+·throws：用于方法声明上，使得调用该方法时必须处理异常。</p>
+</blockquote>
+<h3 id="异常处理标准格式"><a class="markdownIt-Anchor" href="#异常处理标准格式"></a> 异常处理标准格式</h3>
+<p>要求：定义div()，在执行除法前打印提示信息，在计算结束后打印提示信息；如果计算中产生了异常，交给调用处处理。<br>
+范例：</p>
+<pre class="highlight"><code class="">class MyMath {
+    public static void div(int x, int y) {
+        System.out.println(&quot;==== 除法计算开始 ====&quot;);
+        System.out.println(x / y);
+        System.out.println(&quot;==== 除法计算结束 ====&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        MyMath.div(10,2);
+    }
+}
+</code></pre>
+<p>上述代码可能出现异常，因此要进行异常处理。根据要求，异常交由调用处处理，因此使用throws关键字。</p>
+<pre class="highlight"><code class="">class MyMath {
+    // 如果div()出现异常，异常交给调用处处理
+    public static void div(int x, int y) throws Exception {
+        System.out.println(&quot;==== 除法计算开始 ====&quot;);
+        System.out.println(x / y);
+        System.out.println(&quot;==== 除法计算结束 ====&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        try {
+            MyMath.div(10, 2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<p>上述代码产生错误后，程序运行到<code>System.out.println(&quot;==== 除法计算结束 ====&quot;);</code>就不执行了。<br>
+范例：正确做法如下：</p>
+<pre class="highlight"><code class="">class MyMath {
+    // 如果div()出现异常，异常交给调用处处理
+    public static void div(int x, int y) throws Exception {
+        System.out.println(&quot;==== 除法计算开始 ====&quot;);
+        try {
+            System.out.println(x / y);
+        } catch (Exception e) {
+            throw e; // 抛出异常
+        } finally {
+            System.out.println(&quot;==== 除法计算结束 ====&quot;);
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        try {
+            MyMath.div(10, 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h3 id="runtimeexception类"><a class="markdownIt-Anchor" href="#runtimeexception类"></a> RuntimeException类</h3>
+<p>范例：观察下述程序</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int temp = Integer.parseInt(&quot;100&quot;);
+    }
+}
+</code></pre>
+<p>parseInt()： <code>public static int parseInt(String s) throws NumberFormatException;</code><br>
+parseInt()抛出了NumberFormatException，按照之前知识点，此处应强制进行异常捕获，但实际并没有该要求：<br>
+观察一下NumberFormatException的继承结构:</p>
+<pre class="highlight"><code class="">java.lang.Object
+  |- java.lang.Throwable
+      |- java.lang.Exception
+          |- java.lang.RuntimeException → 运行时异常
+              |- java.lang.IllegalArgumentException
+                  |- java.lang.NumberFormatException
+</code></pre>
+<p>Java为方便代码编写，提供了RuntimeException类，该类的特征是：程序在编译时，不会强制性要求用户处理异常，用户可以根据自己的需求选择性处理，但是没有处理又发生异常，就会交给JVM默认处理。</p>
+<blockquote>
+<p>请解释Exception与RuntimeException的区别，请列举常见的几种RuntimeException<br>
+· Exception是RuntimeExceptio的父类；<br>
+· 使用Exception定义的异常必须要被处理，而RuntimeException的异常可以选择性处理。<br>
+·常见的RuntimeException：ArithmeticException、NullPointerException、ClassCastException。</p>
+</blockquote>
+<h3 id="异常的捕获及处理断言"><a class="markdownIt-Anchor" href="#异常的捕获及处理断言"></a> 异常的捕获及处理（断言）</h3>
+<p>assert关键字在JDK1.4引入，其功能是进行断言。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        int num = 10;
+        assert num == 20 : &quot;num 不等于20&quot;;
+        System.out.println(&quot;num = &quot; + num);
+    }
+}
+</code></pre>
+<p>默认情况下，断言是不应该影响程序的运行，即Java在解释程序时，断言是默认不起作用的。<br>
+启用断言：<code>java -ea Demo</code></p>
+<pre class="highlight"><code class="">Exception in thread &quot;main&quot; java.lang.AssertionError: num的内容不是20
+        at Demo.main(Demo.java:6)
+</code></pre>
+<h3 id="异常的捕获及处理自定义异常"><a class="markdownIt-Anchor" href="#异常的捕获及处理自定义异常"></a> 异常的捕获及处理（自定义异常）</h3>
+<ol>
+<li>Java自身提供了大量的异常类，但对于实际开发是不够。例如：进行添加数据操作时，可能出现错误数据，错误数据出现就应该抛出异常，例如AddException，而该异常Java没有，需要自己开发。<br>
+如果要自己开发一个异常类可以选择继承Exception或RuntimeException。<br>
+范例：定义AddException</li>
+</ol>
+<pre class="highlight"><code class="">class AddException extends Exception {
+    public AddException(String msg) {
+        super(msg);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        int num = 11;
+        try {
+            if (num &gt; 10) {
+                throw new AddException(&quot;数值传递过大&quot;);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<p>上述代码，只是介绍自定义异常的形式，不能说明自定义异常的作用。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java基础知识(十六)]]></title>
       <url>/article/Java/Java%20Base/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86(%E5%8D%81%E5%85%AD)/</url>
       <content type="html"><![CDATA[<h2 id="访问控制权限"><a class="markdownIt-Anchor" href="#访问控制权限"></a> 访问控制权限</h2>
