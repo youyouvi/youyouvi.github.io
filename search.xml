@@ -3,6 +3,143 @@
   
     
     <entry>
+      <title><![CDATA[Java知识(一)]]></title>
+      <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E4%B8%80)/</url>
+      <content type="html"><![CDATA[<h2 id="java5特性"><a class="markdownIt-Anchor" href="#java5特性"></a> Java5特性</h2>
+<h3 id="可变参数"><a class="markdownIt-Anchor" href="#可变参数"></a> 可变参数</h3>
+<p>要求：定义一个方法，可以接收多个整型数据的相加。<br>
+范例：用数组解决该问题</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        System.out.println(add(new int[]{1, 2, 3}));
+        System.out.println(add(new int[]{1, 2}));
+    }
+    // 实现任意多个整型数据的相加
+    // 因为有多个数据，所以用数组接收
+    // return 累加的结果
+
+    public static int add(int[] data) {
+        int sum = 0;
+        for (int x = 0; x &lt; data.length; x++) {
+            sum += data[x];
+        }
+        return sum;
+    }
+}
+</code></pre>
+<p>使用数组是因为方法的参数个数是固定的，无法接收随机个参数。但通过数组接收参数不符合预期，理想的调用形式：add(1,2,3),add(10,20);<br>
+该功能从JDK1.5后实现，它主要是在方法上使用，定义形式：</p>
+<pre class="highlight"><code class="">[public | protected | private] [static] [final] [abstract] 返回值类型 方法名称(数据类型 ... 变量){
+    [return [返回值] ;]
+}
+</code></pre>
+<p>上述代码中，[]中的内容可以忽略。上述形式中的参数不再是一个内容，而是多个内容，尽管参数的定义形式变了，但是参数的访问却没变，即进行参数访问的时候按照数组的形式操作。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main (String [] args){
+        // 可变参数支持数组
+        System.out.println(add(new int[] {1,2,3}));// 传递3个整型数据
+        // 可变参数支持参数
+        System.out.println(add(1,2,3));// 传递3个整型数据
+        System.out.println(add(10,20));// 传递2个整型数据
+        System.out.println(add());// 不传递数据
+    }
+    //        实现任意多个整型数据的相加操作
+    //        由于要接收多个整型数据，所以要用数组完成接收
+    //        return 多个整型数据的累加结果
+    public static int add(int ... data){
+        int sum = 0 ;
+        for (int x = 0 ; x &lt; data.length ; x ++){
+            sum += data[x] ;
+        }
+        return sum;
+    }
+}
+</code></pre>
+<p>在大部分开发中，应该要求参数的个数是准确的，因此可变参数多用于一些程序相关系统类的设计使用上，而不是开发中。可变参数属于数组的变形应用。</p>
+<h3 id="foreach循环"><a class="markdownIt-Anchor" href="#foreach循环"></a> foreach循环</h3>
+<p>foreach的功能是进行数组或者是集合数据的输出。语法如下：</p>
+<pre class="highlight"><code class="">for(类型 变量 : 数组 | 集合)  { 
+//  每一次循环会自动将数组内容设置给变量
+}
+</code></pre>
+<p>范例：for循环输出</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main (String [] args){
+        int data [] = new int[] {1,2,3,4,5,6};
+        for (int x = 0 ; x &lt; data.length ; x ++){
+            System.out.println(data[x]) ;
+        }
+    }
+}
+</code></pre>
+<p>范例：foreach输出</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main (String [] args){
+        int data [] = new int[] {1,2,3,4,5,6};
+        for (int x : data) { // 循环次数由数组长度决定
+            // 每一次循环都表示数组的脚标增长，会取得每个数组的内容，并将其设置给了x
+            System.out.println(x);
+        }
+    }
+}
+</code></pre>
+<h3 id="静态导入"><a class="markdownIt-Anchor" href="#静态导入"></a> 静态导入</h3>
+<p>假设一个类中定义的方法都是static方法，那么其他类引用此类时必须用“类名称.方法（）”进行调用。<br>
+范例：</p>
+<pre class="highlight"><code class="">package com.java.util;
+
+public class MyMath {
+    public static int add(int x, int y) {
+        return x + y;
+    }
+    public static int div(int x, int y) {
+        return x / y;
+    }
+}
+</code></pre>
+<p>此时MyMath中方法都是static方法，随后在其它类中使用这些方法。<br>
+范例：基本使用形式</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+import com.java.util.MyMath;
+
+public class Demo {
+    public static void main(String [] args) {
+        System.out.println(&quot;加法操作：&quot; + MyMath.add(10,20));
+        System.out.println(&quot;加法操作：&quot; + MyMath.div(20,10));
+    }
+}
+</code></pre>
+<p>范例：静态导入</p>
+<pre class="highlight"><code class="">package com.java.demo;
+// 将MyMath类中的全部static方法导入，这些方法就好比直接定义在了main方法中
+import static com.java.util.MyMath.* ;
+
+public class Demo {
+    public static void main(String [] args) {
+        System.out.println(&quot;加法操作：&quot; + add(10,20));
+        System.out.println(&quot;加法操作：&quot; + div(20,10));
+    }
+}
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Eclipse使用]]></title>
       <url>/article/%E5%B7%A5%E5%85%B7/Eclipse%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<h3 id="eclipse简介"><a class="markdownIt-Anchor" href="#eclipse简介"></a> Eclipse简介</h3>

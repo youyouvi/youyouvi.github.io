@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yov.oschina.io/"/>
-  <updated>2017-12-05T07:02:45.472Z</updated>
+  <updated>2017-12-06T06:33:05.112Z</updated>
   <id>http://yov.oschina.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java知识(一)</title>
+    <link href="http://yov.oschina.io/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E4%B8%80)/"/>
+    <id>http://yov.oschina.io/article/Java/Java/Java知识(一)/</id>
+    <published>2017-12-06T06:31:22.456Z</published>
+    <updated>2017-12-06T06:33:05.112Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="java5特性"><a class="markdownIt-Anchor" href="#java5特性"></a> Java5特性</h2><h3 id="可变参数"><a class="markdownIt-Anchor" href="#可变参数"></a> 可变参数</h3><p>要求：定义一个方法，可以接收多个整型数据的相加。<br>范例：用数组解决该问题</p><pre class="highlight"><code class="">public class Demo {    public static void main(String[] args) {        System.out.println(add(new int[]{1, 2, 3}));        System.out.println(add(new int[]{1, 2}));    }    // 实现任意多个整型数据的相加    // 因为有多个数据，所以用数组接收    // return 累加的结果    public static int add(int[] data) {        int sum = 0;        for (int x = 0; x &lt; data.length; x++) {            sum += data[x];        }        return sum;    }}</code></pre><p>使用数组是因为方法的参数个数是固定的，无法接收随机个参数。但通过数组接收参数不符合预期，理想的调用形式：add(1,2,3),add(10,20);<br>该功能从JDK1.5后实现，它主要是在方法上使用，定义形式：</p><pre class="highlight"><code class="">[public | protected | private] [static] [final] [abstract] 返回值类型 方法名称(数据类型 ... 变量){    [return [返回值] ;]}</code></pre><p>上述代码中，[]中的内容可以忽略。上述形式中的参数不再是一个内容，而是多个内容，尽管参数的定义形式变了，但是参数的访问却没变，即进行参数访问的时候按照数组的形式操作。</p><pre class="highlight"><code class="">public class Demo {    public static void main (String [] args){        // 可变参数支持数组        System.out.println(add(new int[] {1,2,3}));// 传递3个整型数据        // 可变参数支持参数        System.out.println(add(1,2,3));// 传递3个整型数据        System.out.println(add(10,20));// 传递2个整型数据        System.out.println(add());// 不传递数据    }    //        实现任意多个整型数据的相加操作    //        由于要接收多个整型数据，所以要用数组完成接收    //        return 多个整型数据的累加结果    public static int add(int ... data){        int sum = 0 ;        for (int x = 0 ; x &lt; data.length ; x ++){            sum += data[x] ;        }        return sum;    }}</code></pre><p>在大部分开发中，应该要求参数的个数是准确的，因此可变参数多用于一些程序相关系统类的设计使用上，而不是开发中。可变参数属于数组的变形应用。</p><h3 id="foreach循环"><a class="markdownIt-Anchor" href="#foreach循环"></a> foreach循环</h3><p>foreach的功能是进行数组或者是集合数据的输出。语法如下：</p><pre class="highlight"><code class="">for(类型 变量 : 数组 | 集合)  { //  每一次循环会自动将数组内容设置给变量}</code></pre><p>范例：for循环输出</p><pre class="highlight"><code class="">public class Demo {    public static void main (String [] args){        int data [] = new int[] {1,2,3,4,5,6};        for (int x = 0 ; x &lt; data.length ; x ++){            System.out.println(data[x]) ;        }    }}</code></pre><p>范例：foreach输出</p><pre class="highlight"><code class="">public class Demo {    public static void main (String [] args){        int data [] = new int[] {1,2,3,4,5,6};        for (int x : data) { // 循环次数由数组长度决定            // 每一次循环都表示数组的脚标增长，会取得每个数组的内容，并将其设置给了x            System.out.println(x);        }    }}</code></pre><h3 id="静态导入"><a class="markdownIt-Anchor" href="#静态导入"></a> 静态导入</h3><p>假设一个类中定义的方法都是static方法，那么其他类引用此类时必须用“类名称.方法（）”进行调用。<br>范例：</p><pre class="highlight"><code class="">package com.java.util;public class MyMath {    public static int add(int x, int y) {        return x + y;    }    public static int div(int x, int y) {        return x / y;    }}</code></pre><p>此时MyMath中方法都是static方法，随后在其它类中使用这些方法。<br>范例：基本使用形式</p><pre class="highlight"><code class="">package com.java.demo;import com.java.util.MyMath;public class Demo {    public static void main(String [] args) {        System.out.println(&quot;加法操作：&quot; + MyMath.add(10,20));        System.out.println(&quot;加法操作：&quot; + MyMath.div(20,10));    }}</code></pre><p>范例：静态导入</p><pre class="highlight"><code class="">package com.java.demo;// 将MyMath类中的全部static方法导入，这些方法就好比直接定义在了main方法中import static com.java.util.MyMath.* ;public class Demo {    public static void main(String [] args) {        System.out.println(&quot;加法操作：&quot; + add(10,20));        System.out.println(&quot;加法操作：&quot; + div(20,10));    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;java5特性&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#java5特性&quot;&gt;&lt;/a&gt; Java5特性&lt;/h2&gt;
+&lt;h3 id=&quot;可变参数&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#可变参数&quot;&gt;&lt;/a&gt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yov.oschina.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yov.oschina.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Eclipse使用</title>
@@ -527,33 +553,6 @@
     
     
       <category term="Java基础" scheme="http://yov.oschina.io/tags/Java%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes安装及使用</title>
-    <link href="http://yov.oschina.io/article/%E5%AE%B9%E5%99%A8/Docker/Kubernetes%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yov.oschina.io/article/容器/Docker/Kubernetes安装及使用/</id>
-    <published>2017-09-30T08:11:30.178Z</published>
-    <updated>2017-09-30T08:44:56.611Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="环境配置"><a class="markdownIt-Anchor" href="#环境配置"></a> 环境配置</h2><p><strong>系统要求</strong>: CentOS 7<br><strong>软件版本</strong>: 1.5.2</p><h2 id="配置目标"><a class="markdownIt-Anchor" href="#配置目标"></a> 配置目标:</h2><table><thead><tr><th></th><th style="text-align:center">master端</th><th style="text-align:right">node端</th></tr></thead><tbody><tr><td>IP</td><td style="text-align:center">10.0.0.100</td><td style="text-align:right">10.0.0.101</td></tr><tr><td>etcd</td><td style="text-align:center">✔</td><td style="text-align:right"></td></tr><tr><td>flannel</td><td style="text-align:center">✔</td><td style="text-align:right">✔</td></tr><tr><td>kube-apiserver</td><td style="text-align:center">✔</td><td style="text-align:right"></td></tr><tr><td>kube-controller-manager</td><td style="text-align:center">✔</td><td style="text-align:right"></td></tr><tr><td>kube-scheduler</td><td style="text-align:center">✔</td><td style="text-align:right"></td></tr><tr><td>kubelet</td><td style="text-align:center">✔</td><td style="text-align:right">✔</td></tr><tr><td>kube-proxy</td><td style="text-align:center">✔</td><td style="text-align:right">✔</td></tr><tr><td>docker</td><td style="text-align:center">✔</td><td style="text-align:right">✔</td></tr></tbody></table><h2 id="共同配置即master和node都需要进行的操作"><a class="markdownIt-Anchor" href="#共同配置即master和node都需要进行的操作"></a> 共同配置（即master和node都需要进行的操作）</h2><p>(1)修改/etc/hosts文件，添加master和node节点IP</p><pre class="highlight"><code class="">$ echo &quot;10.0.0.100 centos-master  10.0.0.101 centos-minion&quot; &gt;&gt; /etc/hosts$ cat /etc/hosts  10.0.0.100 centos-master  10.0.0.101 centos-minion</code></pre><p>(2)禁用fierwalld，安装iptables，设置iptables开机自动启动，启用iptables，禁用iptables-services</p><pre class="highlight"><code class=""># 关闭fierwalld$ systemctl stop firewalld$ systemctl disable firewalld# 安装iptables，启动该服务并设置开机自启动$ yum install iptables$ systemctl start iptables$ systemctl enable iptables# 关闭iptables-services$ systemctl disable iptables-services $ systemctl stop iptables-services # 关闭iptables-services时，可能出现&quot;Failed to issue method call: Access denied&quot;# 解决方法：修改SElinux配置$ vi /etc/selinux/config  # SELINUX=enforcing    #注释掉  # SELINUXTYPE=targeted #注释掉    SELINUX=disabled #增加  :wq! #保存退出$ setenforce 0 #使配置立即生效</code></pre><p>(3)安装</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;环境配置&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#环境配置&quot;&gt;&lt;/a&gt; 环境配置&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;系统要求&lt;/strong&gt;: CentOS 7&lt;br&gt;
-&lt;strong&gt;软件版本&lt;/strong&gt;: 1.5.2&lt;/
-      
-    
-    </summary>
-    
-      <category term="容器" scheme="http://yov.oschina.io/categories/%E5%AE%B9%E5%99%A8/"/>
-    
-    
-      <category term="Kubernetes" scheme="http://yov.oschina.io/tags/Kubernetes/"/>
     
   </entry>
   
