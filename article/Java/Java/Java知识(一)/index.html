@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Wed Dec 06 2017 14:31:22 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Dec 06 2017 14:33:05 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Dec 11 2017 11:06:49 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java/Java知识(一)/index.html",
     "headline": "Java知识(一)",
     "datePublished": "Wed Dec 06 2017 14:31:22 GMT+0800",
-    "dateModified": "Wed Dec 06 2017 14:33:05 GMT+0800",
+    "dateModified": "Mon Dec 11 2017 11:06:49 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java5特性"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Java5特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可变参数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 可变参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#foreach循环"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> foreach循环</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态导入"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 静态导入</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java5特性"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Java5特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#可变参数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 可变参数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#foreach循环"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> foreach循环</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态导入"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 静态导入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#泛型"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 泛型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题引出"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 问题引出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通配符"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 通配符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#泛型接口"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 泛型接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#泛型方法"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 泛型方法</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -627,6 +627,347 @@ public class Demo {
     }
 }
 </code></pre>
+<h2 id="泛型"><a class="markdownIt-Anchor" href="#泛型"></a> 泛型</h2>
+<h3 id="问题引出"><a class="markdownIt-Anchor" href="#问题引出"></a> 问题引出</h3>
+<p>1、要求：定义一个表示坐标的类（Point），该类要保存以下几种坐标：</p>
+<blockquote>
+<p>· 整数：x = 10、y = 20；<br>
+· 小数：x = 10.2、y = 20.3；<br>
+· 字符串：x = 东经20度、y = 北纬15度。</p>
+</blockquote>
+<p>Poin类的设计关键在于x和y的类型。必须有一种类型可以保存这三类数据，首先想到的是Object类型：</p>
+<blockquote>
+<p>· int：int自动装箱为Integer，Integer向上转型为Object；<br>
+· double：double自动装箱为Double，Double向上转型为Object；<br>
+· String：直接向上转型为Object；</p>
+</blockquote>
+<p>范例：设计如下</p>
+<pre class="highlight"><code class="">class Point{ // 定义坐标类
+    private Object x;
+    private Object y;
+
+    public Object getX() {
+        return x;
+    }
+
+    public void setX(Object x) {
+        this.x = x;
+    }
+
+    public Object getY() {
+        return y;
+    }
+
+    public void setY(Object y) {
+        this.y = y;
+    }
+}
+</code></pre>
+<p>范例：测试上述代码</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Point pA = new Point();
+        pA.setX(10);
+        pA.setY(20);
+        // 2. 取出数据
+        int x = (Integer) pA.getX();
+        int y = (Integer) pA.getY();
+        System.out.println(&quot;(&quot; + x + &quot; , &quot; + y + &quot;)&quot;);
+    }
+}
+</code></pre>
+<p>上述代码利用Object数据类型解决了问题，但依然可能有一定问题。<br>
+范例：错误代码：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Point pA = new Point();
+        pA.setX(&quot;东经10度&quot;);
+        pA.setY(10);
+        // 2. 取出数据
+        String x = (String) pA.getX();
+        String y = (String) pA.getY();
+        System.out.println(&quot;(&quot; + x + &quot; , &quot; + y + &quot;)&quot;);
+    }
+}
+</code></pre>
+<p>上述问题产生的原因是因为设置时存放的是int(Integer),而取出时是String。两个没有任何关系的类对象之间发生强制转换，会出现<code>java.lang.ClassCastException</code>错误。<br>
+2、向上转型是为了统一参数，向下转型是为了调用子类定义的特殊功能。向下转型是一种不安全的操作，那么这操作应该在代码运行前排查出来。从JDK1.5增加了泛型，泛型的核心作用在于：类在定义的时候，可以使用一个标记，此标记动态表示类中属性或方法参数的类型，使用时设置具体类型。</p>
+<pre class="highlight"><code class="">// T在Point类定义上只表示一个标记，使用时需要为其设置具体的类型
+class Point&lt;T&gt; { // 定义坐标,Type = T
+    private T x; // 该属性类型未知，由Point动态设置
+    private T y; // 该属性类型未知，由Point动态设置
+
+    public T getX() {
+        return x;
+    }
+
+    public void setX(T x) {
+        this.x = x;
+    }
+
+    public T getY() {
+        return y;
+    }
+
+    public void setY(T y) {
+        this.y = y;
+    }
+}
+</code></pre>
+<p>在使用Point类时，才设置标记的类型，即设置类中属性的类型。<br>
+范例：设置为String</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Point&lt;String&gt; pA = new Point();
+        pA.setX(&quot;东经10度&quot;);
+        pA.setY(&quot;北纬20度&quot;);
+        // 此时Point类的类型为String，不需要向下转型
+        // 2. 取出数据
+        String x = pA.getX();
+        String y = pA.getY();
+        System.out.println(&quot;(&quot; + x + &quot; , &quot; + y + &quot;)&quot;);
+    }
+}
+</code></pre>
+<p>3、使用泛型后，类中属性的类型都是动态设置的，这样避免了向下转型的问题。但是泛型只能用于类，即不能用于基本数据类型，只能是引用类型（例如，不能用<code>&lt;int&gt;</code>，只能用<code>&lt;Integer&gt;</code>）</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Point&lt;Integer&gt; pA = new Point();
+        pA.setX(10);
+        pA.setY(20);
+        // 利用包装类的自动装箱和自动拆箱
+        // 2. 取出数据
+        int x = pA.getX();
+        int y = pA.getY();
+        System.out.println(&quot;(&quot; + x + &quot; , &quot; + y + &quot;)&quot;);
+    }
+}
+</code></pre>
+<p>4、对于泛型有两点说明：</p>
+<blockquote>
+<p>· 使用泛型类或接口时，没有设置接口的具体类型会出现编译警告，为了保证程序不出错，将默认使用Object表示。</p>
+</blockquote>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        // 1. 设置数据
+        Point pA = new Point(); // 将使用Object描述泛型
+        pA.setX(10);
+        pA.setY(20);
+        // 2. 取出数据,需要转型
+        int x = (Integer) pA.getX();
+        int y = (Integer) pA.getY();
+        System.out.println(&quot;(&quot; + x + &quot; , &quot; + y + &quot;)&quot;);
+    }
+}
+</code></pre>
+<blockquote>
+<p>· JDK1.7开始，可以简化泛型声明</p>
+</blockquote>
+<pre class="highlight"><code class="">Point&lt;Integer&gt; pA = new Point();
+</code></pre>
+<p>即实例化时只要在前面声明一个泛型的具体类型。</p>
+<h3 id="通配符"><a class="markdownIt-Anchor" href="#通配符"></a> 通配符</h3>
+<p>范例：观察下述程序</p>
+<pre class="highlight"><code class="">class Message&lt;T&gt; {
+    private T msg;
+
+    public void setMsg(T msg) {
+        this.msg = msg;
+    }
+
+    public T getMsg() {
+        return msg;
+    }
+
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Message&lt;String&gt; m = new Message&lt;String&gt;();
+        m.setMsg(&quot;Hello&quot;);
+        fun(m); // 引用传递
+    }
+
+    public static void fun(Message&lt;String&gt; temp) {
+        System.out.println(temp.getMsg());
+    }
+}
+</code></pre>
+<p>上述代码为Message类设置String型的泛型，但是此时设置其他类型时，fun()中的Message<String>就不能使用了，并且fun()不能针对不同的泛型进行重载，因为方法重载只认得参数类型，无法辨别泛型的不同。<br>
+解决方法一：不设置方法参数的泛型</String></p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Message&lt;Integer&gt; mA = new Message&lt;Integer&gt;();
+        Message&lt;String&gt; mB = new Message&lt;String&gt;();
+        mA.setMsg(100);
+        mB.setMsg(&quot;Hello&quot;);
+        fun(mA); // 引用传递
+        fun(mB);
+    }
+
+    public static void fun(Message temp) {
+        System.out.println(temp.getMsg());
+    }
+}
+</code></pre>
+<p>此时fun()存在警告，因为不设置具体泛型，就会存在警告。并且存在下述问题：</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Message&lt;Integer&gt; mA = new Message&lt;Integer&gt;();
+        mA.setMsg(100);
+        fun(mA); // 引用传递
+    }
+
+    public static void fun(Message temp) { // 不设置泛型，默认为Object型
+        temp.setMsg(&quot;Hello&quot;); // 设置Striing型
+        System.out.println(temp.getMsg());
+    }
+}
+</code></pre>
+<p>1、上述代码说明，需要一种方式可以接收任意的泛型类型，但是不可以修改，只能取出。就可以使用<code>?</code>来描述</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) throws Exception {
+        Message&lt;Integer&gt; num = new Message&lt;&gt;();
+        num.setMsg(100);
+        fun(num);
+    }
+
+    public static void fun (Message&lt;?&gt; tmp) {
+        //tmp.setMsg(&quot;String&quot;); 报错,无法应用
+        System.out.println(tmp.getMsg());
+
+    }
+}
+</code></pre>
+<ol start="3">
+<li>在<code>?</code>通配符基础上还有两个子通配符：</li>
+</ol>
+<blockquote>
+<p>· ?extends 类：设置泛型上限，可以在声明上和方法参数上使用；<br>
+|- ?extends Number：意味着可以设置Number或者Number的子类(Integer，Double等)<br>
+· ?super 类：设置泛型下限，方法参数使用；<br>
+|-?super String：意味着只能设置String或者它的父类Object.</p>
+</blockquote>
+<p>范例：设置泛型上限</p>
+<pre class="highlight"><code class="">class Message&lt;T extends Number&gt; {
+    private T msg;
+
+    public void setMsg(T msg) {
+        this.msg = msg;
+    }
+
+    public T getMsg() {
+        return msg;
+    }
+
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Message&lt;Integer&gt; mA = new Message&lt;Integer&gt;();
+        mA.setMsg(100);
+        fun(mA); // 引用传递
+    }
+
+    public static void fun(Message&lt;? extends Number&gt; temp) {
+        System.out.println(temp.getMsg());
+    }
+}
+</code></pre>
+<p>范例：将Integer改为String</p>
+<pre class="highlight"><code class="">Message&lt;String&gt; mA = new Message&lt;String&gt;();
+</code></pre>
+<p>此时设置为非Number或其子类，那就会出现语法错误。<br>
+范例：设置泛型下限</p>
+<pre class="highlight"><code class="">class Message&lt;T&gt; {
+    private T msg;
+
+    public void setMsg(T msg) {
+        this.msg = msg;
+    }
+
+    public T getMsg() {
+        return msg;
+    }
+
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Message&lt;String&gt; mA = new Message&lt;String&gt;();
+        mA.setMsg(&quot;Hello&quot;);
+        fun(mA); // 引用传递
+    }
+
+    public static void fun(Message&lt;? super String&gt; temp) {
+        System.out.println(temp.getMsg());
+    }
+}
+</code></pre>
+<h3 id="泛型接口"><a class="markdownIt-Anchor" href="#泛型接口"></a> 泛型接口</h3>
+<p>1、泛型可以在接口上声明，这样的接口称为泛型接口。<br>
+范例：定义泛型接口</p>
+<pre class="highlight"><code class="">// 如果是接口在前面加“I”，例如：IMessage;
+// 如果是抽象类前面加Abstract,例如:AbstractMessage
+// 如果是普通类直接写，例如：Message
+interface IMessage&lt;T&gt; { // 设置泛型接口
+    public void print(T t);
+}
+</code></pre>
+<p>2、接口必须定义其相应的子类，定义子类有两种形式：<br>
+形式一：在子类继续设置泛型</p>
+<pre class="highlight"><code class="">// 子类也继续使用泛型，接口使用和子类一样的泛型标记
+class Message&lt;T&gt; implements IMessage&lt;T&gt; {
+    public void print(T t) {
+        System.out.println(t);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        IMessage&lt;String&gt; msg = new Message&lt;String&gt;();
+        msg.print(&quot;Hello&quot;);
+    }
+}
+</code></pre>
+<p>形式二：在子类不设置泛型，但为接口明确定义一个泛型</p>
+<pre class="highlight"><code class="">class Message implements IMessage&lt;String&gt; {
+    public void print(String t) {
+        System.out.println(t);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        IMessage&lt;String&gt; msg = new Message();
+        msg.print(&quot;Hello&quot;);
+    }
+}
+</code></pre>
+<h3 id="泛型方法"><a class="markdownIt-Anchor" href="#泛型方法"></a> 泛型方法</h3>
+<p>泛型方法也可以定义在普通类中。<br>
+范例：泛型方法定义</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        String str = fun(&quot;Hello&quot;);
+        System.out.println(str.length());
+    }
+
+    // T的类型由传入的参数类型决定
+    public static &lt;T&gt; T fun(T t) {
+        return t;
+    }
+}
+</code></pre>
+<blockquote>
+<p>总结：<br>
+1、泛型解决的是向下转型所带来的安全隐患，其核心是在声明类或接口时不设置参数或属性的类型；<br>
+2、“?”可以接收任意的泛型类型，只能取出，不能修改泛型</p>
+</blockquote>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -682,6 +1023,14 @@ public class Demo {
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/article/工具/MySQL避免乱码/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -781,7 +1130,7 @@ public class Demo {
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
             </ul>
         </li>
         
@@ -799,7 +1148,7 @@ public class Demo {
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">18</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -855,7 +1204,7 @@ public class Demo {
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">34</span>
+                <span class="sidebar-badge">35</span>
             </a>
         </li>
         
