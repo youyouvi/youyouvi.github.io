@@ -3,6 +3,698 @@
   
     
     <entry>
+      <title><![CDATA[Java知识(三)]]></title>
+      <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E4%B8%89)/</url>
+      <content type="html"><![CDATA[<h2 id="java8特性"><a class="markdownIt-Anchor" href="#java8特性"></a> Java8特性</h2>
+<h3 id="接口定义增强"><a class="markdownIt-Anchor" href="#接口定义增强"></a> 接口定义增强</h3>
+<p>JDK1.8之前，接口的组成只有<code>全局变量</code>和<code>抽象方法</code>。从JDK1.8开始，接口的组成增加了。<br>
+假设：现有一个接口，其子类有2W个。现在发现该接口功能不足，要增加一个方法，该方法对于所有子类而言的功能是一样的（即方法体是一样的）。此时要修改每个子类的方法，要修改2W次。<br>
+上述问题在JDK1.8中不存在，因为其允许接口中定义普通方法，但普通方法必须使用default定义。</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+
+    default public void fun() { // 普通方法
+        System.out.println(&quot;JDK1.8&quot;);
+    }
+}
+
+class Apple implements Fruit {
+    @Override
+    public void print() {
+        System.out.println(&quot;苹果&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Fruit f = new Apple();
+        f.fun();
+        f.print();
+    }
+}
+</code></pre>
+<p>除了使用<code>default</code>定义方法，还可以使用<code>stati</code>c定义方法<br>
+范例：定义static方法</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+
+    default public void fun() { // 普通方法
+        System.out.println(&quot;JDK1.8&quot;);
+    }
+
+    static void get() {
+        System.out.println(&quot;直接由接口调用&quot;);
+    }
+}
+
+class Apple implements Fruit {
+    @Override
+    public void print() {
+        System.out.println(&quot;苹果&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Fruit f = new Apple();
+        f.fun();
+        f.print();
+        Fruit.get();
+    }
+}
+</code></pre>
+<p>JDK1.8有个新功能：内部类访问方法参数时可以不加上final关键字。<br>
+这些新特性，完全打破了Java已有的代码组成形式。</p>
+<h3 id="lamda表达式"><a class="markdownIt-Anchor" href="#lamda表达式"></a> Lamda表达式</h3>
+<p>Lamda属于函数式编程的概念，下面通过匿名内部类，来分析函数式编程的产生目的。<br>
+范例：匿名内部类</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+}
+
+
+public class Demo {
+    public static void main(String[] args) {
+        fun(new Fruit() {
+            @Override
+            public void print() {
+                System.out.println(&quot;水果&quot;);
+            }
+        });
+    }
+
+    public static void fun(Fruit fru) {
+        fru.print();
+    }
+}
+</code></pre>
+<p>上述代码中fun()最终需要的只是输出，但是由于Java的开发结构的完整性要求，不得不在这个核心语句上嵌套更多的内容。但是该做法过于严谨复杂，在JDK1.8引入函数式编程，简化过程。<br>
+范例：使用Lamda表达式</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        fun(()-&gt; System.out.println(&quot;水果&quot;));
+    }
+    public static void fun(Fruit fru) {
+        fru.print();
+    }
+}
+</code></pre>
+<p>Lamda语法有三种形式：</p>
+<blockquote>
+<p>·(参数)-&gt;单行语句；<br>
+·(参数)-&gt;｛单行语句｝；<br>
+·(参数)-&gt;表达式；</p>
+</blockquote>
+<p>范例：观察有参单行</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(String str); // 接口原本定义的方法
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 首先要定义此表达式里面需要接收变量，单行语句直接进行输出
+        fun((s) -&gt; System.out.println(s));
+    }
+
+    public static void fun(Fruit fru) {
+        fru.print(&quot;苹果&quot;); // 设置参数的内容
+    }
+}
+</code></pre>
+<p>范例：编写多行语句</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(String str); // 接口原本定义的方法
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 首先要定义此表达式里面需要接收变量，单行语句直接进行输出
+        fun((s) -&gt; {
+            s = s.toUpperCase();
+            System.out.println(s);
+        });
+    }
+
+    public static void fun(Fruit fru) {
+        fru.print(&quot;Hello&quot;); // 设置参数的内容
+    }
+}
+</code></pre>
+<p>范例：编写表达式</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public int add(int x, int y);
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 首先要定义此表达式里面需要接收变量，单行语句直接进行输出
+        fun((s1, s2) -&gt; s1 + s2);
+    }
+
+    public static void fun(Fruit fru) {
+        System.out.println(fru.add(10, 20));
+    }
+}
+</code></pre>
+<h3 id="方法引用"><a class="markdownIt-Anchor" href="#方法引用"></a> 方法引用</h3>
+<p>对象引用的特点：不同对象可以操作同一块内容。而方法引用就是指为一个方法设置别名，相当于一个方法定义了不同的名字。<br>
+1、方法引用在Java8中一共定义了四种形式：</p>
+<blockquote>
+<p>· 引用静态方法： 类名称::static 方法名称;<br>
+· 引用某个对象的方法：实例化对象::普通方法；<br>
+· 引用特定类型的方法：特定类::普通方法;<br>
+· 引用构造方法：类名称::new。</p>
+</blockquote>
+<p>范例：引用静态方法<br>
+String类中的valueof()：<code>public static String valueof(int x)</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+/**
+ * 只有一个方法的接口
+ * @param &lt;P&gt; 参数的数据类型
+ * @param &lt;R&gt; 返回值的数据类型
+ */
+interface Math&lt;P, R&gt; {
+    public R exchange(P p);
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 覆写了exchange(),使其具有valueOf()的功能
+        Math&lt;Integer, String&gt; math = String::valueOf;
+        String msg = math.exchange(10000);
+        // 将所有的0替换成9
+        System.out.println(msg.replaceAll(&quot;0&quot;, &quot;9&quot;));
+    }
+}
+</code></pre>
+<p>范例：普通方法引用<br>
+String类中的toUpperCase()：<code>public String toUpperCase()</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+interface Math&lt;R&gt; {
+    public R upper();
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 覆写了upper,使其具有toUpperCase的功能
+        // toUpperCase是普通方法,必须由String对象调用
+        // hello是String对象,代码如下
+        Math&lt;String&gt; math = &quot;hello&quot;::toUpperCase;
+        String msg = math.upper();
+        System.out.println(msg);
+    }
+}
+</code></pre>
+<p>上述例子显示，要实现方法引用，必须要有接口，且该接口只能有一个方法。为了保证该接口只有一个方法，可对其进行注解说明。</p>
+<pre class="highlight"><code class="">@FunctionalInterface // 此为函数式接口，只能定义一个方法
+interface ITest&lt;R&gt; {
+    public R upper();
+}
+</code></pre>
+<p>2、在进行方法引用的过程中，还有一种形式的引用（这种形式需要特定类的对象支持）。一般使用“类::方法”，引用的是类中的静态方法。但是这种形式也可以引用普通方法。<br>
+例如：在String类中有一个方法：<code>public int compareTo(String anotherString)</code>，比较的形式是<code>String对象1.compareTo(String对象2)</code>，即要引用该方法，需要有两个参数。<br>
+范例：引用特定类的方法</p>
+<pre class="highlight"><code class="">interface IMessage&lt;P&gt; {
+    public int compare(P p1, P p2);
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        IMessage&lt;String&gt; msg = String::compareTo;
+        System.out.println(msg.compare(&quot;A&quot;, &quot;B&quot;));
+    }
+}
+</code></pre>
+<p>与之前相比，方法引用前不需要定义对象，可以理解为将对象定义在参数上。<br>
+范例：引用构造方法</p>
+<pre class="highlight"><code class="">interface IMessage&lt;C&gt; {
+    public C create(String t, double p);
+}
+
+class Book {
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public String toString() {
+        return &quot;书名:&quot; + this.title + &quot;,价格：&quot; + this.price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        IMessage&lt;Book&gt; msg = Book::new; // 引用构造方法
+        // 虽然调用的是create()，实际引用了Book类的构造方法
+        Book book = msg.create(&quot;Java开发&quot;, 66.6);
+        System.out.println(book);
+    }
+}
+</code></pre>
+<p>对象引用是使用不同的名字，而方法引用需要一个函数接口。</p>
+<h3 id="内建函数式接口"><a class="markdownIt-Anchor" href="#内建函数式接口"></a> 内建函数式接口</h3>
+<p>1、JDK1.8中提供了一个包：<code>java.util.function</code>，提供有以下四个核心接口：</p>
+<blockquote>
+<p>(1)功能性接口（Function）：public interface Function&lt;T,R&gt;{public R apply(T t);}<br>
+|- 此接口需要接收一个参数，并且返回一个处理结果；<br>
+(2)消费型接口（Consumer）：public interface Consumer<T>{public void accept(T t);}<br>
+|- 此接口只负责接收数据（引用数据是不需要返回的），并且不返回结果；<br>
+(3)供给型接口（Suplier）：public interface Supplier<T>{public T get();}<br>
+|- 此接口不接收参数，但是可以返回结果<br>
+(4)断言型接口（Predicate）：public interface Predicate<T>{public boolean Test(T t);}<br>
+|- 进行判断操作使用；</T></T></T></p>
+</blockquote>
+<p>在JDK1.8中存在以上四个功能型接口，所以很少会由用户去定义新的函数式接口。<br>
+范例：函数式接口——接收参数并返回处理结果<br>
+· String类有一个方法：<code>public boolean startsWith(String str)</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+import java.util.function.Function;
+
+public class Demo {
+    public static void main(String[] args) {
+        Function&lt;String, Boolean&gt; fun = &quot;##hello&quot;::startsWith;
+        System.out.println(fun.apply(&quot;##&quot;)); // true
+    }
+}
+</code></pre>
+<p>范例：消费型接口</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+import java.util.function.Consumer;
+
+class MyDemo {
+    // 此方法没有返回值，但是有参数
+    public void print(String str) {
+        System.out.println(str);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Consumer&lt;String&gt; cons = new MyDemo()::print;
+        cons.accept(&quot;Hello World&quot;);
+    }
+}
+</code></pre>
+<p>范例：供给型接口<br>
+· 引用String类的toUpperCase()：<code>public String toUpperCase()</code>;</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+import java.util.function.Supplier;
+
+public class Demo {
+    public static void main(String[] args) {
+        Supplier&lt;String&gt; sup = &quot;hello&quot;::toUpperCase;
+        System.out.println(sup.get());
+    }
+}
+</code></pre>
+<p>范例：断言型接口<br>
+· String类中有<code>equalsIgnoreCase()</code></p>
+<pre class="highlight"><code class="">import java.util.function.Predicate;
+
+public class Demo {
+    public static void main(String[] args) {
+        Predicate&lt;String&gt; pre = &quot;hello&quot;::equalsIgnoreCase;
+        System.out.println(pre.test(&quot;Hello&quot;));
+    }
+}
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java知识(二)]]></title>
+      <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E4%BA%8C)/</url>
+      <content type="html"><![CDATA[<h2 id="枚举"><a class="markdownIt-Anchor" href="#枚举"></a> 枚举</h2>
+<h3 id="枚举简介"><a class="markdownIt-Anchor" href="#枚举简介"></a> 枚举简介</h3>
+<p>1、多例设计模式：<br>
+构造方法私有化，而后在类的内部提供有若干个实例化对象，并且通过static方法返回。<br>
+范例：定义一个表示颜色基色的多例</p>
+<pre class="highlight"><code class="">class Color {
+    private String title;
+    private static final Color RED = new Color(&quot;红色&quot;);
+    private static final Color GREEN = new Color(&quot;绿色&quot;);
+    private static final Color BLUE = new Color(&quot;蓝色&quot;);
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    public static Color getInstance(int ch) {
+        switch (ch) {
+            case 1:
+                return RED;
+            case 2:
+                return GREEN;
+            case 3:
+                return BLUE;
+            default:
+                return null;
+        }
+
+    }
+
+    public String toString() {
+        return this.title;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Color red = Color.getInstance(1);
+        System.out.println(red);
+    }
+}
+</code></pre>
+<p>2005年之前，Java定义枚举采用上述方式，即多例设计解决了Java无法直接定义枚举的问题。<br>
+2、从2005年之后，Java增加了枚举的概念，使用<code>enum</code>关键字定义。<br>
+范例：定义枚举</p>
+<pre class="highlight"><code class="">enum Color { // 定义枚举类
+    RED, GREEN, BLUE; // 实例化对象
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Color red = Color.RED;
+        System.out.println(red);
+    }
+}
+</code></pre>
+<p>枚举可以地替代多例设计模式。<br>
+3、Java使用enum定义枚举，相当于一个类继承了<code>Enum</code>类。</p>
+<blockquote>
+<p>public abstract class Enum&lt;E extends Enum<E>&gt;<br>
+extends Object<br>
+implements Comparable<E>, Serializable</E></E></p>
+</blockquote>
+<p><code>Enum</code>是一个抽象类，里面定义的构造方法如下：<code>protected Enum(String name, int ordinal)</code><br>
+Enum类的构造方法依然是被封装的，也属于构造方法私有化。多例设计模式的前提：构造方法私有化。<br>
+4、在Enum类中定义了两个方法：</p>
+<blockquote>
+<p>· 取得枚举的索引：public final int ordinal();<br>
+· 取得枚举的名字：public final String name();<br>
+除了以上支持的方法外，使用enum关键字定义的枚举类还有一个<code>values()</code>方法，可以将枚举对象以对象数组的形式的返回。</p>
+</blockquote>
+<pre class="highlight"><code class="">enum Color { // 定义枚举类
+    RED, GREEN, BLUE;
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        for (Color c : Color.values()) {
+            System.out.println(c.ordinal() + &quot;-&quot; + c.name());
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>请解释enum和Enum的区别？<br>
+· enum是一个关键字，而Enum是一个抽象类；<br>
+· 使用enum定义的枚举就相当于一个类继承了Enum类。</p>
+</blockquote>
+<h3 id="定义其它结构"><a class="markdownIt-Anchor" href="#定义其它结构"></a> 定义其它结构</h3>
+<p>1、多例设计模式可以在类中定义属性和方法等；枚举也可以，但有如下要求：</p>
+<blockquote>
+<p>· 枚举之中定义的构造方法不能使用public声明，如果没有无参构造方法，要手工调用构造传递参数；<br>
+· 枚举对象必须要放在首行，随后才可以定义属性、构造方法、普通方法。</p>
+</blockquote>
+<p>范例：扩充枚举功能</p>
+<pre class="highlight"><code class="">enum Color { // 定义枚举类
+    RED(&quot;红色&quot;), GREEN(&quot;绿色&quot;), BLUE(&quot;蓝色&quot;); // 对象必须要放在首行
+    private String title; //属性
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    public String toString() {
+        return this.title;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        for (Color c : Color.values()) {
+            System.out.println(c); // 调用toString()
+        }
+    }
+}
+</code></pre>
+<p>此时与之前定义的多例设计模式操作方式完全相同，而且代码更加简单。<br>
+2. 枚举还可以实现接口<br>
+范例：枚举实现接口</p>
+<pre class="highlight"><code class="">interface Message {
+    public String getTitle();
+}
+
+enum Color implements Message { // 定义枚举类
+    RED(&quot;红色&quot;), GREEN(&quot;绿色&quot;), BLUE(&quot;蓝色&quot;); // 对象必须要放在首行
+    private String title; //属性
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String toString() {
+        return this.title;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Message msg = Color.RED;
+        System.out.println(msg.getTitle());
+    }
+}
+</code></pre>
+<p>3、枚举还可以在每个对象后面以匿名内部类的形式使用抽象方法。<br>
+范例：另一种形式的接口</p>
+<pre class="highlight"><code class="">interface Message {
+    public String getTitle();
+}
+
+enum Color implements Message { // 定义枚举类
+    RED(&quot;红色&quot;) {
+        public String getTitle() {
+            return &quot;自己的&quot; + this;
+        }
+    }, GREEN(&quot;绿色&quot;) {
+        public String getTitle() {
+            return &quot;自己的&quot; + this;
+        }
+    }, BLUE(&quot;蓝色&quot;) {
+        public String getTitle() {
+            return &quot;自己的&quot; + this;
+        }
+    }; // 对象必须要放在首行
+    private String title; //属性
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String toString() {
+        return this.title;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Message msg = Color.RED;
+        System.out.println(msg.getTitle());
+    }
+}
+</code></pre>
+<p>4、枚举中还能直接定义抽象方法，此时每一个枚举对象必须分别覆写抽象方法。<br>
+范例：定义抽象方法并覆写</p>
+<pre class="highlight"><code class="">enum Color { // 定义枚举类
+    RED(&quot;红色&quot;) {
+        public String getTitle() {
+            return &quot;自己的&quot; + this;
+        }
+    }, GREEN(&quot;绿色&quot;) {
+        public String getTitle() {
+            return &quot;自己的&quot; + this;
+        }
+    }, BLUE(&quot;蓝色&quot;) {
+        public String getTitle() {
+            return &quot;自己的&quot; + this;
+        }
+    }; // 对象必须要放在首行
+    private String title; //属性
+
+    private Color(String title) {
+        this.title = title;
+    }
+
+    public String toString() {
+        return this.title;
+    }
+
+    public abstract String getTitle();
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println(Color.RED.getTitle());
+    }
+}
+</code></pre>
+<h3 id="枚举应用"><a class="markdownIt-Anchor" href="#枚举应用"></a> 枚举应用</h3>
+<p>1、枚举应用于switch。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) {
+        Color c =Color.RED;
+        switch (c){ // 枚举判断
+            case RED:
+                System.out.println(&quot;这是红色&quot;);
+                break;
+            case GREEN:
+                System.out.println(&quot;这是绿色&quot;);
+                break;
+            case BULE:
+                System.out.println(&quot;这是蓝色&quot;);
+                break;
+        }
+    }
+}
+</code></pre>
+<p>范例：利用枚举编写一个程序：</p>
+<pre class="highlight"><code class="">enum Sex {
+    MALE(&quot;男&quot;), FEMALE(&quot;女&quot;);
+    private String title;
+
+    private Sex(String title){
+        this.title = title;
+    }
+    public String toString(){
+        return this.title;
+    }
+}
+
+class Person{
+    private String name;
+    private int age;
+    private Sex sex;
+    public Person(String name,int age,Sex sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    }
+    public String toString(){
+        return &quot;姓名:&quot; + this.name +
+                &quot;,年龄:&quot; + this.age +
+                &quot;,性别:&quot; + this.sex;
+    }
+}
+public class Demo {
+    public static void main(String[] args) {
+        System.out.println(new Person(&quot;张三&quot;, 24, Sex.FEMALE));
+    }
+}
+</code></pre>
+<h2 id="annotation"><a class="markdownIt-Anchor" href="#annotation"></a> Annotation</h2>
+<blockquote>
+<p>软件开发经历了三个阶段：<br>
+（1）与配置相关的代码写在程序中；<br>
+（2）配置与程序代码独立，即程序运行时根据配置文件操作；但会造成配置文件过多时，查错困难；<br>
+（3）配置信息对用户而言无用，而且错误的修改还会导致程序异常。因此将配置信息写回到程序中，但利用一些明显的标记来区分配置信息与程序。</p>
+</blockquote>
+<h3 id="annotation简介"><a class="markdownIt-Anchor" href="#annotation简介"></a> Annotation简介</h3>
+<p><code>Annotation</code>是JDK1.5最大的特色，利用注解的形式来实现程序的不同功能。在Java SE中支持自定义<code>Annotation</code>的开发，并且提供了三个最为常用的基础Annotation：<code>@Override</code>、<code>@Deprecated</code>、<code>@SuppressWarnings</code>。</p>
+<h3 id="准确覆写"><a class="markdownIt-Anchor" href="#准确覆写"></a> 准确覆写</h3>
+<p>如果在输出对象时，希望其可以返回需要的内容，就必须覆写<code>toString()</code>。<br>
+在覆写方法时，可能由于写错方法名等错误，导致未进行覆写，并且这种错误在编译时，并不能被发现。所以为了告诉编译器toString()是覆写的方法，应该加上@Override。</p>
+<h3 id="过期声明"><a class="markdownIt-Anchor" href="#过期声明"></a> 过期声明</h3>
+<p>假设现在有工具包，其中有一个Demo类，类中有一个fun()。在项目最初阶段，fun()非常适用。但随着技术提升，fun()显得功能不足，此时开发者有两个选择：</p>
+<blockquote>
+<p>· 1. 直接在新版本的工具包里删除fun()，同时给出新的fun2()；<br>
+· 2. 在新版本的开发包里保存fun()，但是通过某种途径告诉开发者，这个方法有问题，同时提供fun2()供开发者使用。</p>
+</blockquote>
+<p>明显，第二种选择比较合适，可以兼顾已使用fun()的项目。这时，就可以使用<code>@Deprecated</code>声明。<br>
+范例：声明过期操作</p>
+<pre class="highlight"><code class="">class Book{
+    @Deprecated
+    public void fun(){}
+}
+
+
+public class Demo {
+    public static void main(String[] args) {
+        Book bk = new Book();
+        bk.fun();
+    }
+}
+</code></pre>
+<p>利用此操作可以很好地实现方法功能的新旧交替。</p>
+<h3 id="压制警告"><a class="markdownIt-Anchor" href="#压制警告"></a> 压制警告</h3>
+<p>可以压制多个警告（warning）</p>
+<pre class="highlight"><code class="">class Book&lt;T&gt;{
+    private T title;
+    public void setTitle(T title){
+        this.title = title;
+    }
+}
+
+public class Demo {
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public static void main(String[] args) {
+        Book bk = new Book();
+        bk.setTitle(&quot;Hello&quot;);
+    }
+}
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MySQL避免乱码]]></title>
       <url>/article/%E5%B7%A5%E5%85%B7/MySQL%E9%81%BF%E5%85%8D%E4%B9%B1%E7%A0%81/</url>
       <content type="html"><![CDATA[<h3 id="编码简介"><a class="markdownIt-Anchor" href="#编码简介"></a> 编码简介</h3>
@@ -9482,7 +10174,7 @@ mysql&gt; select * from person;
 <td style="text-align:right">被标记的方法作为一个返回对象的工厂，这些对象将被TestNG作为测试类，该返回必须返回Object[]</td>
 </tr>
 <tr>
-<td><code>@Parameters</code></td>
+<td><code>@Par##ameters</code></td>
 <td style="text-align:right">传递参数给测试方法</td>
 </tr>
 </tbody>
@@ -9501,6 +10193,31 @@ public class Test {
 	public void test3(){}
 
 	public void test4(){}
+}
+</code></pre>
+<h3 id="测试中的一些小问题"><a class="markdownIt-Anchor" href="#测试中的一些小问题"></a> 测试中的一些小问题</h3>
+<p>1、匿名JSON节点验证：</p>
+<pre class="highlight"><code class="">[
+	{
+		&quot;name&quot;:&quot;Tom&quot;,
+		&quot;age&quot;:12
+	},
+	{
+		&quot;name&quot;:&quot;Jane&quot;,
+		&quot;age&quot;:18
+	}
+]
+</code></pre>
+<p>对于上述JSON的验证代码如下：</p>
+<pre class="highlight"><code class="">public void method_name() {
+    given().
+            header(&quot;Authorization&quot;, &quot;token &quot; + Config.getToken()).
+    when().
+            get(url).
+    then().
+            statusCode(200).
+            body(&quot;[0].name&quot;, equalTo(&quot;正常&quot;)).
+            body(&quot;[0].age&quot;, greaterThanOrEqualTo(0));
 }
 </code></pre>
 ]]></content>
@@ -11593,12 +12310,6 @@ description: 描述
   
     
     <entry>
-      <title><![CDATA[Gallery]]></title>
-      <url>/gallery/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[About]]></title>
       <url>/about/index.html</url>
       <content type="html"><![CDATA[<p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
@@ -11606,14 +12317,20 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
+      <title><![CDATA[Gallery]]></title>
+      <url>/gallery/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
       <title><![CDATA[Tags]]></title>
       <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     

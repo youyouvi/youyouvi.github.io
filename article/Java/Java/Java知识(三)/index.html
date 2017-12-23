@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java知识(三) | 
+        
+        Ember
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="子语">
+    <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="keywords" content="Blog,Java">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/fa.png">
+    <link rel="icon" sizes="192x192" href="/img/fa.png">
+    <link rel="apple-touch-icon" href="/img/mao.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ember">
+
+    <!-- Site Verification -->
+    
+    <meta name="baidu-site-verification" content="k8tNw6G5YO" />
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #000000 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #000000 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #000000 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg6.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yov.oschina.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java知识(三) | Ember">
+    <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
+    <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta property="og:article:tag" content="Java"> 
+
+    
+        <meta property="article:published_time" content="Wed Dec 20 2017 09:31:23 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Dec 20 2017 09:35:50 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="Java知识(三) | Ember">
+    <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yov.oschina.io" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yov.oschina.io/article/Java/Java/Java知识(三)/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Java/Java/Java知识(三)/index.html",
+    "headline": "Java知识(三)",
+    "datePublished": "Wed Dec 20 2017 09:31:23 GMT+0800",
+    "dateModified": "Wed Dec 20 2017 09:35:50 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "子语",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/head.jpg"
+        },
+        "description": "一切有为法,如梦幻泡影.如露亦如电,应作如是观."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ember",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/fa.png"
+        }
+    },
+    "keywords": ",JavaBlog",
+    "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#java8特性"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Java8特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接口定义增强"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 接口定义增强</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lamda表达式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Lamda表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法引用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 方法引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内建函数式接口"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 内建函数式接口</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java知识(三)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/head.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>子语</strong>
+        <span>2017 - 12 - 20</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC2ElEQVR42u3aQY4bMQwEQP//08k1wMJON7nJ2lLNKTAGGpUWSIOkHr+ufB7Y2NjY2NjY2NjYb8l+xM+f739d4dmaX99JvvJs5dmesbGxsW9g/+W//peAhPrsnfYgZnvGxsbGvoedhFZCzTf9+ov7FbCxsbGxk8BoN5eXK7PCBhsbGxs7/0zUlC/LlU0JhI2NjY1dNGiCEiI/oFkJ9F97adjY2Nhvz54Nen/23z8238bGxsZ+M/bsSUqItt0/C79iz9jY2NiHstsLNLMW/6zNlBxcPmbGxsbGPpWdxE8bVEnDqD30/Pievo+NjY19AbsNs2GQxKOFvIxJ4hMbGxv7bPbsCk6LyYuK9rtJAGNjY2Ofzd40dNprkfuBRB6i2NjY2Pewk/ZQ29bJW06z1eoWGDY2Nvah7H3rZ9Yeyi/9tFEajQewsbGxD2LnrZ/9dZwcth8nr0oRbGxs7I9izwqA/dZnBcws9rCxsbHPZs9Gqvk1mu8aHs9WwMbGxr6BvR/W5pHTDow3I4Eot7GxsbGPYOdFRbuVdmywD8vVlR1sbGzsg9j50rNNzwqPNhSHg15sbGzsD2e3jaTNGGBTirQHio2NjX02e3O1cXPJcn8Rp45VbGxs7KPZ+2HqbAyQj4Hzyz1PDxobGxv7Gnb+SzFkLUMxD7D82hA2Njb2Pewc3z7fdTWn/TNgY2Nj38OeXbt5vbnNL5vLPUWAYWNjYx/B3hQV7e+zNRNwHWDY2NjYh7LbkMgDrA3FdkiwCjBsbGzsj2VvGkOrTYyKn3b8jI2NjX0Du930rDzIr2MmRVF+PQgbGxv7HnYSWvloto3DvODJm1bY2NjYd7Lb0MpbP5sh7qbUwcbGxsbeRMssFNuWUzGixsbGxsYeBdVs2NA2j/55gGFjY2N/CDsPg7ZlnwRPftzDg8DGxsY+mr0f9M4aT/v3i1+wsbGxD2Xf82BjY2NjY2NjY2O/zfMbxSmRAyu7eOkAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java/">Java</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java知识(三)&url=http://yov.oschina.io/article/Java/Java/Java知识(三)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Java/Java/Java知识(三)/index.html&title=Java知识(三)" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Java知识(三)&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Java/Java/Java知识(三)/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="java8特性"><a class="markdownIt-Anchor" href="#java8特性"></a> Java8特性</h2>
+<h3 id="接口定义增强"><a class="markdownIt-Anchor" href="#接口定义增强"></a> 接口定义增强</h3>
+<p>JDK1.8之前，接口的组成只有<code>全局变量</code>和<code>抽象方法</code>。从JDK1.8开始，接口的组成增加了。<br>
+假设：现有一个接口，其子类有2W个。现在发现该接口功能不足，要增加一个方法，该方法对于所有子类而言的功能是一样的（即方法体是一样的）。此时要修改每个子类的方法，要修改2W次。<br>
+上述问题在JDK1.8中不存在，因为其允许接口中定义普通方法，但普通方法必须使用default定义。</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+
+    default public void fun() { // 普通方法
+        System.out.println(&quot;JDK1.8&quot;);
+    }
+}
+
+class Apple implements Fruit {
+    @Override
+    public void print() {
+        System.out.println(&quot;苹果&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Fruit f = new Apple();
+        f.fun();
+        f.print();
+    }
+}
+</code></pre>
+<p>除了使用<code>default</code>定义方法，还可以使用<code>stati</code>c定义方法<br>
+范例：定义static方法</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+
+    default public void fun() { // 普通方法
+        System.out.println(&quot;JDK1.8&quot;);
+    }
+
+    static void get() {
+        System.out.println(&quot;直接由接口调用&quot;);
+    }
+}
+
+class Apple implements Fruit {
+    @Override
+    public void print() {
+        System.out.println(&quot;苹果&quot;);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Fruit f = new Apple();
+        f.fun();
+        f.print();
+        Fruit.get();
+    }
+}
+</code></pre>
+<p>JDK1.8有个新功能：内部类访问方法参数时可以不加上final关键字。<br>
+这些新特性，完全打破了Java已有的代码组成形式。</p>
+<h3 id="lamda表达式"><a class="markdownIt-Anchor" href="#lamda表达式"></a> Lamda表达式</h3>
+<p>Lamda属于函数式编程的概念，下面通过匿名内部类，来分析函数式编程的产生目的。<br>
+范例：匿名内部类</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+}
+
+
+public class Demo {
+    public static void main(String[] args) {
+        fun(new Fruit() {
+            @Override
+            public void print() {
+                System.out.println(&quot;水果&quot;);
+            }
+        });
+    }
+
+    public static void fun(Fruit fru) {
+        fru.print();
+    }
+}
+</code></pre>
+<p>上述代码中fun()最终需要的只是输出，但是由于Java的开发结构的完整性要求，不得不在这个核心语句上嵌套更多的内容。但是该做法过于严谨复杂，在JDK1.8引入函数式编程，简化过程。<br>
+范例：使用Lamda表达式</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(); // 接口原本定义的方法
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        fun(()-&gt; System.out.println(&quot;水果&quot;));
+    }
+    public static void fun(Fruit fru) {
+        fru.print();
+    }
+}
+</code></pre>
+<p>Lamda语法有三种形式：</p>
+<blockquote>
+<p>·(参数)-&gt;单行语句；<br>
+·(参数)-&gt;｛单行语句｝；<br>
+·(参数)-&gt;表达式；</p>
+</blockquote>
+<p>范例：观察有参单行</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(String str); // 接口原本定义的方法
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 首先要定义此表达式里面需要接收变量，单行语句直接进行输出
+        fun((s) -&gt; System.out.println(s));
+    }
+
+    public static void fun(Fruit fru) {
+        fru.print(&quot;苹果&quot;); // 设置参数的内容
+    }
+}
+</code></pre>
+<p>范例：编写多行语句</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public void print(String str); // 接口原本定义的方法
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 首先要定义此表达式里面需要接收变量，单行语句直接进行输出
+        fun((s) -&gt; {
+            s = s.toUpperCase();
+            System.out.println(s);
+        });
+    }
+
+    public static void fun(Fruit fru) {
+        fru.print(&quot;Hello&quot;); // 设置参数的内容
+    }
+}
+</code></pre>
+<p>范例：编写表达式</p>
+<pre class="highlight"><code class="">interface Fruit {
+    public int add(int x, int y);
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 首先要定义此表达式里面需要接收变量，单行语句直接进行输出
+        fun((s1, s2) -&gt; s1 + s2);
+    }
+
+    public static void fun(Fruit fru) {
+        System.out.println(fru.add(10, 20));
+    }
+}
+</code></pre>
+<h3 id="方法引用"><a class="markdownIt-Anchor" href="#方法引用"></a> 方法引用</h3>
+<p>对象引用的特点：不同对象可以操作同一块内容。而方法引用就是指为一个方法设置别名，相当于一个方法定义了不同的名字。<br>
+1、方法引用在Java8中一共定义了四种形式：</p>
+<blockquote>
+<p>· 引用静态方法： 类名称::static 方法名称;<br>
+· 引用某个对象的方法：实例化对象::普通方法；<br>
+· 引用特定类型的方法：特定类::普通方法;<br>
+· 引用构造方法：类名称::new。</p>
+</blockquote>
+<p>范例：引用静态方法<br>
+String类中的valueof()：<code>public static String valueof(int x)</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+/**
+ * 只有一个方法的接口
+ * @param &lt;P&gt; 参数的数据类型
+ * @param &lt;R&gt; 返回值的数据类型
+ */
+interface Math&lt;P, R&gt; {
+    public R exchange(P p);
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 覆写了exchange(),使其具有valueOf()的功能
+        Math&lt;Integer, String&gt; math = String::valueOf;
+        String msg = math.exchange(10000);
+        // 将所有的0替换成9
+        System.out.println(msg.replaceAll(&quot;0&quot;, &quot;9&quot;));
+    }
+}
+</code></pre>
+<p>范例：普通方法引用<br>
+String类中的toUpperCase()：<code>public String toUpperCase()</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+interface Math&lt;R&gt; {
+    public R upper();
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        // 覆写了upper,使其具有toUpperCase的功能
+        // toUpperCase是普通方法,必须由String对象调用
+        // hello是String对象,代码如下
+        Math&lt;String&gt; math = &quot;hello&quot;::toUpperCase;
+        String msg = math.upper();
+        System.out.println(msg);
+    }
+}
+</code></pre>
+<p>上述例子显示，要实现方法引用，必须要有接口，且该接口只能有一个方法。为了保证该接口只有一个方法，可对其进行注解说明。</p>
+<pre class="highlight"><code class="">@FunctionalInterface // 此为函数式接口，只能定义一个方法
+interface ITest&lt;R&gt; {
+    public R upper();
+}
+</code></pre>
+<p>2、在进行方法引用的过程中，还有一种形式的引用（这种形式需要特定类的对象支持）。一般使用“类::方法”，引用的是类中的静态方法。但是这种形式也可以引用普通方法。<br>
+例如：在String类中有一个方法：<code>public int compareTo(String anotherString)</code>，比较的形式是<code>String对象1.compareTo(String对象2)</code>，即要引用该方法，需要有两个参数。<br>
+范例：引用特定类的方法</p>
+<pre class="highlight"><code class="">interface IMessage&lt;P&gt; {
+    public int compare(P p1, P p2);
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        IMessage&lt;String&gt; msg = String::compareTo;
+        System.out.println(msg.compare(&quot;A&quot;, &quot;B&quot;));
+    }
+}
+</code></pre>
+<p>与之前相比，方法引用前不需要定义对象，可以理解为将对象定义在参数上。<br>
+范例：引用构造方法</p>
+<pre class="highlight"><code class="">interface IMessage&lt;C&gt; {
+    public C create(String t, double p);
+}
+
+class Book {
+    private String title;
+    private double price;
+
+    public Book(String title, double price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    public String toString() {
+        return &quot;书名:&quot; + this.title + &quot;,价格：&quot; + this.price;
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        IMessage&lt;Book&gt; msg = Book::new; // 引用构造方法
+        // 虽然调用的是create()，实际引用了Book类的构造方法
+        Book book = msg.create(&quot;Java开发&quot;, 66.6);
+        System.out.println(book);
+    }
+}
+</code></pre>
+<p>对象引用是使用不同的名字，而方法引用需要一个函数接口。</p>
+<h3 id="内建函数式接口"><a class="markdownIt-Anchor" href="#内建函数式接口"></a> 内建函数式接口</h3>
+<p>1、JDK1.8中提供了一个包：<code>java.util.function</code>，提供有以下四个核心接口：</p>
+<blockquote>
+<p>(1)功能性接口（Function）：public interface Function&lt;T,R&gt;{public R apply(T t);}<br>
+|- 此接口需要接收一个参数，并且返回一个处理结果；<br>
+(2)消费型接口（Consumer）：public interface Consumer<T>{public void accept(T t);}<br>
+|- 此接口只负责接收数据（引用数据是不需要返回的），并且不返回结果；<br>
+(3)供给型接口（Suplier）：public interface Supplier<T>{public T get();}<br>
+|- 此接口不接收参数，但是可以返回结果<br>
+(4)断言型接口（Predicate）：public interface Predicate<T>{public boolean Test(T t);}<br>
+|- 进行判断操作使用；</T></T></T></p>
+</blockquote>
+<p>在JDK1.8中存在以上四个功能型接口，所以很少会由用户去定义新的函数式接口。<br>
+范例：函数式接口——接收参数并返回处理结果<br>
+· String类有一个方法：<code>public boolean startsWith(String str)</code></p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+import java.util.function.Function;
+
+public class Demo {
+    public static void main(String[] args) {
+        Function&lt;String, Boolean&gt; fun = &quot;##hello&quot;::startsWith;
+        System.out.println(fun.apply(&quot;##&quot;)); // true
+    }
+}
+</code></pre>
+<p>范例：消费型接口</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+import java.util.function.Consumer;
+
+class MyDemo {
+    // 此方法没有返回值，但是有参数
+    public void print(String str) {
+        System.out.println(str);
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Consumer&lt;String&gt; cons = new MyDemo()::print;
+        cons.accept(&quot;Hello World&quot;);
+    }
+}
+</code></pre>
+<p>范例：供给型接口<br>
+· 引用String类的toUpperCase()：<code>public String toUpperCase()</code>;</p>
+<pre class="highlight"><code class="">package com.java.demo;
+
+import java.util.function.Supplier;
+
+public class Demo {
+    public static void main(String[] args) {
+        Supplier&lt;String&gt; sup = &quot;hello&quot;::toUpperCase;
+        System.out.println(sup.get());
+    }
+}
+</code></pre>
+<p>范例：断言型接口<br>
+· String类中有<code>equalsIgnoreCase()</code></p>
+<pre class="highlight"><code class="">import java.util.function.Predicate;
+
+public class Demo {
+    public static void main(String[] args) {
+        Predicate&lt;String&gt; pre = &quot;hello&quot;::equalsIgnoreCase;
+        System.out.println(pre.test(&quot;Hello&quot;));
+    }
+}
+</code></pre>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Java/Java/Java知识(三)/">http://yov.oschina.io/article/Java/Java/Java知识(三)/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'youyouvi',
+        repo: 'youyouvi.github.io',
+        oauth: {
+            client_id: 'fdcff2e0ff2fdfecce93',
+            client_secret: 'c0cf25fd016b2c8831a622a292a3692daa54c73a',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/article/Java/Java/Java知识(二)/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/head.jpg" alt="子语's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        yo.vi@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HGVzMmp1XHpzZHF9dXAyf3Nx" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">links</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">37</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/youyouvi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Ember
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <!--<div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>-->
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
