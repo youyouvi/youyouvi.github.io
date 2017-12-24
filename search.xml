@@ -3,6 +3,602 @@
   
     
     <entry>
+      <title><![CDATA[Java中的小问题（不断更新中）]]></title>
+      <url>/article/Java/Java/Java%E4%B8%AD%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98(%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>1、使用private声明main()会怎样?<br>
+A: 报错,找不到main方法, 请将 main 方法定义为:public static void main(String[] args)。</p>
+</blockquote>
+<blockquote>
+<p>2、Java中传引用和传值的区别是什么？<br>
+A：传引用是指传递的是地址而不是值本身，传值则是传递值的一份拷贝。</p>
+</blockquote>
+<blockquote>
+<p>3、如果要重写一个对象的equals()，还要考虑什么？<br>
+A：hashCode。</p>
+</blockquote>
+<blockquote>
+<p>*4、Java的”一次编写，处处运行”是如何实现的？<br>
+A：Java程序会被编译成字节码组成的class文件，这些字节码可以运行在任何平台，因此Java是平台独立的。</p>
+</blockquote>
+<blockquote>
+<p>*5、public static void main(String args[])这段声明里每个关键字的作用<br>
+A：<code>public</code>: main方法是Java程序运行时调用的第一个方法，因此它必须对Java环境可见,所以可见性设置为pulic.<br>
+<code>static</code>: Java平台调用这个方法时不会创建这个类的实例对象，因此这个方法必须声明为static。<br>
+<code>void</code>: main方法没有返回值。<br>
+<code>String</code>是命令行传进参数的类型，<code>args</code>是指命令行传进的字符串数组。</p>
+</blockquote>
+<blockquote>
+<p>*6、<code>==</code>与equals()的区别<br>
+A：<code>==</code>比较两个对象在内存里是不是同一个对象，即内存地址是否一致。两个String对象存储的值是一样的，但有可能在内存里存储在不同的地方 .<code>==</code>比较的是引用<br>
+而equals()比较的是内容。<code>public boolean equals(Object obj)</code>这个方法是由Object对象提供的，可以由子类进行重写。默认的实现只有当对象和自身进行比较时才会返回true,此时和==是等价的。String, BitSet, Date, 和File都对equals()进行了重写，对两个String对象 而言，值相等意味着它们包含同样的字符序列。对于基本类型的包装类来说，值相等意味着对应的基本类型的值一样。</p>
+</blockquote>
+<pre class="highlight"><code class="">public class EqualsTest {
+   public static void main(String[] args) {
+      Strings1 = &quot;abc&quot;;
+      Strings2 = s1;
+      Strings5 = &quot;abc&quot;;
+      Strings3 = newString(&quot;abc&quot;);
+      Strings4 = newString(&quot;abc&quot;);
+      System.out.println(&quot; == comparison:&quot; + (s1 == s5));
+      System.out.println(&quot; == comparison:&quot; + (s1 == s2));
+      System.out.println(&quot;Using equals method:&quot; + s1.equals(s2));
+      System.out.println(&quot; == comparison:&quot; + s3 == s4);
+      System.out.println(&quot;Using equals method : &quot; + s3.equals(s4));
+   }
+}
+</code></pre>
+<p>结果：</p>
+<pre class="highlight"><code class="">==comparison:true
+==comparison:true
+Usingequals method:true
+false
+Usingequals method:true
+</code></pre>
+<blockquote>
+<p>7 main()去掉static修饰符会怎样？<br>
+A：报错，main 方法不是类 com.java.demo.Demo 中的static</p>
+</blockquote>
+<blockquote>
+<p>8、为什么oracle type4驱动被称作瘦驱动？<br>
+A：oracle提供了一个type 4 JDBC驱动，被称为瘦驱动。这个驱动包含了一个oracle自己完全用Java实现的一个TCP/IP的Net8的实现，因此它是平台独立的,可以在运行时由浏览器下载,不依赖任何客户端的oracle实现。客户端连接字符串用的是TCP/IP的地址端口，而不是数据库名的tnsname。</p>
+</blockquote>
+<blockquote>
+<p>9、final,finally,finalize()<br>
+A：<code>final</code>: 常量声明。 <code>finally</code>: 处理异常。 <code>finalize()</code>: 帮助进行垃圾回收。<br>
+接口里声明的变量默认是final的。final类无法继承,也就是没有子类。这么做是出于基本类型的安全考虑，比如String和Integer,这样也使得编译器进行一些优化，更容易保证线程的安全性。final方法无法重写。final变量的值不能改变。<br>
+finalize()在对象被销毁和回收前会被调用。<br>
+finally,通常用于异常处理，不管有没有异常被抛出都会执行到。比如,关闭连接通常放到finally块中完成。</p>
+</blockquote>
+<blockquote>
+<p>10、什么是Java API？<br>
+A：Java API是大量软件组件的集合,它们提供了大量有用的功能,比如GUI组件。</p>
+</blockquote>
+<blockquote>
+<p>11、GregorianCalendar类是什么东西？<br>
+A：GregorianCalendar提供了西方传统日历的支持。</p>
+</blockquote>
+<blockquote>
+<p>12、ResourceBundle类是什么?<br>
+A：ResourceBundle用来存储指定语言环境的资源，应用程序可以根据运行时的语言环境来加载这些资源，从而提供不同语言的展示。</p>
+</blockquote>
+<blockquote>
+<p>13、为什么Java里没有全局变量?<br>
+A：全局变量是全局可见的，Java不支持全局可见的变量，因为：全局变量破坏了引用透明性原则。全局变量导致了命名空间的冲突。</p>
+</blockquote>
+<blockquote>
+<p>14、如何将String类型转化成Number类型？<br>
+A：Integer类的valueOf方法可以将String转成Number。下面是代码示例：</p>
+</blockquote>
+<pre class="highlight"><code class="">String numString = &quot;1000&quot;;
+int id = Integer.valueOf(numString).intValue();
+</code></pre>
+<blockquote>
+<p>15、SimpleTimeZone类是什么?<br>
+A：SimpleTimeZone提供公历日期支持。</p>
+</blockquote>
+<blockquote>
+<p>16、while循环和do循环有什么不同？<br>
+A：while结构在循环的开始判断下一个迭代是否应该继续。<br>
+do/while结构在循环的结尾来判断是否将继续下一轮迭代,do结构至少会执行一次循环体。</p>
+</blockquote>
+<blockquote>
+<p>17、Locale类是什么？<br>
+A：Locale类用来根据语言环境来动态调整程序的输出。</p>
+</blockquote>
+<blockquote>
+<p>*18、面向对象编程的原则是什么?<br>
+A：多态,继承和封装。</p>
+</blockquote>
+<blockquote>
+<p>19、简述继承性<br>
+A：继承使得一个类可以获取另一个类的属性和方法。使用继承可以让已经测试完备的功能得以复用,并且可以一次修改,所有继承的地方都同时生效。</p>
+</blockquote>
+<blockquote>
+<p>20、什么是隐式的类型转化?<br>
+A：隐式的类型转化就是直接将一个类型赋值给另一个类型，没有显式的告诉编译器发生了转化。并不是所有的类型都支持隐式的类型转化。<br>
+代码示例：</p>
+</blockquote>
+<pre class="highlight"><code class="">int i = 1000;
+long j = i;//Implicit casting
+</code></pre>
+<blockquote>
+<p>21、sizeof是Java的关键字吗?<br>
+A：不是。</p>
+</blockquote>
+<blockquote>
+<p>22、native方法是什么?<br>
+A：native方法是非Java代码实现的方法。</p>
+</blockquote>
+<blockquote>
+<p>23、在System.out.println()里面,System, out, println分别是什么?<br>
+A：System是系统提供的预定义的final类，out是一个PrintStream对象，println是out对象里面一个重载的方法。</p>
+</blockquote>
+<blockquote>
+<p>24、多态是什么？<br>
+A：简单来说,多态是指一个名字多种实现,多态使得一个实体通过一个通用的方式来实现不同的操作,具体的操作是由实际的实现来决定的。<br>
+多态在Java里有三种表现方式：方法重载通过继承实现方法重写通过Java接口进行方法重写。</p>
+</blockquote>
+<blockquote>
+<p>25、显式的类型转化是什么?<br>
+A：显式的类型转化是明确告诉了编译器来进行对象的转化。<br>
+代码示例：</p>
+</blockquote>
+<pre class="highlight"><code class="">long i = 700.20;
+int j = (int)i;
+</code></pre>
+<blockquote>
+<p>26、什么是Java虚拟机?<br>
+A：Java虚拟机是能移植到不同硬件平台上的软件系统。</p>
+</blockquote>
+<blockquote>
+<p>27、类型向下转换是什么?<br>
+A：向下转换是指由一个通用类型转换成一个具体的类型，在继承结构上向下进行。</p>
+</blockquote>
+<blockquote>
+<p>28、Java的访问修饰符是什么?<br>
+A：访问权限修饰符是表明类成员的访问权限类型的关键字。使用这些关键字来限定程序的方法或者变量的访问权限。它们包含：<br>
+public: 所有类都可以访问<br>
+protected: 同一个包内以及所有子类都可以访问<br>
+private: 只有归属的类才能访问默认: 归属类及相同包下的子类可以访问</p>
+</blockquote>
+<blockquote>
+<p>29、所有类的父类是什么？<br>
+A：Object.</p>
+</blockquote>
+<blockquote>
+<p>30、Java的基本类型有哪些?<br>
+A：byte,char, short, int, long, float, double, boolean。</p>
+</blockquote>
+<blockquote>
+<p>31、静态类型有什么特点?<br>
+A：static定义的变量与类绑定,即每个实例对象都共享同一个静态变量。不论有多少个实例对象,静态变量只有一个。static定义的变量通常使用类名访问,当程序运行时,这个变量就会被创建直到程序结束才会被销毁。静态变量的作用域与普通变量一致,初始值也是一致的。变量没被初始化时根据其数据类型会有一个默认值。<br>
+static定义的方法属于类,而不是类对象,其调用不作用于类对象,也不需要创建类实例.静态方法本身就带有final,因为重写只会发生在类实例上，即只要原方法没声明为final,非静态方法就不能重写静态方法。父类的静态方法会被子类的静态方法屏蔽，但你不能在子类把父类的静态方法改为实例方法。</p>
+</blockquote>
+<blockquote>
+<p>32、&amp;操作符和&amp;&amp;操作符有什么区别?<br>
+A：当一个<code>&amp;</code>表达式在求值的时候，两个操作数都会被求值。<br>
+当一个<code>&amp;&amp;</code>表达式求值的时候，先计算第一个操作数，如果它返回true才会计算第二个操作数。如果第一个操作数取值为fale,第二个操作数就不会被求值。</p>
+</blockquote>
+<blockquote>
+<p>33、Java是如何处理整型的溢出和下溢的?<br>
+A：Java根据类型的大小，将计算结果中的对应低阶字节存储到对应的值里面。</p>
+</blockquote>
+<blockquote>
+<p>34、public static void写成static public void会怎样？<br>
+A：程序正常编译及运行.</p>
+</blockquote>
+<blockquote>
+<p>35、声明变量和定义变量有什么不同？<br>
+答案：声明变量只提供变量的类型和名字,并没有进行初始化。<br>
+定义包括声明和初始化两个阶段：<code>String s;</code>只是变量声明,<code>String s = new String(&quot;bob&quot;);</code>或者<code>String s = &quot;bob&quot;;</code>是变量定义。</p>
+</blockquote>
+<blockquote>
+<p>36、Java支持哪种参数传递类型?<br>
+A：Java参数都是进行传值.对于对象而言,传递的值是对象的引用,也就是说原始引用和参数引用的那个拷贝，都是指向同一个对象。</p>
+</blockquote>
+<blockquote>
+<p>37、对象封装的原则是什么?<br>
+A：封装是将数据及操作数据的代码绑定到一个独立的单元,这样保障了数据的安全,防止外部代码的错误使用。对象允许程序和数据进行封装，以减少潜在的干涉。对封装的另一个理解是作为数据及代码的保护层，防止保护层外代码的随意访问。</p>
+</blockquote>
+<blockquote>
+<p>38、你怎么理解变量？<br>
+A：变量是一块命名的内存区域,以便程序进行访问。变量用来存储数据,随着程序的执行,存储的数据也可能跟着改变。</p>
+</blockquote>
+<blockquote>
+<p>39、数值提升是什么?<br>
+A：数值提升是指数据从一个较小的数据类型转换成为一个更大的数据类型，以便进行整型或者浮点型运算。在数值提升的过程中,byte,char,short值会被转化成int类型。需要的时候int类型也可能被提升成long。long和float则有可能会被转换成double类型。</p>
+</blockquote>
+<blockquote>
+<p>40、Java的类型转化是什么?<br>
+A：从一个数据类型转换成另一个数据类型叫做类型转换。Java有两种类型转换的方式，一个是显式的类型转换，一个是隐式的。</p>
+</blockquote>
+<blockquote>
+<p>41、main()方法的参数里面,字符串数组的第一个参数是什么?<br>
+A：数组是空的，没有任何元素。不像C或者C++，第一个元素默认是程序名。如果命令行没有提供任何参数的话，main方法中的String数组为空,但不是null。</p>
+</blockquote>
+<blockquote>
+<p>42、怎么判断数组是null还是为空?<br>
+A：输出array.length的值，如果是0,说明数组为空。如果是null的话，会抛出空指针异常。</p>
+</blockquote>
+<blockquote>
+<p>43、程序中可以允许多个类同时拥有都有main方法吗?<br>
+A：可以。当程序运行的时候，我们会指定运行的类名。JVM只会在你指定的类中查找main方法。因此多个类拥有main方法并不存在命名冲突的问题。</p>
+</blockquote>
+<blockquote>
+<p>44、静态变量在什么时候加载？编译期还是运行期？静态代码块加载的时机呢？<br>
+A：当类加载器将类加载到JVM中的时候就会创建静态变量，这跟对象是否创建无关。静态变量加载的时候就会分配内存空间。静态代码块的代码只会在类第一次初始化的时候执行一次。一个类可以有多个静态代码块，它并不是类的成员，也没有返回值，并且不能直接调用。静态代码块不能包含this或者super,它们通常被用初始化静态变量。</p>
+</blockquote>
+<blockquote>
+<p>45、一个类能拥有多个main方法吗？<br>
+A：可以，但只能有一个main方法拥有以下签名：<br>
+public static void main(String[] args) {}<br>
+否则程序将无法通过编译。编译器会警告你main方法已经存在。</p>
+</blockquote>
+<blockquote>
+<p>46、简述JVM是如何工作的?<br>
+A：JVM是一台抽象的计算机，就像真实的计算机那样，它们会先将.java文件编译成.class文件（.class文件就是字节码文件）,然后用它的解释器来加载字节码。</p>
+</blockquote>
+<blockquote>
+<p>47、如何原地交换两个变量的值？<br>
+A：先把两个值相加赋值给第一个变量，然后用得到的结果减去第二个变量，赋值给第二个变量。再用第一个变量减去第二个变量，同时赋值给第一个变量。代码如下：</p>
+</blockquote>
+<pre class="highlight"><code class="">int a = 5, b = 10; a = a + b; b = a - b; a = a - b;
+</code></pre>
+<p>使用异或操作也可以交换。第一个方法还可能会引起溢出。异或的方法如下：</p>
+<pre class="highlight"><code class="">int a = 5;int b = 10;
+a=a^b;
+b=a^b;
+a=a^b;
+</code></pre>
+<blockquote>
+<p>48、什么是数据的封装?<br>
+A：数据封装的一种方式是在类中创建set和get方法来访问对象的数据变量。一般来说变量是private的，而get和set方法是public的。封装还可以用来在存储数据时进行数据验证，或者对数据进行计算，或者用作自省（比如在struts中使用javabean）。把数据和功能封装到一个独立的结构中称为数据封装。封装其实就是把数据和关联的操作方法封装到一个独立的单元中，这样使用关联的这些方法才能对数据进行访问操作。封装提供的是数据安全性,它其实就是一种隐藏数据的方式。</p>
+</blockquote>
+<blockquote>
+<p>49、什么是反射API？它是如何实现的？<br>
+A：反射是指在运行时能查看一个类的状态及特征，并能进行动态管理的功能。这些功能是通过一些内建类的反射API提供的，比如Class,Method,Field, Constructors等。使用的例子：使用Java反射API的getName方法可以获取到类名。</p>
+</blockquote>
+<blockquote>
+<p>50、JVM自身会维护缓存吗，是不是在堆中进行对象分配，操作系统的堆还是JVM自己管理的堆？为什么？<br>
+A：是的，JVM自身会管理缓存，它在堆中创建对象，然后在栈中引用这些对象。</p>
+</blockquote>
+<blockquote>
+<p>51、虚拟内存是什么?<br>
+A：虚拟内存又叫延伸内存，实际上并不存在真实的物理内存。</p>
+</blockquote>
+<blockquote>
+<p>52、方法可以同时即是static又是synchronized的吗?<br>
+A：可以。如果这样做的话，JVM会获取和这个对象关联的java.lang.Class实例上的锁。这样做等于：</p>
+</blockquote>
+<pre class="highlight"><code class="">synchronized(XYZ.class){
+}
+</code></pre>
+<blockquote>
+<p>53、String和StringTokenizer的区别是什么？<br>
+A：StringTokenizer是一个用来分割字符串的工具类。</p>
+</blockquote>
+<pre class="highlight"><code class="">String Tokenizerst = new StringTokenizer(&quot;Hello World&quot;);
+while(st.hasMoreTokens()){
+   System.out.println(st.nextToken());
+}
+输出：
+Hello
+World
+</code></pre>
+<blockquote>
+<p>54、transient变量有什么特点?<br>
+A：transient变量不会进行序列化。例如一个实现Serializable接口的类在序列化到ObjectStream的时候，transient类型的变量不会被写入流中，同时，反序列化回来的时候，对应变量的值为null。</p>
+</blockquote>
+<blockquote>
+<p>55、哪些容器使用Border布局作为它们的默认布局?<br>
+A：Window, Frame, Dialog。</p>
+</blockquote>
+<blockquote>
+<p>56、什么是同步?<br>
+A：同步用来控制共享资源在多个线程间的访问，以保证同一时间内只有一个线程能访问到这个资源。在非同步保护的多线程程序里面，一个线程正在修改一个共享变量的时候，可能有另一个线程也在使用或者更新它的值。同步避免了脏数据的产生。<br>
+对方法进行同步：</p>
+</blockquote>
+<pre class="highlight"><code class="">public synchronized void Method1(){
+    // Appropriate method-related code.
+}
+</code></pre>
+<p>在方法内部对代码块进行同步：</p>
+<pre class="highlight"><code class="">public myFunction() {
+   synchronized(this){
+     // Synchronized code here.
+   }
+}
+</code></pre>
+<blockquote>
+<p>57、问题：给一整型变量a，写两段代码，第一个设置a的bit3 为1，其他bit不变，怎么实现呢？<br>
+A：</p>
+</blockquote>
+<pre class="highlight"><code class="">public class Test{
+  public static void main(String[] args) {
+     //给一整型变量a，写两段代码，第一个设置a的bit3 为1，其他bit不变，怎么实现呢？
+     int a = 8;
+     //打印二进制
+     System.out.println(Integer.toBinaryString(a));   //输出  1000
+     System.out.println(Integer.toBinaryString(a|4)); //输出 1100
+  }
+}</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java知识(四)]]></title>
+      <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E5%9B%9B)/</url>
+      <content type="html"><![CDATA[<h2 id="java多线程实现"><a class="markdownIt-Anchor" href="#java多线程实现"></a> Java多线程实现</h2>
+<p>Java可通过以下两种方式实现多线程：</p>
+<blockquote>
+<p>· 继承Thread类；<br>
+· 实现Runnable接口（此外扩充了Callable接口）</p>
+</blockquote>
+<h3 id="线程与进程"><a class="markdownIt-Anchor" href="#线程与进程"></a> 线程与进程</h3>
+<p>Java支持多线程。<br>
+1、进程指的是一次程序的完整运行，在运行过程中内存、处理器、IO等资源都是为该进程服务。<br>
+DOS系统时代，有一种现象：假如病毒运行，那电脑就无法运行，因为所有资源都被病毒占用。但在windows时代，即使病毒在运行，电脑也可以运行。<br>
+这是因为windows系统是多进程操作系统。其资源分配方法是：在同一时间段，多进程轮流抢占资源，但在某时间点，只会有一个进程在运行<br>
+2、线程是在进程基础上进一步地划分的结果：即一个进程可以同时创建多个线程。线程是比进程更快的处理单元，而且所占的资源更小。多线程的应用也是性能最高的应用。</p>
+<h3 id="thread类实现多线程"><a class="markdownIt-Anchor" href="#thread类实现多线程"></a> Thread类实现多线程</h3>
+<p>1、<code>Thread类</code>是一个支持多线程的功能类，只要是其子类，就可以实现多线程。<br>
+<code>class MyThread extends Thread { // 多线程操作类}</code><br>
+程序的起点是<code>main()</code>。而每个线程也有它的起点<code>run()</code>。多线程类必须覆写Thread类的<code>run()</code>：<code>public void run(){}</code>，该方法没有返回值，表示线程一旦开始，就需要一直运行，不能返回内容。</p>
+<pre class="highlight"><code class="">// 线程操作主类
+class MyThread extends Thread { 
+    private String name;
+
+    public MyThread(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void run() { // 覆写run(),作为线程的主体操作方法
+        for (int x = 0; x &lt; 200; x++) {
+            System.out.println(this.name + &quot;--&gt;&quot; + x);
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        MyThread mA = new MyThread(&quot;线程A&quot;);
+        MyThread mB = new MyThread(&quot;线程B&quot;);
+        MyThread mC = new MyThread(&quot;线程C&quot;);
+
+        mA.run();
+        mB.run();
+        mC.run();
+    }
+}
+</code></pre>
+<p>运行上述代码，输出结果是线程A、B、C依次进行循环输出。<br>
+2、线程与进程是一样的，都必须轮流去抢占资源，多线程的执行应该是多个线程彼此交替执行。但直接调用run()并不能启用多线程，多线程启用依靠的是Thread类的start()：<code>public void start()</code>（调用此方法，执行的方法体是run()定义的）。</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) { // 主类
+        MyThread mtA = new MyThread(&quot;线程A&quot;);
+        MyThread mtB = new MyThread(&quot;线程B&quot;);
+        MyThread mtC = new MyThread(&quot;线程C&quot;);
+
+        mtA.start();
+        mtB.start();
+        mtC.start();
+    }
+}
+</code></pre>
+<p>上述代码结果中每个线程对象交替执行。</p>
+<blockquote>
+<p>问题：为什么多线程启用不是调用run()而是调用start()？<br>
+打开Java的源代码，观察start()的定义</p>
+</blockquote>
+<pre class="highlight"><code class="">public synchronized void start() {
+    if (threadStatus != 0)
+        throw new IllegalThreadStateException();
+    group.add(this);
+
+    boolean started = false;
+    try {
+        start0();
+        started = true;
+    } finally {
+        try {
+            if (!started) {
+                group.threadStartFailed(this);
+            }
+        } catch (Throwable ignore) {
+        }
+    }
+}
+private native void start0();
+</code></pre>
+<p>start()利用throw抛出<code>IllegalThreadStateException</code>，本应使用<code>try…catch</code>处理，或者start()上使用<code>throws</code>声明，但此处没有这样处理，这是因为该异常是<code>RuntimeException</code>的子类，属于选择性处理。如果某一个线程重复启动，就会抛出异常。<br>
+<code>start()</code>要调用<code>start0()</code>，而且该方法结构与抽象方法类似，唯一不同的是使用<code>native</code>声明。Java中有一个<code>JNI</code>技术（Java Native Interface），其特点是：使用Java调用本机操作系统提供的函数。其缺点：不能离开特定的操作系统。<br>
+如果线程要执行，需要操作系统进行资源分配，所以此操作是由JVM根据不同的操作系统实现的。即：使用Thread类的start()不仅仅要启动多线程的执行代码，还要根据不同的操作系统进行资源的分配。</p>
+<h3 id="runnable接口实现多线程"><a class="markdownIt-Anchor" href="#runnable接口实现多线程"></a> Runnable接口实现多线程</h3>
+<p>1、虽然Thread类可以实现多线程。但存在问题：Java存在单继承限制。任何情况下，对于类的单继承都是应该尽量回避的，多线程也一样。为了解决单继承的限制，在Java中专门提供了Runnable接口，此接口定义如下：</p>
+<pre class="highlight"><code class="">@FunctionalInterface
+public interface Runnable{
+    public void run();
+}
+</code></pre>
+<p>接口中都是public权限，不存在default权限。那么只需要让一个类实现Runnable接扣，并覆写run()方法即可。</p>
+<pre class="highlight"><code class="">class MyThread implements Runnable {
+    private String name;
+
+    public MyThread(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void run() {
+        for (int x = 0; x &lt; 10; x++) {
+            System.out.println(this.name + &quot;--&gt;&quot; + x);
+        }
+    }
+}
+</code></pre>
+<p>与继承Thread类相比，此时MyThread类在结构上并没有区别，但存在一个不同：继承Thread类，可以直接继承start()，但是实现Runnable接口，并没有start()。<br>
+2、要想启用多线程，一定依靠Thread类完成，在Thread类定义有如下构造方法：<br>
+<code>public Thread（Runnable target）</code>，接收的是Runable接口对象；<br>
+范例：启动多线程</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) { // 主类
+        MyThread mtA = new MyThread(&quot;线程A&quot;);
+        MyThread mtB = new MyThread(&quot;线程B&quot;);
+        MyThread mtC = new MyThread(&quot;线程C&quot;);
+        new Thread(mtA).start();
+        new Thread(mtB).start();
+        new Thread(mtC).start();
+    }
+}
+</code></pre>
+<p>此时就避免了单继承局限，所以实际开发中使用接口是最合适的。</p>
+<h3 id="两种实现方式的区别"><a class="markdownIt-Anchor" href="#两种实现方式的区别"></a> 两种实现方式的区别</h3>
+<p>Runnable接口与Thread类相比，解决了单继承的局限，所以如果要使用，一定使用Runnable接口。<br>
+1、观察Thread类的定义<br>
+<code>public class Thread extends Object implements Runnable</code><br>
+Thread类实现了Runnable接口。<br>
+<img src="/article/Java/Java/Java知识(四)/31-1.png" alt="无法加载" title="结构分析"><br>
+2、除了以上的联系外，还有一点：使用Runnable接口可以比Thread类更好地描述出数据共享这一概念。此时的数据共享指的是多个线程访问同一资源的操作。<br>
+范例：观察代码（每一个线程对象都必须通过start()启动）</p>
+<pre class="highlight"><code class="">class MyThread extends Thread {
+    private int ticket = 10;
+
+    @Override
+    public void run() {
+        for (int x = 0; x &lt; 100; x++) {
+            if (this.ticket &gt; 0) {
+                System.out.println(&quot;卖票，ticket = &quot; + this.ticket--);
+            }
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) { // 主类
+        MyThread mtA = new MyThread();
+        MyThread mtB = new MyThread();
+        MyThread mtC = new MyThread();
+        mtA.start();
+        mtB.start();
+        mtC.start();
+    }
+}
+</code></pre>
+<p>上述代码声明了三个MyThread对象，并且分别调用start()方法，启动线程，发现每个线程都在卖各自的十张票，此时的内存关系如下：<br>
+<img src="/article/Java/Java/Java知识(四)/31-2.png" alt="无法加载" title="内存分析"><br>
+此时并不存在数据共享。<br>
+范例：利用Runnable实现</p>
+<pre class="highlight"><code class="">class MyThread implements Runnable {
+    private int ticket = 10;
+
+    @Override
+    public void run() {
+        for (int x = 0; x &lt; 100; x++) {
+            if (this.ticket &gt; 0) {
+                System.out.println(&quot;卖票，ticket = &quot; + this.ticket--);
+            }
+        }
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) { // 主类
+        MyThread mt = new MyThread();
+        new Thread(mt).start();
+        new Thread(mt).start();
+        new Thread(mt).start();
+    }
+}
+</code></pre>
+<p>上述代码的内存分析如下：<br>
+<img src="/article/Java/Java/Java知识(四)/31-3.png" alt="无法加载" title="内存年分析"><br>
+此时也属于三个线程对象，唯一的区别是，这三个线程对象都直接占用了同一个MyThread类对象引用，即这三个线程对象都直接访问同一个数据资源。</p>
+<blockquote>
+<p>请解释Thread与Runnable实现多线程的区别？（请解释多线程两种实现方式的区别？）<br>
+1、Thread类是Runnable接口的子类，使用Runnable接口多线程可以避免单继承局限；<br>
+2、Runnable接口实现的多线程可以比Thread类实现的多线程更加清楚地描述数据共享的概念；</p>
+</blockquote>
+<h3 id="callable接口实现多继承"><a class="markdownIt-Anchor" href="#callable接口实现多继承"></a> Callable接口实现多继承</h3>
+<p>1、使用Runnable实现多线程可以避免单继承局限，但是Runnable中的run()不能返回操作结果。为了解该问题，Java提供了一个新的接口<code>java.util.concurrent.Callable</code>。</p>
+<pre class="highlight"><code class="">@FunctionalInterface
+public interface Callable&lt;V&gt;{
+    public V call() throws Exception;
+}
+</code></pre>
+<p>call()执行完线程的主体功能之后可以返回一个结果，而返回类型由Callable的泛型决定。<br>
+范例：定义一个线程主体类</p>
+<pre class="highlight"><code class="">class MyThread implements Callable&lt;String&gt; {
+    private int ticket = 10;
+
+    @Override
+    public String call() throws Exception {
+        for (int x = 0; x &lt; 100; x++) {
+            if (this.ticket &gt; 0) {
+                System.out.println(&quot;卖票，ticket = &quot; + this.ticket--);
+            }
+        }
+        return &quot;票已经卖光&quot;;
+    }
+}
+</code></pre>
+<p>此时发现Thread类中没有接收Callable对象的应用。但从JDK1.5开始增加<code>java.util.concurrent.FutureTask&lt;V&gt;</code>类，这个类主要负责Callable接口对象的操作。这个类的结构：<br>
+<code>public class FutureTask&lt;V&gt; extends Object implements RunnableFuture&lt;V&gt;</code><br>
+而上述的<code>RunnableFuture</code>结构如下：<br>
+<code>public interface RunnableFuture&lt;V&gt; extends Runnable,Future&lt;V&gt;</code><br>
+在FutureTask类中定义有构造方法：<code>public FutureTask(Callable&lt;V&gt; callable)</code>，接收的是call()的返回值。<br>
+范例：启动多线程</p>
+<pre class="highlight"><code class="">public class Demo {
+    public static void main(String[] args) throws Exception { 
+    
+        MyThread mtA = new MyThread();
+        MyThread mtB = new MyThread();
+        FutureTask&lt;String&gt; taskA = new FutureTask&lt;String&gt;(mtA);
+        FutureTask&lt;String&gt; taskB = new FutureTask&lt;String&gt;(mtB);
+        // 目的是取得call()的返回值
+        // FutureTask是Runnable接口的子类，所以可以使用Thread的构造接收
+        new Thread(taskA).start(); // 启动多线程
+        new Thread(taskB).start();
+        // 多线程执行完毕后，可以通过FutureTask的父接口Future中的get()方法取得返回内容
+        System.out.println(&quot;A线程的返回结果:&quot; + taskA.get());
+        System.out.println(&quot;B线程的返回结果:&quot; + taskB.get());
+    }
+}
+</code></pre>
+<p>上述代码最麻烦的地方在于需要接收返回值，并且又要与原始的多线程实现靠拢（向Thread类靠拢）。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java知识(三)]]></title>
       <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E4%B8%89)/</url>
       <content type="html"><![CDATA[<h2 id="java8特性"><a class="markdownIt-Anchor" href="#java8特性"></a> Java8特性</h2>
@@ -12323,14 +12919,14 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
+      <title><![CDATA[Tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
