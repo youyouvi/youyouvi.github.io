@@ -3,6 +3,115 @@
   
     
     <entry>
+      <title><![CDATA[Node.js安装及环境配置]]></title>
+      <url>/article/%E5%B7%A5%E5%85%B7/Tool/Node.js%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>简而言之,Node.js 就是运行在服务端的 JavaScript, 是一个基于Chrome JavaScript 运行时建立的一个平台。Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行JavaScript的速度非常快，性能非常好。</p>
+</blockquote>
+<h2 id="安装环境"><a class="markdownIt-Anchor" href="#安装环境"></a> 安装环境</h2>
+<p>1.系统：Window10 Pro（64位）</p>
+<p>2.Node.js：v6.11.3LTS（64位）</p>
+<h2 id="安装步骤"><a class="markdownIt-Anchor" href="#安装步骤"></a> 安装步骤</h2>
+<h3 id="下载nodejs"><a class="markdownIt-Anchor" href="#下载nodejs"></a> 下载Node.js</h3>
+<p>打开<a href="https://nodejs.org/en/download/">Node.js官网</a>下载安装包<img src="/article/工具/Tool/Node.js安装说明/install.png" alt="无法加载" title="安装页面"></p>
+<h3 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装Node.js</h3>
+<p><img src="/article/工具/Tool/Node.js安装说明/install1.png" alt="无法加载" title="安装页面"></p>
+<p><img src="/article/工具/Tool/Node.js安装说明/install2.png" alt="无法加载" title="安装页面"></p>
+<p>安装目录可修改,默认为C盘:</p>
+<p><img src="/article/工具/Tool/Node.js安装说明/install3.png" alt="无法加载" title="安装页面"></p>
+<p><img src="/article/工具/Tool/Node.js安装说明/install4.png" alt="无法加载" title="安装页面"></p>
+<p>安装成功:</p>
+<p><img src="/article/工具/Tool/Node.js安装说明/success.png" alt="无法加载" title="安装成功"></p>
+<p>安装成功则可以查看node.js版本以及npm版本:</p>
+<p><img src="/article/工具/Tool/Node.js安装说明/version.png" alt="无法加载" title="安装成功"></p>
+<h2 id="环境配置"><a class="markdownIt-Anchor" href="#环境配置"></a> 环境配置</h2>
+<blockquote>
+<p>此处配置的是npm安装的全局模块锁在路径，以及缓存cache的路径。进行该项配置是当执行<code>npm install xxxx -g</code>时，会默认安装到<code>C:\User\用户名\npm</code>路径下，占据C盘空间。</p>
+</blockquote>
+<h3 id="修改全局模块安装路径和缓存路径"><a class="markdownIt-Anchor" href="#修改全局模块安装路径和缓存路径"></a> 修改全局模块安装路径和缓存路径</h3>
+<p>在node.js的安装文件中新建<code>node_cache</code>和<code>node_global</code>，在<code>node_global</code>下新建<code>node_modules</code>文件夹。随后使用cmd命令进行配置：</p>
+<pre class="highlight"><code class="shell">npm config set prefix "D:\Program Files\nodejs\node_global"
+npm config set cace "D:\Program Files\nodejs\node_cache"
+</code></pre>
+<h3 id="设置环境变量"><a class="markdownIt-Anchor" href="#设置环境变量"></a> 设置环境变量</h3>
+<p>“我的电脑”-右键-“属性”-“高级系统设置”-“高级”-“环境变量”</p>
+<p>在系统变量(S)中新建<code>NODE_PATH</code>，变量值为<code>D:\Program Files\nodejs\node_global\node_modules</code>;</p>
+<p>修改用户变量(U)中的<code>PATH</code>将<code>C:\User\用户名\npm</code>改为<code>D:\Program Files\nodejs\node_global</code></p>
+<p>测试环境变量修改成功，使用cmd命令进行安装</p>
+<pre class="highlight"><code class="shell">npm install express -g # -g 全局安装
+D:\Program Files\nodejs\node_global
+`-- express@4.16.2
+  +-- accepts@1.3.4
+  | +-- mime-types@2.1.17
+  | | `-- mime-db@1.30.0
+  | `-- negotiator@0.6.1
+  +-- array-flatten@1.1.1
+  +-- body-parser@1.18.2
+  | +-- bytes@3.0.0
+  | +-- http-errors@1.6.2
+  | | +-- inherits@2.0.3
+  | | `-- setprototypeof@1.0.3
+  | +-- iconv-lite@0.4.19
+  | `-- raw-body@2.3.2
+  +-- content-disposition@0.5.2
+  +-- content-type@1.0.4
+  +-- cookie@0.3.1
+  +-- cookie-signature@1.0.6
+  +-- debug@2.6.9
+  | `-- ms@2.0.0
+  +-- depd@1.1.1
+  +-- encodeurl@1.0.1
+  +-- escape-html@1.0.3
+  +-- etag@1.8.1
+  +-- finalhandler@1.1.0
+  | `-- unpipe@1.0.0
+  +-- fresh@0.5.2
+  +-- merge-descriptors@1.0.1
+  +-- methods@1.1.2
+  +-- on-finished@2.3.0
+  | `-- ee-first@1.1.1
+  +-- parseurl@1.3.2
+  +-- path-to-regexp@0.1.7
+  +-- proxy-addr@2.0.2
+  | +-- forwarded@0.1.2
+  | `-- ipaddr.js@1.5.2
+  +-- qs@6.5.1
+  +-- range-parser@1.2.0
+  +-- safe-buffer@5.1.1
+  +-- send@0.16.1
+  | +-- destroy@1.0.4
+  | `-- mime@1.4.1
+  +-- serve-static@1.13.1
+  +-- setprototypeof@1.1.0
+  +-- statuses@1.3.1
+  +-- type-is@1.6.15
+  | `-- media-typer@0.3.0
+  +-- utils-merge@1.0.1
+  `-- vary@1.1.2
+</code></pre>
+<p>安装时不加<code>-g</code>参数则会默认安装在路径下。</p>
+<h3 id="配置nodejs源"><a class="markdownIt-Anchor" href="#配置nodejs源"></a> 配置Node.js源</h3>
+<p>node.js安装速度缓慢,因此需要更换npm的源,打开cmd使用如下命令:</p>
+<pre class="highlight"><code class="shell">npm config set registry http://registry.npm.taobao.org/
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Node.js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java中的小问题（不断更新中）]]></title>
       <url>/article/Java/Java/Java%E4%B8%AD%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98(%E4%B8%8D%E6%96%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -1835,7 +1944,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Eclipse使用]]></title>
-      <url>/article/%E5%B7%A5%E5%85%B7/Eclipse%E4%BD%BF%E7%94%A8/</url>
+      <url>/article/%E5%B7%A5%E5%85%B7/Tool/Eclipse%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<h3 id="eclipse简介"><a class="markdownIt-Anchor" href="#eclipse简介"></a> Eclipse简介</h3>
 <p>Eclipse是一款Java开发IDE，是免费的绿色版本软件，不需要安装，直接解压缩。Eclipse包含以下几个部分：JDT、JUNIT、CVS客户端、插件开发、GIT客户端。</p>
 <h3 id="jdt使用"><a class="markdownIt-Anchor" href="#jdt使用"></a> JDT使用</h3>
@@ -10835,7 +10944,7 @@ public class Test {
     
     <entry>
       <title><![CDATA[Git使用(Linux)]]></title>
-      <url>/article/%E5%B7%A5%E5%85%B7/Git%E4%BD%BF%E7%94%A8(Linux)/</url>
+      <url>/article/%E5%B7%A5%E5%85%B7/Tool/Git%E4%BD%BF%E7%94%A8(Linux)/</url>
       <content type="html"><![CDATA[<h2 id="环境安装"><a class="markdownIt-Anchor" href="#环境安装"></a> 环境安装</h2>
 <p>安装git</p>
 <pre class="highlight"><code class="">sudo apt-get install git
@@ -12775,7 +12884,7 @@ public class Demo {
     
     <entry>
       <title><![CDATA[Gitee+Hexo搭建个人博客]]></title>
-      <url>/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+      <url>/article/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Tool/Gitee+Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<p><a href="https://gitee.com">Gitee</a>: 由于github在国外，被墙了，于是把目光投向了国产Github，Gitee，算是支持国产吧。<br>
 Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本。</p>
 <h2 id="环境搭建"><a class="markdownIt-Anchor" href="#环境搭建"></a> 环境搭建</h2>
@@ -12810,10 +12919,10 @@ Hexo：一个快速、简洁高效的博客框架，使用Markdown解析文本�
 <h3 id="git安装"><a class="markdownIt-Anchor" href="#git安装"></a> Git安装</h3>
 <p><a href="https://git-scm.com/downloads">Git安装包地址</a>,根据操作系统选择安装包下载后安装即可。</p>
 <h3 id="注册码云账号并创建一个项目"><a class="markdownIt-Anchor" href="#注册码云账号并创建一个项目"></a> 注册码云账号，并创建一个项目</h3>
-<p><img src="/article/博客搭建/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br><br>
-<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br></p>
+<p><img src="/article/博客搭建/Tool/Gitee+Hexo搭建个人博客/new project.png" alt="创建新项目"><br><br>
+<img src="/article/博客搭建/Tool/Gitee+Hexo搭建个人博客/new project2.png" alt="创建新项目"><br></p>
 <h3 id="获取项目地址"><a class="markdownIt-Anchor" href="#获取项目地址"></a> 获取项目地址</h3>
-<p><img src="/article/博客搭建/Gitee+Hexo搭建个人博客/get.png" alt="获取项目地址"><br></p>
+<p><img src="/article/博客搭建/Tool/Gitee+Hexo搭建个人博客/get.png" alt="获取项目地址"><br></p>
 <h2 id="发布博客"><a class="markdownIt-Anchor" href="#发布博客"></a> 发布博客</h2>
 <h3 id="修改hexo配置文件_configyml"><a class="markdownIt-Anchor" href="#修改hexo配置文件_configyml"></a> 修改Hexo配置文件_config.yml</h3>
 <pre><code>deploy:
@@ -12827,12 +12936,12 @@ $ hexo g --d  #一键部署
 </code></pre>
 <p>此时会弹出一个对话框，提示输入码云的账号密码。部署成功后，登陆码云。此时本地文件夹中出现有一个public文件夹，代表部署成功。</p>
 <h3 id="开启page功能"><a class="markdownIt-Anchor" href="#开启page功能"></a> 开启Page功能</h3>
-<p><img src="/article/博客搭建/Gitee+Hexo搭建个人博客/open.png" alt="开启Page功能"><br><br>
-<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/start.png" alt="开启Page功能"><br><br>
-<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/success.png" alt="博客部署成功"></p>
+<p><img src="/article/博客搭建/Tool/Gitee+Hexo搭建个人博客/open.png" alt="开启Page功能"><br><br>
+<img src="/article/博客搭建/Tool/Gitee+Hexo搭建个人博客/start.png" alt="开启Page功能"><br><br>
+<img src="/article/博客搭建/Tool/Gitee+Hexo搭建个人博客/success.png" alt="博客部署成功"></p>
 <h3 id="访问博客"><a class="markdownIt-Anchor" href="#访问博客"></a> 访问博客</h3>
 <p>在浏览器地址栏输入上图中的博客地址，即可访问，效果图如下：<br>
-<img src="/article/博客搭建/Gitee+Hexo搭建个人博客/blog.png" alt="我的博客"></p>
+<img src="/article/博客搭建/Tool/Gitee+Hexo搭建个人博客/blog.png" alt="我的博客"></p>
 <h2 id="博客使用"><a class="markdownIt-Anchor" href="#博客使用"></a> 博客使用</h2>
 <p>在博客目录的source文件中的_post文件夹中添加你要写的博客文件，文件命名为<code>file_name.md</code><br>
 <code>file_name.md</code>的文件开头如下:</p>
