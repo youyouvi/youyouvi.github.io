@@ -39,7 +39,7 @@
     
     <title>
         
-            Docker Hub Mysql官方镜像实现首次启动后初始化库表 | 
+            Go基础（一） | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog,Docker">
+    <meta name="keywords" content="Blog,Go基础">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Docker Hub Mysql官方镜像实现首次启动后初始化库表 | Ember">
+    <meta property="og:title" content="Go基础（一） | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta property="og:article:tag" content="Docker"> 
+    <meta property="og:article:tag" content="Go基础"> 
 
     
-        <meta property="article:published_time" content="Fri Sep 29 2017 19:59:23 GMT+0800" />
-        <meta property="article:modified_time" content="Sat Sep 30 2017 12:25:40 GMT+0800" />
+        <meta property="article:published_time" content="Sun Dec 31 2017 15:11:32 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Dec 31 2017 15:45:02 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Docker Hub Mysql官方镜像实现首次启动后初始化库表 | Ember">
+    <meta name="twitter:title" content="Go基础（一） | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/article/容器/Docker/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/article/容器/Docker/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html",
-    "headline": "Docker Hub Mysql官方镜像实现首次启动后初始化库表",
-    "datePublished": "Fri Sep 29 2017 19:59:23 GMT+0800",
-    "dateModified": "Sat Sep 30 2017 12:25:40 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html",
+    "headline": "Go基础（一）",
+    "datePublished": "Sun Dec 31 2017 15:11:32 GMT+0800",
+    "dateModified": "Sun Dec 31 2017 15:45:02 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -285,7 +285,7 @@
             "url": "/img/fa.png"
         }
     },
-    "keywords": ",DockerBlog",
+    "keywords": ",Go基础Blog",
     "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
 }
 </script>
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现首次启动后初始化库表"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 实现首次启动后初始化库表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建mysql_data文件夹将datasql放入"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 创建mysql_data文件夹，将data.sql放入：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动容器"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 启动容器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#进入容器进行验证"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 进入容器进行验证</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#指定sql文件运行顺序"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 指定sql文件运行顺序</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#go基本语法"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Go基本语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 注释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go程序的一般结构"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Go程序的一般结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go可见性规则"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Go可见性规则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#go数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Go数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据类型的零值"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 数据类型的零值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单个变量的声明与赋值"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 单个变量的声明与赋值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多个变量的声明与赋值"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 多个变量的声明与赋值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量的类型转换"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 变量的类型转换</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Docker Hub Mysql官方镜像实现首次启动后初始化库表
+                Go基础（一）
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 29</span>
+        <span>2017 - 12 - 31</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASYAAAEmCAAAAADqr2IGAAAEFUlEQVR42u3aSVJjQQwFQN//0t0HIAzvSSbAImtFGPsPWYvS9PhnBeuBABMmTJgwYbIwYcKE6dczPeKVf//ZNz+/79PHffLb/JP2HTFhwoQJ0z2mL47G8iU/PuLHX7V3yZ+5/f7TX2HChAkTpnNMnx/tyau2R3LCkX8+Cw4wYcKECROmTdDw7MXa68+CFUyYMGHChGnPFBVMg+R5Fijk18GECRMmTJhmSWwClxzkeaDQpuI/UAvHhAkTJky/jGlzuL7L3z8w34QJEyZMmH4B0760ukl984Bglgav3hETJkyYMJ1gylPNL0qiwX9fFXwkW9huVV0Lx4QJEyZMb8K0L4x+39G+v1refMWECRMmTFeZPh+XaRPa/SPmjdJ2C/OABhMmTJgw3WbaF2HzIdE2+JiFMrN0GhMmTJgw/R2m/SE9GwNqB3SSzSvCF0yYMGHCdJRpVmbN6WfNy1nw8eKuLyZMmDBhekOm/WE8K9TOrjArK+dNU0yYMGHCdJupLb/mr7FpN27GYduNwYQJEyZM95iS0Zx8rGeTQrcvmW/VbDsxYcKECdNVpuS122/mLdIWKL9mO76DCRMmTJjuMb127GZWct2HJu2WYMKECROm20xJ+XVfPN0M/WwS7NX4ESZMmDBhOsf0KFdeSJ2FArPG6uYtMGHChAnTPaY8Td2kwckRPhvoyQdx8kABEyZMmDDdY9qkiHkQsGoulk3TGS4mTJgwYbrKVDT5goR2w92ODeXNywQREyZMmDBdZZoVRtvP8ztuku12JKhOfTFhwoQJ01sxtUd7O0CzOZJnjdJNMRoTJkyYMN1jyhPFvBE4+zwZxJkN7sxScUyYMGHCdI9pVt7Nj+f6Qctf5W8RbT8mTJgwYTrElB/PSSq7SX3bduYs7IhSfUyYMGHCdJopH+jJB2j218w3aZauY8KECROme0ztQ+cvnA+JbtLm/XhQNKKKCRMmTJjelikfxJmNqyas+d1zgrb0jAkTJkyYbjPNyPJRmzbImA3fzMKaup2JCRMmTJjelilvau4HQDdBySxASa6GCRMmTJjuMeUo+bBOMljTFnNnheAWFxMmTJgwXWWajX6ujtvR8T8bGMrviAkTJkyY7jHNRnDqW46akbMy8eyadYUAEyZMmDC9CVO7HqOVp8R103F0/QgdEyZMmDCdYNofzHn7cJa4blqkM0pMmDBhwnSPKW80tm3LV7VCX7s9UVEYEyZMmDCdY2ofsYVug4+84doWfKMkHxMmTJgw/XmmzbHdprUbpuQZvjEgwIQJEyZMb8WUtypnozOvTaTzFiYmTJgwYfoLTLMib9uGbNuZ+Ta8uCGKCRMmTJgOMb3qIfIjefN3vlWb62PChAkTphtMVhQQWJgwYcKECRMmCxMmTL9l/QfAA0QrUesEQQAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC00lEQVR42u3aQY7jMAwEwPz/07sPGMTpppxZr1Q6BQMnVukwDZJ6/TlyvbCxsbGxsbGxsbEfyX7F6+e33v3Cz2fab7XfjfaMjY2NvTX7w7/+N8+sbPr6+eu3z/aMjY2NfQI7iaLrkEieuTcai/jExsbGxh4VGG2J8o2jwcbGxsbOP+dFRVtgPCjAsLGxsR/Mzl+ZB0y+9fwo/0EvDRsbG/vx7Hxo+pzPvzrfxsbGxn4wu1152OTj4XZsPNw5NjY29qbstrk/KzDa4UE7SI72iY2NjX0MOwmw9Ys7+VvyBtOH/WBjY2MfwJ5F2qyhn0RXXt4kB42NjY29K3sleL690eSY8pYWNjY29t7sWWtpJa5WCo/2IiY2Njb2CexZgykf/a5cALptkIyNjY29KTsJgDzGZt9qRwXDwQY2Njb2puzZT+ctpFe82mFzW/ZgY2Nj783O20z5oeSD5FnJcVtTCRsbG/s/Z7clQV4GtJeB8l/L4xAbGxv7BPZ1WRL93KjNlBzu9X7qZ7CxsbE3ZbftoTZm1g+0LUXevh0bGxt7U3YbQr8TePe+ERsbG/tM9r2t+ah9H8dnHqjY2NjYJ7DXIyfntcPg/FpnVCZhY2NjH8m+bu4nsOJyZBBC2NjY2NjXpcgsKlauXeYrHwlgY2Njn8bOL9Z8o2W/0lRqFzY2Nvbe7Lbp01KTaLxhlNtevsTGxsbejt22cvJRwXoszeITGxsb+zT2SlmSX+6ZBWHbfsLGxsY+h123ZkYBlo8W2pZWUahgY2Njb8q+a9SaNIauj282PCj2jI2Njb01u31lfo1m5XDbAPvwJDY2NvYB7KRBUzRxFq5O3rWwsbGxsWeFRzJCyIcBszEzNjY2NvY1ux0MtH9pR8VRcGJjY2MfwM4bOitj17ydlA8Ylm4qYWNjY2/Bzhs0M1ISUW2JUhcn2NjY2Juyz1nY2NjY2NjY2NjYj1l/AWjRe+58g/DEAAAAAElFTkSuQmCC">
     
 </ul>
 
@@ -438,7 +438,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Docker/">Docker</a>
+        <a class="post_tag-link" href="/tags/Go基础/">Go基础</a>
     </ul>
     
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表&url=http://yov.oschina.io/article/容器/Docker/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Go基础（一）&url=http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/容器/Docker/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html&title=Go基础（一）" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Docker Hub Mysql官方镜像实现首次启动后初始化库表&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/容器/Docker/Docker Hub mysql官方镜像实现首次启动后初始化库表/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Go基础（一）&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,102 +510,267 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h2>
-<p>在Docker Hub中查看MySQL官方镜像的Dockerfile:</p>
-<pre class="highlight"><code class="">
-COPY docker-entrypoint.sh /usr/local/bin/
+        <h2 id="go基本语法"><a class="markdownIt-Anchor" href="#go基本语法"></a> Go基本语法</h2>
+<h3 id="注释"><a class="markdownIt-Anchor" href="#注释"></a> 注释</h3>
+<pre class="highlight"><code class="go"><span class="comment">// 单行注释</span>
+<span class="comment">/**/</span> 多行注释
+</code></pre>
+<h3 id="go程序的一般结构"><a class="markdownIt-Anchor" href="#go程序的一般结构"></a> Go程序的一般结构</h3>
+<p>1、Go程序是通过<code>package</code>组织的;</p>
+<p>2、只有<code>package</code>为<code>main</code>的包才能有<code>main()</code>,即一个程序有且只有一个<code>package main</code>和一个<code>main()</code></p>
+<pre class="highlight"><code class="go"><span class="comment">/* 多行注释 */</span>
+<span class="comment">// 当前程序的包名,必须放在首行</span>
+<span class="keyword">package</span> main
 
-RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+<span class="comment">// 导入其它包</span>
+<span class="keyword">import</span> (
+	<span class="string">"fmt"</span>
+	<span class="comment">// 为导入的包设置别名: 别名 "包名";当别名设为"."时,可以直接调用其函数(不建议,容易混淆)</span>
+	sys <span class="string">"os"</span>
+)
 
-ENTRYPOINT [&quot;docker-entrypoint.sh&quot;]
-</code></pre>
-<p>镜像启动时，会运行<code>entrypoint.sh</code>脚本，该脚本的shell命令中:</p>
-<pre class="highlight"><code class="">echo
-    for f in /docker-entrypoint-initdb.d/*; do
-		case &quot;$f&quot; in
-			*.sh)     echo &quot;$0: running $f&quot;; . &quot;$f&quot; ;;
-			*.sql)    echo &quot;$0: running $f&quot;; &quot;${mysql[@]}&quot; &lt; &quot;$f&quot;; echo ;;
-			*.sql.gz) echo &quot;$0: running $f&quot;; gunzip -c &quot;$f&quot; | &quot;${mysql[@]}&quot;; echo ;;
-			*)        echo &quot;$0: ignoring $f&quot; ;;
-		esac
-		echo
-done
-</code></pre>
-<p>上述shell命令会遍历<code>/docker-entrypoint-initdb.d/</code>文件中的sh文件，sql文件，sql.gz压缩包，随后按照sh&gt;sql&gt;sql.gz的顺序依次执行。当该文件夹只存在一种文件时，便会按照文件名排序后执行。</p>
-<h2 id="实现首次启动后初始化库表"><a class="markdownIt-Anchor" href="#实现首次启动后初始化库表"></a> 实现首次启动后初始化库表</h2>
-<h3 id="创建mysql_data文件夹将datasql放入"><a class="markdownIt-Anchor" href="#创建mysql_data文件夹将datasql放入"></a> 创建mysql_data文件夹，将data.sql放入：</h3>
-<pre class="highlight"><code class="data.sql">-- 创建数据库 
-DROP database IF EXISTS `docker_database`;
-create database `docker_database` default character set utf8 collate utf8_general_ci; 
--- 切换到test_data数据库
-use docker_database; 
--- 建表 
-DROP TABLE IF EXISTS `person`; 
+<span class="comment">// 定义常量</span>
+<span class="keyword">const</span> PI  = <span class="number">3.14</span>
 
-CREATE TABLE `person` ( 
-	`id` bigint(20) NOT NULL, 
-	`name` varchar(255) DEFAULT NULL, 
-	`age` bigint(20) NOT NULL,
-	PRIMARY KEY (`id`) 
-) ENGINE=InnoDB DEFAULT CHARSET=latin1; 
--- 插入数据 
-INSERT INTO `user` (`id`,`name`,`age` ) 
-VALUES 
-   (0,'Tom',18);
+<span class="comment">// 全局变量定义,可用于整个包内</span>
+<span class="keyword">var</span> name = <span class="string">"go"</span>
+
+<span class="comment">// 一般类型声明</span>
+<span class="keyword">type</span> newType <span class="keyword">int</span>
+
+<span class="comment">// 结构声明</span>
+<span class="keyword">type</span> gopher <span class="keyword">struct</span> {}
+
+<span class="comment">// 接口声明</span>
+<span class="keyword">type</span> golang <span class="keyword">interface</span> {}
+
+<span class="comment">// 由main作为程序的启动点</span>
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+	<span class="comment">// 导入包后必须使用,否则编译出错,调用方法: packageName.funcName</span>
+	sys.Hostname()
+	fmt.Println(<span class="string">"Hello "</span> + name + <span class="string">" !"</span>)
+}
 </code></pre>
-<h3 id="启动容器"><a class="markdownIt-Anchor" href="#启动容器"></a> 启动容器</h3>
-<pre><code>$ docker run --name test -v /home/master/mysql_data:/docker-entrypoint-initdb.d -d -e MYSQL_ROOT_PASSWORD=123456  mysql 
+<p>3、导入多个包时可以简写,声明多个常量、全局变量或一般类型（非接口、非结构）时也可以简写</p>
+<pre class="highlight"><code class="go"><span class="comment">// 常量定义</span>
+<span class="keyword">const</span> (
+	PI = <span class="number">3.14</span>
+	const1 = <span class="string">"1"</span>
+	const2 = <span class="number">2</span>
+)
+
+<span class="comment">// 全局变量的声明与赋值,var组只能用于声明全局变量,函数内部是不可以使用的</span>
+<span class="keyword">var</span> (
+	name = <span class="string">"go"</span>
+	name1 = <span class="string">"1"</span>
+	name2 = <span class="number">2</span>
+)
+
+<span class="comment">// 一般类型声明</span>
+<span class="keyword">type</span> (
+	newType <span class="keyword">int</span>
+	type2 <span class="keyword">float32</span>
+)
 </code></pre>
-<h3 id="进入容器进行验证"><a class="markdownIt-Anchor" href="#进入容器进行验证"></a> 进入容器进行验证</h3>
-<pre><code>$ docker exec -it sql /bin/bash
+<h3 id="go可见性规则"><a class="markdownIt-Anchor" href="#go可见性规则"></a> Go可见性规则</h3>
+<blockquote>
+<p>Go中使用大小写决定常量、变量、类型、结构、接口或函数是否可以被外部包调用；</p>
+<p>函数名首字母小写即为private，首字母大写即为public。</p>
+</blockquote>
+<h2 id="go数据类型"><a class="markdownIt-Anchor" href="#go数据类型"></a> Go数据类型</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">长度</th>
+<th style="text-align:center">取值范围</th>
+<th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">布尔型(bool)</td>
+<td style="text-align:center">1字节</td>
+<td style="text-align:center">true,false</td>
+<td style="text-align:center">不可用数字代表true或false</td>
+</tr>
+<tr>
+<td style="text-align:center">整型(int/uint)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">根据运行平台可能为32或64位</td>
+</tr>
+<tr>
+<td style="text-align:center">8位整型(int8/uint8)</td>
+<td style="text-align:center">1字节</td>
+<td style="text-align:center">-128<sub>127/0</sub>255</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">字节型(byte)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">uint8别名,即用法与uint8一样</td>
+</tr>
+<tr>
+<td style="text-align:center">16位整型(int16/uint16)</td>
+<td style="text-align:center">2字节</td>
+<td style="text-align:center">-32768<sub>32787/0</sub>65535</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">32位整型(int32/uint32)</td>
+<td style="text-align:center">4字节</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">rune是int32别名</td>
+</tr>
+<tr>
+<td style="text-align:center">64位整型(int64/uint64)</td>
+<td style="text-align:center">8字节</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">浮点型(float32/float64)</td>
+<td style="text-align:center">4/8字节</td>
+<td style="text-align:center">精确到7/15小数位</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">复数(complex64/complex128)</td>
+<td style="text-align:center">8/16字节</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">uintptr</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">足够保存指针的32位或64位整数型(根据运行平台决定位数)</td>
+</tr>
+<tr>
+<td style="text-align:center">其他类型</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">array struct（结构） string</td>
+</tr>
+<tr>
+<td style="text-align:center">引用类型</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">slice（切片） map chan（通道）</td>
+</tr>
+<tr>
+<td style="text-align:center">接口类型(interface)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">函数类型(func)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据类型的零值"><a class="markdownIt-Anchor" href="#数据类型的零值"></a> 数据类型的零值</h3>
+<p>零值不等于空值，而是变量被声明为某种数据类型后的默认值：一般值类型的默认值为0，bool为false，string为空字符串。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+	<span class="string">"fmt"</span>
+	<span class="string">"math"</span>
+)
+
+<span class="comment">// 为数据类型设置别名</span>
+<span class="keyword">type</span> (
+	文本 <span class="keyword">string</span>
+
+)
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+	<span class="keyword">var</span>  a <span class="keyword">int</span>
+	<span class="comment">// 获取数据类型默认值</span>
+	fmt.Println(a)
+	<span class="comment">// 获取数据类型最大值</span>
+	fmt.Println(math.MaxInt8)
+	<span class="keyword">var</span> b 文本
+	b = <span class="string">"中文类型名"</span>
+	fmt.Println(b)
+}
 </code></pre>
-<pre class="highlight"><code class="">root@6da21b87a0a5:/# mysql -u root -p 
-Enter password:
-mysql&gt; use docker_database;
-mysql&gt; show tables;
-+---------------------------+
-| Tables_in_docker_database |
-+---------------------------+
-| person                    |
-+---------------------------+
-1 row in set (0.00 sec)
-mysql&gt; select * from person;
-+----+------+------+
-| id | name | age  |
-+----+------+------+
-|  0 | Tom  |   18 |
-+----+------+------+
-1 row in set (0.00 sec)
-mysql&gt; insert into person(id ,name ,age)values(1,'Jane',17);
-Query OK, 1 row affected (0.06 sec)
-mysql&gt; select * from person;                                
-+----+------+------+
-| id | name | age  |
-+----+------+------+
-|  0 | Tom  |   18 |
-|  1 | Jane |   17 |
-+----+------+------+
-2 rows in set (0.00 sec)
+<h3 id="单个变量的声明与赋值"><a class="markdownIt-Anchor" href="#单个变量的声明与赋值"></a> 单个变量的声明与赋值</h3>
+<p>变量的声明格式: <code>var value_name value_type</code></p>
+<p>变量的赋值格式: <code>value_name = 表达式</code></p>
+<p>声明的同时赋值: <code>var value_name [value_type] = 表达式 (多用于全局变量)</code></p>
+<p>变量的简短声明: <code>value_name := value （多用于局部变量）</code></p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+	<span class="keyword">var</span> v1 <span class="keyword">int</span>
+	v1 = <span class="number">1</span>
+	<span class="comment">// 可省略数据类型,由系统自动根据赋值进行判断</span>
+	<span class="keyword">var</span> v2 = <span class="number">1</span>
+	<span class="comment">// 赋值简短方式,省略var和类型 value_name := value</span>
+	v3 := <span class="number">1</span>
+	fmt.Println(v1)
+	fmt.Println(v2)
+	fmt.Println(v3)
+}
 </code></pre>
-<p>重启该容器后，数据依然存在。但启动一个新容器后，该容器数据依然为初始状态。</p>
-<h2 id="指定sql文件运行顺序"><a class="markdownIt-Anchor" href="#指定sql文件运行顺序"></a> 指定sql文件运行顺序</h2>
-<p><code>entrypoint.sh</code>脚本执行sql文件的顺序是按照文件名排序的，这可能导致一些文件执行顺序不符合预期，从而出现错误。例如预期是数据库创建后，再执行表格创建，最后插入数据，而因为文件名，可能数据库先创建后，插入数据，最后创建表格，从而使得数据插入失败。要解决该问题有如下几种方法：</p>
-<ol>
-<li>将文件按照预期顺序，进行命名，比如1_xx,2_xx;</li>
-<li>将必须有前后顺序的sql文件合并在一个sql文件中;</li>
-<li>将sql文件单独放在一个文件夹如data_mysql,将指定sql文件执行顺序的shell脚本放在shell_mysql文件中。容器启动时，将shell_mysql映射到docker-entrypoint-initdb.d文件夹，data_mysql映射到容器内其他文件夹。<br>
-假设：data_mysql文件夹存放三个sql文件: database.sql,table.sql,data.sql,shell_mysql存放data.sh</li>
-</ol>
-<pre class="highlight"><code class="data.sh">#!/bin/bash
-mysql -uroot -p$MYSQL_ROOT_PASSWORD &lt;&lt;EOF
-source /usr/local/work/database.sql;
-source /usr/local/work/table.sql;
-source /usr/local/work/data.sql; 
+<h3 id="多个变量的声明与赋值"><a class="markdownIt-Anchor" href="#多个变量的声明与赋值"></a> 多个变量的声明与赋值</h3>
+<p>1、全局变量的声明可以使用<code>var()</code>方式</p>
+<p>2、简写全局变量的声明不可以省略<code>var</code>,但可使用并行方式</p>
+<p>3、所有变量都可以使用类型推断</p>
+<p>4、局部变量不能使用<code>var()</code>方式简写，只能使用并行方式</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="keyword">var</span> (
+	<span class="comment">// 常规方式</span>
+	aaa = <span class="string">"hello"</span>
+	<span class="comment">// 并行方式</span>
+	sss, bbb = <span class="number">1</span>, <span class="number">2</span>
+	<span class="comment">// ccc := 3 不可省略var,因此该方式无法使用</span>
+)
+
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+	<span class="comment">// 多个变量声明</span>
+	<span class="keyword">var</span> a, b, c, d <span class="keyword">int</span>
+	<span class="comment">// 多个变量赋值</span>
+	a, b, c, d = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>
+	<span class="comment">// 多个变量声明的同时赋值</span>
+	<span class="keyword">var</span> e, f, g <span class="keyword">int</span> = <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>
+	<span class="comment">// 省略变量类型,由系统推断</span>
+	<span class="keyword">var</span> i, j, k  = <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>
+	l, m, n := <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>
+	fmt.Println(a,b,c,d,e,f,g,i,j,k,l,m,n)
+}
 </code></pre>
-<p>启动容器：</p>
-<pre><code>$ docker run --name test -e WORK_PATH=/usr/local/work -e MYSQL_ROOT_PASSWORD=123456 -v /home/master/shell_mysql:/docker-entrypoint-initdb.d -v /home/master/data_mysql:/usr/local/work mysql
+<h3 id="变量的类型转换"><a class="markdownIt-Anchor" href="#变量的类型转换"></a> 变量的类型转换</h3>
+<p>1、go中不存在隐式转换,所有类型转换必须显式声明</p>
+<p>2、转换只能发生在两种相互兼容的类型之间</p>
+<p>3、类型转换的格式: <code>valueA = valueA_type(valueB)</code></p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+	<span class="comment">// 相互兼容的两种类型进行转换</span>
+	<span class="keyword">var</span> a <span class="keyword">float32</span> = <span class="number">1.1</span>
+	b := <span class="keyword">int</span>(a)
+
+	<span class="comment">// 不兼容的类型无法转换</span>
+	<span class="keyword">var</span> c <span class="keyword">bool</span> = <span class="literal">true</span>
+	d := <span class="keyword">int</span>(c)
+	fmt.Println(b)
+	fmt.Println(d)
+}
 </code></pre>
-<p>数据结果应与上述一致。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -614,7 +779,7 @@ source /usr/local/work/data.sql;
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/容器/Docker/Docker Hub mysql官方镜像实现首次启动后初始化库表/">http://yov.oschina.io/article/容器/Docker/Docker Hub mysql官方镜像实现首次启动后初始化库表/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Go/Go Base/Go基础(一)/">http://yov.oschina.io/article/Go/Go Base/Go基础(一)/</a>
                     </p>
                 </blockquote>
         
@@ -662,21 +827,13 @@ source /usr/local/work/data.sql;
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/article/容器/Docker/Kubernetes安装及使用/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/article/容器/Docker/Docker实现mysql容器启动后自动建库/" id="post_nav-older" class="next-content">
+        <a href="/article/工具/Tool/Node.js安装说明/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
