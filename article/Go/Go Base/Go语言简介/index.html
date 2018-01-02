@@ -39,7 +39,7 @@
     
     <title>
         
-            Go基础（一） | 
+            Go语言简介 | 
         
         Ember
     </title>
@@ -233,18 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Go基础（一） | Ember">
+    <meta property="og:title" content="Go语言简介 | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta property="og:article:tag" content="Go基础"> 
 
     
-        <meta property="article:published_time" content="Sun Dec 31 2017 15:11:32 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Dec 31 2017 15:45:02 GMT+0800" />
+        <meta property="article:published_time" content="Tue Jan 02 2018 19:33:54 GMT+0800" />
+        <meta property="article:modified_time" content="Tue Jan 02 2018 20:39:34 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Go基础（一） | Ember">
+    <meta name="twitter:title" content="Go语言简介 | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -252,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/Go/Go Base/Go语言简介/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -264,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html",
-    "headline": "Go基础（一）",
-    "datePublished": "Sun Dec 31 2017 15:11:32 GMT+0800",
-    "dateModified": "Sun Dec 31 2017 15:45:02 GMT+0800",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Go/Go Base/Go语言简介/index.html",
+    "headline": "Go语言简介",
+    "datePublished": "Tue Jan 02 2018 19:33:54 GMT+0800",
+    "dateModified": "Tue Jan 02 2018 20:39:34 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#go基本语法"><span class="post-toc-number">1.</span> <span class="post-toc-text"> Go基本语法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 注释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go程序的一般结构"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> Go程序的一般结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go可见性规则"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Go可见性规则</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#go数据类型"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Go数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据类型的零值"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 数据类型的零值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单个变量的声明与赋值"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 单个变量的声明与赋值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多个变量的声明与赋值"><span class="post-toc-number">2.3.</span> <span class="post-toc-text"> 多个变量的声明与赋值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#变量的类型转换"><span class="post-toc-number">2.4.</span> <span class="post-toc-text"> 变量的类型转换</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用go解决现有编程难题"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 用Go解决现有编程难题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开发速度"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 开发速度</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#并发"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 并发</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#goroutine"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text"> goroutine</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通道"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text"> 通道</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#go的数据类型"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> Go的数据类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类型简单"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text"> 类型简单</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#go接口对一组行为建模"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text"> Go接口对一组行为建模</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存管理"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> 内存管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hello-go"><span class="post-toc-number">2.</span> <span class="post-toc-text"> Hello ，Go</span></a></li></ol>
     </ul>
     
 
@@ -383,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                Go基础（一）
+                Go语言简介
             </p>
         </div>
 
@@ -402,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 12 - 31</span>
+        <span>2018 - 01 - 02</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -424,7 +424,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC00lEQVR42u3aQY7jMAwEwPz/07sPGMTpppxZr1Q6BQMnVukwDZJ6/TlyvbCxsbGxsbGxsbEfyX7F6+e33v3Cz2fab7XfjfaMjY2NvTX7w7/+N8+sbPr6+eu3z/aMjY2NfQI7iaLrkEieuTcai/jExsbGxh4VGG2J8o2jwcbGxsbOP+dFRVtgPCjAsLGxsR/Mzl+ZB0y+9fwo/0EvDRsbG/vx7Hxo+pzPvzrfxsbGxn4wu1152OTj4XZsPNw5NjY29qbstrk/KzDa4UE7SI72iY2NjX0MOwmw9Ys7+VvyBtOH/WBjY2MfwJ5F2qyhn0RXXt4kB42NjY29K3sleL690eSY8pYWNjY29t7sWWtpJa5WCo/2IiY2Njb2CexZgykf/a5cALptkIyNjY29KTsJgDzGZt9qRwXDwQY2Njb2puzZT+ctpFe82mFzW/ZgY2Nj783O20z5oeSD5FnJcVtTCRsbG/s/Z7clQV4GtJeB8l/L4xAbGxv7BPZ1WRL93KjNlBzu9X7qZ7CxsbE3ZbftoTZm1g+0LUXevh0bGxt7U3YbQr8TePe+ERsbG/tM9r2t+ah9H8dnHqjY2NjYJ7DXIyfntcPg/FpnVCZhY2NjH8m+bu4nsOJyZBBC2NjY2NjXpcgsKlauXeYrHwlgY2Njn8bOL9Z8o2W/0lRqFzY2Nvbe7Lbp01KTaLxhlNtevsTGxsbejt22cvJRwXoszeITGxsb+zT2SlmSX+6ZBWHbfsLGxsY+h123ZkYBlo8W2pZWUahgY2Njb8q+a9SaNIauj282PCj2jI2Njb01u31lfo1m5XDbAPvwJDY2NvYB7KRBUzRxFq5O3rWwsbGxsWeFRzJCyIcBszEzNjY2NvY1ux0MtH9pR8VRcGJjY2MfwM4bOitj17ydlA8Ylm4qYWNjY2/Bzhs0M1ISUW2JUhcn2NjY2Juyz1nY2NjY2NjY2NjYj1l/AWjRe+58g/DEAAAAAElFTkSuQmCC">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1ElEQVR42u3aS1LDQAwFwNz/0rClCmKeJANh1F5RiWOrh4VKn8fbyuuBjY2NjY2NjY2N/ZLsR3x9vP/zb599+8XrP/3qaaCXMeQxY2NjY29gJ6/Pg6seRx76JGZsbGzsDewk6Pxl16lungKrMWNjY2Nj31W6TMoPbGxsbOx72Uk5cf3kPBJsbGxs7LuaSo/iVU1jyfDgD3pp2NjY2C/PngN+/+8/nm9jY2Njvwy7elWHvr17eis+3zwHGxsb+1D2pMWTN5jy43v2tOpyT7MCw8bGxv6H7MmyTjX067FBtfVfHj9gY2Njr2Enw935MDiHJSmtWYFhY2NjH8GeP3QyBr7rsJKYsbGxsc9mV0PpDRXy0PNjzZtZ2NjY2HvY+RD3rrWb+RggSrTY2NjYC9hVah5iNIhtta4KcWJjY2Mfys6HvnnjKT+apJ00vwcbGxv7bPakqZQnmHzFJ18Sqja/sLGxsc9m915TfUI1FfVSV3O+jY2Njf3P2XlTqdyUHwfdS5/Y2NjYO9m9cW9+fEmCTIqZ5ruwsbGxj2ZXSfnCTT487o0NCmUVNjY29qHsasNo0sqftJ96VGxsbOwN7LwxlBcnvUbSpKkUlTHY2NjYh7KTIqSXlqojh94wABsbGxu7mmDmjOs756VONB7AxsbGPohdXZ3Jr14SuusgsLGxsfewe7BeGZOPIu5KitjY2Nib2b0xQHUB6CcKnqf3YGNjYx/KzkPvFQ/VdZxeCRQtG2FjY2Mfyq5eSVqqftI74oSKjY2NvYFdbSQlDfrq6k91BSdfG8LGxsbew06S1nwRp1dCJJ9HB42NjY29gF1t+lcXa/JVnslwojAewMbGxl7Jzts9vVTXGww0pyLY2NjYi9mFRZn487woyt+CjY2NvY2dJ6GkZV9NWr0EVvgnYWNjYx/NvuGhl4kwT5OTxtM3R4yNjY19KHvPhY2NjY2NjY2Njf0y1zuFfjQ2OaI+TgAAAABJRU5ErkJggg==">
     
 </ul>
 
@@ -465,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Go基础（一）&url=http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Go语言简介&url=http://yov.oschina.io/article/Go/Go Base/Go语言简介/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -483,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html&title=Go基础（一）" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Go/Go Base/Go语言简介/index.html&title=Go语言简介" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -492,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Go基础（一）&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Go/Go Base/Go基础(一)/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=Go语言简介&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Go/Go Base/Go语言简介/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,266 +510,54 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="go基本语法"><a class="markdownIt-Anchor" href="#go基本语法"></a> Go基本语法</h2>
-<h3 id="注释"><a class="markdownIt-Anchor" href="#注释"></a> 注释</h3>
-<pre class="highlight"><code class="go"><span class="comment">// 单行注释</span>
-<span class="comment">/**/</span> 多行注释
+        <h2 id="用go解决现有编程难题"><a class="markdownIt-Anchor" href="#用go解决现有编程难题"></a> 用Go解决现有编程难题</h2>
+<h3 id="开发速度"><a class="markdownIt-Anchor" href="#开发速度"></a> 开发速度</h3>
+<p>编译一个大型的C或C++项目需要花费较长的时间。而Go使用了更为智能的编译器，简化了解决依赖的算法，最终提高了编译速度。编译Go程序时，编译器只会关注那些被直接引用的库，而不像Java或C那样遍历依赖链中所有依赖的库。</p>
+<p>因为没有从编译代码到执行代码的中间过程，用动态语言编写应用程序可以快速看到输出，代价是动态语言不提供静态语言提供的类型安全特性，因此经常需要使用大量的测试套件来避免运行时出现<code>类型错误</code>这类bug。</p>
+<h3 id="并发"><a class="markdownIt-Anchor" href="#并发"></a> 并发</h3>
+<p>Go语言对并发的支持是这门语言最重要的特性之一。<code>goroutine</code>很像线程，但它占据的内存远少于线程，且使用它需要的代码更少。<code>channel(通道)</code>是一种内置的数据结构，可以让不同用户在不同的<code>goroutine</code>之间同步发送具有类型的消息，这让编程模型更倾向于在<code>goroutine</code>间发送消息，而不是让多个<code>goroutine</code>争夺同一个数据的试用权。</p>
+<h4 id="goroutine"><a class="markdownIt-Anchor" href="#goroutine"></a> <code>goroutine</code></h4>
+<p><code>goroutine</code>是可以与其它<code>goroutine</code>并行执行的函数，同时也会与主程序并行执行。在其他编程代码中，需要使用线程来完成同样的事，而在Go中会使用同一个线程来执行多个<code>goroutine</code>。例如：用户在写一个Web服务器，希望同时处理不同的Web请求，Java需要写大量额外的代码来使用线程。而在Go中，<code>net/http</code>库直接使用了内置的<code>goroutine</code>，每个请求都自动在自己的<code>goroutine</code>里处理。Go运行时会自动在配置的一组逻辑处理器上调度运行<code>goroutine</code>，每个逻辑处理器绑定到一个操作系统线程上，这让应用程序执行效率更高，而开发工作量减少。</p>
+<p>如果想在执行一段代码时，并行去做另外的事，<code>goroutine</code>是很好的选择，下面是一个简单的例子：</p>
+<pre class="highlight"><code class="go"><span class="function"><span class="keyword">func</span> <span class="title">log</span><span class="params">(msg <span class="keyword">string</span>)</span></span> {
+  <span class="comment">// 此处是处理日志的代码</span>
+}
+
+<span class="comment">// 代码中有些地方检测到错误</span>
+<span class="keyword">go</span> log(<span class="string">"发生错误"</span>)
 </code></pre>
-<h3 id="go程序的一般结构"><a class="markdownIt-Anchor" href="#go程序的一般结构"></a> Go程序的一般结构</h3>
-<p>1、Go程序是通过<code>package</code>组织的;</p>
-<p>2、只有<code>package</code>为<code>main</code>的包才能有<code>main()</code>,即一个程序有且只有一个<code>package main</code>和一个<code>main()</code></p>
-<pre class="highlight"><code class="go"><span class="comment">/* 多行注释 */</span>
-<span class="comment">// 当前程序的包名,必须放在首行</span>
-<span class="keyword">package</span> main
-
-<span class="comment">// 导入其它包</span>
-<span class="keyword">import</span> (
-	<span class="string">"fmt"</span>
-	<span class="comment">// 为导入的包设置别名: 别名 "包名";当别名设为"."时,可以直接调用其函数(不建议,容易混淆)</span>
-	sys <span class="string">"os"</span>
-)
-
-<span class="comment">// 定义常量</span>
-<span class="keyword">const</span> PI  = <span class="number">3.14</span>
-
-<span class="comment">// 全局变量定义,可用于整个包内</span>
-<span class="keyword">var</span> name = <span class="string">"go"</span>
-
-<span class="comment">// 一般类型声明</span>
-<span class="keyword">type</span> newType <span class="keyword">int</span>
-
-<span class="comment">// 结构声明</span>
-<span class="keyword">type</span> gopher <span class="keyword">struct</span> {}
-
-<span class="comment">// 接口声明</span>
-<span class="keyword">type</span> golang <span class="keyword">interface</span> {}
-
-<span class="comment">// 由main作为程序的启动点</span>
-<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
-	<span class="comment">// 导入包后必须使用,否则编译出错,调用方法: packageName.funcName</span>
-	sys.Hostname()
-	fmt.Println(<span class="string">"Hello "</span> + name + <span class="string">" !"</span>)
+<p>关键字<code>go</code>是唯一需要去编写的代码，调用<code>log()</code>作为独立的<code>goroutine</code>去运行，以便与其他<code>goroutine</code>并行执行，这意味着应用程序的其他部分会与记录日志并行执行。</p>
+<h4 id="通道"><a class="markdownIt-Anchor" href="#通道"></a> 通道</h4>
+<p>通道是一种数据结构，可以让<code>goroutine</code>之间安全的通信，可以避免其他语言中常见的共享内存访问的问题。</p>
+<p>并发最难的部分就是要确保其他并发运行的进程、线程或<code>goroutine</code>不会意外修改用户的数据。当不同线程在没有同步保护的情况下修改同一个数据时，将会导致错误。在其他语言中如果使用全局变量或共享内存，需要使用复杂的锁规则来防止对同一个变量的不同步修改。</p>
+<p>通道提供了新模式，这一模式保证同一时刻只会有一个<code>goroutine</code>修改数据。通道用于在几个<code>goroutine</code>之间发哦那个数据。例子：一个应用程序，有多个进程需要顺序读取或修改某个数据，使用<code>goroutine</code>和通道可以为这个过程建立安全的模型。运行过程如下图所示：</p>
+<p><img src="/article/Go/Go Base/Go语言简介/channel.png" alt="无法加载" title="使用通道在goroutine之间安全地发送数据"></p>
+<p>上图有三个<code>goroutine</code>，还有2个不带缓存的通道。第一个<code>goroutine</code>通过通道将数据传给已经在等待的第二个<code>goroutine</code>。两个<code>goroutine</code>间传输数据是同步的，一旦传输完成，两者都会知道数据完成传输。第二个<code>goroutine</code>lion个数据完成任务后，会将数据传给第三个<code>goroutine</code>，传输依然是同步的。这种在<code>goroutine</code>之间安全传输数据的方法不需要任何锁或者同步机制。</p>
+<p>需要注意的是，通道不提供跨<code>goroutine</code>的数据访问保护机制。如果通过通道传输数据的一份副本，那么每个<code>goroutine</code>都会持有一份副本，各自对自己的副本做修改是安全的。当传输指向数据的指针时，如果读和写是由不同的<code>goroutine</code>完成，每个<code>goroutine</code>依旧需要额外的同步动作。</p>
+<h3 id="go的数据类型"><a class="markdownIt-Anchor" href="#go的数据类型"></a> Go的数据类型</h3>
+<p>Go提供灵活的、无继承的类型系统，无需降低运行性能就能最大程度复用代码，这个类型依然支持面向对象开发。Go使用组合<code>composition</code>设计模式，只需要简单地将一个类型嵌入另一个类型，就能复用所有的功能。</p>
+<p>此外Go还有独特的接口实现机制，允许用户对行为进行建模，而不是对类型进行建模。在Go中不需要声明某个类型实现某个接口，编译器会判断类型的实例是否符合正在使用的接口。</p>
+<h4 id="类型简单"><a class="markdownIt-Anchor" href="#类型简单"></a> 类型简单</h4>
+<p>Go不仅有<code>int</code>和<code>string</code>这样的内置类型，还支持自定义类型。Go中自定义的类型通常包含一组带类型的子弹，用于存储数据，类似于C语言的结构，但Go的类型可以声明操作该类型数据的方法。传统语言使用继承来扩展结构，而Go构建更小的开发类型，然后将这些小类型组合为更大的类型。</p>
+<h4 id="go接口对一组行为建模"><a class="markdownIt-Anchor" href="#go接口对一组行为建模"></a> Go接口对一组行为建模</h4>
+<p>接口用于描述类型的行为，如果一个类型的实例实现了一个接口，意味着这个实例可以执行一组特地的行为。你甚至不要去声明这个实例实现了某个接口，只需要实现这组行为就好了，这种特性被称为<code>鸭子特性</code>。Go中如果一个类型实现了一个接口所有方法，那么这个类型的实例就可以存储在这个接口类型的实例中，不需要额外声明。</p>
+<p>Go的接口一般只会描述一个单一的动作，在Go中最常用的接口之一就是<code>io.Reader</code>，该接口提供了一个简单的方法，用来声明一个类型有数据可以读取，其定义如下：</p>
+<pre class="highlight"><code class="go"><span class="keyword">type</span> Reader <span class="keyword">interface</span> {
+  Read(p []<span class="keyword">byte</span>) (n <span class="keyword">int</span>, err error)
 }
 </code></pre>
-<p>3、导入多个包时可以简写,声明多个常量、全局变量或一般类型（非接口、非结构）时也可以简写</p>
-<pre class="highlight"><code class="go"><span class="comment">// 常量定义</span>
-<span class="keyword">const</span> (
-	PI = <span class="number">3.14</span>
-	const1 = <span class="string">"1"</span>
-	const2 = <span class="number">2</span>
-)
+<p>为了实现该接口，你只需要实现一个Read方法，这个方法接受一个byte切片，返回一个整数和可能出现的错误。</p>
+<p>这个与传统接口有本质区别，更有利于使用组合来复用代码，用户几乎可以给所有包含数据的类型实现<code>io.Reader</code>,然后把这个类型的实例传给任何一个知道如何读取<code>io.Reader</code>的Go函数。</p>
+<h3 id="内存管理"><a class="markdownIt-Anchor" href="#内存管理"></a> 内存管理</h3>
+<p>不当的内存管理会导致程序崩溃或者内存泄漏，甚至系统崩溃。Go具有现代化的垃圾回收机制。其他语言使用内存前要先分配这段内存，然后使用完毕后释放。哪怕出现一点失误，就会导致程序崩溃或内存泄漏。这存在一个问题，追踪内存是否还在被使用是件艰难的事，而要想支持多线程和高并发，更是让这件事愈发困难。虽然Go的垃圾回收会造成额外开销，但降低了开发难度。</p>
+<h2 id="hello-go"><a class="markdownIt-Anchor" href="#hello-go"></a> Hello ，Go</h2>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main     <span class="comment">// Go程序都组织成包</span>
 
-<span class="comment">// 全局变量的声明与赋值,var组只能用于声明全局变量,函数内部是不可以使用的</span>
-<span class="keyword">var</span> (
-	name = <span class="string">"go"</span>
-	name1 = <span class="string">"1"</span>
-	name2 = <span class="number">2</span>
-)
+<span class="keyword">import</span> <span class="string">"fmt"</span>     <span class="comment">// 导入外部代码，fmt包用于格式化并输出数据</span>
 
-<span class="comment">// 一般类型声明</span>
-<span class="keyword">type</span> (
-	newType <span class="keyword">int</span>
-	type2 <span class="keyword">float32</span>
-)
-</code></pre>
-<h3 id="go可见性规则"><a class="markdownIt-Anchor" href="#go可见性规则"></a> Go可见性规则</h3>
-<blockquote>
-<p>Go中使用大小写决定常量、变量、类型、结构、接口或函数是否可以被外部包调用；</p>
-<p>函数名首字母小写即为private，首字母大写即为public。</p>
-</blockquote>
-<h2 id="go数据类型"><a class="markdownIt-Anchor" href="#go数据类型"></a> Go数据类型</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">数据类型</th>
-<th style="text-align:center">长度</th>
-<th style="text-align:center">取值范围</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">布尔型(bool)</td>
-<td style="text-align:center">1字节</td>
-<td style="text-align:center">true,false</td>
-<td style="text-align:center">不可用数字代表true或false</td>
-</tr>
-<tr>
-<td style="text-align:center">整型(int/uint)</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">根据运行平台可能为32或64位</td>
-</tr>
-<tr>
-<td style="text-align:center">8位整型(int8/uint8)</td>
-<td style="text-align:center">1字节</td>
-<td style="text-align:center">-128<sub>127/0</sub>255</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">字节型(byte)</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">uint8别名,即用法与uint8一样</td>
-</tr>
-<tr>
-<td style="text-align:center">16位整型(int16/uint16)</td>
-<td style="text-align:center">2字节</td>
-<td style="text-align:center">-32768<sub>32787/0</sub>65535</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">32位整型(int32/uint32)</td>
-<td style="text-align:center">4字节</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">rune是int32别名</td>
-</tr>
-<tr>
-<td style="text-align:center">64位整型(int64/uint64)</td>
-<td style="text-align:center">8字节</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">浮点型(float32/float64)</td>
-<td style="text-align:center">4/8字节</td>
-<td style="text-align:center">精确到7/15小数位</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">复数(complex64/complex128)</td>
-<td style="text-align:center">8/16字节</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">uintptr</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">足够保存指针的32位或64位整数型(根据运行平台决定位数)</td>
-</tr>
-<tr>
-<td style="text-align:center">其他类型</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">array struct（结构） string</td>
-</tr>
-<tr>
-<td style="text-align:center">引用类型</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">slice（切片） map chan（通道）</td>
-</tr>
-<tr>
-<td style="text-align:center">接口类型(interface)</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">函数类型(func)</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="数据类型的零值"><a class="markdownIt-Anchor" href="#数据类型的零值"></a> 数据类型的零值</h3>
-<p>零值不等于空值，而是变量被声明为某种数据类型后的默认值：一般值类型的默认值为0，bool为false，string为空字符串。</p>
-<pre class="highlight"><code class="go"><span class="keyword">package</span> main
-
-<span class="keyword">import</span> (
-	<span class="string">"fmt"</span>
-	<span class="string">"math"</span>
-)
-
-<span class="comment">// 为数据类型设置别名</span>
-<span class="keyword">type</span> (
-	文本 <span class="keyword">string</span>
-
-)
-<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
-	<span class="keyword">var</span>  a <span class="keyword">int</span>
-	<span class="comment">// 获取数据类型默认值</span>
-	fmt.Println(a)
-	<span class="comment">// 获取数据类型最大值</span>
-	fmt.Println(math.MaxInt8)
-	<span class="keyword">var</span> b 文本
-	b = <span class="string">"中文类型名"</span>
-	fmt.Println(b)
-}
-</code></pre>
-<h3 id="单个变量的声明与赋值"><a class="markdownIt-Anchor" href="#单个变量的声明与赋值"></a> 单个变量的声明与赋值</h3>
-<p>变量的声明格式: <code>var value_name value_type</code></p>
-<p>变量的赋值格式: <code>value_name = 表达式</code></p>
-<p>声明的同时赋值: <code>var value_name [value_type] = 表达式 (多用于全局变量)</code></p>
-<p>变量的简短声明: <code>value_name := value （多用于局部变量）</code></p>
-<pre class="highlight"><code class="go"><span class="keyword">package</span> main
-
-<span class="keyword">import</span> <span class="string">"fmt"</span>
-
-<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
-	<span class="keyword">var</span> v1 <span class="keyword">int</span>
-	v1 = <span class="number">1</span>
-	<span class="comment">// 可省略数据类型,由系统自动根据赋值进行判断</span>
-	<span class="keyword">var</span> v2 = <span class="number">1</span>
-	<span class="comment">// 赋值简短方式,省略var和类型 value_name := value</span>
-	v3 := <span class="number">1</span>
-	fmt.Println(v1)
-	fmt.Println(v2)
-	fmt.Println(v3)
-}
-</code></pre>
-<h3 id="多个变量的声明与赋值"><a class="markdownIt-Anchor" href="#多个变量的声明与赋值"></a> 多个变量的声明与赋值</h3>
-<p>1、全局变量的声明可以使用<code>var()</code>方式</p>
-<p>2、简写全局变量的声明不可以省略<code>var</code>,但可使用并行方式</p>
-<p>3、所有变量都可以使用类型推断</p>
-<p>4、局部变量不能使用<code>var()</code>方式简写，只能使用并行方式</p>
-<pre class="highlight"><code class="go"><span class="keyword">package</span> main
-
-<span class="keyword">import</span> <span class="string">"fmt"</span>
-
-<span class="keyword">var</span> (
-	<span class="comment">// 常规方式</span>
-	aaa = <span class="string">"hello"</span>
-	<span class="comment">// 并行方式</span>
-	sss, bbb = <span class="number">1</span>, <span class="number">2</span>
-	<span class="comment">// ccc := 3 不可省略var,因此该方式无法使用</span>
-)
-
-
-<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
-	<span class="comment">// 多个变量声明</span>
-	<span class="keyword">var</span> a, b, c, d <span class="keyword">int</span>
-	<span class="comment">// 多个变量赋值</span>
-	a, b, c, d = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>
-	<span class="comment">// 多个变量声明的同时赋值</span>
-	<span class="keyword">var</span> e, f, g <span class="keyword">int</span> = <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>
-	<span class="comment">// 省略变量类型,由系统推断</span>
-	<span class="keyword">var</span> i, j, k  = <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>
-	l, m, n := <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>
-	fmt.Println(a,b,c,d,e,f,g,i,j,k,l,m,n)
-}
-</code></pre>
-<h3 id="变量的类型转换"><a class="markdownIt-Anchor" href="#变量的类型转换"></a> 变量的类型转换</h3>
-<p>1、go中不存在隐式转换,所有类型转换必须显式声明</p>
-<p>2、转换只能发生在两种相互兼容的类型之间</p>
-<p>3、类型转换的格式: <code>valueA = valueA_type(valueB)</code></p>
-<pre class="highlight"><code class="go"><span class="keyword">package</span> main
-
-<span class="keyword">import</span> <span class="string">"fmt"</span>
-
-<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
-	<span class="comment">// 相互兼容的两种类型进行转换</span>
-	<span class="keyword">var</span> a <span class="keyword">float32</span> = <span class="number">1.1</span>
-	b := <span class="keyword">int</span>(a)
-
-	<span class="comment">// 不兼容的类型无法转换</span>
-	<span class="keyword">var</span> c <span class="keyword">bool</span> = <span class="literal">true</span>
-	d := <span class="keyword">int</span>(c)
-	fmt.Println(b)
-	fmt.Println(d)
-}
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {   <span class="comment">// main函数是程序的入口</span>
+	fmt.Println(<span class="string">"Hello World!"</span>)
+}			
 </code></pre>
 
         
@@ -779,7 +567,7 @@
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Go/Go Base/Go基础(一)/">http://yov.oschina.io/article/Go/Go Base/Go基础(一)/</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Go/Go Base/Go语言简介/">http://yov.oschina.io/article/Go/Go Base/Go语言简介/</a>
                     </p>
                 </blockquote>
         
@@ -826,6 +614,14 @@
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/article/微服务/Micro Service/基础篇01--单块架构及其面临的挑战/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -925,7 +721,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
             </ul>
         </li>
         
@@ -943,7 +739,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">22</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">22</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/微服务/">微服务<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -999,7 +795,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">41</span>
+                <span class="sidebar-badge">42</span>
             </a>
         </li>
         
