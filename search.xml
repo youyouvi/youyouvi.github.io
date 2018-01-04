@@ -3,6 +3,79 @@
   
     
     <entry>
+      <title><![CDATA[IDEA中Spring Boot实现热部署]]></title>
+      <url>/article/%E5%B7%A5%E5%85%B7/Tool/IDEA%E4%B8%ADSpringBoot%E5%AE%9E%E7%8E%B0%E7%83%AD%E9%83%A8%E7%BD%B2/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>IntelliJ IDEA 作为当下较为热门的Java IDE,当使用Spring Boot进行开发时，由于静态页面经常修改，每次重启十分麻烦。因此实现Spring Boot热部署尤为重要。</p>
+</blockquote>
+<h3 id="devtools"><a class="markdownIt-Anchor" href="#devtools"></a> Devtools</h3>
+<p>Spring为开发者提供了spring-boot-devtools模块进行Spring Boot热部署,提高了开发效率，无需手动重启应用。使用需要在<code>pom.xml</code>添加如下配置：</p>
+<pre class="highlight"><code class="xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">plugin</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">addResources</span>&gt;</span>true<span class="tag">&lt;/<span class="name">addResources</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span>
+</code></pre>
+<p>在application.yml中添加配置</p>
+<pre class="highlight"><code class="yaml"><span class="attr">  thymeleaf:</span>
+<span class="attr">    cache:</span> <span class="literal">false</span>   <span class="comment"># 关闭cache，刷新即可显示新页面</span>
+<span class="attr">  devtools:</span>
+<span class="attr">    restart:</span>
+<span class="attr">      enabled:</span> <span class="literal">true</span> <span class="comment"># 启用热部署</span>
+<span class="attr">      additional-paths:</span> <span class="string">src/main/resources</span> <span class="comment"># 设置重启目录</span>
+</code></pre>
+<h3 id="idea设置"><a class="markdownIt-Anchor" href="#idea设置"></a> IDEA设置</h3>
+<p>（1）File-&gt;Settings-&gt;Compiler-&gt;Build project automatically，将其打勾。</p>
+<p>（2）ctrl + shift + A，在检索框输入Registry，随后找到<code>Compiler autoMake allow when app running</code>，勾选。</p>
+<p>重启应用，此时不论是修改java文件还是修改html文件都会自动重新加载，不会重启应用。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> IDEA </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[一个Go程序]]></title>
+      <url>/article/Go/Go%20Base/%E4%B8%80%E4%B8%AAGo%E7%A8%8B%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+]]></content>
+      
+        <categories>
+            
+            <category> Go </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Go基础 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[基础篇01--单块架构及其面临的挑战]]></title>
       <url>/article/%E5%BE%AE%E6%9C%8D%E5%8A%A1/Micro%20Service/%E5%9F%BA%E7%A1%80%E7%AF%8701--%E5%8D%95%E5%9D%97%E6%9E%B6%E6%9E%84%E5%8F%8A%E5%85%B6%E9%9D%A2%E4%B8%B4%E7%9A%84%E6%8C%91%E6%88%98/</url>
       <content type="html"><![CDATA[<h2 id="第一部分-基础篇"><a class="markdownIt-Anchor" href="#第一部分-基础篇"></a> 第一部分 基础篇</h2>
