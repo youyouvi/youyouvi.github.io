@@ -39,7 +39,7 @@
     
     <title>
         
-            About | 
+            基础篇02--微服务架构综述 | 
         
         Ember
     </title>
@@ -51,7 +51,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="子语">
     <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    <meta name="keywords" content="Blog">
+    <meta name="keywords" content="Blog,微服务">
 
     <!-- Import lsloader -->
     <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
@@ -100,6 +100,9 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
             
         
 
@@ -230,15 +233,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yov.oschina.io">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="About | Ember">
+    <meta property="og:title" content="基础篇02--微服务架构综述 | Ember">
     <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
     <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
-    
+    <meta property="og:article:tag" content="微服务"> 
 
+    
+        <meta property="article:published_time" content="Fri Jan 05 2018 19:48:36 GMT+0800" />
+        <meta property="article:modified_time" content="Fri Jan 05 2018 21:56:24 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="About | Ember">
+    <meta name="twitter:title" content="基础篇02--微服务架构综述 | Ember">
     <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
     <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -246,13 +252,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yov.oschina.io/about/index.html" />
+        <link rel="canonical" href="http://yov.oschina.io/article/微服务/Micro Service/基础篇02--微服务架构综述/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yov.oschina.io/article/微服务/Micro Service/基础篇02--微服务架构综述/index.html",
+    "headline": "基础篇02--微服务架构综述",
+    "datePublished": "Fri Jan 05 2018 19:48:36 GMT+0800",
+    "dateModified": "Fri Jan 05 2018 21:56:24 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "子语",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/head.jpg"
+        },
+        "description": "一切有为法,如梦幻泡影.如露亦如电,应作如是观."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ember",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/fa.png"
+        }
+    },
+    "keywords": ",微服务Blog",
+    "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
+}
+</script>
 
 
     
@@ -288,6 +324,39 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微服务架构综述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 微服务架构综述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是微服务架构"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 什么是微服务架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#微服务要多微"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text"> 微服务要多“微”？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#单一职责"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text"> 单一职责</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#轻量级通信"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text"> 轻量级通信</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#独立性"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text"> 独立性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进程隔离"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text"> 进程隔离</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#微服务架构与soa"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 微服务架构与SOA</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
 
 <!-- Layouts -->
 
@@ -314,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                About
+                基础篇02--微服务架构综述
             </p>
         </div>
 
@@ -333,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>子语</strong>
-        <span>2017 - 09 - 26</span>
+        <span>2018 - 01 - 05</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -355,13 +424,22 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB60lEQVR42u3by27CMBAF0Pz/T7fbSlXhXjtAkzlZVSU4PlmM5mGOr1tcBwYGBgYGBgbGv2Ec8fX4Wz////vO5Fv1HjAwMIYxnoS2P+5JtvWYtLMHDAyMmYwkjObbTT5d2wMGBgZG/phkhXPTRwwMDIy1gPskgVtKGTEwMDB2itik+EzK2g/X4hgYGBdk5E351/391vkGBgbGpRj1EYelMUDShnvrmREMDIxLMdpm2X5il/ASKgYGxhxGslx7zKLdYv5EDAwMjLUR42JbP7hnK8PFwMC4HaNNy9q0ry2MkxUwMDDmMPLkrx1Y7he9i7U4BgbGTRlrzf02sOYDyyiUY2BgjGG0IXLnMGue9kWfYmBgDGOc1QLLi9LkuEZdi2NgYAxm7Bzh2nk1JwdcDAyMyzLyY6btofk86VwcgmJgYIxn5M249sc87cpbARcDA+N2jDwUrqWVbfAtilgMDIxhjCRda8H5mkW4x8DAGMPYaZ/tpIDtcTQMDIzJjLVCtE3p8pQxeTUYGBgzGfkoMXrARistL54xMDBmMtrhZZLk5YPSPN3EwMDAaBl5Iti+jpd0DTEwMMYw2kK3DbLRi8PAwBjJSIrY/QMW+VgUAwMDY62YzMeWeUHblscYGBjTGNe9MDAwMDAwMDA+en0DEVsw3dAqq24AAAAASUVORK5CYII=">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADjUlEQVR42u3ay45aMRAFQP7/p5NtJARzTrfNEKnuahTItV1eNP14/PH88zwQ4MCBAwcOHDhw4MDxxRyP+Hn1v179y/P3o80FK75fpT4LDhw4cOC4wJFsMfk02UTy/YTp/Zvzs+DAgQMHjnsc+QFevvrtG/LDt6F3dhYcOHDgwPE9HO+3mCR17Zvzy8CBAwcOHP8vRxtE24LjLM3DgQMHDhzfw3EqHOZp2OGQ+flaKQ4cOHDgWA80fP/fH53vwIEDBw4cTxztswl1OXSyVh5cfzgRDhw4cOA4yrEZO2gPv1+3HaeIWl84cODAgeMoxyZkJu2ittjXDsbl1/byUxw4cODAcYEjWTLhS0Yfki3mLa78nXVxEAcOHDhwjDjOludmgw774mMbyHHgwIEDxz2OPEGaledm32xHK2bBHgcOHDhw3ODIi4CzFG6TXOXhPCkp1r87cODAgQPHUY79oPMs0LaHmX0TBw4cOHDc48jLcJsmUL3FdtxtNGyHAwcOHDh+i2N/jDaFa1PBTfMMBw4cOHDc45iV2/JyYVsozA+WN5xw4MCBA8dtjs226mRpMcQwG7Z4n/jhwIEDB44bHO3QQJs4JRvKLya/kuRvHDhw4MBxj2OTOM1A2yA6a1BFJU4cOHDgwHGUY3bU9nh54Hy/9f07i+IgDhw4cOAYcbRBcTOO0A5StKXAZMX6dwcOHDhw4Cg5kvZPUkbcwJ1qX7VXhQMHDhw4bnPMXjpL5NormRUTo0vCgQMHDhxHOZJN5MEyZ20Tvzw8t+kcDhw4cOC4wZGjnAqESXLYpoVtOocDBw4cOO5xzIbV8jC8Cep5YTE/Fw4cOHDguMcx23oedDer5ME1TzjrgQYcOHDgwLHgmKVSZwNnWxxs22PDgQYcOHDgwHGIIw+cZz/Nw+eGGAcOHDhw3ObIE7YZZd6CmpUF89EKHDhw4MDxGY5kCGAW2GaFwvzCWm4cOHDgwHGPo302YXLGl5QsV60pHDhw4MBxlKMNWrMmUE6QrDULycXvDhw4cODAseZIgmse2PLN5ZtOoNs948CBAweO2xzt+MJwgGC0yr5QWI/K4cCBAweOX+LIQ2A7KpE0pdoWFw4cOHDg+GaO2fJtirVvMn0ohcOBAwcOHKPi4Kz51CZg7bqri8GBAwcOHBc48kCVb70NeHkSOCsOXpnvwIEDBw4cTxweHDhw4MCBAwcOHDhwfNnzF68QCqPh9TgjAAAAAElFTkSuQmCC">
     
 </ul>
 
     
 
     <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/微服务/">微服务</a>
+    </ul>
     
 
     <!-- Share -->
@@ -387,7 +465,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=About&url=http://yov.oschina.io/about/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=基础篇02--微服务架构综述&url=http://yov.oschina.io/article/微服务/Micro Service/基础篇02--微服务架构综述/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -405,7 +483,7 @@
 
     <!-- Share LinkedIn -->
     
-        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/about/index.html&title=About" target="_blank">
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/微服务/Micro Service/基础篇02--微服务架构综述/index.html&title=基础篇02--微服务架构综述" target="_blank">
             <li class="mdl-menu__item">
                 分享到 LinkedIn
             </li>
@@ -414,7 +492,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=About&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/about/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=基础篇02--微服务架构综述&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/微服务/Micro Service/基础篇02--微服务架构综述/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -432,7 +510,47 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>一个被现实从网络架构逼到了编程开发的小菜鸟x.x</p>
+        <h2 id="微服务架构综述"><a class="markdownIt-Anchor" href="#微服务架构综述"></a> 微服务架构综述</h2>
+<h3 id="什么是微服务架构"><a class="markdownIt-Anchor" href="#什么是微服务架构"></a> 什么是微服务架构</h3>
+<blockquote>
+<p>微服务架构是一种架构模式，它提倡将单一的应用程序划分为一组小的服务，服务之间互相协调、互相配合，为用户提供最终价值。每个服务运行在其独立的进程中，服务与服务间采用轻量级的通信机制互相沟通（通常是基于HTTP的RESTful API）。每个服务都围绕具体业务进行构建，并且能够被独立地部署到生产环境、类生产环境等。另外，应尽量避免统一的、集中式的服务管理机制，对具体的一个服务而言，应根据业务上下文，选择合适的语言、工具对其进行构建。                                                                      ---------Martin Fowler</p>
+</blockquote>
+<h4 id="微服务要多微"><a class="markdownIt-Anchor" href="#微服务要多微"></a> 微服务要多“微”？</h4>
+<p>微服务架构通过对特定业务领域的分析与建模，将复杂的应用分解成小而专一、耦合度低且高度自治的一组服务，每个服务都是很小的应用，那么“微”的程度到底是怎样的？</p>
+<p>由于不同语言有不同特点，不同功能的替换或重写很大程度取决于成员的能力，因此代码行数的多少以及重写时间的长短都不能用于衡量“微”。</p>
+<p>微服务的“微”并不是一个真正可衡量、看得见、摸得着的微，其所表达是一种设计思想和指导方针。这需要团队觉得合适，在此之前应遵循以下两个基本前提：</p>
+<ul>
+<li>业务独立性</li>
+</ul>
+<p>应保证微服务具有业务独立性的单元，并不是只是为了微而微。</p>
+<ul>
+<li>团队自主性</li>
+</ul>
+<p>团队应该由不同技能、不同角色的成员组成且团队规模要小。</p>
+<h4 id="单一职责"><a class="markdownIt-Anchor" href="#单一职责"></a> 单一职责</h4>
+<p>编写代码的原则是“高内聚，低耦合”。高内聚指的是一个模块中各个元素彼此结合紧密；低耦合指的是一个完整的系统中，模块与模块之间应尽可能独立存在。符合该原则的系统具有良好的重用性、可维护性和扩展性，能够持续支持业务的发展。</p>
+<p>面向对象的设计中有“SOLID”原则，S指的是SRP（<code>Single Responsibility Principle</code>，单一职责原则）：即一个对象应该只有一个发生变化的原因，如果该对象可以被多个原因改变，则其承担了多个职责。</p>
+<p>Linux中的每个命令都独立负责一个功能，但命令与命令可以通过管道连接起来可以实现更强大的功能。类似的，对于每个服务而言，我们希望它处理的业务逻辑能够单一，在服务架构层面遵循单一职责原则。即微服务架构中的每个服务都是具有业务逻辑 ，符合高内聚、低耦合原则以及单一职责原则的单元，不同服务通过“管道”方式灵活组合，从而构建庞大的系统。</p>
+<h4 id="轻量级通信"><a class="markdownIt-Anchor" href="#轻量级通信"></a> 轻量级通信</h4>
+<p>服务之间应该通过轻量级的通信机制，实现彼此的互通互联，互相协作。所谓轻量级通信机制，通常指语言无关、平台无关的交互方式。</p>
+<p>对于轻量级通信的格式而言，XML或JSON的解析与使用基本与语言无关、平台无关。对于轻量级通信的协议而言，通常基于HTTP，能让服务间的通信变得标准化且无状态化。REST(<code>Representational State Transfer</code>）是实现服务之间互相协作的轻量级通信机制之一。</p>
+<p>对于微服务而言，通过使用语言无关、平台无关的轻量级通信机制，使服务与服务之间的协作变得更加标准化，这就意味着团队可以选择更合适的语言、工具或者平台来开发服务本身。</p>
+<h4 id="独立性"><a class="markdownIt-Anchor" href="#独立性"></a> 独立性</h4>
+<p>独立性指在应用交付的过程中，开发、测试以及部署的独立。</p>
+<p>传统单块架构应用，所有功能都存在于同一块代码块中，当修改某部分时，容易出现功能之间互相影响，即功能的开发不具有独立性。此外，但代码实现后，需要集成、回归测试，才能保证功能互相配合、正常工作且互不影响，因此测试过程不具有独立性。当测试完毕，单块应用被部署后，由于某个特性存在缺陷将导致部署失败或回滚。</p>
+<p>因此单块架构中，功能的开发、测试、构建以及部署耦合度较高。</p>
+<p>微服务架构中，每个服务都是独立的业务单元，服务与服务之间是独立的：</p>
+<ul>
+<li>每个服务都有独立的代码库，从代码库的层面，服务与服务是隔离的；</li>
+<li>每个服务都有独立的测试机制，从测试的角度而言，服务与服务之间是松耦合的；</li>
+<li>构建包是独立的，部署流程是也是独立的，服务能运行在不同进程中。从部署角度考虑，服务与服务之间也是高度解耦的</li>
+</ul>
+<h4 id="进程隔离"><a class="markdownIt-Anchor" href="#进程隔离"></a> 进程隔离</h4>
+<p>单块架构应用，所有功能都运行在同一进程中，当要部署时，需要停掉当前的应用，无法独立部署。为了提高代码的重用以及可维护性，在应用开发中，开发人员会将重复的代码提取出来，封装成组件（此处指的是可以独立审升级、替换掉的部分）。在传统的单块架构中，组件的通常形态叫共享库，例如JAR包或DLL。应用程序在运行时，所有的组件最终也会被加载到同一进程中运行。</p>
+<p>微服务架构中，应用程序由多个服务组成，每个服务都具一个高度自制的独立业务实体。每个服务都能运行在一个独立的操作系统进程中，这意味着不同服务能被部署到不同主机上。理论上，能将多个服务部署到同一节点上，但这样增加了部署和扩展的复杂度。</p>
+<p>综上所诉，微服务架构其实是将单一的应用程序划分为一组小的服务，每个服务都具有业务属性的独立单元，同时能够被独立开发、独立运行、独立测试以及独立部署。</p>
+<h3 id="微服务架构与soa"><a class="markdownIt-Anchor" href="#微服务架构与soa"></a> 微服务架构与SOA</h3>
+<p>面向服务架构<code>SOA</code>，</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -441,7 +559,7 @@
                             This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="http://yov.oschina.io/about/index.html">http://yov.oschina.io/about/index.html</a>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/微服务/Micro Service/基础篇02--微服务架构综述/">http://yov.oschina.io/article/微服务/Micro Service/基础篇02--微服务架构综述/</a>
                     </p>
                 </blockquote>
         
@@ -494,6 +612,14 @@
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/article/工具/Tool/IDEA中SpringBoot实现热部署/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -730,6 +856,14 @@ It will not impact the appearance and can give developers a lot of support :)
                     
 
                     
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
 
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
@@ -875,6 +1009,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
     
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
 
 
 
@@ -887,6 +1025,11 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
         
     
     
