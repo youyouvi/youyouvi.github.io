@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            数组、切片和映射 | 
+        
+        Ember
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="子语">
+    <meta name="description" itemprop="description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="keywords" content="Blog,Go基础">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/fa.png">
+    <link rel="icon" sizes="192x192" href="/img/fa.png">
+    <link rel="apple-touch-icon" href="/img/mao.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ember">
+
+    <!-- Site Verification -->
+    
+    <meta name="baidu-site-verification" content="k8tNw6G5YO" />
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #000000 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #000000 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #000000 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg6.jpg);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.proxy.ustclug.org/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yov.oschina.io">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="数组、切片和映射 | Ember">
+    <meta property="og:image" content="http://yov.oschina.io/img/fa.png" />
+    <meta property="og:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta property="og:article:tag" content="Go基础"> 
+
+    
+        <meta property="article:published_time" content="Wed Jan 17 2018 09:49:34 GMT+0800" />
+        <meta property="article:modified_time" content="Thu Jan 11 2018 22:08:10 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="数组、切片和映射 | Ember">
+    <meta name="twitter:description" content="一切有为法,如梦幻泡影。如露亦如电,应作如是观。">
+    <meta name="twitter:image" content="http://yov.oschina.io/img/fa.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yov.oschina.io" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yov.oschina.io/article/Go/Go Base/数组、切片和映射/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yov.oschina.io/article/Go/Go Base/数组、切片和映射/index.html",
+    "headline": "数组、切片和映射",
+    "datePublished": "Wed Jan 17 2018 09:49:34 GMT+0800",
+    "dateModified": "Thu Jan 11 2018 22:08:10 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "子语",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/head.jpg"
+        },
+        "description": "一切有为法,如梦幻泡影.如露亦如电,应作如是观."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ember",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/fa.png"
+        }
+    },
+    "keywords": ",Go基础Blog",
+    "description": "一切有为法,如梦幻泡影。如露亦如电,应作如是观。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组-切片和映射"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 数组、切片和映射</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组的内部实现和基本功能"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 数组的内部实现和基本功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内部实现"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text"> 内部实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#声明和初始化"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text"> 声明和初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用数组"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text"> 使用数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多维数组"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text"> 多维数组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在函数间传递数组"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text"> 在函数间传递数组</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#切片的内部实现和基础功能"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 切片的内部实现和基础功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内部实现-2"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text"> 内部实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建和初始化"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text"> 创建和初始化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#make和切片字面量"><span class="post-toc-number">1.2.2.1.</span> <span class="post-toc-text"> make和切片字面量</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#nil和空切片"><span class="post-toc-number">1.2.2.2.</span> <span class="post-toc-text"> nil和空切片</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用切片"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text"> 使用切片</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多维切片"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text"> 多维切片</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#切片在函数间传递"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text"> 切片在函数间传递</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#映射的内部实现和基本功能"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> 映射的内部实现和基本功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内部实现-3"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text"> 内部实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建和初始化-2"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text"> 创建和初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用映射"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text"> 使用映射</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在函数间传递映射"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text"> 在函数间传递映射</span></a></li></ol></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                数组、切片和映射
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/head.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>子语</strong>
+        <span>2018 - 01 - 17</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1UlEQVR42u3a0U7DQAwEwP7/T8MrEmpZ2ykE3+SpQklzc0gstu/xceT1wMbGxsbGxsbGxr4l+xFf+VNf7/n+1LPPyU9Ga8bGxsZezf7hT/+Te14v5TU1wSdblq8ZGxsb+wT2JIqSqOu9txpm2NjY2Ng5+zUmD568RMHGxsbGfkeA5d/WK1RumtvY2NjYt2QnDZqrWvmT2PuDXho2Njb27dn50PQ+n391vo2NjY19Y3bzIGMwlK0e9+kNgAtrxsbGxl7Krr4yH8peG0u9gzvY2NjY57AnI9jespI39sbA5aYSNjY29j9n58VDXpbkw4Nq2ZMXNtjY2NjnsKuBMQmwvICpjiuSxhM2Njb2Vna1PEgw1UFy9S29cQI2Njb2VnbvBUmc9BpDSaGSrw0bGxv7BHbyWPLvfj4e7g2Y85BrliLY2NjY/5Y9iZa8qOhtRHVzfyiosLGxsZeyq0PTaqGSLLrZ7q/+krCxsbEPY+dDgnkEXlBm9E4qYWNjY69gzxv61QM6vTKmF7HY2NjYJ7MnI4TkMNBkhFAdG2BjY2PvZs9bS9UNqraZrloVNjY29m5278hjddRajaLe4KEwHsDGxsZex86Hr1e1lnqFSl44YWNjY2PPC5Xet/1SUwkbGxt7BTs/ItkbGyRPVUO0WSBhY2NjL2UnC6reMwH0tiNqPGFjY2MvZU8OTSZFwmRsMI9DbGxs7BPY5RgINuXdn3tbj42Njb2V/SheSfAk0dUbCVx2+BIbGxt7Ebt88KXYbEoO6CQFT6+BhY2NjX0C+x3RlcdYlZRs69N1YmNjY69mVwOp2rKflxOTw6DY2NjY57DzRk++ce84UhkVHtjY2NjYxVFr3tafBGFvwICNjY2NnZQB+WAg2YKotCg2wrCxsbFPYFeLjaQBlG9EbyvzOMTGxsbeze6175OASWKycICyFZDY2NjYu9nnXNjY2NjY2NjY2Ni3uT4B2O977lbdH0MAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Go基础/">Go基础</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=数组、切片和映射&url=http://yov.oschina.io/article/Go/Go Base/数组、切片和映射/index.html&pic=http://yov.oschina.io/img/fa.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://yov.oschina.io/article/Go/Go Base/数组、切片和映射/index.html&title=数组、切片和映射" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ember&title=数组、切片和映射&summary=一切有为法,如梦幻泡影。如露亦如电,应作如是观。&pics=http://yov.oschina.io/img/fa.png&url=http://yov.oschina.io/article/Go/Go Base/数组、切片和映射/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="数组-切片和映射"><a class="markdownIt-Anchor" href="#数组-切片和映射"></a> 数组、切片和映射</h2>
+<h3 id="数组的内部实现和基本功能"><a class="markdownIt-Anchor" href="#数组的内部实现和基本功能"></a> 数组的内部实现和基本功能</h3>
+<p>数组是切片和映射的基础数据结构。</p>
+<h4 id="内部实现"><a class="markdownIt-Anchor" href="#内部实现"></a> 内部实现</h4>
+<p>在Go中，数组是一个长度固定的数据类型，用于存储一段具有相同类型的元素的连续块。存储的数据类型可以是内置的，如整型，也可以是某种结构类型。数组的每个元素都紧邻着下一个元素，可以通过索引来访问。</p>
+<p>数据占用的内存是连续分配的，因此CPU能把正在使用的数据缓存更久的时间，同时内存连续很容易计算索引，可以快速迭代数组里的所有元素。数组的元素类型相同，且连续分配，就可以以固定速度索引数组中的任意数据，速度非常快。</p>
+<h4 id="声明和初始化"><a class="markdownIt-Anchor" href="#声明和初始化"></a> 声明和初始化</h4>
+<p>声明数组时需要指定内部存储的数据类型以及长度。一旦声明，数据里存储的数据类型和长度就不能改变。如果要存储更多元素，就需要创建一个更长的数组，将源数组的值复制过去。数组初始化时，会将每个元素初始化为对应类型的零值。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+	<span class="comment">// 声明一个长度为5的数组</span>
+	<span class="keyword">var</span> array1 [<span class="number">5</span>]<span class="keyword">int</span>
+	<span class="comment">// 声明一个长度为5的数组并用具体值初始化每个元素</span>
+	array2 := [<span class="number">5</span>]<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>,<span class="number">40</span>, <span class="number">50</span>}
+	<span class="comment">// 让Go自动那个计算声明的数组长度</span>
+	array3 := [...]<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+	<span class="comment">// 指定特定元素的值，index:value，指定索引为index的元素值为value</span>
+	array4 := [<span class="number">5</span>]<span class="keyword">int</span>{<span class="number">1</span>: <span class="number">10</span>, <span class="number">2</span>: <span class="number">20</span>}
+    <span class="comment">// for循环输出语句</span>
+	<span class="keyword">for</span> index, value := <span class="keyword">range</span> array4{
+		fmt.Printf(<span class="string">"arr[%d] = %d \n"</span>, index, value)
+	}
+
+	fmt.Println(<span class="built_in">len</span>(array1)) <span class="comment">// 5</span>
+	fmt.Println(<span class="built_in">len</span>(array2)) <span class="comment">// 5</span>
+	fmt.Println(<span class="built_in">len</span>(array3)) <span class="comment">// 5</span>
+}
+
+</code></pre>
+<h4 id="使用数组"><a class="markdownIt-Anchor" href="#使用数组"></a> 使用数组</h4>
+<p>要访问数组时，可以利用<code>[]</code>运算符，通过索引访问元素。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+	<span class="comment">/* 使用索引访问数组元素 */</span>
+	array := [<span class="number">5</span>]<span class="keyword">int</span> {<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+	<span class="comment">// 修改索引为2的元素的值</span>
+	array[<span class="number">2</span>] = <span class="number">35</span>
+
+	<span class="comment">/* 声明一个元素都是指针的数组，使用*运算符就能访问元素指针所指向的值 */</span>
+	array1 := [<span class="number">5</span>]*<span class="keyword">int</span>{<span class="number">0</span>: <span class="built_in">new</span>(<span class="keyword">int</span>), <span class="number">1</span>: <span class="built_in">new</span>(<span class="keyword">int</span>)}
+	*array1[<span class="number">0</span>] = <span class="number">10</span>
+	*array1[<span class="number">1</span>] = <span class="number">20</span>
+
+	<span class="comment">/* 将同类型的数组赋值给另一个数组,类型相同指的是数据类型和长度都相等 */</span>
+	colorArray := [<span class="number">5</span>]<span class="keyword">string</span>{<span class="string">"Blue"</span>, <span class="string">"Red"</span>, <span class="string">"Green"</span>, <span class="string">"Yellow"</span>, <span class="string">"Pink"</span>}
+	<span class="keyword">var</span> colorArray1 [<span class="number">5</span>]<span class="keyword">string</span>
+	colorArray1 = colorArray
+	<span class="keyword">for</span> _, value := <span class="keyword">range</span> colorArray1{
+		fmt.Println(value)
+	}
+
+	<span class="comment">/* 编译器会阻止不同类型的数组互相赋值 */</span>
+	<span class="keyword">var</span> stringarray [<span class="number">5</span>]<span class="keyword">string</span>
+	<span class="keyword">var</span> shortarray [<span class="number">4</span>]<span class="keyword">int</span>
+	<span class="keyword">var</span> longarray [<span class="number">6</span>]<span class="keyword">int</span>
+	intarray := [<span class="number">5</span>]<span class="keyword">int</span>{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>}
+	<span class="comment">// 类型不同的数组不能互相赋值</span>
+	stringarray = intarray
+	<span class="comment">// 不能将长数组赋值给短数组</span>
+	shortarray = intarray
+	<span class="comment">// 不能将短数组赋值给长数组</span>
+	longarray = intarray
+
+	<span class="comment">/* 把一个指针数组赋值给另一个 */</span>
+	<span class="keyword">var</span> array3 [<span class="number">3</span>]*<span class="keyword">string</span>
+	array4 := [<span class="number">3</span>]*<span class="keyword">string</span>{<span class="built_in">new</span>(<span class="keyword">string</span>), <span class="built_in">new</span>(<span class="keyword">string</span>), <span class="built_in">new</span>(<span class="keyword">string</span>)}
+	*array4[<span class="number">0</span>] = <span class="string">"Red"</span>
+	*array4[<span class="number">1</span>] = <span class="string">"Blue"</span>
+	*array4[<span class="number">2</span>] = <span class="string">"Green"</span>
+	array3 = array4
+	<span class="keyword">for</span> _, value := <span class="keyword">range</span> array3{
+		fmt.Println(value)
+	}
+}
+
+</code></pre>
+<h4 id="多维数组"><a class="markdownIt-Anchor" href="#多维数组"></a> 多维数组</h4>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+	<span class="comment">/* 声明一个二维数组 */</span>
+	<span class="keyword">var</span> a1 [<span class="number">4</span>][<span class="number">2</span>] <span class="keyword">int</span>
+	a2 := [<span class="number">4</span>][<span class="number">2</span>]<span class="keyword">int</span>{ {<span class="number">10</span>, <span class="number">11</span>}, {<span class="number">12</span>, <span class="number">13</span>}, {<span class="number">14</span>, <span class="number">15</span>}, {<span class="number">16</span>, <span class="number">17</span>} }
+	
+	<span class="comment">/* 声明数组并初始化外层索引为1和3的元素 */</span>
+	a3 := [<span class="number">4</span>][<span class="number">2</span>]<span class="keyword">int</span>{ <span class="number">1</span>: {<span class="number">20</span>, <span class="number">21</span>}, <span class="number">3</span>: {<span class="number">40</span>, <span class="number">41</span>}}
+	
+	<span class="comment">/* 声明数组并初始化外层数组和内层数组的单个元素 */</span>
+	a4 := [<span class="number">4</span>][<span class="number">2</span>]<span class="keyword">int</span>{ <span class="number">1</span>: {<span class="number">0</span>: <span class="number">20</span>}, <span class="number">3</span>: {<span class="number">1</span>: <span class="number">41</span>}}
+	
+	<span class="comment">/* 访问数组中的元素 */</span>
+	a1[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">10</span>
+	
+	<span class="comment">/* 同类型数组可以互相赋值，此处的同类型指的是长度，数据类型相同 */</span>
+	a1 = a2
+	
+	<span class="comment">/* 使用索引为多维数组赋值*/</span>
+	<span class="comment">// 将数组a1中索引为1的值复制到一个同类型数组中</span>
+	<span class="keyword">var</span> a5 [<span class="number">2</span>]<span class="keyword">int</span> = a1[<span class="number">1</span>]
+	
+	<span class="comment">// 将数组a1中外层索引为1，内层索引为0的元素赋予变量</span>
+	<span class="keyword">var</span> value <span class="keyword">int</span> = a1[<span class="number">1</span>][<span class="number">0</span>]
+	
+}
+</code></pre>
+<h4 id="在函数间传递数组"><a class="markdownIt-Anchor" href="#在函数间传递数组"></a> 在函数间传递数组</h4>
+<p>从内存和性能来看，在函数间传递数组是一个开销很大的操作，因为不论数组多长，都会被完整的复制并传递给函数。假设现在有一个int型数组长度为100万，在64位架构上需要8MB的内存。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+	
+	<span class="keyword">var</span> array [<span class="number">1e6</span>]<span class="keyword">int</span>
+	foo(array)
+	
+}
+
+<span class="comment">// 函数foo接收一个长度为100万的数组</span>
+<span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">(array [1e6]<span class="keyword">int</span>)</span></span> {
+	
+}
+</code></pre>
+<p>每次<code>foo</code>被调用时，必须在栈上分配8MB的内存。之后，整数组的值被复制到刚分配的内存中。这开销十分的大。我们可以通过<code>只传入指向数组的指针</code>的方式解决这个问题。这样只需要复制8字节的数据而不需要复制8MB的数据到栈上，。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+	<span class="keyword">var</span> array [<span class="number">1e6</span>]<span class="keyword">int</span>
+	<span class="comment">// 将array的地址传给foo</span>
+	foo(&amp;array)
+
+}
+
+<span class="comment">// 函数foo接收一个指向长度为100万的数组的指针</span>
+<span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">(array *[1e6]<span class="keyword">int</span>)</span></span> {
+
+}
+
+</code></pre>
+<p>这样操作会更有效地利用内存，性能也更好。但由于传递的是指针，所以如果改变指针指向的值，会改变共享的内存。切片能更好地处理这类共享问题。</p>
+<h3 id="切片的内部实现和基础功能"><a class="markdownIt-Anchor" href="#切片的内部实现和基础功能"></a> 切片的内部实现和基础功能</h3>
+<blockquote>
+<p><code>切片</code>是一种数据结构，便于使用和管理数据集合。切片是围绕动态数组的概念构建的，可以自动增长和缩小。切片的动态增长是通过函数<code>append</code>实现的。还可以通过对切片再次切片来缩小一个切片的大小。因为切片的底层内存也是在连续块中分配的，所以切片还能取得索引，迭代以及为垃圾回收优化的好处。</p>
+</blockquote>
+<h4 id="内部实现-2"><a class="markdownIt-Anchor" href="#内部实现-2"></a> 内部实现</h4>
+<p>切片是很小的对象，对底层数组进行抽象，并提供相关的操作方法。切片有3个字段的数据结构，这三个字段分别是指向底层数组的指针，切片访问的元素的个数（即长度）和切片允许增长的到的元素个数（即容量）。</p>
+<h4 id="创建和初始化"><a class="markdownIt-Anchor" href="#创建和初始化"></a> 创建和初始化</h4>
+<p>是否能提前知道切片需要的容量通常会决定要如何创建切片。</p>
+<h5 id="make和切片字面量"><a class="markdownIt-Anchor" href="#make和切片字面量"></a> make和切片字面量</h5>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+	<span class="comment">/* 创建一个字符串切片，长度和容量都是5 */</span>
+	slice := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">5</span>)
+
+	<span class="comment">/* 创建一个长度为3，容量为5的字符串切片 */</span>
+	s1 := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">3</span>, <span class="number">5</span>)
+  
+    <span class="comment">/* 创建长度和容量都是5的切片 */</span>
+    s2 := []<span class="keyword">string</span> {<span class="string">"Red"</span>, <span class="string">"Blue"</span>, <span class="string">"Green"</span>, <span class="string">"Yellow"</span>, <span class="string">"Pink"</span>}
+  
+    <span class="comment">/* 创建chang*/</span>
+
+}
+</code></pre>
+<p>上述切片可以访问3个元素，而底层数组拥有5个元素，剩下2个元素可以后期操作合并到切片，并通过切片访问这些元素。如果基于这个切片创建新的切片，新切片会和原有切片共享底层数组，也能通过后期操作访问多余容量的元素。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   <span class="comment">/* 切片的容量不能小于长度 */</span>
+   slice := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">5</span>, <span class="number">3</span>)
+   
+   <span class="comment">// Error:len larger than cap in make([]string)</span>
+
+   fmt.Println(slice)
+
+}
+</code></pre>
+<p>如果在<code>[]</code>元素符中指定了值，那么创建的就是数组而不是切片。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   <span class="comment">/* 声明长度和容量皆为100的切片 */</span>
+   slice := []<span class="keyword">string</span>{<span class="number">99</span>:<span class="string">"Red"</span>}
+
+   <span class="comment">/* 声明长度为100的数组 */</span>
+   s1 := [<span class="number">100</span>]<span class="keyword">string</span>{<span class="number">99</span>:<span class="string">"Red"</span>}
+   fmt.Println(s1)
+   fmt.Println(slice)
+
+}
+</code></pre>
+<h5 id="nil和空切片"><a class="markdownIt-Anchor" href="#nil和空切片"></a> nil和空切片</h5>
+<p>nil切片常用于描述一个不存在的切片，例如当函数要求返回一个切片但返回异常时。而空切片在底层数组包含0个元素，也没有分配任何存储空间，可用于当数据库查询返回0个结果时。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   <span class="comment">/* nil切片，指针为nil */</span>
+   <span class="keyword">var</span> slice []<span class="keyword">int</span>
+   
+   <span class="comment">/* 空切片，指针为空 */</span>
+   s1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)
+   s2 := []<span class="keyword">int</span>{}
+
+}
+</code></pre>
+<h4 id="使用切片"><a class="markdownIt-Anchor" href="#使用切片"></a> 使用切片</h4>
+<ul>
+<li>赋值和切片</li>
+</ul>
+<p>对于切片中某个索引指向的元素赋值和数据操作一致。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   <span class="comment">// 创建长度和容量都是5的切片</span>
+   slice := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+   
+   <span class="comment">// 修改索引为0的元素</span>
+   slice[<span class="number">0</span>] = <span class="number">0</span>
+
+}
+</code></pre>
+<p>切片之所以被称为切片，是因为创建一个新切片就是把底层数组切出一部分。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+	slice := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(slice) ; i++ {
+		fmt.Println(slice[i]) <span class="comment">// 10, 20, 30, 40, 50</span>
+	}
+
+	<span class="comment">// 创建一个新切片，长度为2，容量为4</span>
+	newSlice := slice[<span class="number">1</span>:<span class="number">3</span>]
+
+	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(newSlice) ; i++ {
+		fmt.Println(newSlice[i]) <span class="comment">// 20 30</span>
+	}
+}
+</code></pre>
+<p><img src="/article/Go/Go Base/数组、切片和映射/slice.png" alt="无法加载" title="共享同一底层数组的两个切片"></p>
+<p>上述结果显示，两个切片共享同一段底层数组，但是不同的切片看到的是数组的不同部分。对于底层数组容量为k的<code>lices[i:j]</code>，新切片的长度为<code>j-i</code>,容量为<code>k-i</code>。</p>
+<p>此时两个数组共享同一个底层数组，如果一个切片修改了底层数组的共享部分，另一个切片也能感受到。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   slice := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+   newSlice := slice[<span class="number">1</span>:<span class="number">3</span>]
+   <span class="comment">// 修改新切片索引为1的元素</span>
+   newSlice[<span class="number">1</span>] = <span class="number">35</span>
+
+   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(slice) ; i++ {
+      fmt.Println(slice[i]) <span class="comment">// 10, 20, 35, 40, 50</span>
+   }
+}
+</code></pre>
+<p>修改newSlice索引为1的元素其实也是修改了slice索引为2的元素。</p>
+<p>切片只能访问其长度内的元素。与切片容量相关联的元素只能用于增长元素，在使用这部分元素前，必须将其合并到切片的长度里。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   slice := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+   newSlice := slice[<span class="number">1</span>:<span class="number">3</span>]
+   
+   <span class="comment">// newSlice长度为2，所以索引为3的元素对其而言不存在</span>
+   newSlice[<span class="number">3</span>] = <span class="number">35</span>
+   <span class="comment">// Error：runtime error: index out of range</span>
+
+   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(slice) ; i++ {
+      fmt.Println(slice[i]) <span class="comment">// 10, 20, 35, 40, 50</span>
+   }
+}
+</code></pre>
+<p>切片有额外的容量很好，但如果没有把这些容量合并到切片的长度中，这些容量就是没用的。</p>
+<ul>
+<li>
+<p>切片增长</p>
+<p>切片可以按需增长容量，Go中的<code>append</code>函数会处理增长长度的所有操作细节。要使用<code>append</code>需要一个被操作的切片和一个要追加的值。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   slice := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+   newSlice := slice[<span class="number">1</span>:<span class="number">3</span>]
+
+   <span class="comment">// 使用原有的容量来分配一个新元素</span>
+   newSlice = <span class="built_in">append</span>(newSlice, <span class="number">60</span>)
+
+   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(slice); i++ {
+      fmt.Println(slice[i]) <span class="comment">// 10 20 30 40 50 </span>
+   }
+}
+</code></pre>
+</li>
+</ul>
+<p><code>newSlice</code>在底层数组还有可用容量，因此<code>append</code>会将可用元素合并到切片的长度中，并对其赋值。但由于和slice共享同一个数组，所以slice中索引为3的元素也会被改变。</p>
+<p>如果切片的底层数组没有可用容量，append会创建一个新的数组，将被引用的现有的值复制到新数组中，再追加新的值。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   slice := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>}
+
+   newSlice := <span class="built_in">append</span>(slice, <span class="number">50</span>)
+
+   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(slice); i++ {
+      fmt.Println(slice[i]) <span class="comment">// 10 20 30 40</span>
+   }
+
+   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(newSlice); i++ {
+      fmt.Println(newSlice[i]) <span class="comment">// 10 20 30 40 50</span>
+   }
+   
+}
+</code></pre>
+<p><code>append</code>会智能处理底层数组的容量增长，当切片容量小于1000时，会成倍增长容量。但超过1000时，会将增长因子设为1.25.</p>
+<ul>
+<li>创建切片时的3个索引</li>
+</ul>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+	source := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+    <span class="comment">// 定义一个长度为1，容量为2的切片</span>
+    <span class="comment">// 2为新切片开始的索引</span>
+    <span class="comment">// 3为新切片的长度+2</span>
+    <span class="comment">// 4为新切片的容量+2</span>
+	slice := source[<span class="number">2</span>:<span class="number">3</span>:<span class="number">4</span>]
+
+	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(slice); i++ {
+		fmt.Println(slice[i]) <span class="comment">// 30</span>
+	}
+
+	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(source); i++ {
+		fmt.Println(source[i]) <span class="comment">// 10 20 30 40 50</span>
+	}
+}
+</code></pre>
+<p>此时切片的长度，对于<code>slice[i:j:k]</code>，其长度为<code>j-i</code>，容量为<code>k-i</code>.如果设置的容量比可用容量大，就会运行出错。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+   source := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+   slice := source[<span class="number">2</span>:<span class="number">3</span>:<span class="number">6</span>]
+   <span class="comment">// panic: runtime error: slice bounds out of range</span>
+  
+}
+</code></pre>
+<p>append会先使用可用容量，如果没有可用容量就会创建新的底层数组。这导致很容易忘记切片间正在共享一个数组，一旦发生这种情况，会导致问题，对切片内容的修改会影响多个切片。</p>
+<p>因此设置长度和容量一样的好处就是，会强制让新的切片的第一个<code>append</code>操作创建一个新的底层数组，与原有的数组分离。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   source := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+   slice := []<span class="keyword">int</span>{<span class="number">60</span>, <span class="number">70</span>}
+
+   <span class="comment">// 将两个切片追加。source追加slice元素</span>
+   fmt.Printf(<span class="string">"%v\n"</span>, <span class="built_in">append</span>(source, slice...)) <span class="comment">// [10 20 30 40 50 60 70]</span>
+
+   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(source); i++ {
+      fmt.Println(source[i]) <span class="comment">// 10 20 30 40 50</span>
+   }
+
+}
+</code></pre>
+<ul>
+<li>迭代切片</li>
+</ul>
+<p>切片是一个集合，可以迭代其中的元素。Go可以使用关键字<code>range</code>配合关键字<code>for</code>迭代切片里的元素。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   source := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+   <span class="keyword">for</span> index, value := <span class="keyword">range</span> source {
+      fmt.Printf(<span class="string">"index = %d, value = %d \n"</span>, index, value)
+   }
+
+}
+</code></pre>
+<p>迭代切片时，关键字<code>range</code>会返回两个值，一个是当前元素的索引，一个是当前元素值的一个副本。此处要注意的是，切片返回的是元素值的副本，不是对该元素的直接引用。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   source := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+   
+   <span class="keyword">for</span> index, value := <span class="keyword">range</span> source {
+      fmt.Printf(<span class="string">"Value: %d Value-Addr: %X ElemAddr: %X \n"</span>, value, &amp;value,
+         &amp;source[index])
+   }
+   
+   <span class="comment">/** Output
+   Value: 10 Value-Addr: C04204A088 ElemAddr: C042066030 
+   Value: 20 Value-Addr: C04204A088 ElemAddr: C042066038 
+   Value: 30 Value-Addr: C04204A088 ElemAddr: C042066040 
+   Value: 40 Value-Addr: C04204A088 ElemAddr: C042066048 
+   Value: 50 Value-Addr: C04204A088 ElemAddr: C042066050 
+    */</span>
+}
+</code></pre>
+<p>此时我们可以看到副本的地址一直是不变的是因为迭代返回的变量是在迭代过程中根据切片依次赋予的新值，但其本身不变。要想获取元素真正的地址，需要使用切片变量和索引值。</p>
+<p><code>range</code>的迭代是从切片索引0开始的，要像从其他索引开始迭代，可以使用<code>for</code>循环。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   source := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+   <span class="comment">// 从索引2开始迭代切片</span>
+   <span class="keyword">for</span> index := <span class="number">2</span>; index &lt; <span class="built_in">len</span>(source); index ++ {
+      fmt.Printf(<span class="string">"value = %d, index = %d \n"</span>, source[index], index)
+   }
+
+}
+</code></pre>
+<p>Go中有两个内置函数<code>len()</code>和<code>cap()</code>，可以用于处理数组、切片和通道。对于切片，<code>len()</code>返回切片的长度，<code>cap()</code>返回切片的容量。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   source := []<span class="keyword">int</span>{<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>}
+
+   slice := <span class="built_in">append</span>(source, <span class="number">60</span>)
+
+    <span class="comment">// 当append超出原切片容量时，会创建新数组，且当元素为1000时，容量会翻倍</span>
+   fmt.Println(<span class="built_in">cap</span>(slice)) <span class="comment">// 10</span>
+}
+</code></pre>
+<h4 id="多维切片"><a class="markdownIt-Anchor" href="#多维切片"></a> 多维切片</h4>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>  {
+
+   <span class="comment">// 创建多维切片，该切片中包含两个切片{10},{10, 20}</span>
+   slice := [][]<span class="keyword">int</span>{ {<span class="number">10</span>}, {<span class="number">10</span>, <span class="number">20</span>}} 
+   fmt.Println(slice) <span class="comment">// [[10] [10 20]]</span>
+   <span class="comment">// 为切片中的第一个切片追加值为20的元素</span>
+   slice[<span class="number">0</span>] = <span class="built_in">append</span>(slice[<span class="number">0</span>], <span class="number">20</span>)
+   fmt.Println(slice) <span class="comment">// [[10 20] [10 20]]</span>
+}
+</code></pre>
+<p>多维切片<code>append</code>的过程是先增长<code>{10}</code>，然后将增长后的<code>{10, 20}</code>赋值给<code>slice[0]</code>。多维切片，操作时会涉及众多布局和值，但是切片本身结构简单，可以以很小的成本在函数间传递。</p>
+<h4 id="切片在函数间传递"><a class="markdownIt-Anchor" href="#切片在函数间传递"></a> 切片在函数间传递</h4>
+<p>切片的尺寸小，在函数间赋值和传递切片的成本也低。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+
+   slice := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">1e6</span>)
+   foo(slice)
+}
+
+<span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">(slice []<span class="keyword">int</span>)</span> []<span class="title">int</span></span> {
+   <span class="keyword">return</span> slice
+}
+</code></pre>
+<p>在64位架构的机器上，一个切片需要24字节的内存：指针字段需要8字节，长度和容量字段分别需要8字节。由于切片关联的数据包含在底层数组中，不属于切片本身，所以将切片复制到任何函数时，对底层数组大小都不会有影响。复制的只是切片本身，不会涉及底层数组 。</p>
+<h3 id="映射的内部实现和基本功能"><a class="markdownIt-Anchor" href="#映射的内部实现和基本功能"></a> 映射的内部实现和基本功能</h3>
+<p>映射是一种数据结构，用于存储一系列的键值对。映射里基于键来存储值。映射的优势是，能够基于键快速检索数据，键就像是索引一样，指向与该键关联的值。</p>
+<h4 id="内部实现-3"><a class="markdownIt-Anchor" href="#内部实现-3"></a> 内部实现</h4>
+<p>映射是一个集合，可以使用类似切片的方式迭代映射中的元素。但映射是无序集合，这使得无法预测键值对被返回的顺序，即使用同样的顺序保存键值对，但每次迭代映射的时候，顺序也会不一样。这是因为映射的实现使用了散列表。散列表的具体细节暂时不描述。</p>
+<h4 id="创建和初始化-2"><a class="markdownIt-Anchor" href="#创建和初始化-2"></a> 创建和初始化</h4>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+
+   <span class="comment">// 创建一个键值类型都是string的映射</span>
+   dict1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)
+   
+   fmt.Println(dict1)
+
+   <span class="comment">// 创建一个映射，key为int,value为string</span>
+   dict := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>{<span class="number">1</span>:<span class="string">"One"</span>,<span class="number">2</span>:<span class="string">"Two"</span>,<span class="number">3</span>:<span class="string">"Three"</span>}
+   <span class="comment">// 迭代循环，由结果可得，其是无序集合，每次输出的顺序可能都不一样</span>
+   <span class="keyword">for</span> key, value := <span class="keyword">range</span> dict {
+      fmt.Printf(<span class="string">"%d = %s \n"</span>, key, value)
+   }
+}
+</code></pre>
+<p>映射的长度会根据初始化时指定的键值对数量来确定。映射的键可以是任何只，可以是基本数据类型，也可以是结构类型，只要这个值可以用<code>==</code>运算符做比较。切片、函数以及包含切片的结构类型由于使用了引用，都不能作为映射的键。但可以作为映射的值。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+
+   <span class="comment">// 将切片作为映射的键</span>
+   dict1 := <span class="keyword">map</span>[[]<span class="keyword">string</span>] <span class="keyword">int</span>{}
+   <span class="comment">// Exception: invalid map key type []string</span>
+   fmt.Println(dict1)
+   <span class="comment">// 将切片作为映射的值</span>
+   dict2 := <span class="keyword">map</span>[<span class="keyword">int</span>] []<span class="keyword">string</span>{}
+   fmt.Println(dict2)
+}
+</code></pre>
+<h4 id="使用映射"><a class="markdownIt-Anchor" href="#使用映射"></a> 使用映射</h4>
+<p>键值对赋值给映射，是通过指定适当类型的键并给这个键赋值来完成的。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">//  声明一个空映射</span>
+   nums := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>{}
+
+   <span class="comment">// 将"1"对应的英文"One"加入到映射中</span>
+   nums[<span class="string">"1"</span>] = <span class="string">"One"</span>
+
+   <span class="comment">// 空映射可以用于存储键值对，但nil映射不能</span>
+   <span class="keyword">var</span> colors <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>
+
+   colors[<span class="string">"Red"</span>] = <span class="string">"#da1337"</span>
+   <span class="comment">// panic: assignment to entry in nil map</span>
+
+
+}
+</code></pre>
+<p>检测映射中是否存在某个键是映射的常用操作。这个操作允许用户写一些逻辑来确定是否完成了某个操作或是否在映射中缓存了特定数据，也可以用于比较两个映射，来确定哪些键值对互相匹配。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">//  声明一个空映射</span>
+   nums := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>{}
+
+   <span class="comment">// 将"1"对应的英文"One"加入到映射中</span>
+   nums[<span class="string">"1"</span>] = <span class="string">"One"</span>
+
+   <span class="comment">// 同时获取映射中key对应的值，以及这个键是否存在</span>
+   value, exists := nums[<span class="string">"1"</span>]
+   <span class="keyword">if</span> exists {
+      fmt.Println(value)
+   }
+    
+   <span class="comment">// 只返回键对应的值，从而判断这个值是不是零值，以此来判断key是否存在</span>
+   v := nums[<span class="string">"1"</span>]
+   <span class="keyword">if</span> v != <span class="string">""</span> {
+      fmt.Println(value)
+   }
+
+}
+</code></pre>
+<p>Go中即使键不存在，也会返回一个值。这个值是值对应的数据类型的零值。</p>
+<p>可以使用<code>delete()</code>函数删除映射中的键值对</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">//  声明一个空映射</span>
+   nums := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>{
+      <span class="string">"1"</span>: <span class="string">"One"</span>,
+      <span class="string">"2"</span>: <span class="string">"Two"</span>,
+      <span class="string">"3"</span>: <span class="string">"Three"</span>,
+   }
+
+   <span class="built_in">delete</span>(nums, <span class="string">"2"</span>)
+
+   <span class="keyword">for</span> key, value := <span class="keyword">range</span> nums {
+      fmt.Printf(<span class="string">"%s = %s \n"</span>, key, value)
+   }
+
+}
+</code></pre>
+<h4 id="在函数间传递映射"><a class="markdownIt-Anchor" href="#在函数间传递映射"></a> 在函数间传递映射</h4>
+<p>在函数间传递映射时，并不会造出该映射的副本，即将映射传递给函数后，所有对这个映射的映射都会收到函数的操作带来的影响。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">//  声明一个空映射</span>
+   nums := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>{
+      <span class="string">"1"</span>: <span class="string">"One"</span>,
+      <span class="string">"2"</span>: <span class="string">"Two"</span>,
+      <span class="string">"3"</span>: <span class="string">"Three"</span>,
+   }
+
+   <span class="keyword">for</span> key, value := <span class="keyword">range</span> nums {
+      fmt.Printf(<span class="string">"%s = %s \n"</span>, key, value)
+      <span class="comment">// Output:</span>
+      <span class="comment">// 1 = One </span>
+      <span class="comment">// 2 = Two</span>
+      <span class="comment">// 3 = Three </span>
+   }
+
+   remove(nums, <span class="string">"2"</span>)
+
+   <span class="keyword">for</span> key, value := <span class="keyword">range</span> nums {
+      fmt.Printf(<span class="string">"%s = %s \n"</span>, key, value) 
+      <span class="comment">// Output:</span>
+      <span class="comment">// 1 = One </span>
+      <span class="comment">// 3 = Three </span>
+   }
+}
+
+<span class="function"><span class="keyword">func</span> <span class="title">remove</span><span class="params">(dict <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>, key <span class="keyword">string</span>)</span></span>  {
+   <span class="built_in">delete</span>(dict, key)
+}
+
+</code></pre>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons.html" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://yov.oschina.io/article/Go/Go Base/数组、切片和映射/">http://yov.oschina.io/article/Go/Go Base/数组、切片和映射/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        owner: 'youyouvi',
+        repo: 'youyouvi.github.io',
+        oauth: {
+            client_id: 'fdcff2e0ff2fdfecce93',
+            client_secret: 'c0cf25fd016b2c8831a622a292a3692daa54c73a',
+        },
+    })
+    gitment.render('container')
+</script>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/article/Go/Go Base/并发/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/article/Go/Go Base/Go中的类型/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/head.jpg" alt="子语's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        yo.vi@foxmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HGVzMmp1XHpzZHF9dXAyf3Nx" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">22</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/微服务/">微服务<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">links</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">50</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+    <span id="footer-image">
+        <a href="https://www.upyun.com/" target="_blank" title="upyun_logo">
+            <img src="/img/upyun_logo.svg" alt="upyun_logo"><!--
+     --></a>
+    </span>
+
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/youyouvi" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Ember
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <!--<div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>-->
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Wed Jan 03 2018 20:12:27 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Jan 03 2018 22:54:15 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Jan 07 2018 14:32:36 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/Go/Go Base/一个Go程序/index.html",
     "headline": "一个Go程序",
     "datePublished": "Wed Jan 03 2018 20:12:27 GMT+0800",
-    "dateModified": "Wed Jan 03 2018 22:54:15 GMT+0800",
+    "dateModified": "Sun Jan 07 2018 14:32:36 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#"><span class="post-toc-number">1.</span> <span class="post-toc-text"> </span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一个go程序"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 一个Go程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#程序结构"><span class="post-toc-number">1.1.</span> <span class="post-toc-text"> 程序结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目结构"><span class="post-toc-number">1.2.</span> <span class="post-toc-text"> 项目结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#main包maingo"><span class="post-toc-number">1.3.</span> <span class="post-toc-text"> main包(main.go)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#search包"><span class="post-toc-number">1.4.</span> <span class="post-toc-text"> search包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#searchgo"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text"> search.go</span></a></li></ol></li></ol></li></ol>
     </ul>
     
 
@@ -510,7 +510,52 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+        <h2 id="一个go程序"><a class="markdownIt-Anchor" href="#一个go程序"></a> 一个Go程序</h2>
+<h3 id="程序结构"><a class="markdownIt-Anchor" href="#程序结构"></a> 程序结构</h3>
+<p><img src="/article/Go/Go Base/一个Go程序/%E7%A8%8B%E5%BA%8F%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="无法加载" title="程序架构流程图"></p>
+<h3 id="项目结构"><a class="markdownIt-Anchor" href="#项目结构"></a> 项目结构</h3>
+<pre class="highlight"><code class="go">- sample
+    - data
+        data.json   -- 数据源
+    - matchers
+        rss.<span class="keyword">go</span>      -- 搜索rss源的匹配器  
+    - search
+        <span class="keyword">default</span>.<span class="keyword">go</span>  -- 搜索数据用的默认匹配器
+        feed.<span class="keyword">go</span>     -- 用于读取json数据文件
+        match.<span class="keyword">go</span>    -- 用于支持不同匹配器的接口
+        search.<span class="keyword">go</span>   -- 执行搜索的主控制逻辑
+    - main
+        main.<span class="keyword">go</span>     -- 程序的入口
+</code></pre>
+<h3 id="main包maingo"><a class="markdownIt-Anchor" href="#main包maingo"></a> main包(main.go)</h3>
+<pre class="highlight"><code class="go"><span class="comment">/* 程序入口 */</span>
+<span class="keyword">package</span> main
+
+<span class="comment">/* 导入外部包，让用户可以访问其中的标识符 */</span>
+<span class="keyword">import</span> (
+	<span class="string">"log"</span>
+	<span class="string">"os"</span>
+
+	<span class="comment">/* _ "package_name" 该方式是为了调用包中的初始化函数，而不是使用其中的标识符 */</span>
+	_ <span class="string">"sample/matchers"</span>
+	<span class="string">"sample/search"</span>
+)
+
+<span class="comment">// init在main之前调用</span>
+<span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span>  {
+	<span class="comment">// 将日志输出到标准输出</span>
+	log.SetOutput(os.Stdout)
+}
+
+<span class="comment">// main函数是程序的入口</span>
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+	<span class="comment">// 使用特定项进行搜索</span>
+	search.Run(<span class="string">"president"</span>)
+}
+</code></pre>
+<h3 id="search包"><a class="markdownIt-Anchor" href="#search包"></a> search包</h3>
+<p>程序所使用的框架和业务逻辑都在search包中，其由4个go文件组成，分别对应一个独立的职责。</p>
+<h4 id="searchgo"><a class="markdownIt-Anchor" href="#searchgo"></a> search.go</h4>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -673,7 +718,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
             </ul>
         </li>
         
@@ -691,7 +736,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">22</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/微服务/">微服务<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">22</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/微服务/">微服务<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -747,7 +792,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">45</span>
+                <span class="sidebar-badge">50</span>
             </a>
         </li>
         
