@@ -3,16 +3,460 @@
   
     
     <entry>
+      <title><![CDATA[Java知识(五)]]></title>
+      <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E4%BA%94)/</url>
+      <content type="html"><![CDATA[<h2 id="线程的同步与死锁"><a class="markdownIt-Anchor" href="#线程的同步与死锁"></a> 线程的同步与死锁</h2>
+<h3 id="同步问题引出"><a class="markdownIt-Anchor" href="#同步问题引出"></a> 同步问题引出</h3>
+<p>1、<code>同步</code>是多个线程访问同一资源时必须要考虑到的问题。</p>
+<p>范例：观察非同步下的操作</p>
+<pre class="highlight"><code class="java"><span class="keyword">import</span> java.util.concurrent.*;
+
+<span class="class"><span class="keyword">class</span> <span class="title">SellTicket</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{
+    <span class="keyword">private</span> <span class="keyword">int</span> ticket = <span class="number">5</span>;
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) {
+            <span class="keyword">if</span> (<span class="keyword">this</span>.ticket &gt; <span class="number">0</span>) {
+                System.out.println(Thread.currentThread().getName() +
+                        <span class="string">"买票，ticket = "</span> + <span class="keyword">this</span>.ticket--);
+            }
+        }
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        <span class="comment">// 创建一个4线程的线程池</span>
+        ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">4</span>);
+        SellTicket sellTicket = <span class="keyword">new</span> SellTicket();
+        <span class="comment">// 启动线程</span>
+        executorService.execute(sellTicket);
+        executorService.execute(sellTicket);
+        executorService.execute(sellTicket);
+        executorService.execute(sellTicket);
+        executorService.shutdown();
+    }
+}
+</code></pre>
+<p>上述代码中，4个线程一共只能卖5张票，此时运行程序未发现问题，是因为程序是在一个JVM进程下运行，且没有受到其他影响。</p>
+<p>2、为了发现问题，此时在线程中加入延迟，如下面代码：</p>
+<pre class="highlight"><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">SellTicket</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{
+  <span class="keyword">private</span> <span class="keyword">int</span> ticket = <span class="number">5</span>;
+  
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) {
+          <span class="keyword">if</span> (<span class="keyword">this</span>.ticket &gt; <span class="number">0</span>) {
+              <span class="comment">// 加入线程等待，时间为0.1秒</span>
+              <span class="keyword">try</span> {
+                  Thread.sleep(<span class="number">100</span>);
+              } <span class="keyword">catch</span> (InterruptedException e) {
+                  e.printStackTrace();
+              }
+              System.out.println(Thread.currentThread().getName() +
+                      <span class="string">"买票，ticket = "</span> + <span class="keyword">this</span>.ticket--);
+          }
+      }
+  }
+}
+</code></pre>
+<p>此时结果中，出现票数为负数。卖票分为两步：<br>
+(1) 判断票数是否为负数；<br>
+(2) 减少票数。<br>
+假设当前票数为1，当一个线程进来，发现还有票，便要进行第二步。但此时该线程休眠，没有修改票数;结果第二个进程进入时，因为票数还未被修改，也进入第二步，于是两个进程休眠后，都对票进行了修改，于是便出现了负数。由于程序未进行同步，导致了数据出错。</p>
+<h3 id="同步处理"><a class="markdownIt-Anchor" href="#同步处理"></a> 同步处理</h3>
+<p>1、上述程序存在的问题是：票数判断和票数修改是分开完成的，正确的思路应该是将票数判断和票数修改包装起来，当一个线程进行操作时，其他线程要等待。 <code>同步</code>指的是在同一时间点只能有一个线程进行，其他线程要等待该线程完成后才可以继续操作。</p>
+<p>2、在Java中使用<code>synchronized</code>关键字实现线程的同步，该关键字使用形式有两种：<br>
+(1) 同步代码块；<br>
+(2) 同步方法。<br>
+范例：同步块</p>
+<pre class="highlight"><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">SellTicket</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{
+  <span class="keyword">private</span> <span class="keyword">int</span> ticket = <span class="number">5</span>;
+
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) {
+          <span class="comment">// 同步块</span>
+          <span class="keyword">synchronized</span> (<span class="keyword">this</span>){ <span class="comment">// 当前操作只允许一个对象进入</span>
+              <span class="keyword">if</span> (<span class="keyword">this</span>.ticket &gt; <span class="number">0</span>) {
+              <span class="comment">// 加入线程等待，时间为0.1秒</span>
+                 <span class="keyword">try</span> {
+                    Thread.sleep(<span class="number">100</span>);
+                 } <span class="keyword">catch</span> (InterruptedException e) {
+                    e.printStackTrace();
+                 }
+                 System.out.println(Thread.currentThread().getName() +
+                        <span class="string">"买票，ticket = "</span> + <span class="keyword">this</span>.ticket--);
+              }
+          }
+      }
+  }
+}
+</code></pre>
+<p>范例：同步方法</p>
+<pre class="highlight"><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">SellTicket</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{
+  <span class="keyword">private</span> <span class="keyword">int</span> ticket = <span class="number">5</span>;
+  
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) {
+          <span class="keyword">this</span>.sale();
+      }
+  }
+
+  <span class="comment">// 同步方法</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">sale</span><span class="params">()</span> </span>{
+      <span class="keyword">if</span> (<span class="keyword">this</span>.ticket &gt; <span class="number">0</span>) {
+          <span class="keyword">try</span> {
+              Thread.sleep(<span class="number">100</span>);
+          } <span class="keyword">catch</span> (InterruptedException e) {
+              e.printStackTrace();
+          }
+          System.out.println(Thread.currentThread().getName() +
+                  <span class="string">"买票，ticket = "</span> + <span class="keyword">this</span>.ticket--);
+      }
+  }
+}
+</code></pre>
+<p>异步操作的执行速度高于同步操作，但是同步操作时，数据安全性较高，属于安全的线程操作。</p>
+<h3 id="死锁"><a class="markdownIt-Anchor" href="#死锁"></a> 死锁</h3>
+<p>通过上述例子，可知同步指的是一个线程对象需要等待其前一个线程对象执行完毕后才能执行。当线程同步时，可能出现以下问题：<br>
+范例：观察死锁</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>{
+  <span class="keyword">public</span> String username;
+  <span class="keyword">public</span> Object lock1 = <span class="keyword">new</span> Object();
+  <span class="keyword">public</span> Object lock2 = <span class="keyword">new</span> Object();
+
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+      <span class="keyword">if</span> (<span class="string">"a"</span>.equals(username)) {
+          <span class="keyword">synchronized</span> (lock1) {
+              <span class="keyword">try</span> {
+                  System.out.println(<span class="string">"username = "</span> + username);
+                  Thread.sleep(<span class="number">3000</span>);
+              } <span class="keyword">catch</span> (Exception e) {
+                  e.printStackTrace();
+              }
+              <span class="keyword">synchronized</span> (lock2) {
+                  System.out.println(<span class="string">"按lock1--&gt;lock2顺序执行"</span>);
+              }
+          }
+      }
+      <span class="keyword">if</span> (<span class="string">"b"</span>.equals(username)) {
+          <span class="keyword">synchronized</span> (lock2) {
+              <span class="keyword">try</span> {
+                  System.out.println(<span class="string">"username = "</span> + username);
+                  Thread.sleep(<span class="number">3000</span>);
+              } <span class="keyword">catch</span> (Exception e) {
+                  e.printStackTrace();
+              }
+              <span class="keyword">synchronized</span> (lock1) {
+                  System.out.println(<span class="string">"按lock2--&gt;lock1顺序执行"</span>);
+              }
+          }
+      }
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlag</span><span class="params">(String username)</span> </span>{
+      <span class="keyword">this</span>.username = username;
+  }
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+      Demo dt1 = <span class="keyword">new</span> Demo();
+      dt1.setFlag(<span class="string">"a"</span>);;
+      Thread t1 = <span class="keyword">new</span> Thread(dt1);
+      t1.start();
+    
+      <span class="keyword">try</span> {
+          Thread.sleep(<span class="number">2000</span>);
+      } <span class="keyword">catch</span> (InterruptedException e) {
+          e.printStackTrace();
+      }
+    
+      dt1.setFlag(<span class="string">"b"</span>);;
+      Thread t2 = <span class="keyword">new</span> Thread(dt1);
+      t2.start();
+  }
+}
+</code></pre>
+<p>上述代码的结果是<code>username = a username = b</code>。死锁是程序开发时由于某种逻辑错误造成的，不是简单地就能发现的。我们使用JDK自带的工具<code>Jconsole</code>观察死锁。在CMD中输入<code>jconsole</code>启动该工具，连接到需要查看的线程：</p>
+<p><img src="/article/Java/Java/Java知识(五)/%E8%BF%9E%E6%8E%A5.png" alt="无法加载" title="连接"></p>
+<p>点击线程检查死锁：</p>
+<p><img src="/article/Java/Java/Java知识(五)/Thread-0.png" alt="无法加载" title="线程"></p>
+<p><img src="/article/Java/Java/Java知识(五)/Thread-1.png" alt="无法加载" title="线程"></p>
+<p>此时我们可以看到Thread-1想申请<code>java.lang.Object@7234b7be</code>，但是这个被Thread-0拥有了，所以堵塞了；<br>
+Thread-0想申请 <code>java.lang.Object@3a6ff1f5</code>，但是这个被Thread-1拥有了，所以堵塞了。两者互相等待，一直僵持下去，就造成了死锁。</p>
+<blockquote>
+<p>小结：</p>
+<p>请解释多个线程访问同一资源时需要考虑到哪些问题？有可能带来哪些问题？</p>
+<p>答案：· 多个线程访问同一资源时一定要处理好同步，可以使用同步代码块或同步方法来解决；</p>
+<p>​         |- 同步代码块：synchronized(锁定对象){代码}</p>
+<p>​         |- 同步方法：public synchronized 返回值 方法名(){代码}</p>
+<p>· 但是过多地使用同步，有可能造成死锁。</p>
+</blockquote>
+<h2 id="生产者与消费者"><a class="markdownIt-Anchor" href="#生产者与消费者"></a> 生产者与消费者</h2>
+<h3 id="综合实战问题引出"><a class="markdownIt-Anchor" href="#综合实战问题引出"></a> 综合实战：问题引出</h3>
+<p><code>生产者</code>和<code>消费者</code>是两个不同的线程类对象，它们操作同一资源。具体的操作流程如下：<br>
+(1) 生产者负责生产数据，消费者负责取走数据；<br>
+(2) 生产者每生产完一组数据，消费者就要取走一组数据；<br>
+现在假设要生产的数据如下：<br>
+(1) 第一组数据：<code>title = 书，content = “Java开发”</code>；<br>
+(2) 第二组数据：<code>title = 笔，content = “派克钢笔”</code>；<br>
+操作的结构图如下：</p>
+<p><img src="/article/Java/Java/Java知识(五)/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85.png" alt="无法加载" title="生产者与消费者"></p>
+<p>范例：程序基本模型</p>
+<pre class="highlight"><code class="java"><span class="comment">// 数据类</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span> </span>{
+    <span class="keyword">private</span> String title;
+    <span class="keyword">private</span> String content;
+    
+    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> title;
+    }
+    
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>{
+        <span class="keyword">this</span>.title = title;
+    }
+    
+    <span class="function"><span class="keyword">public</span> String <span class="title">getContent</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> content;
+    }
+    
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContent</span><span class="params">(String content)</span> </span>{
+        <span class="keyword">this</span>.content = content;
+    }
+}
+
+<span class="comment">// 生产者</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Productor</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>{
+    <span class="keyword">private</span>  Info info;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">Productor</span><span class="params">(Info info)</span> </span>{
+        <span class="keyword">this</span>.info = info;
+    }
+    
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">100</span>; x++) {
+            <span class="keyword">if</span> (x % <span class="number">2</span> == <span class="number">0</span>) {
+                <span class="keyword">this</span>.info.setTitle(<span class="string">"书"</span>);
+                <span class="keyword">try</span> {
+                    Thread.sleep(<span class="number">100</span>);
+                } <span class="keyword">catch</span> (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                <span class="keyword">this</span>.info.setContent(<span class="string">"Java开发"</span>);
+            } <span class="keyword">else</span> {
+                <span class="keyword">this</span>.info.setTitle(<span class="string">"笔"</span>);
+                <span class="keyword">try</span> {
+                    Thread.sleep(<span class="number">100</span>);
+                } <span class="keyword">catch</span> (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                <span class="keyword">this</span>.info.setContent(<span class="string">"派克钢笔"</span>);
+            }
+        }
+    }
+}
+
+<span class="comment">// 消费者</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{
+    <span class="keyword">private</span> Info info;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">(Info info)</span> </span>{
+        <span class="keyword">this</span>.info = info;
+    }
+    
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">100</span>; x++) {
+            <span class="keyword">try</span> {
+                Thread.sleep(<span class="number">100</span>);
+            } <span class="keyword">catch</span> (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(<span class="keyword">this</span>.info.getTitle() + <span class="string">"-"</span> +
+            <span class="keyword">this</span>.info.getContent());
+        }
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        Info info = <span class="keyword">new</span> Info();
+ 
+        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Productor(info)).start();
+        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Customer(info)).start();
+    }
+}
+
+</code></pre>
+<p>运行程序，发现两个问题：<br>
+· 数据错位，不是我们所需要的完整数据（书-派克钢笔、笔-Java开发）；<br>
+· 数据重复取出，数据重复设置。</p>
+<h3 id="综合实战同步处理"><a class="markdownIt-Anchor" href="#综合实战同步处理"></a> 综合实战：同步处理</h3>
+<p>上述程序出现错误，是异步操作造成的，因此应进行同步处理。因为取和设置是不同功能，要进行同步控制，就需要将其定义在一个类中。</p>
+<pre class="highlight"><code class="java"><span class="comment">// 数据类</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span> </span>{
+    <span class="keyword">private</span> String title;
+    <span class="keyword">private</span> String content;
+    
+    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String title, String content)</span> </span>{
+        <span class="keyword">this</span>.title = title;
+        <span class="keyword">try</span> {
+            Thread.sleep(<span class="number">200</span>);
+        } <span class="keyword">catch</span> (InterruptedException e) {
+            e.printStackTrace();
+        }
+        <span class="keyword">this</span>.content = content;
+    }
+    
+    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>{
+        <span class="keyword">try</span> {
+            Thread.sleep(<span class="number">200</span>);
+        } <span class="keyword">catch</span> (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(<span class="keyword">this</span>.title + <span class="string">"-"</span> + <span class="keyword">this</span>.content);
+    }
+}
+
+<span class="comment">// 生产者</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Productor</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>{
+    <span class="keyword">private</span>  Info info;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">Productor</span><span class="params">(Info info)</span> </span>{
+        <span class="keyword">this</span>.info = info;
+    }
+    
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">100</span>; x++) {
+            <span class="keyword">if</span> (x % <span class="number">2</span> == <span class="number">0</span>) {
+                <span class="keyword">this</span>.info.set(<span class="string">"书"</span>, <span class="string">"Java开发"</span>);
+            } <span class="keyword">else</span> {
+                <span class="keyword">this</span>.info.set(<span class="string">"笔"</span>, <span class="string">"派克钢笔"</span>);
+            }
+        }
+    }
+}
+
+<span class="comment">// 消费者</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{
+    <span class="keyword">private</span> Info info;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">(Info info)</span> </span>{
+        <span class="keyword">this</span>.info = info;
+    }
+    
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">100</span>; x++) {
+            <span class="keyword">this</span>.info.get();
+        }
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        Info info = <span class="keyword">new</span> Info();
+        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Productor(info)).start();
+        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Customer(info)).start();
+    }
+}
+</code></pre>
+<p>上述代码解决了数据错位问题，但是重复操作问题更加严重了。</p>
+<h3 id="object类"><a class="markdownIt-Anchor" href="#object类"></a> Object类</h3>
+<p>如果要想完成上述需要，必须加入等待机制与唤醒机制。Object类中提供有方法：<br>
+· 等待：<code>public final void wait() throws InterruptedException；</code><br>
+· 唤醒第一个等待线程：<code>public final void notify()；</code><br>
+· 唤醒全部等待线程，优先级高的先执行：<code>public final void notifyAll()。</code><br>
+范例：修改数据类</p>
+<pre class="highlight"><code class="java"><span class="comment">// 数据类</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span> </span>{
+    <span class="keyword">private</span> String title;
+    <span class="keyword">private</span> String content;
+    <span class="keyword">private</span> <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;
+    <span class="comment">// flag=true时，只能生产，不能取</span>
+    <span class="comment">// flag=false时，只能取，不能生产</span>
+    
+    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String title, String content)</span> </span>{
+        <span class="keyword">if</span> (!<span class="keyword">this</span>.flag) {
+            <span class="keyword">try</span> {
+                <span class="keyword">super</span>.wait();
+            } <span class="keyword">catch</span> (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        <span class="keyword">this</span>.title = title;
+        <span class="keyword">try</span> {
+            Thread.sleep(<span class="number">200</span>);
+        } <span class="keyword">catch</span> (InterruptedException e) {
+            e.printStackTrace();
+        }
+        <span class="keyword">this</span>.content = content;
+        <span class="keyword">this</span>.flag = <span class="keyword">false</span>; <span class="comment">// 修改线程标记</span>
+        <span class="keyword">super</span>.notify(); <span class="comment">// 唤醒其他线程</span>
+    }
+    
+    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>{
+        <span class="keyword">if</span> (<span class="keyword">this</span>.flag) {
+            <span class="keyword">try</span> {
+                <span class="keyword">super</span>.wait();
+            } <span class="keyword">catch</span> (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        <span class="keyword">try</span> {
+            Thread.sleep(<span class="number">200</span>);
+        } <span class="keyword">catch</span> (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(<span class="keyword">this</span>.title + <span class="string">"-"</span> + <span class="keyword">this</span>.content);
+        <span class="keyword">this</span>.flag = <span class="keyword">true</span>;
+        <span class="keyword">super</span>.notify();
+    }
+}
+</code></pre>
+<blockquote>
+<p>小结： sleep()与wait()的区别<br>
+答案：· sleep()是Thread类方法，wait()是Object类方法；<br>
+​           · sleep()可以设置休眠时间，时间一到自动结束休眠；wait()必须等待notify()唤醒。</p>
+</blockquote>
+<p>========================================================</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[并发]]></title>
       <url>/article/Go/Go%20Base/%E5%B9%B6%E5%8F%91/</url>
       <content type="html"><![CDATA[<p>通常程序都是顺序执行且代码只是为了完成独立的一个任务，因为这样的代码易写易维护。但某些情况下，并行执行多个任务更有好处，比如Web服务需要在各自的套接字（socket）上同时接收多少数据请求。每个套接字请求都是独立的，可以独立其他套接字进行处理，此时并行执行多个请求可以显著提高服务。Go语言的语法和运行时内置了对并发的支持。</p>
-<p>Go中的并发指的是能让某个函数独立于其他函数运行。当一个函数创建为<code>goroutime</code>时，Go会将其视为一个独立的工作单元，这个单元会被调度到可用的逻辑处理器上运行。Go语言运行时的调度器是一个复杂的软件，能管理被创建的所有	<code>goroutime</code>并为其分配执行时间。这个调度器在操作系统之上，将操作系统的线程与语言运行时的逻辑处理器绑定，并在逻辑处理器上运行<code>goroutime</code>。调度器在任何给定的时间，都会全面控制某个<code>goroutime</code>要在某个逻辑处理器上运行。</p>
-<p>Go语言的并发同步模型来自一个叫做通信顺序进程<code>Communicating Sequential Processes, CSP</code>的范型<code>paradigm</code>。CSP是一种消息传递模型，通过在<code>goroutime</code>间传递数据来传递消息，而不是对数据进行加锁从而实现同步。用于在<code>goroutime</code>之间同步和传递数据的关键数据类型叫作通道<code>channel</code>。</p>
+<p>Go中的并发指的是能让某个函数独立于其他函数运行。当一个函数创建为<code>goroutine</code>时，Go会将其视为一个独立的工作单元，这个单元会被调度到可用的逻辑处理器上运行。Go语言运行时的调度器是一个复杂的软件，能管理被创建的所有	<code>goroutine</code>并为其分配执行时间。这个调度器在操作系统之上，将操作系统的线程与语言运行时的逻辑处理器绑定，并在逻辑处理器上运行<code>goroutine</code>。调度器在任何给定的时间，都会全面控制某个<code>goroutine</code>要在某个逻辑处理器上运行。</p>
+<p>Go语言的并发同步模型来自一个叫做通信顺序进程<code>Communicating Sequential Processes, CSP</code>的范型<code>paradigm</code>。CSP是一种消息传递模型，通过在<code>goroutine</code>间传递数据来传递消息，而不是对数据进行加锁从而实现同步。用于在<code>goroutime</code>之间同步和传递数据的关键数据类型叫作通道<code>channel</code>。</p>
 <h2 id="并发与并行"><a class="markdownIt-Anchor" href="#并发与并行"></a> 并发与并行</h2>
 <p>什么是操作系统的线程（thread）和进程（process）。当运行一个应用程序时，操作系统会为其启动一个进程。可以将这个进程看作一个包含了应用程序在运行中需要用到和维护的各种资源的容器。</p>
 <p>进程中的资源包括但不限于内存地址空间、文件和设备的句柄以及线程。一个线程是一个执行空间，这个空间会被操作系统调度用来运行函数中所写的代码。每个进程至少包含一个线程，每个进程的初始线程被称为<code>主线程</code>。因为执行这个线程的空间是应用程本身的空间，所以当主线程终止时，应用程序也会终止。操作系统会将线程调度到某个处理器上运行，但这个处理器不一定是进程所在的处理器。</p>
-<p>操作系统会在物理处理器上调度线程来运行，而Go的运行时会在逻辑处理器上调度<code>goroutime</code>来运行。Go1.5之前，默认给整个应用程序只分配一个逻辑处理器；1.5之后运行时会默认为每个可用的物理处理器分配一个逻辑处理器。这些逻辑处理器会用于执行所有被创建的<code>goroutime</code>，即便只有一个逻辑处理器，Go依然可以并发调度无数个<code>goroutime</code>。</p>
-<p>如果创建一个<code>goroutime</code>并准备运行，这个<code>goroutime</code>就会被放到调度器的全局队列中，之后调度器就会将队列中的<code>goroutime</code>分配给一个逻辑处理器，并放到这个逻辑处理器对应的本地运行队列中，本地运行队列中的<code>goroutime</code>会一直等待直到自己被分配逻辑处理器执行。</p>
+<p>操作系统会在物理处理器上调度线程来运行，而Go的运行时会在逻辑处理器上调度<code>goroutine</code>来运行。Go1.5之前，默认给整个应用程序只分配一个逻辑处理器；1.5之后运行时会默认为每个可用的物理处理器分配一个逻辑处理器。这些逻辑处理器会用于执行所有被创建的<code>goroutime</code>，即便只有一个逻辑处理器，Go依然可以并发调度无数个<code>goroutine</code>。</p>
+<p>如果创建一个<code>goroutine</code>并准备运行，这个<code>goroutine</code>就会被放到调度器的全局队列中，之后调度器就会将队列中的<code>goroutine</code>分配给一个逻辑处理器，并放到这个逻辑处理器对应的本地运行队列中，本地运行队列中的<code>goroutine</code>会一直等待直到自己被分配逻辑处理器执行。</p>
+<p>有时，正在运行的<code>goroutine</code>需要执行一个阻塞的系统调用，如打开一个文件。当这类调用发生时，线程和<code>goroutine</code>会从逻辑处理器上分离，该线程会继续阻塞，等待系统调用的返回。同时，这个逻辑处理器就失去了用来运行的线程。所以调度器会创建一个新线程，并将其绑定到该逻辑处理器上。之后，调度器会从本地运行队列中选择另一个<code>goroutine</code>来运行。一旦被阻塞的系统调用执行完成并返回，对应的<code>goroutine</code>会放回到本地运行队列，而之前的线程会保存好，以便后面继续使用。</p>
+<p>调度器对可以创建的逻辑处理器的数量没有限制，但语言运行时默认限制每个程序最多创建10000个线程，超过这个限制，就会崩溃，可以通过调用<code>runtime/debug</code>包中的<code>SetMaxThreads</code>来更改。</p>
+<p>并发<code>concurrency</code>不是并行<code>parallelism</code>。并行是让不同的代码片段同时在不同的物理处理器上执行，其关键是同时做很多事情。并发是指同时管理很多事情。大部分情况下，并发的效果比并行好，因为操作系统和硬件的总资源一般很少，但能支持系统同时做很多事。</p>
+<h2 id="goroutine"><a class="markdownIt-Anchor" href="#goroutine"></a> goroutine</h2>
 ]]></content>
       
         <categories>
@@ -2707,10 +3151,8 @@ A：</p>
       <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E5%9B%9B)/</url>
       <content type="html"><![CDATA[<h2 id="java多线程实现"><a class="markdownIt-Anchor" href="#java多线程实现"></a> Java多线程实现</h2>
 <p>Java可通过以下两种方式实现多线程：</p>
-<blockquote>
-<p>· 继承Thread类；<br>
-· 实现Runnable接口（此外扩充了Callable接口）</p>
-</blockquote>
+<p>· 继承Thread类；</p>
+<p>· 实现Runnable接口（此外扩充了Callable接口）</p>
 <h3 id="线程与进程"><a class="markdownIt-Anchor" href="#线程与进程"></a> 线程与进程</h3>
 <p>Java支持多线程。<br>
 1、进程指的是一次程序的完整运行，在运行过程中内存、处理器、IO等资源都是为该进程服务。<br>
@@ -15422,14 +15864,14 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Links]]></title>
-      <url>/links/index.html</url>
+      <title><![CDATA[Tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[Links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
