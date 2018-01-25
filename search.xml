@@ -3,6 +3,510 @@
   
     
     <entry>
+      <title><![CDATA[如何让其他主机访问本地虚拟机]]></title>
+      <url>/article/%E5%B7%A5%E5%85%B7/Tool/%E5%A6%82%E4%BD%95%E8%AE%A9%E5%85%B6%E4%BB%96%E4%B8%BB%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
+      <content type="html"><![CDATA[<p>当我们在一台主机上开启一个VMware虚拟机后，本地访问该虚拟机没问题。但如何让其他主机也可以访问该虚拟机呢？这需要利用<code>VMware NAT</code>进行端口映射，将虚拟机的某端口映射到宿主机的端口中。本篇仅以<code>ssh</code>功能为例。</p>
+<h2 id="环境说明"><a class="markdownIt-Anchor" href="#环境说明"></a> 环境说明：</h2>
+<p>宿主机：<code>192.168.37.230</code></p>
+<p>虚拟机: <code>10.0.0.131</code></p>
+<p>VMware虚拟机: VMware 14</p>
+<p>端口映射：<code>10.0.0.131:22 ----&gt; 192.168.37.230:18888</code></p>
+<h2 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤：</h2>
+<p>（1）点击菜单栏<code>编辑 --&gt; 虚拟网络编辑器</code></p>
+<p>（2）如果在<code>更改设置</code>那存在<code>需要具备管理员特权才能修改网络配置</code>提示，需先点击<code>更改设置</code>,再点击<code>NAT设置</code></p>
+<p><img src="/article/工具/Tool/如何让其他主机访问本地虚拟机/%E7%AC%AC%E4%BA%8C%E6%AD%A5.png" alt="无法加载" title="第二步"></p>
+<p>（3）点击<code>添加</code>,随后输入<code>宿主机端口</code>，<code>要映射的虚拟机IP地址</code>和<code>要映射的端口</code>。</p>
+<p><img src="/article/工具/Tool/如何让其他主机访问本地虚拟机/add.png" alt="无法加载" title="添加"></p>
+<p><img src="/article/工具/Tool/如何让其他主机访问本地虚拟机/%E6%B7%BB%E5%8A%A0%E6%98%A0%E5%B0%84.png" alt="无法加载" title="添加映射"></p>
+<p>（4）点击确定，保存好设置。此时<code>ssh 192.168.37.230 -p 18888 -l root</code>便可以访问虚拟机。</p>
+<p><img src="/article/工具/Tool/如何让其他主机访问本地虚拟机/ssh.png" alt="无法加载" title="端口映射成功"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> VMware </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java基础类库(二)]]></title>
+      <url>/article/Java/Java/Java%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%BA%93(%E4%BA%8C)/</url>
+      <content type="html"><![CDATA[<h2 id="math类"><a class="markdownIt-Anchor" href="#math类"></a> Math类</h2>
+<p>1、<code>Math</code>类用于数学计算，提供了一系列的数学计算方法。Math类中的方法都是static方法，因为Math类没有普通属性。</p>
+<p>2、在Math类中的四舍五入方法需要注意<code>public static long round(double a);</code></p>
+<p>范例：四舍五入</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+        System.out.println(Math.round(<span class="number">15.5</span>)); <span class="comment">// 16</span>
+        System.out.println(Math.round(-<span class="number">15.5</span>)); <span class="comment">// -15</span>
+        System.out.println(Math.round(-<span class="number">15.51</span>)); <span class="comment">// -16</span>
+    }
+}
+</code></pre>
+<p>上述结果表明，负数四舍五入时，只有小数位大于0.5才进位，小于等于0.5不进位。</p>
+<h2 id="random类"><a class="markdownIt-Anchor" href="#random类"></a> Random类</h2>
+<p>1、Random类主要功能是取得随机数</p>
+<p>范例：生成10个小于00的随机数</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+        Random rand = <span class="keyword">new</span> Random();
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">10</span>; x++) {
+            System.out.println(rand.nextInt(<span class="number">100</span>));
+        }
+    }
+}
+</code></pre>
+<p>2、Random可以产生随机数，利用该特点实现一个36选7的功能。</p>
+<p>思路：最大值为36，所以边界数值为37，且不能为0或者重复。</p>
+<p>范例：36选7实现</p>
+<pre class="highlight"><code class="java"><span class="keyword">import</span> java.util.Random;
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        Random rand = <span class="keyword">new</span> Random();
+        <span class="keyword">int</span>[] data = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">7</span>];
+        <span class="keyword">int</span> foot = <span class="number">0</span>;
+        <span class="keyword">while</span> (foot &lt; <span class="number">7</span>) {
+            <span class="comment">// 生成一个小于37的随机数</span>
+            <span class="keyword">int</span> t = rand.nextInt(<span class="number">37</span>);
+            <span class="keyword">if</span> (!isRepeat(data, t)) {
+                data[foot++] = t;
+            }
+        }
+        java.util.Arrays.sort(data);
+        <span class="keyword">for</span> (<span class="keyword">int</span> aData : data) {
+            <span class="keyword">if</span> (aData &lt; <span class="number">10</span>) {
+                System.out.print(<span class="string">"0"</span> + aData + <span class="string">" "</span>);
+            } <span class="keyword">else</span> {
+                System.out.print(aData + <span class="string">" "</span>);
+            }
+        }
+    }
+
+    <span class="comment">/**
+     * 判断新生数据是否重复，且不能为0
+     * <span class="doctag">@param</span> tmps 已经保存的数据组
+     * <span class="doctag">@param</span> num 新生数据
+     * <span class="doctag">@return</span> 重复则为true, 不重复则为false
+     */</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isRepeat</span><span class="params">(<span class="keyword">int</span>[] tmps, <span class="keyword">int</span> num)</span> </span>{
+        <span class="keyword">if</span> (num == <span class="number">0</span>) {
+            <span class="keyword">return</span> <span class="keyword">true</span>;
+        }
+
+        <span class="keyword">for</span> (<span class="keyword">int</span> tmp: tmps) {
+            <span class="keyword">if</span> (tmp == num){
+                <span class="keyword">return</span> <span class="keyword">true</span>;
+            }
+        }
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+}
+</code></pre>
+<p>在开发中，经常使用随机数。</p>
+<h2 id="biginterger类"><a class="markdownIt-Anchor" href="#biginterger类"></a> BigInterger类</h2>
+<p>当要操作的数据值很大，首先想到数据类型是double。假如计算结果范围超过了double，结果如下：</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+        System.out.println(Double.MAX_VALUE * Double.MAX_VALUE); <span class="comment">// Infinity</span>
+    }
+}
+</code></pre>
+<p>上述表明，结果不存在，超过了double的范围。</p>
+<p>超过了double的范围，就无法使用double保存数据，只有用String类来保存。即进行数据很大的计算时只能将其变为String型，而后按位取出每一个字符保存的数据，进行手工计算。因此Java考虑到这种情况，专门提供了大数字的操作类，其中有<code>BigInteger</code>、<code>BigDecimal</code>。</p>
+<p><code>BigInteger</code>类（是Number的子类）的构造方法：<code>public BigInteger(Stringval)</code>，接收是String型数据。</p>
+<pre class="highlight"><code class="java"><span class="keyword">import</span> java.math.BigInteger;
+
+<span class="function"><span class="keyword">public</span> class Demo 
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+        BigInteger bigA = <span class="keyword">new</span> BigInteger(<span class="string">"234112412124142141414"</span>);
+        BigInteger bigB = <span class="keyword">new</span> BigInteger(<span class="string">"23411241231212141414"</span>);
+        System.out.println(<span class="string">"加法:"</span> + (bigA.add(bigB)));
+        System.out.println(<span class="string">"减法:"</span> + (bigA.subtract(bigB)));
+        System.out.println(<span class="string">"乘法:"</span> + (bigA.multiply(bigB)));
+        System.out.println(<span class="string">"除法:"</span> + (bigA.divide(bigB)));
+        <span class="comment">// 该数组只会有两个元素，第一个为商，第二个为余数</span>
+        BigInteger result[] = bigA.divideAndRemainder(bigB);
+        System.out.println(<span class="string">"商:"</span> + result[<span class="number">0</span>] + <span class="string">"余数"</span> + result[<span class="number">1</span>]);
+    }
+}
+</code></pre>
+<h2 id="bigdecimal类"><a class="markdownIt-Anchor" href="#bigdecimal类"></a> BigDecimal类</h2>
+<p>1、<code>BigInteger</code>不能保存小数，而<code>BigDecimal</code>可以保存小数数据。<code>BigDecimal</code>构造方法如下：</p>
+<p>构造一：<code>public BigDecimal(String val)；</code></p>
+<p>构造二：<code>public BigDecimal(double val)；</code></p>
+<p>与<code>BigInteger</code>一样，<code>BigDecimal</code>也支持基础的数字计算。但使用<code>BigDecimal</code>可以实现准确的四舍五入操作。虽然<code>Math.round()</code>也可以实现四舍五入，但是它将小数四舍五入为整数。假设一家公司年收入为3.45678亿，按照<code>Math.round()</code>结果为3亿，这不合理。</p>
+<p>2、<code>BigDecimal</code>中没有直接四舍五入的操作，但是可以利用除法计算实现：</p>
+<p>除法操作：<code>public BigDecimal divide(BigDecimal divisor, int scale, RoundingModeroundingMode)</code></p>
+<p>(1)<code>BigDecimal divisor</code>：被除数；</p>
+<p>(2) <code>int scale</code>：保留的小数位；</p>
+<p>(3)<code>RoundingMode roundingMode</code>：进位模式（<code>public static final int ROUND_HALF_UP</code>）</p>
+<p>**范例：**实现准确四舍五入</p>
+<pre class="highlight"><code class="java"><span class="keyword">import</span> java.math.BigDecimal;
+
+<span class="class"><span class="keyword">class</span> <span class="title">NewMath</span> </span>{
+    <span class="comment">/**
+     * 精确四舍五入
+     * <span class="doctag">@param</span> num 要进行四舍五入的数
+     * <span class="doctag">@param</span> scale 要精确到多少位
+     * <span class="doctag">@return</span> 四舍五入后的值
+     */</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">round</span><span class="params">(<span class="keyword">double</span> num, <span class="keyword">int</span> scale)</span> </span>{
+        BigDecimal dividend = BigDecimal.valueOf(num);
+        BigDecimal divisor = BigDecimal.valueOf(<span class="number">1</span>);
+        <span class="keyword">return</span> dividend.divide(divisor, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        System.out.println(NewMath.round(<span class="number">3.1415926</span>, <span class="number">3</span>));
+    }
+}
+</code></pre>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Java基础类库(一)]]></title>
+      <url>/article/Java/Java/Java%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%BA%93(%E4%B8%80)/</url>
+      <content type="html"><![CDATA[<h2 id="stringbuffer"><a class="markdownIt-Anchor" href="#stringbuffer"></a> StringBuffer</h2>
+<p>1、String类的特点：</p>
+<p>（1）String对象有两种实例化方式：</p>
+<p>直接赋值：只开辟一块堆内存空间。可以自动入池；</p>
+<p>构造方法：开辟两块堆内存空间，不会自动入池，可用intern()手工入池；</p>
+<p>（2）字符串是String类的匿名对象；</p>
+<p>（3）字符串一旦声明则不可更改，改变的是String对象的引用；</p>
+<p>2、为解决String类的内容不可改变的问题，Java提供了<code>StringBuffer</code>类（<code>StringBuffer</code>对象的内容可以修改）。</p>
+<p>String类使用<code>+</code>进行字符串的连接，而<code>StringBuffer</code>必须使用<code>append()</code>进行连接操作：</p>
+<p><code>append()</code>定义：<code>public StringBuffer append(数据类型 变量)；</code></p>
+<p>范例：<code>StringBuffer</code>使用</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+
+        <span class="comment">// String类可以直接赋值，但是StringBuffer只能通过构造方法</span>
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer();
+        buf.append(<span class="string">"hello"</span>).append(<span class="string">" World "</span>).append(<span class="string">"!!"</span>);
+        change(buf); <span class="comment">// 引用传递</span>
+        System.out.println(buf);
+        <span class="comment">// 结果：</span>
+        <span class="comment">// hello World !!</span>
+        <span class="comment">// Hello</span>
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(StringBuffer temp)</span> </span>{
+        temp.append(<span class="string">"\n"</span>).append(<span class="string">"Hello"</span>);
+    }
+}
+</code></pre>
+<p>由上述代码可以发现<code>StringBuffer</code>类的内容可以修改，而String的内容不可以修改。</p>
+<p>3.、<code>String</code>类与<code>StringBuffer</code>类的定义</p>
+<table>
+<thead>
+<tr>
+<th>String类</th>
+<th>StringBuffer类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public final class String extends Object implements Serializable, Comparable&lt;String&gt;, CharSequence</code></td>
+<td><code>public final class StringBuffer extends Object implements Serializable, CharSequence</code></td>
+</tr>
+</tbody>
+</table>
+<p>由上表得知，<code>String</code>和<code>StringBuffer</code>都是<code>CharSequence</code>接口的子类。因此在开发中，如果某些方法的操作使用<code>CharSequence</code>接口，那么只要传递字符串即可。</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        CharSequence seq = <span class="string">"hello"</span>; <span class="comment">// 向上转型</span>
+        System.out.println(seq); <span class="comment">// 调用String类覆写的toString()</span>
+    }
+}
+</code></pre>
+<p>4、虽然String和<code>StringBuffer</code>类有着共同的接口，但是这两个类的对象之间不能直接转换。</p>
+<p>(1）将String变为<code>StringBuffer</code>对象有两种方式：</p>
+<p>方式一：利用<code>StringBuffer</code>构造方法：<code>public StringBuffer(String str)；</code></p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        <span class="comment">// 将Hello由String型变为StringBuffer型</span>
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer(<span class="string">"Hello"</span>);
+        System.out.println(buf);
+    }
+}
+</code></pre>
+<p>方式二：利用<code>append()</code>：<code>public StringBuffer append(String str)</code>；</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer();
+        <span class="comment">// 将Hello由String型变为StringBuffer型</span>
+        buf.append(<span class="string">"Hello"</span>);
+        System.out.println(buf);
+    }
+}
+</code></pre>
+<p>(2）将<code>StringBuffer</code>变为String类对象</p>
+<p>方式一: 利用<code>toString()</code>可以将<code>StringBuffer</code>转换为String；</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer(<span class="string">"Hello"</span>);
+        String str = buf.toString();
+        System.out.println(str);
+    }
+}
+</code></pre>
+<p>方式二：利用String类的构造方法：<code>public String(StringBuffer buffer)；</code></p>
+<p>5、String类中提供有与<code>StringBuffer</code>对象比较的方法：<code>public boolean contentEquals(StringBuffer sb)</code></p>
+<p>范例：比较<code>String</code>与<code>StringBuffer</code></p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer(<span class="string">"Hello"</span>);
+        System.out.println(<span class="string">"hello"</span>.contentEquals(buf)); <span class="comment">// false</span>
+        System.out.println(<span class="string">"Hello"</span>.contentEquals(buf)); <span class="comment">// true</span>
+    }
+}
+</code></pre>
+<p>6、String类中定义了许多方法，便于用户开发；而<code>StringBuffer</code>中也定义了许多方法，而且部分方法与String类正好互补。</p>
+<p>(1）字符串反转：<code>public StringBuffer reverse()；</code></p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer(<span class="string">"Hello"</span>);
+        System.out.println(buf.reverse()); <span class="comment">// olleH</span>
+    }
+}
+</code></pre>
+<p>(2）在指定位置插入数据：<code>public StringBuffer insert(intoffset，数据类型 变量)；</code></p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer(<span class="string">"Hello"</span>);
+        buf.insert(<span class="number">0</span>, <span class="string">"MLDN"</span>).insert(<span class="number">0</span>, <span class="string">"你好"</span>);
+        System.out.println(buf); <span class="comment">// 你好MLDNHello</span>
+        <span class="comment">// 可以插入任意数据类型的数据</span>
+        buf.insert(<span class="number">0</span>,<span class="number">11</span>);
+        System.out.println(buf); <span class="comment">// 11你好MLDNHello</span>
+    }
+}
+</code></pre>
+<p>(3）删除部分数据：<code>public StringBuffer delete(int start，int end)；</code></p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        StringBuffer buf = <span class="keyword">new</span> StringBuffer(<span class="string">"Hello"</span>);
+        buf.delete(<span class="number">2</span>,<span class="number">4</span>);
+        System.out.println(buf); <span class="comment">// Heo</span>
+    }
+}
+</code></pre>
+<p>7、JDK1.5新增了一个字符串操作类：<code>StringBuilder</code>，定义结构如下：</p>
+<p><code>public final class StringBuilderextends Object implements Serializable,CharSequence</code></p>
+<p><code>StringBuffer</code>和<code>StringBuffer</code>类在定义上非常相似，并且方法也几乎一样。</p>
+<blockquote>
+<p>小结：String、<code>StringBuffer</code>和<code>StringBuilder</code>的区别？</p>
+<p>String的内容一旦声明则不可改变，而<code>StringBuffer</code>和<code>StringBuilder</code>声明的内容可以改变；</p>
+<p><code>StringBuffer</code>类中提供的方法都是同步方法，属于安全的线程操作；而<code>StringBuilder</code>提供的方法都是非同步方法，属于不安全的线程操作。</p>
+<p>开发中使用String类，只有要频繁修改内容时，才考虑使用<code>StringBuffer</code>或<code>StringBuilder</code>。</p>
+</blockquote>
+<h2 id="runtime类了解即可"><a class="markdownIt-Anchor" href="#runtime类了解即可"></a> Runtime类(了解即可)</h2>
+<p>每个JVM进程中都存在一个Runtime对象，这个类的主要功能是取得一些与运行时有关的环境属性或者进行线程创建。</p>
+<p>1、Runtime类定义：<code>public class Runtime extends Object</code>，其构造方法私有化，这是单例设计模式的应用，为了保证整个进程中只有唯一的Runtime对象。因此Runtime提供了一个static方法，用于取得Runtime的实例化对象：<code>public static Runtime getRuntime();</code></p>
+<p>2、Runtime是与本地运行有关的所有属性的集合，Runtime中定义有如下方法：</p>
+<p>(1) 返回所有可用内存空间：<code>public long totalMemory()；</code></p>
+<p>(2) 返回最大可用内存空间：<code>public long maxMemory()；</code></p>
+<p>(3) 返回空余内存空间：<code>public long freeMemory()；</code></p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        Runtime run = Runtime.getRuntime(); <span class="comment">// 取得Runtime类实例化对象</span>
+        System.out.println(run.totalMemory()); <span class="comment">// 128974848</span>
+        System.out.println(run.maxMemory()); <span class="comment">// 1884815360</span>
+        System.out.println(run.freeMemory()); <span class="comment">// 125561416</span>
+        String str = <span class="string">""</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">1000</span>; x++) {
+            str += x; <span class="comment">// 产生大量垃圾</span>
+        }
+        System.out.println(run.totalMemory()); <span class="comment">// 526909440</span>
+        System.out.println(run.maxMemory()); <span class="comment">// 1884815360</span>
+        System.out.println(run.freeMemory()); <span class="comment">// 377484040</span>
+    }
+}
+</code></pre>
+<p>由上述结果发现：一旦产生过多的垃圾，就会改变可用内存空间的大小。Runtime中有一个方法可以释放垃圾空间：<code>public void gc()；</code></p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        Runtime run = Runtime.getRuntime(); <span class="comment">// 取得Runtime类实例化对象</span>
+        System.out.println(run.maxMemory());   <span class="comment">// 1884815360</span>
+        System.out.println(run.totalMemory());  <span class="comment">// 128974848</span>
+        System.out.println(run.freeMemory());   <span class="comment">// 125561416</span>
+        String str = <span class="string">""</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">2000</span>; x++) {
+            str += x; <span class="comment">// 产生大量垃圾</span>
+        }
+        System.out.println(run.maxMemory());   <span class="comment">// 1884815360</span>
+        System.out.println(run.totalMemory());  <span class="comment">// 128974848</span>
+        System.out.println(run.freeMemory());   <span class="comment">// 107935784</span>
+        run.gc(); <span class="comment">// 释放垃圾空间</span>
+        System.out.println(run.maxMemory());   <span class="comment">// 1884815360</span>
+        System.out.println(run.totalMemory());  <span class="comment">// 128974848</span>
+        System.out.println(run.freeMemory());   <span class="comment">// 126933104</span>
+    }
+}
+</code></pre>
+<blockquote>
+<p>GC（Garbage Collector）垃圾收集器，用于释放无用的内存空间；</p>
+<p>GC会由系统不定期进行自动的回收，或者调用Runtime类中的gc()手工回收。</p>
+</blockquote>
+<p>3、Runtime类中有一个方法可以调用本机的可执行程序，并且创建进程。</p>
+<p><code>public Process exec(String command) throws IOException;</code></p>
+<p>范例：执行程序</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>{
+        Runtime run = Runtime.getRuntime(); <span class="comment">// 取得Runtime类实例化对象</span>
+        Process pro =  run.exec(<span class="string">"notepad.exe"</span>); <span class="comment">// 调用本机程序</span>
+        Thread.sleep(<span class="number">2000</span>);
+        pro.destroy(); <span class="comment">// 销毁进程</span>
+    }
+}
+</code></pre>
+<h2 id="system类了解即可"><a class="markdownIt-Anchor" href="#system类了解即可"></a> System类（了解即可）</h2>
+<p>1、可用<code>System.arraycopy()</code>实现数组拷贝，该方法的定义如下：</p>
+<p><code>public static void arraycopy(Object src, int srcPos, Object dest,int destPos, int length)</code></p>
+<p>2、 在System类中定义有一个方法，用于取得当前系统时间，其定义如下：<code>public static long currentTimeMillis();</code></p>
+<p>范例：统计某项操作的执行时间</p>
+<pre class="highlight"><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+        <span class="keyword">long</span> start = System.currentTimeMillis(); <span class="comment">// 取得开始时间</span>
+        String str = <span class="string">""</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">3000</span>; x++) {
+            str += x;
+        }
+        <span class="keyword">long</span> end = System.currentTimeMillis(); <span class="comment">// 取得结束时间</span>
+        System.out.println(<span class="string">"循环所使用的时间："</span> + (end - start) + <span class="string">" ms"</span>);
+    }
+}
+</code></pre>
+<p>要想统计出所花费的毫秒时间，用long型数据直接进行数学计算即可。</p>
+<p>3、在System类中定义了一个方法：<code>public static void gc()</code>，该方法是间接调用Runtime类中的<code>gc()</code>。对象产生会调用类中的构造方法，可以进行一些处理操作。但是对象被回收时，却什么都做不了。</p>
+<pre class="highlight"><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Member</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="title">Member</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"对象产生了！"</span>);
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+        Member member = <span class="keyword">new</span> Member(); <span class="comment">// 对象产生时可以进行一些操作</span>
+        member = <span class="keyword">null</span>; <span class="comment">// 对象被回收时，无法进行其他操作</span>
+    }
+}
+</code></pre>
+<p>如果要在销毁对象时，给对象增添一些操作，可以覆写Object类中的<code>finalize()</code>其定义：<code>protected void finalize() throws Throwable</code>。对象回收时，就算抛出了异常，也不会影响程序的正常执行。</p>
+<p>范例：对象收尾</p>
+<pre class="highlight"><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>{
+    <span class="function"><span class="keyword">public</span> <span class="title">Member</span><span class="params">()</span> </span>{
+       System.out.println(<span class="string">"对象诞生了"</span>);
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>{
+        System.out.println(<span class="string">"对象被销毁了"</span>);
+        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"对象还会再产生的"</span>);
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+        Member member = <span class="keyword">new</span> Member();
+        member = <span class="keyword">null</span>; 
+        System.gc(); <span class="comment">// 手工处理垃圾收集</span>
+    }
+}
+</code></pre>
+<p>构造方法是对象初始化时调用的，而finalize()是回收对象前调用的。</p>
+<blockquote>
+<p>final、finally和finalize的区别</p>
+<p>final：是一个关键字，用于定义不能被继承的类，不能被覆写的方法和常量；</p>
+<p>finally：是一个关键字，异常的统一出口；</p>
+<p>finalize：是一个Object类的方法（<code>protected void finalize() throws Throwable</code>）,是对象回收前调用的方法，即使出现异常也不会导致程序中断。</p>
+</blockquote>
+<h2 id="对象克隆"><a class="markdownIt-Anchor" href="#对象克隆"></a> 对象克隆</h2>
+<p>在Object类中提供有对象克隆的方法：<code>protected Object clone() throws CloneNotSupportedException</code>.该方法抛出一个<code>CloneNotSupportedException</code>不支持克隆异常，当要克隆的类没有实现<code>Cloneable</code>接口，就会出现该异常。<code>Cloneable</code>接口是标识接口，表示一种操作能力。</p>
+<p>范例：实现对象克隆</p>
+<pre class="highlight"><code class="java"><span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword">implements</span> <span class="title">Cloneable</span> </span>{ <span class="comment">// 此类对象可以被克隆</span>
+    <span class="keyword">private</span> String title;
+    <span class="keyword">private</span> <span class="keyword">double</span> price;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">Book</span><span class="params">(String title, <span class="keyword">double</span> price)</span> </span>{
+        <span class="keyword">this</span>.title = title;
+        <span class="keyword">this</span>.price = price;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>{
+        <span class="keyword">this</span>.title = title;
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="string">"书名："</span> + <span class="keyword">this</span>.title + <span class="string">",价格："</span> + <span class="keyword">this</span>.price;
+    }
+
+    <span class="comment">// 由于此类需要对象克隆操作，所以需要进行方法覆写</span>
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>{
+        <span class="keyword">return</span> <span class="keyword">super</span>.clone(); <span class="comment">// 覆写后调用父类的克隆方法</span>
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>{
+        Book bookA = <span class="keyword">new</span> Book(<span class="string">"Java开发"</span>, <span class="number">79.8</span>);
+        Book bookB = (Book) bookA.clone();
+        System.out.println(bookA);
+        System.out.println(bookB);
+        <span class="comment">// 该步操作，是为了证明克隆和引用的不同</span>
+        bookB.setTitle(<span class="string">"JSP开发"</span>);
+        System.out.println(bookB);
+    }
+}
+</code></pre>
+<p>以后我们还能见到没有方法的接口，这种接口表示的是一种能力。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java知识(五)]]></title>
       <url>/article/Java/Java/Java%E7%9F%A5%E8%AF%86(%E4%BA%94)/</url>
       <content type="html"><![CDATA[<h2 id="线程的同步与死锁"><a class="markdownIt-Anchor" href="#线程的同步与死锁"></a> 线程的同步与死锁</h2>
@@ -424,7 +928,6 @@ Thread-0想申请 <code>java.lang.Object@3a6ff1f5</code>，但是这个被Thread
 答案：· sleep()是Thread类方法，wait()是Object类方法；<br>
 ​           · sleep()可以设置休眠时间，时间一到自动结束休眠；wait()必须等待notify()唤醒。</p>
 </blockquote>
-<p>========================================================</p>
 ]]></content>
       
         <categories>
@@ -457,6 +960,244 @@ Thread-0想申请 <code>java.lang.Object@3a6ff1f5</code>，但是这个被Thread
 <p>调度器对可以创建的逻辑处理器的数量没有限制，但语言运行时默认限制每个程序最多创建10000个线程，超过这个限制，就会崩溃，可以通过调用<code>runtime/debug</code>包中的<code>SetMaxThreads</code>来更改。</p>
 <p>并发<code>concurrency</code>不是并行<code>parallelism</code>。并行是让不同的代码片段同时在不同的物理处理器上执行，其关键是同时做很多事情。并发是指同时管理很多事情。大部分情况下，并发的效果比并行好，因为操作系统和硬件的总资源一般很少，但能支持系统同时做很多事。</p>
 <h2 id="goroutine"><a class="markdownIt-Anchor" href="#goroutine"></a> goroutine</h2>
+<p>下述程序会创建两个<code>goroutine</code>，以并发的形式分别显示大写和小写字母：</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"runtime"</span>
+   <span class="string">"sync"</span>
+   <span class="string">"fmt"</span>
+)
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">// 分配一个逻辑处理器给调度器用</span>
+   runtime.GOMAXPROCS(<span class="number">1</span>)
+
+   <span class="comment">// wg用于等待程序完成</span>
+   <span class="keyword">var</span> wg sync.WaitGroup
+   <span class="comment">// 计数+2.表示要等待两个goroutine</span>
+   wg.Add(<span class="number">2</span>)
+
+   fmt.Println(<span class="string">"Start Goroutines"</span>)
+
+   <span class="comment">// 声明一个匿名函数，并创建一个goroutine</span>
+   <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {
+      <span class="keyword">defer</span> wg.Done()
+
+      <span class="keyword">for</span>  count := <span class="number">0</span>; count &lt; <span class="number">3</span>; count++ {
+         <span class="keyword">for</span> char := <span class="string">'a'</span>; char &lt; <span class="string">'a'</span> + <span class="number">26</span> ; char++ {
+            fmt.Printf(<span class="string">"%c "</span>, char)
+         }
+      }
+   }()
+
+   <span class="comment">// 声明一个匿名函数，并创建一个goroutine</span>
+   <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {
+      <span class="keyword">defer</span> wg.Done()
+
+      <span class="keyword">for</span>  count := <span class="number">0</span>; count &lt; <span class="number">3</span>; count++ {
+         <span class="keyword">for</span> char := <span class="string">'A'</span>; char &lt; <span class="string">'A'</span> + <span class="number">26</span> ; char++ {
+            fmt.Printf(<span class="string">"%c "</span>, char)
+         }
+      }
+   }()
+
+   fmt.Println(<span class="string">"Waiting To Finish"</span>)
+   <span class="comment">// 等待goroutine</span>
+   wg.Wait()
+
+   fmt.Printf(<span class="string">"\n Termingating Program"</span>)
+}
+</code></pre>
+<p><code>runtime</code>包的<code>GOMAXPROCES</code>函数用于更改调度器可以使用的逻辑处理器数量。声明了两个匿名函数，分别通过关键字<code>go</code>创建<code>goroutine</code>来执行。</p>
+<p><code>WaitGroup</code>是一个计数信号量，用来记录并维护运行的<code>goroutine</code>，如果<code>WaitGroup</code>大于0，则<code>Wait</code>方法会阻塞。上述代码中将<code>WaitGroup</code>设为2，表示有2个正在运行的<code>goroutine</code>，为了减小<code>WaitGroup</code>的值并最终释放main函数，在两个匿名函数中，使用<code>defer</code>定声明了函数退出时调用<code>Done</code>方法。<code>defer</code>会修改函数调用时机，在正在执行的函数返回时，才会调用<code>defer</code>声明的函数。</p>
+<pre class="highlight"><code class="go">Start Goroutines
+Waiting To Finish
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z 
+ Termingating Program
+</code></pre>
+<p>第一个<code>goroutine</code>完成显示花费的时间太短，以至于在调度器切换到第二个<code>goroutine</code>前就完成了所有任务，这就是为什么先输出了所有的大写字母，再输出了所有小写字母的原因。</p>
+<p>基于调度器的内部算法，一个正在运行的<code>goroutine</code>在工作结束前，可以被停止并被重新调度。这样做的目的是防止某个<code>goroutine</code>长时间占用逻辑处理器。可通过下述例子说明：下述程序创建了一个需要长时间才能完成其工作 的<code>goroutine</code>：</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"sync"</span>
+   <span class="string">"runtime"</span>
+   <span class="string">"fmt"</span>
+)
+
+<span class="keyword">var</span> wg sync.WaitGroup
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">// 分配一个逻辑处理器给调度器使用</span>
+   runtime.GOMAXPROCS(<span class="number">1</span>)
+
+   <span class="comment">// 计数+2，表示要等待2个goroutine</span>
+   wg.Add(<span class="number">2</span>)
+
+   fmt.Println(<span class="string">"Create Goroutines"</span>)
+   <span class="comment">// 创建两个goroutine</span>
+   <span class="keyword">go</span> printPrime(<span class="string">"A"</span>)
+   <span class="keyword">go</span> printPrime(<span class="string">"B"</span>)
+
+   fmt.Println(<span class="string">"Waitting To Finish"</span>)
+   <span class="comment">// 等待goroutine结束</span>
+   wg.Wait()
+
+   fmt.Println(<span class="string">"Termination Program"</span>)
+
+}
+
+<span class="comment">// 显示5000以内的素数</span>
+<span class="function"><span class="keyword">func</span> <span class="title">printPrime</span><span class="params">(prefix <span class="keyword">string</span>)</span></span> {
+   <span class="comment">// 函数退出时，调用Done来通知main函数工作完成</span>
+   <span class="keyword">defer</span> wg.Done()
+
+next:
+   <span class="keyword">for</span> outer := <span class="number">2</span>; outer &lt; <span class="number">5000</span>; outer++ {
+      <span class="keyword">for</span> inner := <span class="number">2</span>; inner &lt; outer; inner++ {
+         <span class="keyword">if</span> outer % inner == <span class="number">0</span> {
+            <span class="keyword">continue</span> next
+         }
+      }
+      fmt.Printf(<span class="string">"%s:%d\n"</span>, prefix, outer)
+   }
+   fmt.Println(<span class="string">"Completed"</span>, prefix)
+}
+</code></pre>
+<p>运行程序，会看到素数的前缀最开始为B，当到了一定数量后，前缀切换为A。之后前缀A运行一段时间后，又会切换到B去。每次运行程序，调度器切换的时间点可能会不同。</p>
+<p>上述程序中都有用到<code>runtime</code>包中的<code>GOMAXPROCS</code>函数来设置调度器使用的逻辑处理器数量。用这个函数，可以给每个可用的物理处理器在运行时分配一个逻辑处理器，才能使得<code>goroutine</code>并行运行。</p>
+<p><code>runtime.GOMAXPROCS(runtime.NumCPU())</code>，<code>NumCPU()</code>会返回可以使用的物理处理器的数量，因此这行代码就相当于给每个可用的物理处理器创建一个逻辑处理器。使用多个逻辑处理器并不意味着性能更优。修改用于显示字母表的代码，将其中的</p>
+<pre class="highlight"><code class="go">    fmt.Println(runtime.NumCPU())
+	runtime.GOMAXPROCS(runtime.NumCPU())
+</code></pre>
+<p>此时可以看到输出结果：</p>
+<pre class="highlight"><code class="go"><span class="number">4</span> <span class="comment">// 物理主机为4核，即有4个物理处理器</span>
+Start Goroutines
+Waiting To Finish
+A B C D E F G H I J K L M N O P Q R a b c d e f g h i j k S l T U V W X Y Z A B C D m n o p q r s t u v w x y z a b E F G H I J K L M N O c d e f g h i j k l m P Q R S T U V W X Y Z A B C D E F G H I J K L M N O n o p P Q R S q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z T U V W X Y Z 
+ Termingating Program
+</code></pre>
+<p>由于此时的<code>goroutine</code>是并行运行的，所以大小写字母会混合在一起显示。</p>
+<h2 id="竞争状态"><a class="markdownIt-Anchor" href="#竞争状态"></a> 竞争状态</h2>
+<p>如果多个<code>goroutine</code>在没有互相同步的情况下，访问某个共享资源，并视图读和写这个资源时，就会相互竞争的状态，这种情况被称为竞争状态<code>race candition</code>。竞争状态的存在让并发程序变得复杂，而且容易引起问题。对于共享资源的读与写 必须是原子化的，即同一时刻只能有一个<code>goroutine</code>对共享资源进行读和写操作。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"sync"</span>
+   <span class="string">"runtime"</span>
+   <span class="string">"fmt"</span>
+)
+
+<span class="keyword">var</span> (
+   <span class="comment">// 共享资源</span>
+   counter <span class="keyword">int</span>
+   <span class="comment">// wg用于等待程序结束</span>
+   wg sync.WaitGroup
+)
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   wg.Add(<span class="number">2</span>)
+
+   <span class="keyword">go</span> incCounter(<span class="number">1</span>)
+   <span class="keyword">go</span> incCounter(<span class="number">2</span>)
+
+   wg.Wait()
+   fmt.Println(<span class="string">"Final Counter:"</span>, counter)
+}
+
+<span class="function"><span class="keyword">func</span> <span class="title">incCounter</span><span class="params">(id <span class="keyword">int</span>)</span></span>  {
+   <span class="keyword">defer</span> wg.Done()
+
+   <span class="keyword">for</span> count := <span class="number">0</span>; count &lt; <span class="number">2</span>; count++ {
+      <span class="comment">// 捕获counter的值</span>
+      value := counter
+      <span class="comment">// 当前goroutine从线程退出，并放回到队列</span>
+      runtime.Gosched()
+      <span class="comment">// 本地value自增</span>
+      value ++
+      <span class="comment">// 将值保存回counter</span>
+      counter = value
+     
+      <span class="comment">// 输出当前值</span>
+      fmt.Printf(<span class="string">"%d - %d \n"</span>, id, counter)
+   }
+}
+</code></pre>
+<p>上述程序中，共享变量<code>counter</code>会进行4次读和写，每个<code>goroutine</code>会执行2次，但程序结束时，	<code>counter</code>的值却为2。程序执行过程如下图：</p>
+<p><img src="/article/Go/Go Base/并发/%E7%AB%9E%E4%BA%89%E7%8A%B6%E6%80%81.png" alt="无法加载" title="竞争状态"></p>
+<p>上述程序创建了两个<code>goroutine</code>,	<code>incCounter</code>函数对变量<code>counter</code>进行读和写操作，而该变量是共享资源。每个<code>goroutine</code>都会预先读出该变量的值，并将其副本存入到一个叫<code>value</code>的本地变量中，随后<code>incCounter</code>函数会对<code>value</code>的副本的值加1，最后将这个新值存到<code>counter</code>变量中。</p>
+<p><code>runtime.Gosched()</code>会将当前<code>goroutine</code>从线程中退出，这样给了其他<code>goroutine</code>运行的机会。在本程序中，这样做的目的是强制调度器切换<code>goroutine</code>，使得竞争状态的效果更明显。</p>
+<p>Go中有检测代码竞争状态的工具，执行<code>go build -race</code>,然后运行创建后的程序，可以看到:</p>
+<pre class="highlight"><code class="shell">==================
+WARNING: DATA RACE
+Write at 0x0000005e09b0 by goroutine 7:
+  main.incCounter()
+      E:/GoProjects/src/demo/main.go:37 +0xb5
+
+Previous read at 0x0000005e09b0 by goroutine 6:
+  main.incCounter()
+      E:/GoProjects/src/demo/main.go:31 +0x91
+
+Goroutine 7 (running) created at:
+  main.main()
+      E:/GoProjects/src/demo/main.go:20 +0x90
+
+Goroutine 6 (running) created at:
+  main.main()
+      E:/GoProjects/src/demo/main.go:19 +0x6f
+==================
+2 - 1
+1 - 1
+2 - 2
+1 - 2
+Final Counter: 2
+Found 1 data race(s)
+</code></pre>
+<p>由上述竞争检测结果可知，竞争发生在<code>counter = value value: counter go incCounter(1) go incCounter(2)</code>这四行代码中。这几行分别是对<code>counter</code>的读和写操作。</p>
+<p>要想消除竞争状态，可以使用Go语言提供的锁机制，来所住共享资源，从而保证<code>goroutine</code>的同步状态。</p>
+<h2 id="锁住共享资源"><a class="markdownIt-Anchor" href="#锁住共享资源"></a> 锁住共享资源</h2>
+<p>Go提供了传统的同步<code>goroutine</code>的机制，就是对共享资源加锁。如果需要顺序访问一个整型变量或一段代码，<code>atomic</code>和<code>sync</code>包中的函数提供了很好的解决方案。</p>
+<h3 id="原子函数"><a class="markdownIt-Anchor" href="#原子函数"></a> 原子函数</h3>
+<p><code>原子函数</code>能够以很底层的加锁机制来同步在访问整型变量和指针。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"sync"</span>
+   <span class="string">"runtime"</span>
+   <span class="string">"fmt"</span>
+   <span class="string">"sync/atomic"</span>
+)
+
+<span class="keyword">var</span> (
+   <span class="comment">// 共享资源</span>
+   counter <span class="keyword">int64</span>
+   <span class="comment">// wg用于等待程序结束</span>
+   wg sync.WaitGroup
+)
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   wg.Add(<span class="number">2</span>)
+
+   <span class="keyword">go</span> incCounter(<span class="number">1</span>)
+   <span class="keyword">go</span> incCounter(<span class="number">2</span>)
+
+   wg.Wait()
+   fmt.Println(<span class="string">"Final Counter:"</span>, counter)
+}
+
+<span class="function"><span class="keyword">func</span> <span class="title">incCounter</span><span class="params">(id <span class="keyword">int</span>)</span></span>  {
+   <span class="keyword">defer</span> wg.Done()
+
+   <span class="keyword">for</span> count := <span class="number">0</span>; count &lt; <span class="number">2</span>; count++ {
+      <span class="comment">// 安全地对counter+1</span>
+      atomic.AddInt64(&amp;counter, <span class="number">1</span>)
+      runtime.Gosched()
+   }
+}
+</code></pre>
+<p>上述程序使用<code>atomic</code>的<code>AddInt64</code>函数，这个函数会同步整型值的加法，通过强制同一时刻只能有一个<code>goroutine</code>运行并完成加法操作。当<code>goroutine</code>试图去调用任何原子函数时，这些<code>goroutine</code>都会自动根据所引用的变量做同步处理。</p>
+<p>此外 还有两个函数<code>LoadInt64</code>和<code>StoreInt64</code>，这两个原子函数提供安全地读和写一个整型值的方式。下述程序将使用这两个函数创建一个同步标志，该标志可以向程序里多个	<code>goroutine</code>通知某种特殊状态。</p>
 ]]></content>
       
         <categories>
@@ -15864,8 +16605,8 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[Timeline]]></title>
+      <url>/timeline/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -15876,8 +16617,8 @@ description: 描述
     </entry>
     
     <entry>
-      <title><![CDATA[Timeline]]></title>
-      <url>/timeline/index.html</url>
+      <title><![CDATA[Tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     

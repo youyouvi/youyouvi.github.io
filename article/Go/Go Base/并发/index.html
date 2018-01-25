@@ -240,7 +240,7 @@
 
     
         <meta property="article:published_time" content="Wed Jan 17 2018 20:27:17 GMT+0800" />
-        <meta property="article:modified_time" content="Thu Jan 18 2018 20:53:25 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Jan 21 2018 21:06:41 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "http://yov.oschina.io/article/Go/Go Base/并发/index.html",
     "headline": "并发",
     "datePublished": "Wed Jan 17 2018 20:27:17 GMT+0800",
-    "dateModified": "Thu Jan 18 2018 20:53:25 GMT+0800",
+    "dateModified": "Sun Jan 21 2018 21:06:41 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "子语",
@@ -351,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#并发与并行"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 并发与并行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#goroutine"><span class="post-toc-number">2.</span> <span class="post-toc-text"> goroutine</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#并发与并行"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 并发与并行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#goroutine"><span class="post-toc-number">2.</span> <span class="post-toc-text"> goroutine</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#竞争状态"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 竞争状态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#锁住共享资源"><span class="post-toc-number">4.</span> <span class="post-toc-text"> 锁住共享资源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原子函数"><span class="post-toc-number">4.1.</span> <span class="post-toc-text"> 原子函数</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -522,6 +522,244 @@
 <p>调度器对可以创建的逻辑处理器的数量没有限制，但语言运行时默认限制每个程序最多创建10000个线程，超过这个限制，就会崩溃，可以通过调用<code>runtime/debug</code>包中的<code>SetMaxThreads</code>来更改。</p>
 <p>并发<code>concurrency</code>不是并行<code>parallelism</code>。并行是让不同的代码片段同时在不同的物理处理器上执行，其关键是同时做很多事情。并发是指同时管理很多事情。大部分情况下，并发的效果比并行好，因为操作系统和硬件的总资源一般很少，但能支持系统同时做很多事。</p>
 <h2 id="goroutine"><a class="markdownIt-Anchor" href="#goroutine"></a> goroutine</h2>
+<p>下述程序会创建两个<code>goroutine</code>，以并发的形式分别显示大写和小写字母：</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"runtime"</span>
+   <span class="string">"sync"</span>
+   <span class="string">"fmt"</span>
+)
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">// 分配一个逻辑处理器给调度器用</span>
+   runtime.GOMAXPROCS(<span class="number">1</span>)
+
+   <span class="comment">// wg用于等待程序完成</span>
+   <span class="keyword">var</span> wg sync.WaitGroup
+   <span class="comment">// 计数+2.表示要等待两个goroutine</span>
+   wg.Add(<span class="number">2</span>)
+
+   fmt.Println(<span class="string">"Start Goroutines"</span>)
+
+   <span class="comment">// 声明一个匿名函数，并创建一个goroutine</span>
+   <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {
+      <span class="keyword">defer</span> wg.Done()
+
+      <span class="keyword">for</span>  count := <span class="number">0</span>; count &lt; <span class="number">3</span>; count++ {
+         <span class="keyword">for</span> char := <span class="string">'a'</span>; char &lt; <span class="string">'a'</span> + <span class="number">26</span> ; char++ {
+            fmt.Printf(<span class="string">"%c "</span>, char)
+         }
+      }
+   }()
+
+   <span class="comment">// 声明一个匿名函数，并创建一个goroutine</span>
+   <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> {
+      <span class="keyword">defer</span> wg.Done()
+
+      <span class="keyword">for</span>  count := <span class="number">0</span>; count &lt; <span class="number">3</span>; count++ {
+         <span class="keyword">for</span> char := <span class="string">'A'</span>; char &lt; <span class="string">'A'</span> + <span class="number">26</span> ; char++ {
+            fmt.Printf(<span class="string">"%c "</span>, char)
+         }
+      }
+   }()
+
+   fmt.Println(<span class="string">"Waiting To Finish"</span>)
+   <span class="comment">// 等待goroutine</span>
+   wg.Wait()
+
+   fmt.Printf(<span class="string">"\n Termingating Program"</span>)
+}
+</code></pre>
+<p><code>runtime</code>包的<code>GOMAXPROCES</code>函数用于更改调度器可以使用的逻辑处理器数量。声明了两个匿名函数，分别通过关键字<code>go</code>创建<code>goroutine</code>来执行。</p>
+<p><code>WaitGroup</code>是一个计数信号量，用来记录并维护运行的<code>goroutine</code>，如果<code>WaitGroup</code>大于0，则<code>Wait</code>方法会阻塞。上述代码中将<code>WaitGroup</code>设为2，表示有2个正在运行的<code>goroutine</code>，为了减小<code>WaitGroup</code>的值并最终释放main函数，在两个匿名函数中，使用<code>defer</code>定声明了函数退出时调用<code>Done</code>方法。<code>defer</code>会修改函数调用时机，在正在执行的函数返回时，才会调用<code>defer</code>声明的函数。</p>
+<pre class="highlight"><code class="go">Start Goroutines
+Waiting To Finish
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z 
+ Termingating Program
+</code></pre>
+<p>第一个<code>goroutine</code>完成显示花费的时间太短，以至于在调度器切换到第二个<code>goroutine</code>前就完成了所有任务，这就是为什么先输出了所有的大写字母，再输出了所有小写字母的原因。</p>
+<p>基于调度器的内部算法，一个正在运行的<code>goroutine</code>在工作结束前，可以被停止并被重新调度。这样做的目的是防止某个<code>goroutine</code>长时间占用逻辑处理器。可通过下述例子说明：下述程序创建了一个需要长时间才能完成其工作 的<code>goroutine</code>：</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"sync"</span>
+   <span class="string">"runtime"</span>
+   <span class="string">"fmt"</span>
+)
+
+<span class="keyword">var</span> wg sync.WaitGroup
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   <span class="comment">// 分配一个逻辑处理器给调度器使用</span>
+   runtime.GOMAXPROCS(<span class="number">1</span>)
+
+   <span class="comment">// 计数+2，表示要等待2个goroutine</span>
+   wg.Add(<span class="number">2</span>)
+
+   fmt.Println(<span class="string">"Create Goroutines"</span>)
+   <span class="comment">// 创建两个goroutine</span>
+   <span class="keyword">go</span> printPrime(<span class="string">"A"</span>)
+   <span class="keyword">go</span> printPrime(<span class="string">"B"</span>)
+
+   fmt.Println(<span class="string">"Waitting To Finish"</span>)
+   <span class="comment">// 等待goroutine结束</span>
+   wg.Wait()
+
+   fmt.Println(<span class="string">"Termination Program"</span>)
+
+}
+
+<span class="comment">// 显示5000以内的素数</span>
+<span class="function"><span class="keyword">func</span> <span class="title">printPrime</span><span class="params">(prefix <span class="keyword">string</span>)</span></span> {
+   <span class="comment">// 函数退出时，调用Done来通知main函数工作完成</span>
+   <span class="keyword">defer</span> wg.Done()
+
+next:
+   <span class="keyword">for</span> outer := <span class="number">2</span>; outer &lt; <span class="number">5000</span>; outer++ {
+      <span class="keyword">for</span> inner := <span class="number">2</span>; inner &lt; outer; inner++ {
+         <span class="keyword">if</span> outer % inner == <span class="number">0</span> {
+            <span class="keyword">continue</span> next
+         }
+      }
+      fmt.Printf(<span class="string">"%s:%d\n"</span>, prefix, outer)
+   }
+   fmt.Println(<span class="string">"Completed"</span>, prefix)
+}
+</code></pre>
+<p>运行程序，会看到素数的前缀最开始为B，当到了一定数量后，前缀切换为A。之后前缀A运行一段时间后，又会切换到B去。每次运行程序，调度器切换的时间点可能会不同。</p>
+<p>上述程序中都有用到<code>runtime</code>包中的<code>GOMAXPROCS</code>函数来设置调度器使用的逻辑处理器数量。用这个函数，可以给每个可用的物理处理器在运行时分配一个逻辑处理器，才能使得<code>goroutine</code>并行运行。</p>
+<p><code>runtime.GOMAXPROCS(runtime.NumCPU())</code>，<code>NumCPU()</code>会返回可以使用的物理处理器的数量，因此这行代码就相当于给每个可用的物理处理器创建一个逻辑处理器。使用多个逻辑处理器并不意味着性能更优。修改用于显示字母表的代码，将其中的</p>
+<pre class="highlight"><code class="go">    fmt.Println(runtime.NumCPU())
+	runtime.GOMAXPROCS(runtime.NumCPU())
+</code></pre>
+<p>此时可以看到输出结果：</p>
+<pre class="highlight"><code class="go"><span class="number">4</span> <span class="comment">// 物理主机为4核，即有4个物理处理器</span>
+Start Goroutines
+Waiting To Finish
+A B C D E F G H I J K L M N O P Q R a b c d e f g h i j k S l T U V W X Y Z A B C D m n o p q r s t u v w x y z a b E F G H I J K L M N O c d e f g h i j k l m P Q R S T U V W X Y Z A B C D E F G H I J K L M N O n o p P Q R S q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z T U V W X Y Z 
+ Termingating Program
+</code></pre>
+<p>由于此时的<code>goroutine</code>是并行运行的，所以大小写字母会混合在一起显示。</p>
+<h2 id="竞争状态"><a class="markdownIt-Anchor" href="#竞争状态"></a> 竞争状态</h2>
+<p>如果多个<code>goroutine</code>在没有互相同步的情况下，访问某个共享资源，并视图读和写这个资源时，就会相互竞争的状态，这种情况被称为竞争状态<code>race candition</code>。竞争状态的存在让并发程序变得复杂，而且容易引起问题。对于共享资源的读与写 必须是原子化的，即同一时刻只能有一个<code>goroutine</code>对共享资源进行读和写操作。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"sync"</span>
+   <span class="string">"runtime"</span>
+   <span class="string">"fmt"</span>
+)
+
+<span class="keyword">var</span> (
+   <span class="comment">// 共享资源</span>
+   counter <span class="keyword">int</span>
+   <span class="comment">// wg用于等待程序结束</span>
+   wg sync.WaitGroup
+)
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   wg.Add(<span class="number">2</span>)
+
+   <span class="keyword">go</span> incCounter(<span class="number">1</span>)
+   <span class="keyword">go</span> incCounter(<span class="number">2</span>)
+
+   wg.Wait()
+   fmt.Println(<span class="string">"Final Counter:"</span>, counter)
+}
+
+<span class="function"><span class="keyword">func</span> <span class="title">incCounter</span><span class="params">(id <span class="keyword">int</span>)</span></span>  {
+   <span class="keyword">defer</span> wg.Done()
+
+   <span class="keyword">for</span> count := <span class="number">0</span>; count &lt; <span class="number">2</span>; count++ {
+      <span class="comment">// 捕获counter的值</span>
+      value := counter
+      <span class="comment">// 当前goroutine从线程退出，并放回到队列</span>
+      runtime.Gosched()
+      <span class="comment">// 本地value自增</span>
+      value ++
+      <span class="comment">// 将值保存回counter</span>
+      counter = value
+     
+      <span class="comment">// 输出当前值</span>
+      fmt.Printf(<span class="string">"%d - %d \n"</span>, id, counter)
+   }
+}
+</code></pre>
+<p>上述程序中，共享变量<code>counter</code>会进行4次读和写，每个<code>goroutine</code>会执行2次，但程序结束时，	<code>counter</code>的值却为2。程序执行过程如下图：</p>
+<p><img src="/article/Go/Go Base/并发/%E7%AB%9E%E4%BA%89%E7%8A%B6%E6%80%81.png" alt="无法加载" title="竞争状态"></p>
+<p>上述程序创建了两个<code>goroutine</code>,	<code>incCounter</code>函数对变量<code>counter</code>进行读和写操作，而该变量是共享资源。每个<code>goroutine</code>都会预先读出该变量的值，并将其副本存入到一个叫<code>value</code>的本地变量中，随后<code>incCounter</code>函数会对<code>value</code>的副本的值加1，最后将这个新值存到<code>counter</code>变量中。</p>
+<p><code>runtime.Gosched()</code>会将当前<code>goroutine</code>从线程中退出，这样给了其他<code>goroutine</code>运行的机会。在本程序中，这样做的目的是强制调度器切换<code>goroutine</code>，使得竞争状态的效果更明显。</p>
+<p>Go中有检测代码竞争状态的工具，执行<code>go build -race</code>,然后运行创建后的程序，可以看到:</p>
+<pre class="highlight"><code class="shell">==================
+WARNING: DATA RACE
+Write at 0x0000005e09b0 by goroutine 7:
+  main.incCounter()
+      E:/GoProjects/src/demo/main.go:37 +0xb5
+
+Previous read at 0x0000005e09b0 by goroutine 6:
+  main.incCounter()
+      E:/GoProjects/src/demo/main.go:31 +0x91
+
+Goroutine 7 (running) created at:
+  main.main()
+      E:/GoProjects/src/demo/main.go:20 +0x90
+
+Goroutine 6 (running) created at:
+  main.main()
+      E:/GoProjects/src/demo/main.go:19 +0x6f
+==================
+2 - 1
+1 - 1
+2 - 2
+1 - 2
+Final Counter: 2
+Found 1 data race(s)
+</code></pre>
+<p>由上述竞争检测结果可知，竞争发生在<code>counter = value value: counter go incCounter(1) go incCounter(2)</code>这四行代码中。这几行分别是对<code>counter</code>的读和写操作。</p>
+<p>要想消除竞争状态，可以使用Go语言提供的锁机制，来所住共享资源，从而保证<code>goroutine</code>的同步状态。</p>
+<h2 id="锁住共享资源"><a class="markdownIt-Anchor" href="#锁住共享资源"></a> 锁住共享资源</h2>
+<p>Go提供了传统的同步<code>goroutine</code>的机制，就是对共享资源加锁。如果需要顺序访问一个整型变量或一段代码，<code>atomic</code>和<code>sync</code>包中的函数提供了很好的解决方案。</p>
+<h3 id="原子函数"><a class="markdownIt-Anchor" href="#原子函数"></a> 原子函数</h3>
+<p><code>原子函数</code>能够以很底层的加锁机制来同步在访问整型变量和指针。</p>
+<pre class="highlight"><code class="go"><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+   <span class="string">"sync"</span>
+   <span class="string">"runtime"</span>
+   <span class="string">"fmt"</span>
+   <span class="string">"sync/atomic"</span>
+)
+
+<span class="keyword">var</span> (
+   <span class="comment">// 共享资源</span>
+   counter <span class="keyword">int64</span>
+   <span class="comment">// wg用于等待程序结束</span>
+   wg sync.WaitGroup
+)
+
+<span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> {
+   wg.Add(<span class="number">2</span>)
+
+   <span class="keyword">go</span> incCounter(<span class="number">1</span>)
+   <span class="keyword">go</span> incCounter(<span class="number">2</span>)
+
+   wg.Wait()
+   fmt.Println(<span class="string">"Final Counter:"</span>, counter)
+}
+
+<span class="function"><span class="keyword">func</span> <span class="title">incCounter</span><span class="params">(id <span class="keyword">int</span>)</span></span>  {
+   <span class="keyword">defer</span> wg.Done()
+
+   <span class="keyword">for</span> count := <span class="number">0</span>; count &lt; <span class="number">2</span>; count++ {
+      <span class="comment">// 安全地对counter+1</span>
+      atomic.AddInt64(&amp;counter, <span class="number">1</span>)
+      runtime.Gosched()
+   }
+}
+</code></pre>
+<p>上述程序使用<code>atomic</code>的<code>AddInt64</code>函数，这个函数会同步整型值的加法，通过强制同一时刻只能有一个<code>goroutine</code>运行并完成加法操作。当<code>goroutine</code>试图去调用任何原子函数时，这些<code>goroutine</code>都会自动根据所引用的变量做同步处理。</p>
+<p>此外 还有两个函数<code>LoadInt64</code>和<code>StoreInt64</code>，这两个原子函数提供安全地读和写一个整型值的方式。下述程序将使用这两个函数创建一个同步标志，该标志可以向程序里多个	<code>goroutine</code>通知某种特殊状态。</p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -684,7 +922,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">14</span></a>
             </ul>
         </li>
         
@@ -702,7 +940,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">23</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/微服务/">微服务<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/categories/Go/">Go<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">25</span></a></li><li><a class="sidebar_archives-link" href="/categories/博客搭建/">博客搭建<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/容器/">容器<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/工具/">工具<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/微服务/">微服务<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/框架/">框架<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/测试/">测试<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/语言/">语言<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -758,7 +996,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">51</span>
+                <span class="sidebar-badge">54</span>
             </a>
         </li>
         
